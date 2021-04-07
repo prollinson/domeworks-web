@@ -28,5 +28,5 @@ jobs:
       - name: Deploy
         uses: jonelantha/gatsby-s3-action@v1
         with:
-          dest-s3-bucket: trais.thespare.tube
+          dest-s3-bucket: trails.thespare.tube
           cloudfront-id-to-invalidate: E3OCGQRGVA0RGC
