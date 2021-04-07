@@ -3,6 +3,8 @@ import * as React from "react"
 import HeaderTemplate from "../templates/header"
 import TrailTemplate from "../templates/trail"
 
+import "../css/global.css"
+
 // styles
 const pageStyles = {
   color: "#232129",
