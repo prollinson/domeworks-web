@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: "The Spare Tube",
+    siteUrl: "https://thespare.tube"
   },
   plugins: [
     "gatsby-plugin-postcss",
