@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: "thesparetube",
+    title: "The Spare Tube",
   },
   plugins: [
     "gatsby-plugin-postcss",
@@ -10,6 +10,13 @@ module.exports = {
       resolve: "gatsby-plugin-manifest",
       options: {
         icon: "src/images/icon.png",
+      },
+    },
+    `gatsby-transformer-json`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `./src/data/`,
       },
     },
   ],
