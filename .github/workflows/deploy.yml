@@ -15,18 +15,25 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 18
+      - name: Install Dependencies
+        run: yarn install
       - name: Build
-        run: |
-          yarn install
-          yarn run build
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
+        run: yarn run build
+      - uses: jakejarvis/s3-sync-action@master
+        name: Upload App to S3 Bucket
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-west-2
-      - name: Deploy
-        uses: jonelantha/gatsby-s3-action@v1
-        with:
-          dest-s3-bucket: trails.thespare.tube
-          cloudfront-id-to-invalidate: E3OCGQRGVA0RGC
+          args: --follow-symlinks --delete
+        env:
+          AWS_S3_BUCKET: trails.thespare.tube
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: "eu-central-1"
+          SOURCE_DIR: "dist"
+      - name: Create CloudFront Cache Invalidation
+        uses: chetan/invalidate-cloudfront-action@master
+        env:
+          DISTRIBUTION: E3OCGQRGVA0RGC
+          PATHS: "/*"
+          AWS_REGION: "eu-central-1"
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
