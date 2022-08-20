@@ -17,6 +17,7 @@ jobs:
           node-version: 18
       - name: Build
         run: |
+          yarn install
           yarn run build
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
