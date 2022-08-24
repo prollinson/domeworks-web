@@ -6,19 +6,14 @@
         <div class="px-8">
           <h3 class="font-bold text-gray-900">About</h3>
           <p class="py-4 text-gray-600 text-sm">
-            A blog for all things ebikes and family.
+            
           </p>
         </div>
       </div>
 
       <div class="flex w-full md:w-1/2">
         <div class="px-8">
-          <h3 class="font-bold text-gray-900">Social</h3>
-          <ul class="list-reset items-center text-sm pt-3">
-            <li>
-              <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1" href="https://www.instagram.com/thesparetube/">Instagram</a>
-            </li>
-          </ul>
+          
         </div>
       </div>
     </div>
