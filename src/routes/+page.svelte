@@ -1,7 +1,9 @@
 <script lang="ts">
   import Button from '$lib/components/ui/Button.svelte'
   import Section from '$lib/components/layout/Section.svelte'
+  import Scrollytelling from '$lib/components/ui/Scrollytelling.svelte'
   import { generateSmbMailto, generateEnterpriseMailto } from '$lib/utils/mailto'
+  import { reveal } from '$lib/actions/reveal'
 </script>
 
 <svelte:head>
@@ -59,19 +61,12 @@
 </section>
 
 <!-- Two-Lane Selector -->
-<Section background="muted" padding="lg">
-  <div class="text-center mb-12">
-    <p class="text-sm font-medium tracking-widest text-slate-500 uppercase mb-4">01</p>
-    <h2 class="font-serif text-3xl md:text-4xl font-semibold text-slate-900">
-      Where do you need help?
-    </h2>
-  </div>
-
-  <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+<Section background="muted" padding="lg" eyebrow="01" title="Where do you need help?">
+  <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto" use:reveal={{ stagger: true, staggerDelay: 150 }}>
     <!-- SMB Lane -->
     <a
       href="/services/"
-      class="group relative p-8 bg-white rounded-2xl border border-slate-200 hover:border-primary hover:shadow-lg transition-all duration-300"
+      class="group relative p-8 bg-white rounded-2xl border border-slate-200 hover:border-primary card-lift"
     >
       <div class="flex items-start justify-between mb-4">
         <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary">
@@ -94,7 +89,7 @@
     <!-- Enterprise Lane -->
     <a
       href="/enterprise/"
-      class="group relative p-8 bg-white rounded-2xl border border-slate-200 hover:border-primary hover:shadow-lg transition-all duration-300"
+      class="group relative p-8 bg-white rounded-2xl border border-slate-200 hover:border-primary card-lift"
     >
       <div class="flex items-start justify-between mb-4">
         <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-slate-100 text-slate-600">
@@ -166,15 +161,8 @@
 </Section>
 
 <!-- What We Do -->
-<Section background="muted" padding="lg">
-  <div class="text-center mb-12">
-    <p class="text-sm font-medium tracking-widest text-slate-500 uppercase mb-4">03</p>
-    <h2 class="font-serif text-3xl md:text-4xl font-semibold text-slate-900">
-      What we do
-    </h2>
-  </div>
-
-  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+<Section background="muted" padding="lg" eyebrow="03" title="What we do">
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto" use:reveal={{ stagger: true, staggerDelay: 100 }}>
     {#each [
       { title: 'Workflow automation', desc: 'End-to-end processes that run without intervention.' },
       { title: 'Integrations', desc: 'Connect your tools so data flows automatically.' },
@@ -191,15 +179,8 @@
 </Section>
 
 <!-- Real Automation Means -->
-<Section background="white" padding="lg">
-  <div class="text-center mb-12">
-    <p class="text-sm font-medium tracking-widest text-slate-500 uppercase mb-4">04</p>
-    <h2 class="font-serif text-3xl md:text-4xl font-semibold text-slate-900">
-      Real automation means…
-    </h2>
-  </div>
-
-  <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+<Section background="white" padding="lg" eyebrow="04" title="Real automation means…">
+  <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto" use:reveal={{ stagger: true, staggerDelay: 150 }}>
     <div class="text-center">
       <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 text-primary mb-6">
         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -241,51 +222,14 @@
   </div>
 </Section>
 
-<!-- How We Work -->
-<Section background="muted" padding="lg">
-  <div class="text-center mb-12">
-    <p class="text-sm font-medium tracking-widest text-slate-500 uppercase mb-4">05</p>
-    <h2 class="font-serif text-3xl md:text-4xl font-semibold text-slate-900">
-      How we work
-    </h2>
-  </div>
-
-  <div class="max-w-3xl mx-auto">
-    <div class="space-y-0">
-      {#each [
-        { step: '01', title: 'Discovery', desc: 'Understand your workflow, bottlenecks, and success criteria.' },
-        { step: '02', title: 'Design', desc: 'Map the automation, define integrations, set acceptance criteria.' },
-        { step: '03', title: 'Build', desc: 'Implement with proper error handling and monitoring.' },
-        { step: '04', title: 'Verify', desc: 'Test against real scenarios, validate with your team.' },
-        { step: '05', title: 'Deploy', desc: 'Roll out with a clear rollback plan.' },
-        { step: '06', title: 'Handoff', desc: 'Documentation, admin walkthrough, ownership transfer.' },
-        { step: '07', title: 'Measure', desc: 'Track outcomes against your baseline.' }
-      ] as item, i}
-        <div class="flex gap-6 py-6 {i < 6 ? 'border-b border-slate-200' : ''}">
-          <span class="flex-shrink-0 text-sm font-medium text-primary tracking-widest">{item.step}</span>
-          <div>
-            <h3 class="font-semibold text-slate-900 mb-1">{item.title}</h3>
-            <p class="text-sm text-slate-600">{item.desc}</p>
-          </div>
-        </div>
-      {/each}
-    </div>
-  </div>
+<!-- How We Work - Scrollytelling -->
+<Section background="muted" padding="xl" eyebrow="05" title="How we work" centered={false}>
+  <Scrollytelling />
 </Section>
 
 <!-- Examples Teaser -->
-<Section id="examples" background="white" padding="lg">
-  <div class="text-center mb-12">
-    <p class="text-sm font-medium tracking-widest text-slate-500 uppercase mb-4">06</p>
-    <h2 class="font-serif text-3xl md:text-4xl font-semibold text-slate-900 mb-4">
-      Illustrative examples
-    </h2>
-    <p class="text-slate-600 max-w-2xl mx-auto">
-      These represent the types of workflows we build. Specific outcomes vary by business.
-    </p>
-  </div>
-
-  <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+<Section id="examples" background="white" padding="lg" eyebrow="06" title="Illustrative examples" description="These represent the types of workflows we build. Specific outcomes vary by business.">
+  <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto" use:reveal={{ stagger: true, staggerDelay: 100 }}>
     {#each [
       {
         title: 'HubSpot lead intake → routing → follow-up',
@@ -324,15 +268,8 @@
 </Section>
 
 <!-- Trust Checklist -->
-<Section background="muted" padding="lg">
-  <div class="text-center mb-12">
-    <p class="text-sm font-medium tracking-widest text-slate-500 uppercase mb-4">07</p>
-    <h2 class="font-serif text-3xl md:text-4xl font-semibold text-slate-900 mb-4">
-      Built with controls you can trust
-    </h2>
-  </div>
-
-  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+<Section background="muted" padding="lg" eyebrow="07" title="Built with controls you can trust">
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto" use:reveal={{ stagger: true, staggerDelay: 80 }}>
     {#each [
       'Least privilege + permission mapping',
       'Secrets management',
@@ -354,15 +291,8 @@
 </Section>
 
 <!-- FAQ -->
-<Section background="white" padding="lg">
-  <div class="text-center mb-12">
-    <p class="text-sm font-medium tracking-widest text-slate-500 uppercase mb-4">08</p>
-    <h2 class="font-serif text-3xl md:text-4xl font-semibold text-slate-900">
-      Common questions
-    </h2>
-  </div>
-
-  <div class="max-w-3xl mx-auto divide-y divide-slate-200">
+<Section background="white" padding="lg" eyebrow="08" title="Common questions">
+  <div class="max-w-3xl mx-auto divide-y divide-slate-200" use:reveal>
     {#each [
       {
         q: "I'm not technical. Where do I even start?",
@@ -411,8 +341,12 @@
 </Section>
 
 <!-- Final CTA -->
-<section class="bg-slate-900 text-white py-20 md:py-28">
-  <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+<section class="bg-slate-900 text-white py-20 md:py-28 relative overflow-hidden">
+  <!-- Ambient warm glow -->
+  <div class="absolute inset-0 ambient-warm"></div>
+  <!-- Subtle grain texture -->
+  <div class="absolute inset-0 texture-grain"></div>
+  <div class="relative max-w-4xl mx-auto px-6 lg:px-8 text-center" use:reveal>
     <h2 class="font-serif text-3xl md:text-4xl font-semibold mb-6">
       Bring one workflow. We'll tell you what it takes.
     </h2>
