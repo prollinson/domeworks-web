@@ -1,30 +1,23 @@
 import adapter from '@sveltejs/adapter-static';
-import preprocess from 'svelte-preprocess';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { mdsvex } from 'mdsvex';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-
 	extensions: ['.svelte', '.md'],
 
-	// Consult https://github.com/sveltejs/svelte-preprocess
-	// for more information about preprocessors
 	preprocess: [
-		preprocess({
-				postcss: true
-		}),
+		vitePreprocess(),
 		mdsvex({
-      extensions: ['.md'],
+			extensions: ['.md']
 		})
 	],
 
 	kit: {
-		adapter: adapter({ precompress: true }),
-		prerender: {
-      default: true
-    },
-		trailingSlash: 'always'
-	},
+		adapter: adapter({
+			precompress: true
+		})
+	}
 };
 
 export default config;
