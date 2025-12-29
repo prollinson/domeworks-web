@@ -32,7 +32,7 @@
 
       <!-- Subhead -->
       <p class="mt-8 text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl">
-        We identify the manual choke points, integrate with Google Workspace, Slack, Microsoft, and HubSpot, and ship workflows that run unattended with monitoring, alerts, and clean handoff.
+        We find where your process breaks. We fix it using the APIs in Google Workspace, Slack, and Microsoft 365. Then we hand you the keys to a system that runs itself.
       </p>
 
       <!-- Budget anchor - premium positioning -->
@@ -214,7 +214,7 @@
         </svg>
       </div>
       <h3 class="font-semibold text-slate-900 mb-3">Works while you sleep</h3>
-      <p class="text-sm text-slate-600 mb-4">Monitoring, alerts, rollback, exception handling.</p>
+      <p class="text-sm text-slate-600 mb-4">Zero-touch. If it breaks, we get the alert, not you.</p>
       <p class="text-xs text-slate-500 font-medium uppercase tracking-wide">
         Artifacts: runbook, alert config, exception queue
       </p>
@@ -228,33 +228,37 @@
 </Section>
 
 <!-- Examples Teaser -->
-<Section id="examples" background="white" padding="lg" eyebrow="06" title="Illustrative examples" description="These represent the types of workflows we build. Specific outcomes vary by business.">
+<Section id="examples" background="white" padding="lg" eyebrow="06" title="Proven Automation Patterns" description="We lead with the result. Here is the impact we deliver using established, reliable workflows.">
   <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto" use:reveal={{ stagger: true, staggerDelay: 100 }}>
     {#each [
       {
-        title: 'HubSpot lead intake → routing → follow-up',
-        tools: 'HubSpot, Slack, Gmail',
-        time: '2–3 weeks'
+        area: 'Sales',
+        impact: 'Reduce lead response time from hours to minutes',
+        workflow: "The 'Speed-to-Lead' Bot",
+        tools: 'HubSpot, Slack, Gmail'
       },
       {
-        title: 'Slack request intake → triage → assignment',
-        tools: 'Slack, Notion, Calendar',
-        time: '1–2 weeks'
+        area: 'Operations',
+        impact: 'Eliminate manual ticket creation and routing',
+        workflow: 'Slack Triage & Assignment',
+        tools: 'Slack, Notion, Calendar'
       },
       {
-        title: 'Weekly reporting autopilot',
-        tools: 'Google Sheets, Slack, Email',
-        time: '1–2 weeks'
+        area: 'Management',
+        impact: 'Save 4+ hours per week on report compilation',
+        workflow: "The 'Monday Morning' Report",
+        tools: 'Google Sheets, Slack, Email'
       }
     ] as example}
-      <div class="p-6 bg-slate-50 rounded-xl border border-slate-200 hover:border-primary/50 hover:shadow-sm transition-all">
-        <span class="inline-block px-2 py-1 text-xs font-medium text-slate-600 bg-slate-200 rounded mb-4">
-          Illustrative example
+      <div class="p-6 bg-slate-50 rounded-xl border border-slate-200 hover:border-primary/50 hover:shadow-sm transition-all flex flex-col">
+        <span class="inline-block px-2 py-1 text-xs font-medium text-slate-600 bg-slate-200 rounded mb-4 w-fit">
+          {example.area}
         </span>
-        <h3 class="font-semibold text-slate-900 mb-3">{example.title}</h3>
-        <div class="space-y-2 text-sm text-slate-600">
-          <p><span class="text-slate-500">Tools:</span> {example.tools}</p>
-          <p><span class="text-slate-500">Typical:</span> {example.time}</p>
+        <h3 class="font-semibold text-slate-900 mb-4 leading-snug">{example.impact}</h3>
+        <div class="mt-auto pt-4 border-t border-slate-200/50">
+          <p class="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1">Workflow</p>
+          <p class="text-sm text-slate-900 font-medium mb-2">{example.workflow}</p>
+          <p class="text-xs text-slate-600"><span class="text-slate-500">Tools:</span> {example.tools}</p>
         </div>
       </div>
     {/each}
@@ -351,7 +355,7 @@
       Bring one workflow. We'll tell you what it takes.
     </h2>
     <p class="text-lg text-slate-400 mb-4 max-w-2xl mx-auto">
-      Tell us: workflow start→end, bottlenecks, tools, volume, and budget ($5–15k target).
+      Tell us: workflow start to end, bottlenecks, tools, volume, and budget ($5–15k target).
     </p>
     <p class="text-sm text-slate-500 mb-10">
       If budget is under $5k, we're likely not a fit.

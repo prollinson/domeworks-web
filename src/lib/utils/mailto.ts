@@ -1,4 +1,4 @@
-const EMAIL = 'hello@domeworks.io'
+const EMAIL = 'hello@domeworks.tech'
 
 interface MailtoOptions {
   workflowName?: string
@@ -11,7 +11,7 @@ export function generateSmbMailto(options: MailtoOptions = {}): string {
 
   const body = encodeURIComponent(`Business type + team size:
 
-Workflow (start → end):
+Workflow (start to end):
 
 Bottlenecks (top 3):
 
