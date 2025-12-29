@@ -1,6 +1,6 @@
 <script>
-  import Header from '$lib/components/Header.svelte'
-  import Footer from '$lib/components/Footer.svelte'
+  import Header from '$lib/components/layout/Header.svelte'
+  import Footer from '$lib/components/layout/Footer.svelte'
   import '../tailwind.css'
 
   let { children } = $props()
@@ -8,8 +8,8 @@
 
 <Header />
 
-<div class="container w-full md:max-w-3xl mx-auto pt-20">
+<main class="pt-16 md:pt-20">
   {@render children()}
-</div>
+</main>
 
 <Footer />
