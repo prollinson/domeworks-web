@@ -15,44 +15,114 @@
   <div class="absolute inset-0 grid-overlay opacity-50"></div>
 
   <div class="relative max-w-6xl mx-auto px-6 lg:px-8 py-20 md:py-28">
-    <div class="max-w-4xl">
-      <!-- Eyebrow -->
-      <p class="text-sm font-medium tracking-widest text-primary uppercase mb-6">
-        Las Vegas Valley
-      </p>
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <!-- Text Content -->
+      <div class="max-w-xl">
+        <!-- Eyebrow -->
+        <p class="text-sm font-medium tracking-widest text-primary uppercase mb-6">
+          Las Vegas Valley
+        </p>
 
-      <!-- Headline - using serif for distinction -->
-      <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-slate-900 leading-[1.1] tracking-tight">
-        Real automation for your bottlenecks<span class="text-primary">.</span>
-        <br class="hidden md:block" />
-        Built for your tools<span class="text-primary">.</span>
-      </h1>
+        <!-- Headline - using serif for distinction -->
+        <h1 class="font-serif text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-semibold text-slate-900 leading-[1.1] tracking-tight">
+          Real automation for your bottlenecks<span class="text-primary">.</span>
+          <br class="hidden md:block" />
+          Built for your tools<span class="text-primary">.</span>
+        </h1>
 
-      <!-- Subhead -->
-      <p class="mt-8 text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl">
-        We identify the manual choke points, integrate with Google Workspace, Slack, Microsoft, and HubSpot, and ship workflows that run unattended with monitoring, alerts, and clean handoff.
-      </p>
+        <!-- Subhead -->
+        <p class="mt-8 text-lg md:text-xl text-slate-600 leading-relaxed">
+          We identify the manual choke points, integrate with Google Workspace, Slack, Microsoft, and HubSpot, and ship workflows that run unattended with monitoring, alerts, and clean handoff.
+        </p>
 
-      <!-- Budget anchor - premium positioning -->
-      <div class="mt-8 flex items-center gap-6 text-sm text-slate-500">
-        <div class="flex items-center gap-2">
-          <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
-          <span>Audit: $3,500–$7,500</span>
+        <!-- Budget anchor - premium positioning -->
+        <div class="mt-8 flex flex-wrap items-center gap-4 md:gap-6 text-sm text-slate-500">
+          <div class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+            <span>Audit: $3,500–$7,500</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+            <span>Sprint: $9,500–$24,000</span>
+          </div>
         </div>
-        <div class="flex items-center gap-2">
-          <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
-          <span>Sprint: $9,500–$24,000</span>
+
+        <!-- CTAs -->
+        <div class="mt-10 flex flex-col sm:flex-row gap-4">
+          <Button href={generateSmbMailto()} size="lg">
+            Email us your workflow
+          </Button>
+          <Button href="#examples" variant="secondary" size="lg">
+            See examples
+          </Button>
         </div>
       </div>
 
-      <!-- CTAs -->
-      <div class="mt-10 flex flex-col sm:flex-row gap-4">
-        <Button href={generateSmbMailto()} size="lg">
-          Email us your workflow
-        </Button>
-        <Button href="#examples" variant="secondary" size="lg">
-          See examples
-        </Button>
+      <!-- Hero Illustration -->
+      <div class="hidden lg:flex items-center justify-center">
+        <div class="relative w-full max-w-md">
+          <!-- Abstract workflow illustration -->
+          <svg viewBox="0 0 400 400" class="w-full h-auto" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background glow -->
+            <circle cx="200" cy="200" r="160" class="fill-primary/5" />
+            <circle cx="200" cy="200" r="120" class="fill-primary/5" />
+
+            <!-- Connection lines -->
+            <path d="M120 140 L200 200" class="stroke-slate-200" stroke-width="2" stroke-dasharray="4 4" />
+            <path d="M280 140 L200 200" class="stroke-slate-200" stroke-width="2" stroke-dasharray="4 4" />
+            <path d="M200 200 L120 260" class="stroke-primary/40" stroke-width="2" />
+            <path d="M200 200 L280 260" class="stroke-primary/40" stroke-width="2" />
+            <path d="M200 200 L200 300" class="stroke-primary" stroke-width="2" />
+
+            <!-- Animated flow dots -->
+            <circle r="4" class="fill-primary">
+              <animateMotion dur="2s" repeatCount="indefinite" path="M200 200 L200 300" />
+            </circle>
+            <circle r="3" class="fill-primary/60">
+              <animateMotion dur="2.5s" repeatCount="indefinite" path="M200 200 L120 260" />
+            </circle>
+            <circle r="3" class="fill-primary/60">
+              <animateMotion dur="2.5s" repeatCount="indefinite" path="M200 200 L280 260" begin="0.5s" />
+            </circle>
+
+            <!-- Input nodes (top) -->
+            <g class="drop-shadow-sm">
+              <rect x="90" y="110" width="60" height="60" rx="12" class="fill-white stroke-slate-200" stroke-width="1.5" />
+              <path d="M108 140 L132 140 M120 128 L120 152" class="stroke-slate-400" stroke-width="2" stroke-linecap="round" />
+            </g>
+            <g class="drop-shadow-sm">
+              <rect x="250" y="110" width="60" height="60" rx="12" class="fill-white stroke-slate-200" stroke-width="1.5" />
+              <circle cx="280" cy="140" r="12" class="stroke-slate-400 fill-none" stroke-width="2" />
+              <circle cx="280" cy="140" r="4" class="fill-slate-400" />
+            </g>
+
+            <!-- Center processing node -->
+            <g class="drop-shadow-md">
+              <circle cx="200" cy="200" r="36" class="fill-primary" />
+              <path d="M185 200 L195 210 L215 190" class="stroke-white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+            </g>
+
+            <!-- Output nodes (bottom) -->
+            <g class="drop-shadow-sm">
+              <rect x="90" y="230" width="60" height="60" rx="12" class="fill-white stroke-primary/30" stroke-width="1.5" />
+              <path d="M108 260 L132 260 M108 250 L124 250 M108 270 L128 270" class="stroke-primary/60" stroke-width="2" stroke-linecap="round" />
+            </g>
+            <g class="drop-shadow-sm">
+              <rect x="250" y="230" width="60" height="60" rx="12" class="fill-white stroke-primary/30" stroke-width="1.5" />
+              <path d="M268 252 L280 264 L292 252 M268 268 L280 256 L292 268" class="stroke-primary/60" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </g>
+            <g class="drop-shadow-sm">
+              <rect x="170" y="300" width="60" height="60" rx="12" class="fill-primary/10 stroke-primary" stroke-width="1.5" />
+              <path d="M188 330 L200 342 L212 318" class="stroke-primary" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+            </g>
+
+            <!-- Decorative elements -->
+            <circle cx="340" cy="120" r="8" class="fill-primary/20" />
+            <circle cx="60" cy="200" r="6" class="fill-slate-200" />
+            <circle cx="340" cy="280" r="10" class="fill-primary/10" />
+            <circle cx="80" cy="320" r="5" class="fill-primary/30" />
+          </svg>
+        </div>
       </div>
     </div>
   </div>
