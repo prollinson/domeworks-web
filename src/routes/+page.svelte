@@ -2,13 +2,14 @@
   import Button from '$lib/components/ui/Button.svelte'
   import Section from '$lib/components/layout/Section.svelte'
   import Scrollytelling from '$lib/components/ui/Scrollytelling.svelte'
+  import SEO from '$lib/components/SEO.svelte'
   import { reveal } from '$lib/actions/reveal'
 </script>
 
-<svelte:head>
-  <title>Dome Works — Real Automation for Las Vegas Valley Businesses</title>
-  <meta name="description" content="We identify your bottlenecks, integrate with your tools, and ship workflows that run unattended with monitoring, alerts, and clean handoff." />
-</svelte:head>
+<SEO
+  title="Dome Works — Real Automation for Las Vegas Valley Businesses"
+  description="We identify your bottlenecks, integrate with your tools, and ship workflows that run unattended with monitoring, alerts, and clean handoff."
+/>
 
 <!-- Hero Section -->
 <section class="relative min-h-[90vh] flex items-center bg-white overflow-hidden">
