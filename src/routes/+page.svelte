@@ -2,7 +2,6 @@
   import Button from '$lib/components/ui/Button.svelte'
   import Section from '$lib/components/layout/Section.svelte'
   import Scrollytelling from '$lib/components/ui/Scrollytelling.svelte'
-  import { generateSmbMailto, generateEnterpriseMailto } from '$lib/utils/mailto'
   import { reveal } from '$lib/actions/reveal'
 </script>
 
@@ -49,8 +48,8 @@
 
       <!-- CTAs -->
       <div class="mt-10 flex flex-col sm:flex-row gap-4">
-        <Button href={generateSmbMailto()} size="lg">
-          Email us your workflow
+        <Button href="/contact/" size="lg">
+          Tell us your workflow
         </Button>
         <Button href="#examples" variant="secondary" size="lg">
           See examples
@@ -152,8 +151,8 @@
       </div>
 
       <div class="mt-8">
-        <Button href={generateSmbMailto()}>
-          Email what's slowing you down
+        <Button href="/contact/">
+          Tell us what's slowing you down
         </Button>
       </div>
     </div>
@@ -360,8 +359,8 @@
     <p class="text-sm text-slate-500 mb-10">
       If budget is under $5k, we're likely not a fit.
     </p>
-    <Button href={generateSmbMailto()} size="lg">
-      Email us your workflow
+    <Button href="/contact/" size="lg">
+      Tell us your workflow
     </Button>
   </div>
 </section>
