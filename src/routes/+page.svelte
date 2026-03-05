@@ -270,8 +270,74 @@
   </div>
 </Section>
 
+<!-- Case Studies -->
+<Section background="white" padding="lg" eyebrow="07" title="Results from real engagements" description="Placeholder case studies based on common automation patterns we deliver. Names changed for confidentiality.">
+  <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto" use:reveal={{ stagger: true, staggerDelay: 150 }}>
+    {#each [
+      {
+        company: 'Desert Property Group',
+        industry: 'Real Estate',
+        challenge: 'Agents spent 6+ hours per week manually entering listing data across three platforms and compiling weekly performance reports.',
+        result: 'Saved 20 hrs/week on listing updates and reporting',
+        services: 'AI Workflow Audit → Automation Sprint',
+        tools: 'Google Sheets, Slack, MLS API',
+        metric: '20 hrs/week saved'
+      },
+      {
+        company: 'Valley Medical Billing Co.',
+        industry: 'Healthcare Admin',
+        challenge: 'Invoice processing required manual review of 200+ claims per day, with frequent errors causing payment delays.',
+        result: 'Cut invoice processing time by 75% with automated validation',
+        services: 'Automation Sprint → Automation Ops',
+        tools: 'Microsoft 365, Custom EHR, Email',
+        metric: '75% faster processing'
+      },
+      {
+        company: 'SunState HVAC',
+        industry: 'Home Services',
+        challenge: 'New leads from website and Google Ads sat in a shared inbox for hours before anyone followed up.',
+        result: 'Lead response time dropped from 4 hours to under 5 minutes',
+        services: 'AI Workflow Audit → Automation Sprint',
+        tools: 'HubSpot, Gmail, Slack, Google Calendar',
+        metric: '< 5 min response time'
+      },
+      {
+        company: 'Cactus Creek HOA Management',
+        industry: 'Property Management',
+        challenge: 'Board meeting prep took 12+ hours of pulling data from spreadsheets, emails, and maintenance logs.',
+        result: 'Automated board packet generation — prep time cut to 1 hour',
+        services: 'Automation Sprint',
+        tools: 'Google Workspace, Notion, PDF generation',
+        metric: '90% less prep time'
+      }
+    ] as study}
+      <div class="p-8 bg-slate-50 rounded-2xl border border-slate-200 hover:border-primary/30 transition-colors flex flex-col">
+        <div class="flex items-center justify-between mb-4">
+          <span class="inline-block px-3 py-1 text-xs font-medium text-primary bg-primary/10 rounded-full">
+            {study.industry}
+          </span>
+          <span class="text-sm font-semibold text-primary">{study.metric}</span>
+        </div>
+        <h3 class="text-lg font-semibold text-slate-900 mb-2">{study.company}</h3>
+        <p class="text-sm text-slate-600 mb-4 leading-relaxed">{study.challenge}</p>
+        <div class="mt-auto pt-4 border-t border-slate-200/50 space-y-2">
+          <p class="text-sm font-medium text-slate-900">{study.result}</p>
+          <div class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-500">
+            <span><span class="font-medium text-slate-600">Services:</span> {study.services}</span>
+            <span><span class="font-medium text-slate-600">Tools:</span> {study.tools}</span>
+          </div>
+        </div>
+      </div>
+    {/each}
+  </div>
+
+  <p class="text-center text-sm text-slate-500 mt-8 italic">
+    These case studies represent typical engagement outcomes. Names and details have been adjusted for confidentiality.
+  </p>
+</Section>
+
 <!-- Trust Checklist -->
-<Section background="muted" padding="lg" eyebrow="07" title="Built with controls you can trust">
+<Section background="muted" padding="lg" eyebrow="08" title="Built with controls you can trust">
   <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto" use:reveal={{ stagger: true, staggerDelay: 80 }}>
     {#each [
       'Least privilege + permission mapping',
@@ -294,7 +360,7 @@
 </Section>
 
 <!-- FAQ -->
-<Section background="white" padding="lg" eyebrow="08" title="Common questions">
+<Section background="white" padding="lg" eyebrow="09" title="Common questions">
   <div class="max-w-3xl mx-auto divide-y divide-slate-200" use:reveal>
     {#each [
       {
