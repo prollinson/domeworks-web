@@ -1,8 +1,10 @@
 <script>
   import { onNavigate } from '$app/navigation'
+  import { page } from '$app/stores'
   import Header from '$lib/components/layout/Header.svelte'
   import Footer from '$lib/components/layout/Footer.svelte'
   import '../tailwind.css'
+  import { posthog } from '$lib/posthog'
 
   let { children } = $props()
 
@@ -31,6 +33,16 @@
         await navigation.complete
       })
     })
+  })
+
+  // Track page views with PostHog
+  $effect(() => {
+    if (typeof window !== 'undefined' && $page.url.pathname) {
+      posthog.capture('$pageview', {
+        $current_url: $page.url.href,
+        path: $page.url.pathname
+      })
+    }
   })
 </script>
 
