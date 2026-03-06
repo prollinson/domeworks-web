@@ -1,4 +1,6 @@
 <script lang="ts">
+  import SEO from '$lib/components/SEO.svelte'
+
   let selectedLane: 'smb' | 'enterprise' = $state('smb')
 
   // Form fields
@@ -45,10 +47,10 @@
   }
 </script>
 
-<svelte:head>
-  <title>Contact — Dome Works</title>
-  <meta name="description" content="Tell us about your business and workflow challenges. We'll scope the right engagement." />
-</svelte:head>
+<SEO
+  title="Contact — Dome Works"
+  description="Tell us about your business and workflow challenges. We'll scope the right engagement."
+/>
 
 <section class="bg-white py-20 md:py-28">
   <div class="max-w-3xl mx-auto px-6 lg:px-8">

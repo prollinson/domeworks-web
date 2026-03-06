@@ -1,13 +1,14 @@
 <script lang="ts">
   import Section from '$lib/components/layout/Section.svelte'
   import Button from '$lib/components/ui/Button.svelte'
+  import SEO from '$lib/components/SEO.svelte'
   import { generateSmbMailto } from '$lib/utils/mailto'
 </script>
 
-<svelte:head>
-  <title>About — Dome Works</title>
-  <meta name="description" content="Premium automation for businesses that value reliability, clarity, and maintainability." />
-</svelte:head>
+<SEO
+  title="About — Dome Works"
+  description="Premium automation for businesses that value reliability, clarity, and maintainability."
+/>
 
 <!-- Hero -->
 <section class="bg-white py-20 md:py-28">
