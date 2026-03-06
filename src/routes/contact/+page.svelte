@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { getHeroVariant } from '$lib/ab'
+
   let selectedLane: 'smb' | 'enterprise' = $state('smb')
 
   // Form fields
@@ -21,11 +23,12 @@
   let submitted = $state(false)
 
   const EMAIL = 'hello@domeworks.tech'
+  const heroVariant = getHeroVariant()
 
   function buildSmbMailto(): string {
     const subject = encodeURIComponent(`Automation Sprint — ${company || '[company name]'}`)
     const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nCompany: ${company}\nTeam size: ${companySize}\n\nWorkflow (start to end):\n${workflow}\n\nPain points / bottlenecks:\n${painPoints}\n\nTools (Google/Slack/Microsoft/HubSpot + others):\n${tools}\n\nBudget band (target $5-15k):\n${budget}\n\nTimeline:\n${timeline}`
+      `Name: ${name}\nEmail: ${email}\nCompany: ${company}\nTeam size: ${companySize}\n\nWorkflow (start to end):\n${workflow}\n\nPain points / bottlenecks:\n${painPoints}\n\nTools (Google/Slack/Microsoft/HubSpot + others):\n${tools}\n\nBudget band (target $5-15k):\n${budget}\n\nTimeline:\n${timeline}\n\n[ab:hero=${heroVariant}]`
     )
     return `mailto:${EMAIL}?subject=${subject}&body=${body}`
   }
@@ -33,7 +36,7 @@
   function buildEnterpriseMailto(): string {
     const subject = encodeURIComponent(`AI Consulting — ${company || 'scope discussion'}`)
     const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nCompany: ${company}\nTeam size: ${companySize}\n\nPain points / goals:\n${painPoints}\n\nConstraints (security/compliance):\n${constraints}\n\nStakeholders (dev/IT/security):\n${stakeholders}\n\nCurrent stack:\n${tools}\n\nDesired engagement model:\n${engagementModel}\n\nTimeline:\n${timeline}\n\nNDA required?: ${ndaRequired}`
+      `Name: ${name}\nEmail: ${email}\nCompany: ${company}\nTeam size: ${companySize}\n\nPain points / goals:\n${painPoints}\n\nConstraints (security/compliance):\n${constraints}\n\nStakeholders (dev/IT/security):\n${stakeholders}\n\nCurrent stack:\n${tools}\n\nDesired engagement model:\n${engagementModel}\n\nTimeline:\n${timeline}\n\nNDA required?: ${ndaRequired}\n\n[ab:hero=${heroVariant}]`
     )
     return `mailto:${EMAIL}?subject=${subject}&body=${body}`
   }
