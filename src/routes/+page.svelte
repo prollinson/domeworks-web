@@ -3,6 +3,9 @@
   import Section from '$lib/components/layout/Section.svelte'
   import Scrollytelling from '$lib/components/ui/Scrollytelling.svelte'
   import { reveal } from '$lib/actions/reveal'
+  import { getHeroVariant } from '$lib/ab'
+
+  const variant = getHeroVariant()
 </script>
 
 <svelte:head>
@@ -22,11 +25,13 @@
         Las Vegas Valley
       </p>
 
-      <!-- Headline - using serif for distinction -->
+      <!-- Headline - A/B test (DOM-15) -->
       <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-slate-900 leading-[1.1] tracking-tight">
-        Real automation for your bottlenecks<span class="text-primary">.</span>
-        <br class="hidden md:block" />
-        Built for your tools<span class="text-primary">.</span>
+        {#if variant === 'A'}
+          We build automations, not slide decks<span class="text-primary">.</span>
+        {:else}
+          Your fractional AI engineering team<span class="text-primary">.</span>
+        {/if}
       </h1>
 
       <!-- Subhead -->
