@@ -21,6 +21,7 @@
     { href: '/process/', label: 'Process' },
     { href: '/examples/', label: 'Examples' },
     { href: '/security/', label: 'Security' },
+    { href: '/blog/', label: 'Blog' },
     { href: '/about/', label: 'About' },
     { href: '/contact/', label: 'Contact' }
   ]
