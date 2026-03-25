@@ -14,10 +14,14 @@
 - Launch strategy: `/Users/piers/piers-os/resources/domeworks/growth/launch-strategy.md`
 
 **Voice rules (from spec + brand identity):**
-- First person ("I", not "we" or "DomeWorks")
+- First person ("I", not "we" or "DomeWorks"). **Warning:** brand-identity.md uses "we" in its examples — ignore that. The spec overrides to "I" for solo practitioner positioning.
 - 65% casual, 70% confident, 75% matter-of-fact
 - Contractions. Short sentences. No jargon, no exclamation marks, no "passionate about"
 - Let results carry weight. Earned confidence, not posturing.
+
+**Out of scope:** Visual design, components, layout, blog, case studies, SEO/meta tags, analytics. Write content only. Page removal from the SvelteKit site is deferred to the design/implementation pass.
+
+**Task ordering:** Tasks 1-4 are independent (can run in parallel). Task 5 depends on Tasks 1-4 completing first.
 - The buyer is a VP Eng — respect their intelligence
 
 ---
