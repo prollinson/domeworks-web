@@ -25,13 +25,14 @@ Content and information architecture only. No design work — that follows separ
 
 | Decision | Choice | Rationale |
 |----------|--------|-----------|
-| Page count | 4 (Home, Assessment, About, Contact) | Launch strategy says minimal credibility site. 8 pages is over-built for the job. |
+| Page count | 4 (Home, Assessment, About, Contact) | Launch strategy and brand identity say 3 pages (Home, Assessment, About). We add Contact as a 4th because "book a call" needs a destination page with scheduling embed. |
 | Target audience | Single buyer: VP Eng / Head of Eng at mid-market SaaS | Business plan primary persona. Drop SMB/enterprise split. |
-| Voice | First person (Piers) | Solo practitioner credibility. "I embed within your team" not "DomeWorks embeds." |
+| Voice | First person (Piers) | Solo practitioner credibility. "I embed within your team" not "DomeWorks embeds." **Note:** Brand identity doc uses "we" in examples — this spec deliberately overrides to "I" because DomeWorks is a solo practice at launch. Implementer should use "I" throughout, not cross-reference brand identity for pronoun guidance. |
 | Tone | 65% casual, 70% confident, 75% matter-of-fact | From brand identity voice matrix. |
-| Service lines | Both: Strategy + Implementation, Fractional AI Leadership | Business plan defines both. Assessment is the entry point. |
+| Service lines | Both: Strategy + Implementation, Fractional AI Leadership | Business plan defines both. Assessment is the entry point. Source docs reference "3 services" — the assessment is the third (entry-point product), presented separately on its own page rather than alongside the two service lines on homepage. |
 | Pricing | Visible on Assessment page ($5-8K). Service line pricing discussed in calls. | Assessment price qualifies leads. Full engagement pricing is scope-dependent. |
-| Design | Not in scope | Content/IA only. Design follows separately. |
+| CTA target | All "Book a call" CTAs link to `/contact/` | Contact page hosts the scheduling embed (Calendly or cal.com — TBD). Single destination for all CTAs across the site. |
+| Design | Not in scope | Content/IA only. Design follows separately. Implementer writes content into new minimal page structures — existing components (scrollytelling, reveal animations, etc.) will be removed in the design pass. |
 
 ## Pages
 
@@ -80,9 +81,11 @@ Two service lines from the business plan. Brief descriptions, not full specs.
 #### How It Works
 The 3-phase flow from the business plan. One sentence each.
 
-1. **Assessment** — Interview stakeholders, audit AI usage and spend, map workflows, identify highest-leverage integration points.
+1. **Assessment** — Interview stakeholders, audit AI usage and spend, map workflows, identify highest-leverage integration points. *(Links to `/assessment/` for details.)*
 2. **Roadmap** — Design an AI integration plan specific to the team's workflows, culture, and tools. Define quick wins and strategic bets with success metrics.
 3. **Implementation** — Embed within the team to build it. Set up tooling, train team members, run retros, iterate.
+
+*Note: The assessment is described briefly here and in detail on the Assessment page. Homepage keeps it to one sentence; Assessment page expands with deliverables, process, and pricing.*
 
 #### Who This Is For
 Short qualifier paragraph. Filters out wrong-fit visitors.
@@ -117,7 +120,7 @@ Deliverables:
 - **Quick Wins** — 2-3 things the team can do immediately, before any further engagement
 
 #### What Happens Next
-Assessment feeds into the roadmap and implementation phases. No obligation, but designed to lead there. The assessment fee credits toward a full engagement.
+Assessment feeds into the roadmap and implementation phases. No obligation, but designed to lead there.
 
 #### Investment
 $5-8K depending on team size and scope. Direct, no haggling language. From persona doc: "Will start with a paid assessment ($5-8K) to evaluate fit before a larger engagement."
