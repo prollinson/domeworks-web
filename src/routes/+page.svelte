@@ -146,7 +146,7 @@
         <span class="hero-line hero-line-1">Your team</span>
         <span class="hero-line hero-line-2">bought AI tools<span class="text-copper">.</span></span>
         <span class="hero-line hero-line-3"><em class="hero-headline-em">Nobody built</em></span>
-        <span class="hero-line hero-line-4 text-warm-white/60">the systems<span class="text-copper/60">.</span></span>
+        <span class="hero-line hero-line-4 text-warm-white/70">the systems<span class="text-copper/70">.</span></span>
       </h1>
 
       <!-- Subtext — positioned as an editorial aside, offset from the headline -->
@@ -155,15 +155,20 @@
         <p class="hero-body-text text-warm-white/85 leading-relaxed">
           The problem isn't the tools. It's that nobody built the systems connecting them to how your team actually works.
         </p>
-        <p class="mt-3 text-sm text-warm-white/70 leading-relaxed hidden sm:block">
+        <p class="mt-3 text-sm text-warm-white/75 leading-relaxed hidden sm:block">
           Developer workflow automation, agent infrastructure, and shared context systems for engineering teams.
         </p>
         <div class="mt-6 md:mt-8 flex items-center gap-6">
           <Button href={getBookCallUrl()} size="lg">
             Book a call
           </Button>
-          <a href="#how-it-works" class="inline-flex items-center min-h-[44px] px-3 text-sm text-warm-white/80 hover:text-copper border border-warm-white/15 hover:border-copper/40 rounded-full transition-all duration-300 group" aria-label="Jump to how it works section">
-            How it works <span class="inline-block ml-1.5 group-hover:translate-y-0.5 transition-transform duration-300" aria-hidden="true">&darr;</span>
+          <a href="#how-it-works" class="hero-cta-secondary" aria-label="Jump to how it works section">
+            How it works
+            <span class="hero-cta-secondary-arrow" aria-hidden="true">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </span>
           </a>
         </div>
       </div>
@@ -191,18 +196,18 @@
       <!-- Mobile stats -->
       <div class="flex min-[360px]:flex md:hidden items-stretch">
         <div class="hero-stat-cell-mobile">
-          <span class="text-xl font-serif text-warm-white/95">10+</span>
-          <span class="text-xs text-warm-white/70 mt-1 tracking-wider uppercase leading-tight">Years leading</span>
+          <span class="text-2xl font-serif text-warm-white/95">10+</span>
+          <span class="text-[0.6875rem] text-warm-white/70 mt-1 tracking-wider uppercase leading-tight">Years leading</span>
         </div>
         <div class="hero-stat-divider" aria-hidden="true" role="presentation"></div>
         <div class="hero-stat-cell-mobile">
-          <span class="text-xl font-serif text-warm-white/95">48hr</span>
-          <span class="text-xs text-warm-white/70 mt-1 tracking-wider uppercase leading-tight">Scan delivery</span>
+          <span class="text-2xl font-serif text-warm-white/95">48hr</span>
+          <span class="text-[0.6875rem] text-warm-white/70 mt-1 tracking-wider uppercase leading-tight">Scan delivery</span>
         </div>
         <div class="hero-stat-divider" aria-hidden="true" role="presentation"></div>
         <div class="hero-stat-cell-mobile">
-          <span class="text-xl font-serif text-warm-white/95">4–8wk</span>
-          <span class="text-xs text-warm-white/70 mt-1 tracking-wider uppercase leading-tight">To adoption</span>
+          <span class="text-2xl font-serif text-warm-white/95">4–8wk</span>
+          <span class="text-[0.6875rem] text-warm-white/70 mt-1 tracking-wider uppercase leading-tight">To adoption</span>
         </div>
       </div>
     </div>

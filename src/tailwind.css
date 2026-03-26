@@ -166,7 +166,7 @@
 
 @media (max-width: 640px) {
   .hero-section {
-    min-height: auto;
+    min-height: 85svh;
   }
 }
 
@@ -224,7 +224,7 @@
   font-size: 0.6875rem;
   font-weight: 400;
   letter-spacing: 0.1em;
-  color: rgba(250, 250, 247, 0.4);
+  color: rgba(250, 250, 247, 0.62);
   margin-left: 1.5rem;
 }
 
@@ -239,8 +239,8 @@
 @media (min-width: 1024px) {
   .hero-middle {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 2.5rem;
     align-items: end;
   }
 }
@@ -394,7 +394,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 0.375rem 0.75rem;
+  padding: 0.5rem 0.75rem;
   text-align: center;
 }
 
@@ -433,6 +433,73 @@
   .hero-line-3,
   .hero-line-4 {
     padding-left: clamp(0.5rem, 2vw, 2rem) !important;
+  }
+}
+
+/* Secondary CTA — animated down-arrow text link */
+.hero-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(250, 250, 247, 0.75);
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.hero-cta-secondary:hover {
+  color: var(--color-copper);
+}
+
+.hero-cta-secondary-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 1px solid rgba(250, 250, 247, 0.2);
+  border-radius: 50%;
+  transition: border-color 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+}
+
+.hero-cta-secondary:hover .hero-cta-secondary-arrow {
+  border-color: var(--color-copper);
+  background-color: rgba(176, 125, 79, 0.1);
+  transform: translateY(3px);
+}
+
+.hero-cta-secondary-arrow svg {
+  width: 0.875rem;
+  height: 0.875rem;
+  transition: transform 0.3s ease;
+}
+
+.hero-cta-secondary:hover .hero-cta-secondary-arrow svg {
+  transform: translateY(1px);
+}
+
+/* FAQ details open/close animation */
+details[open] > summary ~ * {
+  animation: details-open 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes details-open {
+  0% {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  details[open] > summary ~ * {
+    animation: none !important;
   }
 }
 

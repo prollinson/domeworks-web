@@ -47,8 +47,8 @@
     <div class="flex items-center justify-between h-16 md:h-20">
       <a
         href="/"
-        class="text-xl font-medium tracking-tight transition-colors
-          {heroMode ? 'text-warm-white hover:text-warm-white/80' : 'text-charcoal hover:text-primary'}"
+        class="text-xl font-semibold tracking-tight transition-colors
+          {heroMode ? 'text-warm-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)] hover:text-warm-white/90' : 'text-charcoal hover:text-primary'}"
       >
         DomeWorks
       </a>
