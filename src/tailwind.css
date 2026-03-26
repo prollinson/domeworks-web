@@ -148,7 +148,7 @@
   padding-top: clamp(5rem, 10vw, 9rem);
 }
 
-@media (max-height: 600px) and (max-width: 640px) {
+@media (max-height: 700px) and (max-width: 640px) {
   .hero-content-pad {
     padding-top: 4.5rem;
     padding-bottom: 1.5rem;

@@ -137,7 +137,7 @@
     <div class="hero-eyebrow-row">
       <span class="hero-eyebrow-text">AI Infrastructure Engineering</span>
       <div class="flex-1 h-px bg-warm-white/8 ml-6" aria-hidden="true" role="presentation"></div>
-      <span class="hero-eyebrow-index">Est. 2025</span>
+      <span class="hero-eyebrow-index">San Francisco</span>
     </div>
 
     <!-- Middle zone: Headline — editorial scale, staggered lines -->
@@ -162,7 +162,7 @@
           <Button href={getBookCallUrl()} size="lg">
             Book a call
           </Button>
-          <a href="#how-it-works" class="hero-cta-secondary" aria-label="Jump to how it works section">
+          <a href="#how-it-works" class="hero-cta-secondary focus-visible:ring-2 focus-visible:ring-copper focus-visible:ring-offset-2 focus-visible:ring-offset-ink rounded-sm" aria-label="Jump to how it works section">
             How it works
             <span class="hero-cta-secondary-arrow" aria-hidden="true">
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
@@ -197,17 +197,17 @@
       <div class="flex min-[360px]:flex md:hidden items-stretch">
         <div class="hero-stat-cell-mobile">
           <span class="text-2xl font-serif text-warm-white/95">10+</span>
-          <span class="text-[0.6875rem] text-warm-white/70 mt-1 tracking-wider uppercase leading-tight">Years leading</span>
+          <span class="text-xs text-warm-white/70 mt-1 tracking-wider uppercase leading-tight">Years leading</span>
         </div>
         <div class="hero-stat-divider" aria-hidden="true" role="presentation"></div>
         <div class="hero-stat-cell-mobile">
           <span class="text-2xl font-serif text-warm-white/95">48hr</span>
-          <span class="text-[0.6875rem] text-warm-white/70 mt-1 tracking-wider uppercase leading-tight">Scan delivery</span>
+          <span class="text-xs text-warm-white/70 mt-1 tracking-wider uppercase leading-tight">Scan delivery</span>
         </div>
         <div class="hero-stat-divider" aria-hidden="true" role="presentation"></div>
         <div class="hero-stat-cell-mobile">
           <span class="text-2xl font-serif text-warm-white/95">4–8wk</span>
-          <span class="text-[0.6875rem] text-warm-white/70 mt-1 tracking-wider uppercase leading-tight">To adoption</span>
+          <span class="text-xs text-warm-white/70 mt-1 tracking-wider uppercase leading-tight">To adoption</span>
         </div>
       </div>
     </div>
