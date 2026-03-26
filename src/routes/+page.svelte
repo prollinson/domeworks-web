@@ -146,23 +146,23 @@
         <span class="hero-line hero-line-1">Your team</span>
         <span class="hero-line hero-line-2">bought AI tools<span class="text-copper">.</span></span>
         <span class="hero-line hero-line-3"><em class="hero-headline-em">Nobody built</em></span>
-        <span class="hero-line hero-line-4 text-warm-white/40">the systems<span class="text-copper/40">.</span></span>
+        <span class="hero-line hero-line-4 text-warm-white/60">the systems<span class="text-copper/60">.</span></span>
       </h1>
 
       <!-- Subtext — positioned as an editorial aside, offset from the headline -->
       <div class="hero-aside">
         <div class="hero-aside-rule" aria-hidden="true" role="presentation"></div>
-        <p class="hero-body-text text-warm-white/70 leading-relaxed">
+        <p class="hero-body-text text-warm-white/85 leading-relaxed">
           The problem isn't the tools. It's that nobody built the systems connecting them to how your team actually works.
         </p>
-        <p class="mt-3 text-sm text-warm-white/50 leading-relaxed hidden sm:block">
+        <p class="mt-3 text-sm text-warm-white/70 leading-relaxed hidden sm:block">
           Developer workflow automation, agent infrastructure, and shared context systems for engineering teams.
         </p>
         <div class="mt-6 md:mt-8 flex items-center gap-6">
           <Button href={getBookCallUrl()} size="lg">
             Book a call
           </Button>
-          <a href="#how-it-works" class="inline-flex items-center min-h-[44px] px-2 text-sm text-warm-white/50 hover:text-warm-white/80 transition-colors duration-300 group" aria-label="Jump to how it works section">
+          <a href="#how-it-works" class="inline-flex items-center min-h-[44px] px-3 text-sm text-warm-white/80 hover:text-copper border border-warm-white/15 hover:border-copper/40 rounded-full transition-all duration-300 group" aria-label="Jump to how it works section">
             How it works <span class="inline-block ml-1.5 group-hover:translate-y-0.5 transition-transform duration-300" aria-hidden="true">&darr;</span>
           </a>
         </div>
@@ -189,20 +189,20 @@
         </div>
       </div>
       <!-- Mobile stats -->
-      <div class="hidden min-[360px]:flex md:hidden items-stretch">
+      <div class="flex min-[360px]:flex md:hidden items-stretch">
         <div class="hero-stat-cell-mobile">
-          <span class="text-lg font-serif text-warm-white/90">10+</span>
-          <span class="text-[11px] text-warm-white/60 mt-0.5 tracking-wider uppercase leading-tight">Yrs eng<br/>leadership</span>
+          <span class="text-xl font-serif text-warm-white/95">10+</span>
+          <span class="text-xs text-warm-white/70 mt-1 tracking-wider uppercase leading-tight">Years leading</span>
         </div>
         <div class="hero-stat-divider" aria-hidden="true" role="presentation"></div>
         <div class="hero-stat-cell-mobile">
-          <span class="text-lg font-serif text-warm-white/90">48hr</span>
-          <span class="text-[11px] text-warm-white/60 mt-0.5 tracking-wider uppercase leading-tight">Scan<br/>turnaround</span>
+          <span class="text-xl font-serif text-warm-white/95">48hr</span>
+          <span class="text-xs text-warm-white/70 mt-1 tracking-wider uppercase leading-tight">Scan delivery</span>
         </div>
         <div class="hero-stat-divider" aria-hidden="true" role="presentation"></div>
         <div class="hero-stat-cell-mobile">
-          <span class="text-lg font-serif text-warm-white/90">4–8wk</span>
-          <span class="text-[11px] text-warm-white/60 mt-0.5 tracking-wider uppercase leading-tight">Team<br/>adoption</span>
+          <span class="text-xl font-serif text-warm-white/95">4–8wk</span>
+          <span class="text-xs text-warm-white/70 mt-1 tracking-wider uppercase leading-tight">To adoption</span>
         </div>
       </div>
     </div>
