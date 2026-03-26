@@ -91,6 +91,14 @@
   }
 }
 
+/* Short viewports (e.g. 320x568) — tighten top padding to keep CTA above fold */
+@media (max-height: 600px) and (max-width: 640px) {
+  .hero-content-pad {
+    padding-top: 4.5rem;
+    padding-bottom: 1.5rem;
+  }
+}
+
 /* Hero content padding — tighter on mobile to keep CTA above fold */
 .hero-content-pad {
   padding-bottom: 2.5rem;
@@ -144,6 +152,7 @@
     line-height: 1.1;
   }
 }
+
 
 .hero-headline-indent {
   padding-left: clamp(1rem, 3vw, 3rem);

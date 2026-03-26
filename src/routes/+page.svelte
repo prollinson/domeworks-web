@@ -183,8 +183,8 @@
           <span class="block text-[0.8125rem] text-warm-white/70 mt-1 tracking-wide uppercase">Time to team adoption</span>
         </div>
       </div>
-      <!-- Mobile stats — compact, fully visible at 320px -->
-      <div class="grid grid-cols-3 md:hidden gap-0">
+      <!-- Mobile stats — hidden below 360px to keep CTA above fold on tiny screens -->
+      <div class="hidden min-[360px]:grid grid-cols-3 md:hidden gap-0">
         <div class="hero-stat-cell-mobile">
           <span class="block text-lg font-serif text-warm-white/90">10+</span>
           <span class="block text-[11px] text-warm-white/70 mt-0.5 tracking-wider uppercase leading-tight">Yrs eng<br/>leadership</span>
