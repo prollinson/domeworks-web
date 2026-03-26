@@ -1,6 +1,7 @@
 <script lang="ts">
   import Section from '$lib/components/layout/Section.svelte'
   import Button from '$lib/components/ui/Button.svelte'
+  import SEO from '$lib/components/SEO.svelte'
   import { generateSmbMailto } from '$lib/utils/mailto'
 
   const examples = [
@@ -103,10 +104,10 @@
   ]
 </script>
 
-<svelte:head>
-  <title>Examples — Dome Works</title>
-  <meta name="description" content="Proven automation patterns that deliver measurable business results." />
-</svelte:head>
+<SEO
+  title="Examples — Dome Works"
+  description="Proven automation patterns that deliver measurable business results."
+/>
 
 <!-- Hero -->
 <section class="bg-white py-20 md:py-28">

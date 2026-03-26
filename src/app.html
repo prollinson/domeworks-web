@@ -4,20 +4,7 @@
 		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 		<meta name="viewport" content="width=device-width" />
-		
-		<!-- Open Graph / Facebook -->
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content="https://domeworks.tech/" />
-		<meta property="og:title" content="Dome Works — Real Automation for Las Vegas Valley Businesses" />
-		<meta property="og:description" content="We find where your process breaks. We fix it using the APIs in Google Workspace, Slack, and Microsoft 365. Then we hand you the keys to a system that runs itself." />
-		<meta property="og:image" content="https://domeworks.tech/og-image.png" />
-
-		<!-- Twitter -->
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content="https://domeworks.tech/" />
-		<meta property="twitter:title" content="Dome Works — Real Automation for Las Vegas Valley Businesses" />
-		<meta property="twitter:description" content="We find where your process breaks. We fix it using the APIs in Google Workspace, Slack, and Microsoft 365. Then we hand you the keys to a system that runs itself." />
-		<meta property="twitter:image" content="https://domeworks.tech/og-image.png" />
+		<meta name="robots" content="index, follow" />
 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,6 +12,10 @@
 		%sveltekit.head%
 	</head>
 	<body class="bg-slate-50 font-sans leading-normal tracking-normal antialiased">
+		<script>
+			!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(e,t.createElement("script"));var o=t.getElementsByTagName("script")[0];e.async=1,e.src="https://cdn.i.posthog.com/static/analytics.js/v2/"+i+"_web.min.js",o.parentNode.insertBefore(e,o);var n=t.createElement("script");n.async=!0,n.innerHTML=JSON.stringify(e._i),o.parentNode.insertBefore(n,o)}(document,window.posthog||[]);
+			posthog.init('phc_cWV8o1edVKhWZpHZiyzEz7oiRDgzNAAQnMEW3M1hayC', {api_host:'https://app.posthog.com', capture_pageview: false});
+		</script>
 		<div>%sveltekit.body%</div>
 	</body>
 </html>
