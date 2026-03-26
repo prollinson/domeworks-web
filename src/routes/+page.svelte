@@ -114,88 +114,95 @@
 </a>
 
 <!-- Hero Section -->
-<section class="relative hero-section flex items-end bg-ink overflow-hidden" aria-label="Hero">
+<section class="relative hero-section bg-ink overflow-hidden" aria-label="Hero">
   <!-- Architectural grid background -->
   <div class="absolute inset-0 hero-grid" aria-hidden="true" role="presentation"></div>
-  <!-- Warm ambient glow from bottom-left -->
+  <!-- Warm ambient glow — bottom-left copper, top-right teal -->
   <div class="absolute inset-0 hero-glow" aria-hidden="true" role="presentation"></div>
   <!-- Grain texture -->
   <div class="absolute inset-0 texture-grain" aria-hidden="true" role="presentation"></div>
-  <!-- Oversized monogram — dramatic brand element bleeding off right edge -->
+  <!-- Horizontal architectural rules -->
+  <div class="absolute inset-0 pointer-events-none hero-rules" aria-hidden="true" role="presentation"></div>
+
+  <!-- Monogram as architectural column — anchored to right edge, structurally integrated -->
   <div class="absolute inset-0 pointer-events-none hero-monogram-container" aria-hidden="true" role="presentation">
     <span class="hero-monogram font-serif select-none">D</span>
   </div>
-  <!-- Animated signal line — a single horizontal pulse that traces across -->
-  <div class="absolute inset-0 pointer-events-none" aria-hidden="true" role="presentation">
-    <div class="hero-signal-line" role="presentation"></div>
-  </div>
 
-  <div class="relative w-full max-w-7xl mx-auto px-6 lg:px-8 hero-content-pad">
-    <!-- Eyebrow with horizontal rule -->
-    <div class="flex items-center gap-4 mb-6 md:mb-14">
-      <span class="text-[13px] font-medium tracking-[0.2em] text-copper/90 uppercase">AI Infrastructure Engineering</span>
-      <div class="flex-1 h-px bg-warm-white/10" aria-hidden="true" role="presentation"></div>
+  <!-- Vertical accent line — copper rule that runs the height of the hero -->
+  <div class="absolute hero-accent-line" aria-hidden="true" role="presentation"></div>
+
+  <div class="relative w-full max-w-7xl mx-auto px-6 lg:px-8 hero-content-pad flex flex-col justify-between min-h-[inherit]">
+    <!-- Top zone: Eyebrow -->
+    <div class="hero-eyebrow-row">
+      <span class="hero-eyebrow-text">AI Infrastructure Engineering</span>
+      <div class="flex-1 h-px bg-warm-white/8 ml-6" aria-hidden="true" role="presentation"></div>
+      <span class="hero-eyebrow-index">Est. 2025</span>
     </div>
 
-    <!-- Main headline — asymmetric layout with headline overlapping stat area -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 items-end">
-      <div class="lg:col-span-8">
-        <h1 class="hero-headline font-serif font-normal text-warm-white">
-          <span class="block">Your team bought</span>
-          <span class="block">AI tools<span class="text-copper">.</span></span>
-          <span class="block hero-headline-indent"><em class="hero-headline-em">Nobody built</em> <span class="text-warm-white/50">the systems<span class="text-copper/50">.</span></span></span>
-        </h1>
-      </div>
+    <!-- Middle zone: Headline — editorial scale, staggered lines -->
+    <div class="hero-middle">
+      <h1 class="hero-headline font-serif font-normal text-warm-white">
+        <span class="hero-line hero-line-1">Your team</span>
+        <span class="hero-line hero-line-2">bought AI tools<span class="text-copper">.</span></span>
+        <span class="hero-line hero-line-3"><em class="hero-headline-em">Nobody built</em></span>
+        <span class="hero-line hero-line-4 text-warm-white/40">the systems<span class="text-copper/40">.</span></span>
+      </h1>
 
-      <div class="lg:col-span-4 lg:pb-2">
-        <p class="hero-body-text text-warm-white/80 leading-relaxed max-w-md">
-          The problem isn't the tools. It's that nobody built the systems connecting them to how your team actually works. I build those systems.
+      <!-- Subtext — positioned as an editorial aside, offset from the headline -->
+      <div class="hero-aside">
+        <div class="hero-aside-rule" aria-hidden="true" role="presentation"></div>
+        <p class="hero-body-text text-warm-white/70 leading-relaxed">
+          The problem isn't the tools. It's that nobody built the systems connecting them to how your team actually works.
         </p>
-        <p class="mt-3 md:mt-4 text-sm text-warm-white/60 leading-relaxed max-w-md hidden sm:block">
+        <p class="mt-3 text-sm text-warm-white/50 leading-relaxed hidden sm:block">
           Developer workflow automation, agent infrastructure, and shared context systems for engineering teams.
         </p>
-
-        <div class="mt-5 md:mt-8 flex items-center gap-6">
+        <div class="mt-6 md:mt-8 flex items-center gap-6">
           <Button href={getBookCallUrl()} size="lg">
             Book a call
           </Button>
-          <a href="#how-it-works" class="inline-flex items-center min-h-[44px] px-2 text-sm text-warm-white/60 hover:text-warm-white/80 transition-colors duration-200 group" aria-label="Jump to how it works section">
-            How it works <span class="inline-block ml-1 group-hover:translate-y-0.5 transition-transform duration-200" aria-hidden="true">&darr;</span>
+          <a href="#how-it-works" class="inline-flex items-center min-h-[44px] px-2 text-sm text-warm-white/50 hover:text-warm-white/80 transition-colors duration-300 group" aria-label="Jump to how it works section">
+            How it works <span class="inline-block ml-1.5 group-hover:translate-y-0.5 transition-transform duration-300" aria-hidden="true">&darr;</span>
           </a>
         </div>
       </div>
     </div>
 
-    <!-- Stat strip -->
-    <div class="hero-stat-bar mt-6 md:mt-14">
+    <!-- Bottom zone: Stat strip — editorial data bar -->
+    <div class="hero-stat-bar">
       <!-- Desktop stats -->
-      <div class="hidden md:grid md:grid-cols-3 gap-0">
+      <div class="hidden md:flex items-stretch">
         <div class="hero-stat-cell">
-          <span class="block text-3xl font-serif text-warm-white/90">10+</span>
-          <span class="block text-[0.8125rem] text-warm-white/70 mt-1 tracking-wide uppercase">Years eng leadership</span>
+          <span class="hero-stat-value font-serif">10+</span>
+          <span class="hero-stat-label">Years eng leadership</span>
         </div>
-        <div class="hero-stat-cell hero-stat-cell-border">
-          <span class="block text-3xl font-serif text-warm-white/90">48hr</span>
-          <span class="block text-[0.8125rem] text-warm-white/70 mt-1 tracking-wide uppercase">AI Scan turnaround</span>
+        <div class="hero-stat-divider" aria-hidden="true" role="presentation"></div>
+        <div class="hero-stat-cell">
+          <span class="hero-stat-value font-serif">48hr</span>
+          <span class="hero-stat-label">AI Scan turnaround</span>
         </div>
-        <div class="hero-stat-cell hero-stat-cell-border">
-          <span class="block text-3xl font-serif text-warm-white/90">4–8wk</span>
-          <span class="block text-[0.8125rem] text-warm-white/70 mt-1 tracking-wide uppercase">Time to team adoption</span>
+        <div class="hero-stat-divider" aria-hidden="true" role="presentation"></div>
+        <div class="hero-stat-cell">
+          <span class="hero-stat-value font-serif">4–8wk</span>
+          <span class="hero-stat-label">Time to team adoption</span>
         </div>
       </div>
-      <!-- Mobile stats — hidden below 360px to keep CTA above fold on tiny screens -->
-      <div class="hidden min-[360px]:grid grid-cols-3 md:hidden gap-0">
+      <!-- Mobile stats -->
+      <div class="hidden min-[360px]:flex md:hidden items-stretch">
         <div class="hero-stat-cell-mobile">
-          <span class="block text-lg font-serif text-warm-white/90">10+</span>
-          <span class="block text-[11px] text-warm-white/70 mt-0.5 tracking-wider uppercase leading-tight">Yrs eng<br/>leadership</span>
+          <span class="text-lg font-serif text-warm-white/90">10+</span>
+          <span class="text-[11px] text-warm-white/60 mt-0.5 tracking-wider uppercase leading-tight">Yrs eng<br/>leadership</span>
         </div>
-        <div class="hero-stat-cell-mobile hero-stat-cell-border">
-          <span class="block text-lg font-serif text-warm-white/90">48hr</span>
-          <span class="block text-[11px] text-warm-white/70 mt-0.5 tracking-wider uppercase leading-tight">Scan<br/>turnaround</span>
+        <div class="hero-stat-divider" aria-hidden="true" role="presentation"></div>
+        <div class="hero-stat-cell-mobile">
+          <span class="text-lg font-serif text-warm-white/90">48hr</span>
+          <span class="text-[11px] text-warm-white/60 mt-0.5 tracking-wider uppercase leading-tight">Scan<br/>turnaround</span>
         </div>
-        <div class="hero-stat-cell-mobile hero-stat-cell-border">
-          <span class="block text-lg font-serif text-warm-white/90">4–8wk</span>
-          <span class="block text-[11px] text-warm-white/70 mt-0.5 tracking-wider uppercase leading-tight">Team<br/>adoption</span>
+        <div class="hero-stat-divider" aria-hidden="true" role="presentation"></div>
+        <div class="hero-stat-cell-mobile">
+          <span class="text-lg font-serif text-warm-white/90">4–8wk</span>
+          <span class="text-[11px] text-warm-white/60 mt-0.5 tracking-wider uppercase leading-tight">Team<br/>adoption</span>
         </div>
       </div>
     </div>

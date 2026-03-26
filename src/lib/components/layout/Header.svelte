@@ -1,14 +1,13 @@
 <script lang="ts">
   import { page } from '$app/stores'
-  import { generateSmbMailto } from '$lib/utils/mailto'
+  import { getBookCallUrl } from '$lib/utils/mailto'
 
   let menuOpen = $state(false)
   let scrolled = $state(false)
+  let isHeroPage = $derived($page.url.pathname === '/')
 
-  // Check if a nav link is active
   function isActive(href: string): boolean {
     const currentPath = $page.url.pathname
-    // Exact match for home, startsWith for other pages
     if (href === '/') {
       return currentPath === '/'
     }
@@ -16,11 +15,8 @@
   }
 
   const navLinks = [
-    { href: '/services/', label: 'Services' },
-    { href: '/enterprise/', label: 'Enterprise' },
-    { href: '/process/', label: 'Process' },
-    { href: '/examples/', label: 'Examples' },
-    { href: '/security/', label: 'Security' },
+    { href: '/scan/', label: 'AI Scan' },
+    { href: '/assessment/', label: 'Assessment' },
     { href: '/about/', label: 'About' },
     { href: '/contact/', label: 'Contact' }
   ]
@@ -29,7 +25,9 @@
     menuOpen = !menuOpen
   }
 
-  // Handle scroll effect
+  /* On hero page, header text is light until scrolled past the dark section */
+  let heroMode = $derived(isHeroPage && !scrolled)
+
   if (typeof window !== 'undefined') {
     $effect(() => {
       const handleScroll = () => {
@@ -43,27 +41,26 @@
 
 <header
   class="fixed top-0 left-0 right-0 z-50 transition-all duration-300
-    {scrolled ? 'bg-white/80 backdrop-blur-md shadow-sm border-b border-black/5' : 'bg-transparent'}"
+    {scrolled ? 'bg-warm-white/80 backdrop-blur-md shadow-sm border-b border-charcoal/5' : 'bg-transparent'}"
 >
   <nav class="max-w-6xl mx-auto px-6 lg:px-8">
     <div class="flex items-center justify-between h-16 md:h-20">
-      <!-- Logo -->
       <a
         href="/"
-        class="text-xl font-semibold tracking-tight text-slate-900 hover:text-primary transition-colors"
+        class="text-xl font-medium tracking-tight transition-colors
+          {heroMode ? 'text-warm-white hover:text-warm-white/80' : 'text-charcoal hover:text-primary'}"
       >
-        Dome Works
+        DomeWorks
       </a>
 
-      <!-- Desktop Navigation -->
       <div class="hidden lg:flex items-center gap-1">
         {#each navLinks as link}
           <a
             href={link.href}
             class="px-4 py-2 text-sm font-medium rounded-lg transition-all
               {isActive(link.href)
-                ? 'text-primary bg-primary/5'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'}"
+                ? heroMode ? 'text-warm-white bg-warm-white/10' : 'text-primary bg-primary/5'
+                : heroMode ? 'text-warm-white/70 hover:text-warm-white hover:bg-warm-white/5' : 'text-charcoal/70 hover:text-charcoal hover:bg-stone'}"
             aria-current={isActive(link.href) ? 'page' : undefined}
           >
             {link.label}
@@ -71,17 +68,17 @@
         {/each}
 
         <a
-          href={generateSmbMailto()}
+          href={getBookCallUrl()}
           class="ml-4 px-5 py-2.5 text-sm font-medium text-white bg-primary hover:bg-primary-hover rounded-lg transition-all shadow-sm hover:shadow"
         >
-          Email us
+          Book a call
         </a>
       </div>
 
-      <!-- Mobile Menu Button -->
       <button
         onclick={toggleMenu}
-        class="lg:hidden p-2 -mr-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-all"
+        class="lg:hidden p-2 -mr-2 rounded-lg transition-all
+          {heroMode ? 'text-warm-white/70 hover:text-warm-white hover:bg-warm-white/5' : 'text-charcoal/70 hover:text-charcoal hover:bg-stone'}"
         aria-label="Toggle menu"
         aria-expanded={menuOpen}
       >
@@ -97,9 +94,8 @@
       </button>
     </div>
 
-    <!-- Mobile Navigation -->
     {#if menuOpen}
-      <div class="lg:hidden pb-6 border-t border-slate-100 mt-2 pt-4">
+      <div class="lg:hidden pb-6 border-t border-stone mt-2 pt-4">
         <div class="flex flex-col gap-1">
           {#each navLinks as link}
             <a
@@ -107,7 +103,7 @@
               class="px-4 py-3 text-base font-medium rounded-lg transition-all
                 {isActive(link.href)
                   ? 'text-primary bg-primary/5'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'}"
+                  : 'text-charcoal/70 hover:text-charcoal hover:bg-stone'}"
               aria-current={isActive(link.href) ? 'page' : undefined}
               onclick={() => menuOpen = false}
             >
@@ -116,10 +112,10 @@
           {/each}
 
           <a
-            href={generateSmbMailto()}
+            href={getBookCallUrl()}
             class="mt-4 px-5 py-3 text-center text-base font-medium text-white bg-primary hover:bg-primary-hover rounded-lg transition-all"
           >
-            Email us
+            Book a call
           </a>
         </div>
       </div>
