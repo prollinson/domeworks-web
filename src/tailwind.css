@@ -1,18 +1,24 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Primary accent - teal */
-  --color-primary: #0d9488;
-  --color-primary-hover: #0f766e;
-  --color-primary-light: #f0fdfa;
+  /* Brand palette — DomeWorks Brand Identity v3 */
+  --color-primary: #0d6b63;
+  --color-primary-hover: #0a5850;
+  --color-primary-light: rgba(13, 107, 99, 0.06);
+  --color-copper: #B07D4F;
 
-  /* Typography - distinctive, not AI slop */
-  --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+  /* Brand backgrounds */
+  --color-warm-white: #FAFAF7;
+  --color-stone: #F3F1EC;
+  --color-ink: #141414;
+  --color-charcoal: #1a1a1a;
+  --color-warm-gray: #A3A096;
+  --color-warm-gray-light: #BBB8AD;
+
+  /* Typography — Inter (Söhne fallback) + Newsreader (Freight Display fallback) */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-serif: 'Newsreader', Georgia, serif;
 
-  /* Spacing for premium feel */
-  --spacing-section: 6rem;
-  --spacing-section-lg: 8rem;
 }
 
 /* Craft signal: subtle container grid lines */
@@ -20,6 +26,32 @@
   background-image:
     linear-gradient(to right, rgb(0 0 0 / 0.03) 1px, transparent 1px);
   background-size: 4rem 100%;
+}
+
+/* Hero — dark architectural grid */
+.hero-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.03) 1px, transparent 1px);
+  background-size: 5rem 5rem;
+}
+
+/* Hero — warm ambient glow */
+.hero-glow {
+  background:
+    radial-gradient(ellipse 60% 50% at 10% 90%, rgba(176, 125, 79, 0.12), transparent 70%),
+    radial-gradient(ellipse 40% 40% at 80% 20%, rgba(13, 107, 99, 0.08), transparent 70%);
+}
+
+/* Hero headline — fluid type */
+.hero-headline {
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+.hero-headline-indent {
+  padding-left: clamp(1rem, 3vw, 3rem);
 }
 
 /* Fluid typography for headings */
@@ -37,19 +69,6 @@ h1, h2, h3 {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   opacity: 0.03;
   pointer-events: none;
-}
-
-/* Tactile button press state */
-.btn-tactile {
-  transition: transform 150ms ease-out, box-shadow 150ms ease-out;
-}
-
-.btn-tactile:hover {
-  box-shadow: 0 4px 14px -2px rgb(13 148 136 / 0.25);
-}
-
-.btn-tactile:active {
-  transform: scale(0.98);
 }
 
 /* Card hover lift effect */
@@ -101,12 +120,3 @@ header {
   text-wrap: balance;
 }
 
-/* Live status indicator pulse */
-@keyframes status-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-.status-dot {
-  animation: status-pulse 2s ease-in-out infinite;
-}

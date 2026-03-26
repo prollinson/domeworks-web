@@ -1,367 +1,333 @@
 <script lang="ts">
   import Button from '$lib/components/ui/Button.svelte'
   import Section from '$lib/components/layout/Section.svelte'
-  import Scrollytelling from '$lib/components/ui/Scrollytelling.svelte'
-  import { generateSmbMailto, generateEnterpriseMailto } from '$lib/utils/mailto'
   import { reveal } from '$lib/actions/reveal'
+  import { getBookCallUrl } from '$lib/utils/mailto'
 </script>
 
 <svelte:head>
-  <title>Dome Works — Real Automation for Las Vegas Valley Businesses</title>
-  <meta name="description" content="We identify your bottlenecks, integrate with your tools, and ship workflows that run unattended with monitoring, alerts, and clean handoff." />
+  <title>DomeWorks — AI Infrastructure Engineering for Teams</title>
+  <meta name="description" content="AI engineering consultancy that builds developer workflow automation, agent infrastructure, and shared context systems for engineering teams. Your team bought AI tools — I make them work." />
+  <link rel="canonical" href="https://domeworks.tech/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="DomeWorks" />
+  <meta property="og:url" content="https://domeworks.tech/" />
+  <meta property="og:title" content="DomeWorks — AI Infrastructure Engineering for Teams" />
+  <meta property="og:description" content="AI engineering consultancy that builds developer workflow automation and agent infrastructure for engineering teams. Your team bought AI tools — I make them work." />
+  <meta property="og:image" content="https://domeworks.tech/og-image.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="DomeWorks — AI Infrastructure Engineering for Teams" />
+  <meta name="twitter:description" content="Your team bought AI tools. A few engineers use them. The team isn't shipping faster." />
+  <meta name="twitter:image" content="https://domeworks.tech/og-image.png" />
+
+  <!-- JSON-LD: Organization + WebSite -->
+  {@html `<script type="application/ld+json">${JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "DomeWorks",
+        "url": "https://domeworks.tech",
+        "foundingDate": "2025",
+        "description": "AI engineering consultancy specializing in developer workflow automation, agent infrastructure, and shared context systems for engineering teams.",
+        "founder": {
+          "@type": "Person",
+          "name": "Piers Rollinson",
+          "jobTitle": "Founder",
+          "sameAs": []
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "piers@domeworks.tech",
+          "contactType": "sales"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "name": "DomeWorks",
+        "url": "https://domeworks.tech"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Why not just assign one of our engineers to figure out AI adoption?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "They'd spend 3-6 months learning from scratch while pulled off product work. DomeWorks compresses that to 4-8 weeks with patterns already proven across multiple teams. Your best engineer stays on the product."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What's the difference between the AI Scan and the Assessment?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The Scan shows what's happening — hard data on spend, adoption, and waste. The Assessment explains why and designs what to build. Many clients start with the Scan and proceed to the Assessment once they see the data."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens when the DomeWorks engagement ends?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Your team owns everything. DomeWorks builds systems designed to be maintained and extended without ongoing dependency. The AI landscape moves fast — there's always a next phase to build, but you should be choosing it, not depending on a consultant."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is DomeWorks different from other AI consultants?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most AI consultants advise. DomeWorks embeds with your team and builds the systems. The deliverable is working infrastructure — shared context, reliable workflows, configured tools — not a strategy deck."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does 'embed with the team' actually mean?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "DomeWorks joins your standups, pairs with your engineers, sits in on planning, writes code, builds systems, and ships alongside your team. 2-3 days a week, on-site or remote."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why hire a solo AI consultancy instead of a larger firm?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You get a senior hands-on builder — not a partner who sells and a junior who delivers. Every hour you pay for is spent by someone with a decade of engineering leadership at DoorDash and Square. No bench, no overhead, no theater."
+            }
+          }
+        ]
+      }
+    ]
+  })}</script>`}
 </svelte:head>
 
+<!-- Skip to content -->
+<a href="#how-it-works" class="sr-only focus:not-sr-only focus:absolute focus:top-20 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-lg">
+  Skip to content
+</a>
+
 <!-- Hero Section -->
-<section class="relative min-h-[90vh] flex items-center bg-white overflow-hidden">
-  <!-- Subtle grid background - craft signal -->
-  <div class="absolute inset-0 grid-overlay opacity-50"></div>
+<section class="relative min-h-[92vh] flex items-end bg-ink overflow-hidden" aria-label="Hero">
+  <!-- Architectural grid background -->
+  <div class="absolute inset-0 hero-grid" aria-hidden="true"></div>
+  <!-- Warm ambient glow from bottom-left -->
+  <div class="absolute inset-0 hero-glow" aria-hidden="true"></div>
+  <!-- Grain texture -->
+  <div class="absolute inset-0 texture-grain" aria-hidden="true"></div>
 
-  <div class="relative max-w-6xl mx-auto px-6 lg:px-8 py-20 md:py-28">
-    <div class="max-w-4xl">
-      <!-- Eyebrow -->
-      <p class="text-sm font-medium tracking-widest text-primary uppercase mb-6">
-        Las Vegas Valley
-      </p>
+  <div class="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pb-16 md:pb-20 pt-32 md:pt-40">
+    <!-- Eyebrow with horizontal rule -->
+    <div class="flex items-center gap-4 mb-10 md:mb-14">
+      <span class="text-[11px] font-medium tracking-[0.2em] text-copper uppercase">AI Infrastructure Engineering</span>
+      <div class="flex-1 h-px bg-warm-white/10"></div>
+    </div>
 
-      <!-- Headline - using serif for distinction -->
-      <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-slate-900 leading-[1.1] tracking-tight">
-        Real automation for your bottlenecks<span class="text-primary">.</span>
-        <br class="hidden md:block" />
-        Built for your tools<span class="text-primary">.</span>
-      </h1>
-
-      <!-- Subhead -->
-      <p class="mt-8 text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl">
-        We find where your process breaks. We fix it using the APIs in Google Workspace, Slack, and Microsoft 365. Then we hand you the keys to a system that runs itself.
-      </p>
-
-      <!-- Budget anchor - premium positioning -->
-      <div class="mt-8 flex items-center gap-6 text-sm text-slate-500">
-        <div class="flex items-center gap-2">
-          <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
-          <span>Audit: $3,500–$7,500</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
-          <span>Sprint: $9,500–$24,000</span>
-        </div>
+    <!-- Main headline — large, architectural typography -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end">
+      <div class="lg:col-span-8">
+        <h1 class="hero-headline font-serif font-normal text-warm-white">
+          <span class="block">Your team bought</span>
+          <span class="block">AI tools<span class="text-copper">.</span></span>
+          <span class="block hero-headline-indent text-warm-white/40">Nobody built the systems<span class="text-copper/40">.</span></span>
+        </h1>
       </div>
 
-      <!-- CTAs -->
-      <div class="mt-10 flex flex-col sm:flex-row gap-4">
-        <Button href={generateSmbMailto()} size="lg">
-          Email us your workflow
-        </Button>
-        <Button href="#examples" variant="secondary" size="lg">
-          See examples
-        </Button>
+      <div class="lg:col-span-4 lg:pb-2">
+        <p class="text-base md:text-lg text-warm-white/50 leading-relaxed max-w-md">
+          The problem isn't the tools. It's that nobody built the systems connecting them to how your team actually works. I build those systems.
+        </p>
+        <p class="mt-4 text-sm text-warm-white/30 leading-relaxed max-w-md">
+          Developer workflow automation, agent infrastructure, and shared context systems for engineering teams.
+        </p>
+
+        <div class="mt-8 flex items-center gap-6">
+          <Button href={getBookCallUrl()} size="lg">
+            Book a call
+          </Button>
+          <a href="#how-it-works" class="text-sm text-warm-white/40 hover:text-warm-white/70 transition-colors duration-200 group">
+            How it works <span class="inline-block group-hover:translate-x-0.5 transition-transform duration-200" aria-hidden="true">&darr;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom metric strip -->
+    <div class="mt-14 md:mt-20 pt-6 border-t border-warm-white/8 flex flex-wrap gap-x-12 gap-y-4">
+      <div>
+        <span class="text-2xl md:text-3xl font-serif text-warm-white/90">10+</span>
+        <span class="text-xs text-warm-white/30 ml-2 tracking-wide uppercase">Years eng leadership</span>
+      </div>
+      <div>
+        <span class="text-2xl md:text-3xl font-serif text-warm-white/90">48hr</span>
+        <span class="text-xs text-warm-white/30 ml-2 tracking-wide uppercase">AI Scan turnaround</span>
+      </div>
+      <div>
+        <span class="text-2xl md:text-3xl font-serif text-warm-white/90">4-8wk</span>
+        <span class="text-xs text-warm-white/30 ml-2 tracking-wide uppercase">Time to team adoption</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Two-Lane Selector -->
-<Section background="muted" padding="lg" eyebrow="01" title="Where do you need help?">
-  <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto" use:reveal={{ stagger: true, staggerDelay: 150 }}>
-    <!-- SMB Lane -->
-    <a
-      href="/services/"
-      class="group relative p-8 bg-white rounded-2xl border border-slate-200 hover:border-primary card-lift"
-    >
-      <div class="flex items-start justify-between mb-4">
-        <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-          </svg>
-        </span>
-        <svg class="w-5 h-5 text-slate-400 group-hover:text-primary group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
+<!-- The Problem -->
+<Section background="muted" padding="lg" eyebrow="01" title="Why AI tools fail at the team level">
+  <div class="max-w-2xl mx-auto space-y-6" use:reveal>
+    <p class="text-lg text-charcoal/70 leading-relaxed">
+      Your engineers have AI tools. A few power users are productive with them. But at the team level, nothing has changed.
+    </p>
+    <p class="text-lg text-charcoal/70 leading-relaxed">
+      Every engineer is on their own — prompting from scratch, getting inconsistent results, reinventing the wheel. There's no shared context about your codebase feeding into AI tools. No standard workflows. No way to make AI-assisted work reliable and reviewable.
+    </p>
+    <div class="grid sm:grid-cols-2 gap-4 mt-8">
+      <div class="p-5 bg-warm-white rounded-xl border border-charcoal/10">
+        <p class="text-3xl font-normal font-serif text-charcoal">95%</p>
+        <p class="text-sm text-charcoal/60 mt-1">of AI pilots fail to deliver measurable financial returns <span class="text-charcoal/40">(Rand, 2024)</span></p>
       </div>
-      <h3 class="text-xl font-semibold text-slate-900 mb-2">
-        I'm a local business
-      </h3>
-      <p class="text-slate-600">
-        Las Vegas or Henderson. Looking to automate workflows and save time on repetitive work.
-      </p>
-    </a>
-
-    <!-- Enterprise Lane -->
-    <a
-      href="/enterprise/"
-      class="group relative p-8 bg-white rounded-2xl border border-slate-200 hover:border-primary card-lift"
-    >
-      <div class="flex items-start justify-between mb-4">
-        <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-slate-100 text-slate-600">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-          </svg>
-        </span>
-        <svg class="w-5 h-5 text-slate-400 group-hover:text-primary group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
+      <div class="p-5 bg-warm-white rounded-xl border border-charcoal/10">
+        <p class="text-3xl font-normal font-serif text-charcoal">42%</p>
+        <p class="text-sm text-charcoal/60 mt-1">of companies scrapped most of their AI initiatives last year <span class="text-charcoal/40">(S&P Global, 2024)</span></p>
       </div>
-      <h3 class="text-xl font-semibold text-slate-900 mb-2">
-        I need an AI consultant
-      </h3>
-      <p class="text-slate-600">
-        Infrastructure, governance, evaluation frameworks, and operating model design.
-      </p>
-    </a>
+    </div>
+    <p class="text-lg text-charcoal/70 leading-relaxed">
+      Not because the tools are bad — because nobody built the connective tissue between the tools and the work.
+    </p>
   </div>
-
-  <p class="text-center text-sm text-slate-500 mt-8">
-    Not sure? <a href="/services/" class="text-primary hover:underline">Start with the AI Workflow Audit</a>.
-  </p>
 </Section>
 
-<!-- Non-technical Reassurance -->
-<Section background="white" padding="lg">
-  <div class="max-w-3xl mx-auto">
-    <div class="p-8 md:p-12 bg-primary/5 rounded-2xl border border-primary/10">
-      <p class="text-sm font-medium tracking-widest text-primary uppercase mb-4">02</p>
-      <h2 class="font-serif text-2xl md:text-3xl font-semibold text-slate-900 mb-6">
-        You don't need to be technical to get real automation
-      </h2>
-      <p class="text-lg text-slate-600 mb-8 leading-relaxed">
-        If you can describe what happens today—where work gets stuck, repeated, or missed—we can turn it into a working system.
+<!-- How It Works -->
+<Section id="how-it-works" background="white" padding="lg" eyebrow="02" title="How it works">
+  <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto" use:reveal={{ stagger: true, staggerDelay: 150 }}>
+    <a href="/scan/" class="group p-8 bg-warm-white rounded-2xl border border-charcoal/10 hover:border-primary card-lift flex flex-col">
+      <span class="inline-block px-3 py-1 text-xs font-medium text-primary bg-primary/10 rounded-full mb-4 w-fit">
+        Start here
+      </span>
+      <h3 class="text-xl font-medium text-charcoal mb-2">AI Scan</h3>
+      <p class="text-2xl font-normal font-serif text-charcoal mb-4">$2,500–$3,500</p>
+      <p class="text-charcoal/60 text-sm flex-grow">
+        In 48 hours, I map your AI spend, adoption patterns, and wasted seats. You get a clear picture of what's working and what isn't — plus quick wins your team can act on this week.
       </p>
+      <p class="mt-4 text-sm text-primary font-medium group-hover:underline">Learn more &rarr;</p>
+    </a>
 
-      <div class="space-y-4">
-        <div class="flex items-start gap-4">
-          <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center text-sm font-medium">1</span>
-          <div>
-            <p class="font-medium text-slate-900">Identify the bottleneck</p>
-            <p class="text-sm text-slate-600">Where does work pile up or get dropped?</p>
-          </div>
-        </div>
-        <div class="flex items-start gap-4">
-          <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center text-sm font-medium">2</span>
-          <div>
-            <p class="font-medium text-slate-900">Map your tools</p>
-            <p class="text-sm text-slate-600">What systems are already in place?</p>
-          </div>
-        </div>
-        <div class="flex items-start gap-4">
-          <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center text-sm font-medium">3</span>
-          <div>
-            <p class="font-medium text-slate-900">Ship an unattended system</p>
-            <p class="text-sm text-slate-600">With monitoring, alerts, and rollback.</p>
-          </div>
-        </div>
-      </div>
+    <a href="/assessment/" class="group p-8 bg-warm-white rounded-2xl border-2 border-primary flex flex-col relative">
+      <span class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 text-xs font-medium text-white bg-primary rounded-full">
+        Deep dive
+      </span>
+      <h3 class="text-xl font-medium text-charcoal mb-2">Assessment</h3>
+      <p class="text-2xl font-normal font-serif text-charcoal mb-4">$10,000–$15,000</p>
+      <p class="text-charcoal/60 text-sm flex-grow">
+        The deeper engagement. I interview your stakeholders, assess what's missing between "engineers have tools" and "the team ships faster," and design a build plan. 1-2 weeks.
+      </p>
+      <p class="mt-4 text-sm text-primary font-medium group-hover:underline">Learn more &rarr;</p>
+    </a>
 
-      <div class="mt-8">
-        <Button href={generateSmbMailto()}>
-          Email what's slowing you down
-        </Button>
-      </div>
+    <div class="p-8 bg-warm-white rounded-2xl border border-charcoal/10 border-dashed flex flex-col opacity-90">
+      <h3 class="text-xl font-medium text-charcoal mb-2">Build</h3>
+      <p class="text-2xl font-normal font-serif text-charcoal mb-4">4–12 weeks</p>
+      <p class="text-charcoal/60 text-sm flex-grow">
+        I embed with your team 2-3 days a week and build the systems. Shared context layers, reliable workflows, developer tooling, team training. Not a handoff — I'm in the work with you.
+      </p>
+      <p class="mt-4 text-sm text-charcoal/40">Scoped from assessment findings</p>
     </div>
   </div>
 </Section>
 
-<!-- What We Do -->
-<Section background="muted" padding="lg" eyebrow="03" title="What we do">
+<!-- Who This Is For -->
+<Section background="muted" padding="lg" eyebrow="03" title="Who this is for">
+  <div class="max-w-2xl mx-auto" use:reveal>
+    <div class="p-8 md:p-12 bg-warm-white rounded-2xl border border-charcoal/10">
+      <p class="text-lg text-charcoal/70 leading-relaxed mb-6">
+        You're a <strong class="text-charcoal">VP of Engineering, Head of Engineering, or CTO</strong> at a mid-market SaaS company (50-500 people) or a funded startup. Your engineers have AI tools but the team isn't shipping faster.
+      </p>
+      <p class="text-lg text-charcoal/70 leading-relaxed mb-6">
+        You've probably thought about assigning a senior engineer to figure this out. But they'd be learning from scratch, and you'd lose their output on product work for months.
+      </p>
+      <p class="text-lg text-charcoal leading-relaxed font-medium border-l-2 border-copper pl-6">
+        You need someone who's already done this — who knows what works and what doesn't — so your team gets the systems without the trial-and-error tax.
+      </p>
+    </div>
+  </div>
+</Section>
+
+<!-- What I Build -->
+<Section background="white" padding="lg" eyebrow="04" title="What AI infrastructure engineering looks like">
   <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto" use:reveal={{ stagger: true, staggerDelay: 100 }}>
     {#each [
-      { title: 'Workflow automation', desc: 'End-to-end processes that run without intervention.' },
-      { title: 'Integrations', desc: 'Connect your tools so data flows automatically.' },
-      { title: 'AI-assisted operations', desc: 'With human approvals where they matter.' },
-      { title: 'Reporting + visibility', desc: "Know what's happening without asking." },
-      { title: 'Governance + enablement', desc: 'Safe, auditable AI adoption for teams.' }
+      { title: 'Shared context layers', desc: 'CLAUDE.md, conventions, and codebase knowledge fed to AI tools so every engineer gets relevant, consistent output.' },
+      { title: 'Agent workflows', desc: 'Reliable, reviewable AI-assisted workflows for code review, PR creation, and testing — so your team can ship AI-assisted code with the same confidence as hand-written code.' },
+      { title: 'CI/CD integration', desc: 'AI tools wired into your deployment pipeline — so AI-generated code gets the same automated checks as human code before it hits production.' },
+      { title: 'Team conventions', desc: 'Working agreements, review standards, and quality gates — so your leads can trust AI-assisted PRs without reviewing every line twice.' },
+      { title: 'Developer tooling', desc: 'Custom tools that fit how your team ships — not how a vendor imagines you should.' },
+      { title: 'Adoption systems', desc: 'Infrastructure that makes AI useful by default, not by individual effort or motivation.' }
     ] as item}
-      <div class="p-6 bg-white rounded-xl border border-slate-200">
-        <h3 class="font-semibold text-slate-900 mb-2">{item.title}</h3>
-        <p class="text-sm text-slate-600">{item.desc}</p>
-      </div>
-    {/each}
-  </div>
-</Section>
-
-<!-- Real Automation Means -->
-<Section background="white" padding="lg" eyebrow="04" title="Real automation means…">
-  <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto" use:reveal={{ stagger: true, staggerDelay: 150 }}>
-    <div class="text-center">
-      <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 text-primary mb-6">
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-        </svg>
-      </div>
-      <h3 class="font-semibold text-slate-900 mb-3">Understanding your bottlenecks</h3>
-      <p class="text-sm text-slate-600 mb-4">Not guessing. Mapping what actually slows you down.</p>
-      <p class="text-xs text-slate-500 font-medium uppercase tracking-wide">
-        Artifacts: workflow map, baseline, acceptance criteria
-      </p>
-    </div>
-
-    <div class="text-center">
-      <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 text-primary mb-6">
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-      </div>
-      <h3 class="font-semibold text-slate-900 mb-3">Integrating with your tools</h3>
-      <p class="text-sm text-slate-600 mb-4">Google, Slack, Microsoft, HubSpot—and the rest.</p>
-      <p class="text-xs text-slate-500 font-medium uppercase tracking-wide">
-        Artifacts: permissions map, integration inventory
-      </p>
-    </div>
-
-    <div class="text-center">
-      <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 text-primary mb-6">
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-        </svg>
-      </div>
-      <h3 class="font-semibold text-slate-900 mb-3">Works while you sleep</h3>
-      <p class="text-sm text-slate-600 mb-4">Zero-touch. If it breaks, we get the alert, not you.</p>
-      <p class="text-xs text-slate-500 font-medium uppercase tracking-wide">
-        Artifacts: runbook, alert config, exception queue
-      </p>
-    </div>
-  </div>
-</Section>
-
-<!-- How We Work - Scrollytelling -->
-<Section background="muted" padding="xl" eyebrow="05" title="How we work" centered={false}>
-  <Scrollytelling />
-</Section>
-
-<!-- Examples Teaser -->
-<Section id="examples" background="white" padding="lg" eyebrow="06" title="Proven Automation Patterns" description="We lead with the result. Here is the impact we deliver using established, reliable workflows.">
-  <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto" use:reveal={{ stagger: true, staggerDelay: 100 }}>
-    {#each [
-      {
-        area: 'Sales',
-        impact: 'Reduce lead response time from hours to minutes',
-        workflow: "The 'Speed-to-Lead' Bot",
-        tools: 'HubSpot, Slack, Gmail'
-      },
-      {
-        area: 'Operations',
-        impact: 'Eliminate manual ticket creation and routing',
-        workflow: 'Slack Triage & Assignment',
-        tools: 'Slack, Notion, Calendar'
-      },
-      {
-        area: 'Management',
-        impact: 'Save 4+ hours per week on report compilation',
-        workflow: "The 'Monday Morning' Report",
-        tools: 'Google Sheets, Slack, Email'
-      }
-    ] as example}
-      <div class="p-6 bg-slate-50 rounded-xl border border-slate-200 hover:border-primary/50 hover:shadow-sm transition-all flex flex-col">
-        <span class="inline-block px-2 py-1 text-xs font-medium text-slate-600 bg-slate-200 rounded mb-4 w-fit">
-          {example.area}
-        </span>
-        <h3 class="font-semibold text-slate-900 mb-4 leading-snug">{example.impact}</h3>
-        <div class="mt-auto pt-4 border-t border-slate-200/50">
-          <p class="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1">Workflow</p>
-          <p class="text-sm text-slate-900 font-medium mb-2">{example.workflow}</p>
-          <p class="text-xs text-slate-600"><span class="text-slate-500">Tools:</span> {example.tools}</p>
-        </div>
-      </div>
-    {/each}
-  </div>
-
-  <div class="text-center mt-10">
-    <Button href="/examples/" variant="secondary">
-      View all examples
-    </Button>
-  </div>
-</Section>
-
-<!-- Trust Checklist -->
-<Section background="muted" padding="lg" eyebrow="07" title="Built with controls you can trust">
-  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto" use:reveal={{ stagger: true, staggerDelay: 80 }}>
-    {#each [
-      'Least privilege + permission mapping',
-      'Secrets management',
-      'Observability (logs + alerts)',
-      'Human-in-the-loop approvals',
-      'Rollback plans',
-      'Ownership + documentation'
-    ] as item}
-      <div class="flex items-center gap-4 p-5 bg-white rounded-xl border border-slate-200">
-        <span class="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-          <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-          </svg>
-        </span>
-        <span class="text-sm font-medium text-slate-700">{item}</span>
+      <div class="p-6 bg-stone rounded-xl border border-charcoal/10">
+        <h3 class="font-medium text-charcoal mb-2">{item.title}</h3>
+        <p class="text-sm text-charcoal/60">{item.desc}</p>
       </div>
     {/each}
   </div>
 </Section>
 
 <!-- FAQ -->
-<Section background="white" padding="lg" eyebrow="08" title="Common questions">
-  <div class="max-w-3xl mx-auto divide-y divide-slate-200" use:reveal>
+<Section background="muted" padding="lg" eyebrow="05" title="Common questions">
+  <div class="max-w-2xl mx-auto divide-y divide-charcoal/10" use:reveal>
     {#each [
       {
-        q: "I'm not technical. Where do I even start?",
-        a: "You start by describing what happens today. Where does work get stuck? What's repetitive? What falls through the cracks? We take it from there."
+        q: "Why not just assign one of our engineers to figure this out?",
+        a: "They'd spend 3-6 months learning from scratch while pulled off product work. I compress that to 4-8 weeks with patterns already proven across multiple teams. Your best engineer stays on the product."
       },
       {
-        q: "What's your typical budget range?",
-        a: "Audits run $3,500–$7,500. Automation Sprints are typically $9,500–$24,000. If budget is under $5k, we're likely not a fit."
+        q: "What's the difference between the Scan and the Assessment?",
+        a: "The Scan shows what's happening — hard data on spend, adoption, and waste. The Assessment explains why and designs what to build. Many clients start with the Scan and proceed to the Assessment once they see the data."
       },
       {
-        q: "How long does a typical project take?",
-        a: "Audits: 5–10 business days. Sprints: 2–6 weeks depending on complexity. We'll give you a specific timeline after scoping."
+        q: "What happens when the engagement ends?",
+        a: "Your team owns everything. I build systems designed to be maintained and extended without me. The AI landscape moves fast — there's always a next phase to build, but you should be choosing it, not depending on me."
       },
       {
-        q: "What tools do you work with?",
-        a: "We specialize in Google Workspace, Slack, Microsoft 365, and HubSpot. But we work with most modern business tools."
+        q: "How is this different from other AI consultants?",
+        a: "Most AI consultants advise. I embed with your team and build the systems. The deliverable is working infrastructure — shared context, reliable workflows, configured tools — not a strategy deck."
       },
       {
-        q: "Who owns the automation when you're done?",
-        a: "You do. We hand off full documentation, runbooks, and admin access. You can maintain it yourself or engage us for Automation Ops."
+        q: "What does 'embed with the team' actually mean?",
+        a: "I join your standups. I pair with your engineers. I sit in on planning. I write code, build systems, and ship alongside your team. 2-3 days a week, on-site or remote."
       },
       {
-        q: "How do you handle AI quality control?",
-        a: "Human-in-the-loop approvals for anything critical. Test sets for validation. Monitoring and exception queues for edge cases."
-      },
-      {
-        q: "What about ongoing support?",
-        a: "Automation Ops packages run $2,000–$6,000/month and include monitoring, updates, and support. Or you can run it yourself."
-      },
-      {
-        q: "What access do you need to our systems?",
-        a: "Least privilege only. We document exactly what access we need, why, and how to revoke it when we're done."
+        q: "Why a solo consultancy instead of a larger AI consulting firm?",
+        a: "You get a senior hands-on builder — not a partner who sells and a junior who delivers. Every hour you pay for is spent by someone with a decade of engineering leadership at DoorDash and Square. No bench, no overhead, no theater. The firms with 10-50 people charge more and staff you with people learning on the job."
       }
-    ] as item, i}
+    ] as item}
       <details class="group py-6">
-        <summary class="flex items-center justify-between cursor-pointer list-none">
-          <span class="font-medium text-slate-900 pr-4">{item.q}</span>
-          <svg class="w-5 h-5 text-slate-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <summary class="flex items-center justify-between cursor-pointer list-none py-1 min-h-[44px]">
+          <span class="font-medium text-charcoal pr-4">{item.q}</span>
+          <svg class="w-5 h-5 text-charcoal/40 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
           </svg>
         </summary>
-        <p class="mt-4 text-slate-600 leading-relaxed">{item.a}</p>
+        <p class="mt-4 text-charcoal/70 leading-[1.65]">{item.a}</p>
       </details>
     {/each}
   </div>
 </Section>
 
-<!-- Final CTA -->
-<section class="bg-slate-900 text-white py-20 md:py-28 relative overflow-hidden">
-  <!-- Ambient warm glow -->
-  <div class="absolute inset-0 ambient-warm"></div>
-  <!-- Subtle grain texture -->
-  <div class="absolute inset-0 texture-grain"></div>
-  <div class="relative max-w-4xl mx-auto px-6 lg:px-8 text-center" use:reveal>
-    <h2 class="font-serif text-3xl md:text-4xl font-semibold mb-6">
-      Bring one workflow. We'll tell you what it takes.
+<!-- Bottom CTA -->
+<Section background="white" padding="lg">
+  <div class="max-w-2xl mx-auto text-center" use:reveal>
+    <h2 class="font-serif text-3xl font-normal text-charcoal mb-4">
+      Your team has the tools<span class="text-primary">.</span> Let's make them work<span class="text-primary">.</span>
     </h2>
-    <p class="text-lg text-slate-400 mb-4 max-w-2xl mx-auto">
-      Tell us: workflow start to end, bottlenecks, tools, volume, and budget ($5–15k target).
+    <p class="text-lg text-charcoal/70 mb-8">
+      30-minute call, no obligation. I'll tell you whether this is something I can help with.
     </p>
-    <p class="text-sm text-slate-500 mb-10">
-      If budget is under $5k, we're likely not a fit.
-    </p>
-    <Button href={generateSmbMailto()} size="lg">
-      Email us your workflow
+    <Button href={getBookCallUrl()} size="lg">
+      Book a call
     </Button>
   </div>
-</section>
+</Section>
