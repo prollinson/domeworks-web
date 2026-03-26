@@ -142,15 +142,15 @@
   min-height: clamp(85svh, 92svh, 100svh);
 }
 
-/* Hero content padding — fluid vertical layout */
+/* Hero content padding — fluid vertical layout, accounts for negative margin pulling hero behind fixed header */
 .hero-content-pad {
   padding-bottom: clamp(1.5rem, 3vw, 3rem);
-  padding-top: clamp(5rem, 10vw, 9rem);
+  padding-top: clamp(9rem, 14vw, 14rem);
 }
 
 @media (max-height: 700px) and (max-width: 640px) {
   .hero-content-pad {
-    padding-top: 4.5rem;
+    padding-top: 8.5rem;
     padding-bottom: 1.5rem;
   }
 }

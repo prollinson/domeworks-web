@@ -114,7 +114,7 @@
 </a>
 
 <!-- Hero Section -->
-<section class="relative hero-section bg-ink overflow-hidden" aria-label="Hero">
+<section class="relative hero-section bg-ink overflow-hidden -mt-16 md:-mt-20" aria-label="Hero">
   <!-- Architectural grid background -->
   <div class="absolute inset-0 hero-grid" aria-hidden="true" role="presentation"></div>
   <!-- Warm ambient glow — bottom-left copper, top-right teal -->
