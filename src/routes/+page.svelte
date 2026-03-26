@@ -114,36 +114,40 @@
 </a>
 
 <!-- Hero Section -->
-<section class="relative min-h-[92vh] flex items-end bg-ink overflow-hidden" aria-label="Hero">
+<section class="relative min-h-[100svh] md:min-h-[92vh] flex items-center md:items-end bg-ink overflow-hidden" aria-label="Hero">
   <!-- Architectural grid background -->
   <div class="absolute inset-0 hero-grid" aria-hidden="true"></div>
   <!-- Warm ambient glow from bottom-left -->
   <div class="absolute inset-0 hero-glow" aria-hidden="true"></div>
   <!-- Grain texture -->
   <div class="absolute inset-0 texture-grain" aria-hidden="true"></div>
+  <!-- Animated signal line — a single horizontal pulse that traces across -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <div class="hero-signal-line"></div>
+  </div>
 
-  <div class="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pb-16 md:pb-20 pt-32 md:pt-40">
+  <div class="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pb-12 md:pb-20 pt-28 md:pt-40">
     <!-- Eyebrow with horizontal rule -->
-    <div class="flex items-center gap-4 mb-10 md:mb-14">
-      <span class="text-[11px] font-medium tracking-[0.2em] text-copper uppercase">AI Infrastructure Engineering</span>
+    <div class="flex items-center gap-4 mb-8 md:mb-14">
+      <span class="text-xs font-medium tracking-[0.2em] text-copper uppercase">AI Infrastructure Engineering</span>
       <div class="flex-1 h-px bg-warm-white/10"></div>
     </div>
 
     <!-- Main headline — large, architectural typography -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end">
       <div class="lg:col-span-8">
         <h1 class="hero-headline font-serif font-normal text-warm-white">
           <span class="block">Your team bought</span>
           <span class="block">AI tools<span class="text-copper">.</span></span>
-          <span class="block hero-headline-indent text-warm-white/40">Nobody built the systems<span class="text-copper/40">.</span></span>
+          <span class="block hero-headline-indent text-warm-white/50">Nobody built the systems<span class="text-copper/50">.</span></span>
         </h1>
       </div>
 
       <div class="lg:col-span-4 lg:pb-2">
-        <p class="text-base md:text-lg text-warm-white/50 leading-relaxed max-w-md">
+        <p class="text-base md:text-lg text-warm-white/70 leading-relaxed max-w-md">
           The problem isn't the tools. It's that nobody built the systems connecting them to how your team actually works. I build those systems.
         </p>
-        <p class="mt-4 text-sm text-warm-white/30 leading-relaxed max-w-md">
+        <p class="mt-4 text-sm text-warm-white/50 leading-relaxed max-w-md">
           Developer workflow automation, agent infrastructure, and shared context systems for engineering teams.
         </p>
 
@@ -151,26 +155,45 @@
           <Button href={getBookCallUrl()} size="lg">
             Book a call
           </Button>
-          <a href="#how-it-works" class="text-sm text-warm-white/40 hover:text-warm-white/70 transition-colors duration-200 group">
+          <a href="#how-it-works" class="text-sm text-warm-white/60 hover:text-warm-white/80 transition-colors duration-200 group">
             How it works <span class="inline-block group-hover:translate-x-0.5 transition-transform duration-200" aria-hidden="true">&darr;</span>
           </a>
         </div>
       </div>
     </div>
 
-    <!-- Bottom metric strip -->
-    <div class="mt-14 md:mt-20 pt-6 border-t border-warm-white/8 flex flex-wrap gap-x-12 gap-y-4">
-      <div>
-        <span class="text-2xl md:text-3xl font-serif text-warm-white/90">10+</span>
-        <span class="text-xs text-warm-white/30 ml-2 tracking-wide uppercase">Years eng leadership</span>
+    <!-- Bottom metric strip — mobile: vertical stack with more presence -->
+    <div class="mt-10 md:mt-20 pt-6 border-t border-warm-white/10">
+      <div class="hidden md:flex flex-wrap gap-x-12 gap-y-4">
+        <div>
+          <span class="text-3xl font-serif text-warm-white/90">10+</span>
+          <span class="text-sm text-warm-white/50 ml-2 tracking-wide uppercase">Years eng leadership</span>
+        </div>
+        <div>
+          <span class="text-3xl font-serif text-warm-white/90">48hr</span>
+          <span class="text-sm text-warm-white/50 ml-2 tracking-wide uppercase">AI Scan turnaround</span>
+        </div>
+        <div>
+          <span class="text-3xl font-serif text-warm-white/90">4-8wk</span>
+          <span class="text-sm text-warm-white/50 ml-2 tracking-wide uppercase">Time to team adoption</span>
+        </div>
       </div>
-      <div>
-        <span class="text-2xl md:text-3xl font-serif text-warm-white/90">48hr</span>
-        <span class="text-xs text-warm-white/30 ml-2 tracking-wide uppercase">AI Scan turnaround</span>
-      </div>
-      <div>
-        <span class="text-2xl md:text-3xl font-serif text-warm-white/90">4-8wk</span>
-        <span class="text-xs text-warm-white/30 ml-2 tracking-wide uppercase">Time to team adoption</span>
+      <!-- Mobile stat strip: horizontal with dividers, larger type -->
+      <div class="flex md:hidden justify-between text-center">
+        <div class="flex-1">
+          <span class="block text-2xl font-serif text-warm-white/90">10+</span>
+          <span class="block text-xs text-warm-white/50 mt-1 tracking-wide uppercase">Yrs leadership</span>
+        </div>
+        <div class="w-px bg-warm-white/10" aria-hidden="true"></div>
+        <div class="flex-1">
+          <span class="block text-2xl font-serif text-warm-white/90">48hr</span>
+          <span class="block text-xs text-warm-white/50 mt-1 tracking-wide uppercase">Scan turnaround</span>
+        </div>
+        <div class="w-px bg-warm-white/10" aria-hidden="true"></div>
+        <div class="flex-1">
+          <span class="block text-2xl font-serif text-warm-white/90">4-8wk</span>
+          <span class="block text-xs text-warm-white/50 mt-1 tracking-wide uppercase">Team adoption</span>
+        </div>
       </div>
     </div>
   </div>
