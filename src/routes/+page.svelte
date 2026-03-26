@@ -121,6 +121,10 @@
   <div class="absolute inset-0 hero-glow" aria-hidden="true"></div>
   <!-- Grain texture -->
   <div class="absolute inset-0 texture-grain" aria-hidden="true"></div>
+  <!-- Large monogram watermark — distinctive brand element -->
+  <div class="absolute inset-0 pointer-events-none hero-monogram-container" aria-hidden="true">
+    <span class="hero-monogram font-serif select-none">D</span>
+  </div>
   <!-- Animated signal line — a single horizontal pulse that traces across -->
   <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
     <div class="hero-signal-line"></div>
@@ -139,7 +143,7 @@
         <h1 class="hero-headline font-serif font-normal text-warm-white">
           <span class="block">Your team bought</span>
           <span class="block">AI tools<span class="text-copper">.</span></span>
-          <span class="block hero-headline-indent text-warm-white/50">Nobody built the systems<span class="text-copper/50">.</span></span>
+          <span class="block hero-headline-indent"><em class="hero-headline-em">Nobody built</em> <span class="text-warm-white/50">the systems<span class="text-copper/50">.</span></span></span>
         </h1>
       </div>
 
@@ -155,14 +159,14 @@
           <Button href={getBookCallUrl()} size="lg">
             Book a call
           </Button>
-          <a href="#how-it-works" class="text-sm text-warm-white/60 hover:text-warm-white/80 transition-colors duration-200 group">
-            How it works <span class="inline-block group-hover:translate-x-0.5 transition-transform duration-200" aria-hidden="true">&darr;</span>
+          <a href="#how-it-works" class="inline-flex items-center min-h-[44px] px-2 text-sm text-warm-white/60 hover:text-warm-white/80 transition-colors duration-200 group" aria-label="Jump to how it works section">
+            How it works <span class="inline-block ml-1 group-hover:translate-y-0.5 transition-transform duration-200" aria-hidden="true">&darr;</span>
           </a>
         </div>
       </div>
     </div>
 
-    <!-- Bottom metric strip — mobile: vertical stack with more presence -->
+    <!-- Bottom metric strip -->
     <div class="mt-10 md:mt-20 pt-6 border-t border-warm-white/10">
       <div class="hidden md:flex flex-wrap gap-x-12 gap-y-4">
         <div>
@@ -178,21 +182,21 @@
           <span class="text-sm text-warm-white/50 ml-2 tracking-wide uppercase">Time to team adoption</span>
         </div>
       </div>
-      <!-- Mobile stat strip: horizontal with dividers, larger type -->
-      <div class="flex md:hidden justify-between text-center">
-        <div class="flex-1">
+      <!-- Mobile stat strip: stacked on very small screens, horizontal on 375px+ -->
+      <div class="flex md:hidden hero-stat-strip">
+        <div class="hero-stat-item">
           <span class="block text-2xl font-serif text-warm-white/90">10+</span>
-          <span class="block text-xs text-warm-white/50 mt-1 tracking-wide uppercase">Yrs leadership</span>
+          <span class="block text-[10px] sm:text-xs text-warm-white/50 mt-1 tracking-wide uppercase leading-tight">Yrs leadership</span>
         </div>
-        <div class="w-px bg-warm-white/10" aria-hidden="true"></div>
-        <div class="flex-1">
+        <div class="w-px bg-warm-white/10 self-stretch" aria-hidden="true"></div>
+        <div class="hero-stat-item">
           <span class="block text-2xl font-serif text-warm-white/90">48hr</span>
-          <span class="block text-xs text-warm-white/50 mt-1 tracking-wide uppercase">Scan turnaround</span>
+          <span class="block text-[10px] sm:text-xs text-warm-white/50 mt-1 tracking-wide uppercase leading-tight">Scan turnaround</span>
         </div>
-        <div class="w-px bg-warm-white/10" aria-hidden="true"></div>
-        <div class="flex-1">
-          <span class="block text-2xl font-serif text-warm-white/90">4-8wk</span>
-          <span class="block text-xs text-warm-white/50 mt-1 tracking-wide uppercase">Team adoption</span>
+        <div class="w-px bg-warm-white/10 self-stretch" aria-hidden="true"></div>
+        <div class="hero-stat-item">
+          <span class="block text-2xl font-serif text-warm-white/90">4–8wk</span>
+          <span class="block text-[10px] sm:text-xs text-warm-white/50 mt-1 tracking-wide uppercase leading-tight">Team adoption</span>
         </div>
       </div>
     </div>

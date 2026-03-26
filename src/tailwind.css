@@ -43,6 +43,32 @@
     radial-gradient(ellipse 40% 40% at 80% 20%, rgba(13, 107, 99, 0.08), transparent 70%);
 }
 
+/* Hero monogram — large decorative "D" watermark for brand presence */
+.hero-monogram-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.hero-monogram {
+  font-size: clamp(20rem, 45vw, 40rem);
+  line-height: 0.8;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(176, 125, 79, 0.07);
+  opacity: 1;
+  transform: translateX(12%) translateY(5%);
+  user-select: none;
+}
+
+@media (max-width: 768px) {
+  .hero-monogram {
+    font-size: clamp(16rem, 60vw, 24rem);
+    -webkit-text-stroke: 1px rgba(176, 125, 79, 0.05);
+    transform: translateX(15%) translateY(10%);
+  }
+}
+
 /* Hero headline — fluid type, with mobile-specific sizing to stay dramatic */
 .hero-headline {
   font-size: clamp(2.75rem, 7vw, 5.5rem);
@@ -59,6 +85,26 @@
 
 .hero-headline-indent {
   padding-left: clamp(1rem, 3vw, 3rem);
+}
+
+/* Hero headline emphasis — italic treatment for "Nobody built" */
+.hero-headline-em {
+  font-style: italic;
+  color: var(--color-copper);
+  font-weight: 400;
+}
+
+/* Hero mobile stat strip — responsive layout that works at 320px */
+.hero-stat-strip {
+  justify-content: space-between;
+  text-align: center;
+  gap: 0;
+}
+
+.hero-stat-item {
+  flex: 1;
+  min-width: 0;
+  padding: 0 0.25rem;
 }
 
 /* Hero signal line — a slow horizontal pulse that traces across the grid */
