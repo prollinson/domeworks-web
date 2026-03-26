@@ -114,31 +114,31 @@
 </a>
 
 <!-- Hero Section -->
-<section class="relative min-h-[100svh] md:min-h-[92vh] flex items-end bg-ink overflow-hidden" aria-label="Hero">
+<section class="relative hero-section flex items-end bg-ink overflow-hidden" aria-label="Hero">
   <!-- Architectural grid background -->
-  <div class="absolute inset-0 hero-grid" aria-hidden="true"></div>
+  <div class="absolute inset-0 hero-grid" aria-hidden="true" role="presentation"></div>
   <!-- Warm ambient glow from bottom-left -->
-  <div class="absolute inset-0 hero-glow" aria-hidden="true"></div>
+  <div class="absolute inset-0 hero-glow" aria-hidden="true" role="presentation"></div>
   <!-- Grain texture -->
-  <div class="absolute inset-0 texture-grain" aria-hidden="true"></div>
+  <div class="absolute inset-0 texture-grain" aria-hidden="true" role="presentation"></div>
   <!-- Oversized monogram — dramatic brand element bleeding off right edge -->
-  <div class="absolute inset-0 pointer-events-none hero-monogram-container" aria-hidden="true">
+  <div class="absolute inset-0 pointer-events-none hero-monogram-container" aria-hidden="true" role="presentation">
     <span class="hero-monogram font-serif select-none">D</span>
   </div>
   <!-- Animated signal line — a single horizontal pulse that traces across -->
-  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
-    <div class="hero-signal-line"></div>
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true" role="presentation">
+    <div class="hero-signal-line" role="presentation"></div>
   </div>
 
-  <div class="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pb-10 md:pb-16 pt-28 md:pt-40">
-    <!-- Eyebrow with horizontal rule — boosted contrast + size for a11y -->
-    <div class="flex items-center gap-4 mb-8 md:mb-14">
+  <div class="relative w-full max-w-7xl mx-auto px-6 lg:px-8 hero-content-pad">
+    <!-- Eyebrow with horizontal rule -->
+    <div class="flex items-center gap-4 mb-6 md:mb-14">
       <span class="text-[13px] font-medium tracking-[0.2em] text-copper/90 uppercase">AI Infrastructure Engineering</span>
-      <div class="flex-1 h-px bg-warm-white/10"></div>
+      <div class="flex-1 h-px bg-warm-white/10" aria-hidden="true" role="presentation"></div>
     </div>
 
     <!-- Main headline — asymmetric layout with headline overlapping stat area -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 items-end">
       <div class="lg:col-span-8">
         <h1 class="hero-headline font-serif font-normal text-warm-white">
           <span class="block">Your team bought</span>
@@ -148,14 +148,14 @@
       </div>
 
       <div class="lg:col-span-4 lg:pb-2">
-        <p class="text-base md:text-lg text-warm-white/80 leading-relaxed max-w-md">
+        <p class="hero-body-text text-warm-white/80 leading-relaxed max-w-md">
           The problem isn't the tools. It's that nobody built the systems connecting them to how your team actually works. I build those systems.
         </p>
-        <p class="mt-4 text-sm text-warm-white/60 leading-relaxed max-w-md">
+        <p class="mt-3 md:mt-4 text-sm text-warm-white/60 leading-relaxed max-w-md hidden sm:block">
           Developer workflow automation, agent infrastructure, and shared context systems for engineering teams.
         </p>
 
-        <div class="mt-8 flex items-center gap-6">
+        <div class="mt-5 md:mt-8 flex items-center gap-6">
           <Button href={getBookCallUrl()} size="lg">
             Book a call
           </Button>
@@ -166,36 +166,36 @@
       </div>
     </div>
 
-    <!-- Stat strip — headline overlaps into this zone via negative margin -->
-    <div class="hero-stat-bar mt-8 md:mt-14">
+    <!-- Stat strip -->
+    <div class="hero-stat-bar mt-6 md:mt-14">
       <!-- Desktop stats -->
       <div class="hidden md:grid md:grid-cols-3 gap-0">
         <div class="hero-stat-cell">
           <span class="block text-3xl font-serif text-warm-white/90">10+</span>
-          <span class="block text-xs text-warm-white/55 mt-1 tracking-wide uppercase">Years eng leadership</span>
+          <span class="block text-[0.8125rem] text-warm-white/70 mt-1 tracking-wide uppercase">Years eng leadership</span>
         </div>
         <div class="hero-stat-cell hero-stat-cell-border">
           <span class="block text-3xl font-serif text-warm-white/90">48hr</span>
-          <span class="block text-xs text-warm-white/55 mt-1 tracking-wide uppercase">AI Scan turnaround</span>
+          <span class="block text-[0.8125rem] text-warm-white/70 mt-1 tracking-wide uppercase">AI Scan turnaround</span>
         </div>
         <div class="hero-stat-cell hero-stat-cell-border">
           <span class="block text-3xl font-serif text-warm-white/90">4–8wk</span>
-          <span class="block text-xs text-warm-white/55 mt-1 tracking-wide uppercase">Time to team adoption</span>
+          <span class="block text-[0.8125rem] text-warm-white/70 mt-1 tracking-wide uppercase">Time to team adoption</span>
         </div>
       </div>
-      <!-- Mobile stats — guaranteed to fit at 320px -->
+      <!-- Mobile stats — compact, fully visible at 320px -->
       <div class="grid grid-cols-3 md:hidden gap-0">
         <div class="hero-stat-cell-mobile">
-          <span class="block text-xl font-serif text-warm-white/90">10+</span>
-          <span class="block text-[10px] text-warm-white/55 mt-0.5 tracking-wider uppercase leading-tight">Yrs eng<br/>leadership</span>
+          <span class="block text-lg font-serif text-warm-white/90">10+</span>
+          <span class="block text-[11px] text-warm-white/70 mt-0.5 tracking-wider uppercase leading-tight">Yrs eng<br/>leadership</span>
         </div>
         <div class="hero-stat-cell-mobile hero-stat-cell-border">
-          <span class="block text-xl font-serif text-warm-white/90">48hr</span>
-          <span class="block text-[10px] text-warm-white/55 mt-0.5 tracking-wider uppercase leading-tight">Scan<br/>turnaround</span>
+          <span class="block text-lg font-serif text-warm-white/90">48hr</span>
+          <span class="block text-[11px] text-warm-white/70 mt-0.5 tracking-wider uppercase leading-tight">Scan<br/>turnaround</span>
         </div>
         <div class="hero-stat-cell-mobile hero-stat-cell-border">
-          <span class="block text-xl font-serif text-warm-white/90">4–8wk</span>
-          <span class="block text-[10px] text-warm-white/55 mt-0.5 tracking-wider uppercase leading-tight">Team<br/>adoption</span>
+          <span class="block text-lg font-serif text-warm-white/90">4–8wk</span>
+          <span class="block text-[11px] text-warm-white/70 mt-0.5 tracking-wider uppercase leading-tight">Team<br/>adoption</span>
         </div>
       </div>
     </div>

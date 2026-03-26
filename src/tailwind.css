@@ -72,6 +72,57 @@
   }
 }
 
+/* Hero section — responsive height that ensures CTA is above fold */
+.hero-section {
+  min-height: 100svh;
+}
+
+@media (min-width: 768px) {
+  .hero-section {
+    min-height: 92vh;
+  }
+}
+
+/* On small mobile (320px-375px), don't force full viewport height —
+   let content dictate height so CTA stays above the fold */
+@media (max-width: 640px) {
+  .hero-section {
+    min-height: auto;
+  }
+}
+
+/* Hero content padding — tighter on mobile to keep CTA above fold */
+.hero-content-pad {
+  padding-bottom: 2.5rem;
+  padding-top: 6rem;
+}
+
+@media (min-width: 640px) {
+  .hero-content-pad {
+    padding-bottom: 2.5rem;
+    padding-top: 7rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-content-pad {
+    padding-bottom: 4rem;
+    padding-top: 10rem;
+  }
+}
+
+/* Hero body text — responsive sizing */
+.hero-body-text {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  .hero-body-text {
+    font-size: 1.125rem;
+  }
+}
+
 /* Hero headline — fluid type, with mobile-specific sizing for breathing room */
 .hero-headline {
   font-size: clamp(2.75rem, 7vw, 5.5rem);
@@ -81,7 +132,15 @@
 
 @media (max-width: 640px) {
   .hero-headline {
-    font-size: clamp(2.25rem, 10vw, 3.5rem);
+    font-size: clamp(2rem, 9vw, 3rem);
+    line-height: 1.1;
+  }
+}
+
+/* Extra-small screens: tighter headline */
+@media (max-width: 360px) {
+  .hero-headline {
+    font-size: 1.875rem;
     line-height: 1.1;
   }
 }
@@ -116,7 +175,7 @@
 }
 
 .hero-stat-cell-mobile {
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem 0.375rem;
   text-align: center;
 }
 
