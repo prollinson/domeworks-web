@@ -22,9 +22,9 @@
   } = $props()
 
   const bgClasses = {
-    white: 'bg-white',
-    muted: 'bg-slate-50',
-    dark: 'bg-slate-900 text-white'
+    white: 'bg-warm-white',
+    muted: 'bg-stone',
+    dark: 'bg-ink text-white'
   }
 
   const paddingClasses = {
@@ -34,9 +34,9 @@
     xl: 'py-28 md:py-36'
   }
 
-  const eyebrowColor = $derived(background === 'dark' ? 'text-primary' : 'text-slate-500')
-  const titleColor = $derived(background === 'dark' ? 'text-white' : 'text-slate-900')
-  const descColor = $derived(background === 'dark' ? 'text-slate-400' : 'text-slate-600')
+  const eyebrowColor = $derived(background === 'dark' ? 'text-primary' : 'text-warm-gray')
+  const titleColor = $derived(background === 'dark' ? 'text-white' : 'text-charcoal')
+  const descColor = $derived(background === 'dark' ? 'text-warm-gray' : 'text-charcoal/70')
 </script>
 
 <section
@@ -47,12 +47,12 @@
     {#if eyebrow || title}
       <div class="{centered ? 'text-center' : ''} mb-12">
         {#if eyebrow}
-          <p class="text-sm font-medium tracking-widest {eyebrowColor} uppercase mb-4">
+          <p class="text-xs font-medium tracking-widest {eyebrowColor} uppercase mb-4">
             {eyebrow}
           </p>
         {/if}
         {#if title}
-          <h2 class="section-title font-serif font-semibold {titleColor}">
+          <h2 class="section-title font-serif font-normal {titleColor}">
             {title}
           </h2>
         {/if}

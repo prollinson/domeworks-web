@@ -24,8 +24,8 @@ interface RevealOptions {
 
 const defaultOptions: RevealOptions = {
   delay: 0,
-  duration: 600,
-  distance: 20,
+  duration: 400,
+  distance: 15,
   stagger: false,
   staggerDelay: 100,
   threshold: 0.1,
