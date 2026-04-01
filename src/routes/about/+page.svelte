@@ -1,111 +1,123 @@
 <script lang="ts">
   import Section from '$lib/components/layout/Section.svelte'
   import Button from '$lib/components/ui/Button.svelte'
-  import SEO from '$lib/components/SEO.svelte'
-  import { generateSmbMailto } from '$lib/utils/mailto'
+  import { reveal } from '$lib/actions/reveal'
+  import { getBookCallUrl } from '$lib/utils/mailto'
 </script>
 
-<SEO
-  title="About — Dome Works"
-  description="Premium automation for businesses that value reliability, clarity, and maintainability."
-/>
+<svelte:head>
+  <title>About — Ex-DoorDash, Square Engineering Leader | DomeWorks</title>
+  <meta name="description" content="10+ years of engineering leadership at DoorDash and Square. Now building the AI infrastructure layer for engineering teams." />
+  <link rel="canonical" href="https://domeworks.tech/about/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="DomeWorks" />
+  <meta property="og:url" content="https://domeworks.tech/about/" />
+  <meta property="og:title" content="About — Ex-DoorDash, Square Engineering Leader | DomeWorks" />
+  <meta property="og:description" content="10+ years of engineering leadership at DoorDash and Square. Now building the AI infrastructure layer for engineering teams." />
+  <meta property="og:image" content="https://domeworks.tech/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About — Ex-DoorDash, Square Engineering Leader | DomeWorks" />
+  <meta name="twitter:description" content="10+ years of engineering leadership at DoorDash and Square. Now building AI infrastructure for engineering teams." />
+  <meta name="twitter:image" content="https://domeworks.tech/og-image.png" />
+
+  {@html `<script type="application/ld+json">${JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Piers Rollinson",
+    "jobTitle": "Founder",
+    "worksFor": { "@type": "Organization", "name": "DomeWorks" },
+    "description": "10+ years of engineering leadership at DoorDash and Square. Now building the AI infrastructure layer for engineering teams.",
+    "url": "https://domeworks.tech/about/"
+  })}</script>`}
+</svelte:head>
 
 <!-- Hero -->
-<section class="bg-white py-20 md:py-28">
-  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+<section class="bg-warm-white py-20 md:py-28 relative overflow-hidden">
+  <div class="absolute inset-0 grid-overlay opacity-50"></div>
+  <div class="relative max-w-6xl mx-auto px-6 lg:px-8">
     <div class="max-w-3xl">
-      <h1 class="font-serif text-4xl md:text-5xl font-semibold text-slate-900 leading-tight">
-        We build automation that works while you sleep
+      <h1 class="font-serif text-4xl md:text-5xl font-normal text-charcoal leading-[1.2] md:leading-[1.15]">
+        I've been making engineering teams ship better for a decade<span class="text-primary">.</span> Now I do it with AI<span class="text-primary">.</span>
       </h1>
-      <p class="mt-6 text-xl text-slate-600 leading-relaxed">
-        Dome Works is a Las Vegas-based automation consultancy. We help businesses replace manual workflows with reliable, monitored systems.
+      <p class="mt-6 text-xl text-charcoal/70 leading-relaxed">
+        I've spent the last decade leading engineering teams at DoorDash and Square. Most of that time was spent figuring out how to make teams ship better, faster, and with less friction.
       </p>
     </div>
   </div>
 </section>
 
-<!-- Principles -->
+<!-- Why DomeWorks Exists -->
 <Section background="muted" padding="lg">
-  <div class="max-w-3xl mx-auto">
-    <p class="text-sm font-medium tracking-widest text-slate-500 uppercase mb-4">01</p>
-    <h2 class="font-serif text-3xl font-semibold text-slate-900 mb-8">
-      Our principles
+  <div class="max-w-2xl mx-auto" use:reveal>
+    <p class="text-xs font-medium tracking-widest text-warm-gray uppercase mb-4">01</p>
+    <h2 class="font-serif text-3xl font-normal text-charcoal mb-8">
+      Why DomeWorks exists
     </h2>
-
-    <div class="space-y-8">
-      <div class="flex gap-6">
-        <span class="flex-shrink-0 text-sm font-medium text-primary tracking-widest">01</span>
-        <div>
-          <h3 class="font-semibold text-slate-900 mb-2">Clarity over cleverness</h3>
-          <p class="text-slate-600">Simple solutions that your team can understand, maintain, and extend.</p>
-        </div>
-      </div>
-
-      <div class="flex gap-6">
-        <span class="flex-shrink-0 text-sm font-medium text-primary tracking-widest">02</span>
-        <div>
-          <h3 class="font-semibold text-slate-900 mb-2">Scope control</h3>
-          <p class="text-slate-600">We define what "done" looks like before we start. No scope creep, no surprises.</p>
-        </div>
-      </div>
-
-      <div class="flex gap-6">
-        <span class="flex-shrink-0 text-sm font-medium text-primary tracking-widest">03</span>
-        <div>
-          <h3 class="font-semibold text-slate-900 mb-2">Reliability first</h3>
-          <p class="text-slate-600">Monitoring, alerts, exception handling, and rollback plans. Not afterthoughts.</p>
-        </div>
-      </div>
-
-      <div class="flex gap-6">
-        <span class="flex-shrink-0 text-sm font-medium text-primary tracking-widest">04</span>
-        <div>
-          <h3 class="font-semibold text-slate-900 mb-2">Maintainability</h3>
-          <p class="text-slate-600">Documentation, runbooks, and clean handoff. You own it when we're done.</p>
-        </div>
-      </div>
+    <div class="space-y-6 text-lg text-charcoal/70 leading-[1.65]">
+      <p>
+        Recently, that work shifted to AI. Not the hype cycle version — the engineering version. How do you take a team that has AI tools and make those tools actually change how the team ships?
+      </p>
+      <p>
+        I watched the same pattern play out at every company: leadership buys Cursor licenses, rolls them out in a Slack announcement, maybe runs a lunch-and-learn. Three months later, adoption is at 15% and nobody can explain why.
+      </p>
+      <p>
+        I can explain why. There's no connective tissue between the tools and how the team works. No shared context feeding into AI tools. No standard developer workflows automated around AI. No agent infrastructure connecting your codebase, tickets, and docs to how engineers actually ship.
+      </p>
+      <p class="border-l-2 border-copper pl-6 text-charcoal">
+        Over 80% of organizations report no measurable impact on EBIT despite their AI investments <span class="text-charcoal/40">(BCG, 2024)</span>. Nobody is building the layer between the tools and the work. That's where DomeWorks operates.
+      </p>
     </div>
   </div>
 </Section>
 
-<!-- Working Style -->
+<!-- How I Work -->
 <Section background="white" padding="lg">
-  <div class="max-w-3xl mx-auto">
-    <p class="text-sm font-medium tracking-widest text-slate-500 uppercase mb-4">02</p>
-    <h2 class="font-serif text-3xl font-semibold text-slate-900 mb-8">
-      How we work
+  <div class="max-w-2xl mx-auto" use:reveal>
+    <p class="text-xs font-medium tracking-widest text-warm-gray uppercase mb-4">02</p>
+    <h2 class="font-serif text-3xl font-normal text-charcoal mb-8">
+      How I work
     </h2>
 
-    <div class="space-y-6">
-      <div class="p-6 bg-slate-50 rounded-xl">
-        <h3 class="font-semibold text-slate-900 mb-2">Written-first</h3>
-        <p class="text-slate-600">Clear written communication. Documented decisions. Async-friendly.</p>
+    <div class="space-y-8">
+      <div class="flex gap-6">
+        <span class="flex-shrink-0 text-xs font-medium text-primary tracking-widest">01</span>
+        <div>
+          <h3 class="font-medium text-charcoal mb-2">Embedded, not advisory</h3>
+          <p class="text-charcoal/70 leading-[1.65]">I join your standups. I pair with your engineers. I sit in on planning. I write code, build systems, and ship alongside your team. You can't transfer capability from a slide deck.</p>
+        </div>
       </div>
 
-      <div class="p-6 bg-slate-50 rounded-xl">
-        <h3 class="font-semibold text-slate-900 mb-2">Artifacts-first</h3>
-        <p class="text-slate-600">Every engagement produces tangible deliverables: workflow maps, runbooks, documentation.</p>
+      <div class="flex gap-6">
+        <span class="flex-shrink-0 text-xs font-medium text-primary tracking-widest">02</span>
+        <div>
+          <h3 class="font-medium text-charcoal mb-2">Designed to end</h3>
+          <p class="text-charcoal/70 leading-[1.65]">Every engagement has a built-in exit. The goal is a team that has the systems they need and knows how to maintain them. The AI landscape moves fast — there's always a next phase to build, but you should be choosing it, not depending on me.</p>
+        </div>
       </div>
 
-      <div class="p-6 bg-slate-50 rounded-xl">
-        <h3 class="font-semibold text-slate-900 mb-2">Premium positioning</h3>
-        <p class="text-slate-600">We're a good fit when reliability, clarity, and maintainability matter more than the lowest bid.</p>
+      <div class="flex gap-6">
+        <span class="flex-shrink-0 text-xs font-medium text-primary tracking-widest">03</span>
+        <div>
+          <h3 class="font-medium text-charcoal mb-2">Working systems over opinions</h3>
+          <p class="text-charcoal/70 leading-[1.65]">I deliver running systems, not recommendations. Configured tools, documented workflows, measured before-and-after. Things your team can point to and build on.</p>
+        </div>
       </div>
     </div>
   </div>
 </Section>
 
 <!-- CTA -->
-<section class="bg-slate-900 text-white py-20">
-  <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-    <h2 class="font-serif text-3xl font-semibold mb-4">
-      Ready to talk?
+<Section background="muted" padding="lg">
+  <div class="max-w-2xl mx-auto text-center" use:reveal>
+    <h2 class="font-serif text-3xl font-normal text-charcoal mb-4">
+      Want to talk about your team?
     </h2>
-    <p class="text-slate-400 mb-8">
-      Email us your workflow. We'll tell you what it takes.
+    <p class="text-lg text-charcoal/70 mb-8">
+      30 minutes, no obligation. I'll tell you whether this is something I can help with.
     </p>
-    <Button href={generateSmbMailto()} size="lg">
-      Email us your workflow
+    <Button href={getBookCallUrl()} size="lg">
+      Book a call
     </Button>
   </div>
-</section>
+</Section>

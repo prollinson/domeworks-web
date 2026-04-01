@@ -47,6 +47,18 @@ let { children } = $props()
 
 ## Configuration Notes
 
-- Node 22+ required
+- Node 22+ required (managed by mise)
 - ESLint 9 flat config format
 - All routes prerendered with trailing slashes (`/page/` not `/page`)
+- Dev server: `portless run --name domeworks npm run dev` -> `https://domeworks.localhost:1355`
+
+## Component Patterns
+
+- `Section.svelte` — reusable section wrapper with `bgColor`, `padding`, `eyebrow` props
+- `Button.svelte` — variants: primary/secondary/ghost, sizes: sm/md/lg
+- `reveal.ts` action — scroll reveal animation via IntersectionObserver
+- `Scrollytelling.svelte` — scroll-driven narrative component
+
+## Routes
+
+`/` home, `/services/`, `/enterprise/`, `/process/`, `/examples/`, `/security/`, `/about/`, `/contact/`

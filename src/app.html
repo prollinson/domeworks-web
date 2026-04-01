@@ -4,18 +4,21 @@
 		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 		<meta name="viewport" content="width=device-width" />
-		<meta name="robots" content="index, follow" />
 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-D8PB67BC6G"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'G-D8PB67BC6G');
+		</script>
 		%sveltekit.head%
 	</head>
-	<body class="bg-slate-50 font-sans leading-normal tracking-normal antialiased">
-		<script>
-			!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(e,t.createElement("script"));var o=t.getElementsByTagName("script")[0];e.async=1,e.src="https://cdn.i.posthog.com/static/analytics.js/v2/"+i+"_web.min.js",o.parentNode.insertBefore(e,o);var n=t.createElement("script");n.async=!0,n.innerHTML=JSON.stringify(e._i),o.parentNode.insertBefore(n,o)}(document,window.posthog||[]);
-			posthog.init('phc_cWV8o1edVKhWZpHZiyzEz7oiRDgzNAAQnMEW3M1hayC', {api_host:'https://app.posthog.com', capture_pageview: false});
-		</script>
+	<body class="bg-warm-white font-sans leading-normal tracking-normal antialiased">
 		<div>%sveltekit.body%</div>
 	</body>
 </html>

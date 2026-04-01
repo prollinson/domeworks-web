@@ -1,51 +1,51 @@
-const EMAIL = 'hello@domeworks.tech'
+const EMAIL = 'piers@domeworks.tech'
+const CALENDLY = 'https://fantastical.app/piers/domeworks'
 
-interface MailtoOptions {
-  workflowName?: string
+export function getBookCallUrl(): string {
+  return CALENDLY
 }
 
-export function generateSmbMailto(options: MailtoOptions = {}): string {
-  const subject = encodeURIComponent(
-    `Automation Sprint — ${options.workflowName || '[workflow name]'}`
-  )
+export function generateScanMailto(): string {
+  const subject = encodeURIComponent('AI Scan — interested')
 
-  const body = encodeURIComponent(`Business type + team size:
+  const body = encodeURIComponent(`Hi Piers,
 
-Workflow (start to end):
+I'm interested in the AI Scan for my team.
 
-Bottlenecks (top 3):
+Company:
+Role:
+Team size (engineers):
+AI tools currently in use:
 
-Tools (Google/Slack/Microsoft/HubSpot + others):
-
-Volume per week:
-
-Success definition:
-
-Budget band (target $5–15k):
-
-Decision maker involved? (Yes/No):
-
-Timing constraints:`)
+Best time for a 15-min call:`)
 
   return `mailto:${EMAIL}?subject=${subject}&body=${body}`
 }
 
-export function generateEnterpriseMailto(): string {
-  const subject = encodeURIComponent('AI Consulting — scope discussion')
+export function generateAssessmentMailto(): string {
+  const subject = encodeURIComponent('AI Assessment — interested')
 
-  const body = encodeURIComponent(`Goals:
+  const body = encodeURIComponent(`Hi Piers,
 
-Constraints (security/compliance):
+I'm interested in the AI Infrastructure Assessment.
 
-Stakeholders (dev/IT/security):
+Company:
+Role:
+Team size (engineers):
+AI tools currently in use:
+Biggest challenge with AI adoption:
 
-Current stack:
+Best time for a 30-min call:`)
 
-Desired engagement model:
+  return `mailto:${EMAIL}?subject=${subject}&body=${body}`
+}
 
-Timeline:
+export function generateGeneralMailto(): string {
+  const subject = encodeURIComponent('DomeWorks — inquiry')
 
-NDA required?:`)
+  const body = encodeURIComponent(`Hi Piers,
+
+`)
 
   return `mailto:${EMAIL}?subject=${subject}&body=${body}`
 }
