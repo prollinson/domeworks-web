@@ -405,17 +405,15 @@
   resolved "https://registry.npmjs.org/@polka/url/-/url-1.0.0-next.29.tgz"
   integrity sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww==
 
-"@posthog/core@1.23.2":
-  version "1.23.2"
-  resolved "https://registry.yarnpkg.com/@posthog/core/-/core-1.23.2.tgz#1b55307755a2b9838d308039e2972395f8d0fd40"
-  integrity sha512-zTDdda9NuSHrnwSOfFMxX/pyXiycF4jtU1kTr8DL61dHhV+7LF6XF1ndRZZTuaGGbfbb/GJYkEsjEX9SXfNZeQ==
-  dependencies:
-    cross-spawn "^7.0.6"
+"@posthog/core@1.24.5":
+  version "1.24.5"
+  resolved "https://registry.yarnpkg.com/@posthog/core/-/core-1.24.5.tgz#97170c188b4abfc2e0ba28ff95807fe75770ccbe"
+  integrity sha512-umXx3kMjM+cTUTLDsdPFFU7aJa3uiH19EEoWKbE5QVME8WgVg7q1peMhK7y7n7xRmYJlA70eOrHQfWlzBQqeFQ==
 
-"@posthog/types@1.359.0":
-  version "1.359.0"
-  resolved "https://registry.yarnpkg.com/@posthog/types/-/types-1.359.0.tgz#db9a4954deaa66fae5a5b69468817f0bef4dbc06"
-  integrity sha512-IcRRmDqDwXnwcB1ISg2NofvDXUwJKUjmIWuRqaEzD1sB+VyY7YX9R1pctXoZ4181cdjYG8Ed/g7fnpJMloZY/A==
+"@posthog/types@1.364.5":
+  version "1.364.5"
+  resolved "https://registry.yarnpkg.com/@posthog/types/-/types-1.364.5.tgz#f193cb02d2244be6ff9e2992b45aa5afbf525511"
+  integrity sha512-lekH0rJ5NVuX0vj9XlSrGshHaNHOBMBcn1dv4dVpI8HVnLrqmSvMidRfYPYL78d2tsCEjs7qWD7yri77GQvzSg==
 
 "@protobufjs/aspromise@^1.1.1", "@protobufjs/aspromise@^1.1.2":
   version "1.1.2"
@@ -1043,10 +1041,10 @@ devalue@^5.3.2, devalue@^5.5.0:
   resolved "https://registry.npmjs.org/devalue/-/devalue-5.6.1.tgz"
   integrity sha512-jDwizj+IlEZBunHcOuuFVBnIMPAEHvTsJj0BcIp94xYguLRVBcXO853px/MyIJvbVzWdsGvrRweIUWJw8hBP7A==
 
-dompurify@^3.3.1:
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/dompurify/-/dompurify-3.3.2.tgz#58c515d0f8508b8749452a028aa589ad80b36325"
-  integrity sha512-6obghkliLdmKa56xdbLOpUZ43pAR6xFy1uOrxBaIDjT+yaRuuybLjGS9eVBoSR/UPU5fq3OXClEHLJNGvbxKpQ==
+dompurify@^3.3.2:
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/dompurify/-/dompurify-3.3.3.tgz#680cae8af3e61320ddf3666a3bc843f7b291b2b6"
+  integrity sha512-Oj6pzI2+RqBfFG+qOaOLbFXLQ90ARpcGG6UePL82bJLtdsa6CYJD7nmiU8MW9nQNOtCHV3lZ/Bzq1X0QYbBZCA==
   optionalDependencies:
     "@types/trusted-types" "^2.0.7"
 
@@ -1669,20 +1667,20 @@ postcss@^8.4.49, postcss@^8.5.6:
     picocolors "^1.1.1"
     source-map-js "^1.2.1"
 
-posthog-js@^1.359.0:
-  version "1.359.0"
-  resolved "https://registry.yarnpkg.com/posthog-js/-/posthog-js-1.359.0.tgz#c6fc9843078dbda83b875a4861199f3df4697f6e"
-  integrity sha512-W3yrLKgJfc9qm7Z9e7LblPdCuSJsfB8xzg36GSklyFETqb5b8KtmF2cx/tiXMGEDNmKPPJ+oex/N9Q+vdTjPug==
+posthog-js@^1.364.5:
+  version "1.364.5"
+  resolved "https://registry.yarnpkg.com/posthog-js/-/posthog-js-1.364.5.tgz#3244bdf578170ca468b76cfb3621f40815cea921"
+  integrity sha512-A3Tn6czaqygxUss5P7dseMZ+zoUrIdKSQAvAnHWvMqjnQr8hvUEKlkrdF/LDzA79mXoKZKoIGtujv3V/M3PphA==
   dependencies:
     "@opentelemetry/api" "^1.9.0"
     "@opentelemetry/api-logs" "^0.208.0"
     "@opentelemetry/exporter-logs-otlp-http" "^0.208.0"
     "@opentelemetry/resources" "^2.2.0"
     "@opentelemetry/sdk-logs" "^0.208.0"
-    "@posthog/core" "1.23.2"
-    "@posthog/types" "1.359.0"
+    "@posthog/core" "1.24.5"
+    "@posthog/types" "1.364.5"
     core-js "^3.38.1"
-    dompurify "^3.3.1"
+    dompurify "^3.3.2"
     fflate "^0.4.8"
     preact "^10.28.2"
     query-selector-shadow-dom "^1.0.1"
