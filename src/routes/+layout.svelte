@@ -11,16 +11,16 @@
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
-    name: 'Dome Works',
-    description: 'Automation consultancy serving Las Vegas Valley businesses. We build workflow automation, integrations, and AI-assisted operations.',
-    url: 'https://domeworks.tech',
+    name: 'DomeWorks',
+    description: 'Intelligence infrastructure engineering for engineering organizations. We build the Context and Orchestration layers that replace coordination overhead with AI-native systems.',
+    url: 'https://domeworks.ai',
     areaServed: {
-      '@type': 'Place',
-      name: 'Las Vegas Valley, Nevada'
+      '@type': 'Country',
+      name: 'United States'
     },
-    serviceType: ['Workflow Automation', 'AI Consulting', 'Business Process Automation'],
-    priceRange: '$3,500–$24,000',
-    email: 'hello@domeworks.tech'
+    serviceType: ['Intelligence Infrastructure Engineering', 'AI Consulting', 'Context Layer Engineering', 'Orchestration Layer Engineering'],
+    priceRange: '$2,500–$15,000+',
+    email: 'piers@domeworks.ai'
   }
 
   // Enable View Transitions API for smooth page navigation
