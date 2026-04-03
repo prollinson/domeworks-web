@@ -16,7 +16,7 @@
 
   const navLinks = [
     { href: '/scan/', label: 'AI Scan' },
-    { href: '/assessment/', label: 'Assessment' },
+    { href: '/context-build/', label: 'Context Build' },
     { href: '/about/', label: 'About' },
     { href: '/contact/', label: 'Contact' }
   ]
