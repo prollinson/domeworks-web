@@ -6,22 +6,22 @@
 </script>
 
 <svelte:head>
-  <title>DomeWorks — AI Infrastructure Engineering for Teams</title>
-  <meta name="description" content="AI engineering consultancy that builds developer workflow automation, agent infrastructure, and shared context systems for engineering teams. Your team bought AI tools — I make them work." />
+  <title>DomeWorks — Intelligence Infrastructure Engineering</title>
+  <meta name="description" content="Your engineering team runs on meetings, status updates, and managers routing information. That coordination layer can now be built as intelligence infrastructure. DomeWorks builds it." />
   <link rel="canonical" href="https://domeworks.tech/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="DomeWorks" />
   <meta property="og:url" content="https://domeworks.tech/" />
-  <meta property="og:title" content="DomeWorks — AI Infrastructure Engineering for Teams" />
-  <meta property="og:description" content="AI engineering consultancy that builds developer workflow automation and agent infrastructure for engineering teams. Your team bought AI tools — I make them work." />
+  <meta property="og:title" content="DomeWorks — Intelligence Infrastructure Engineering" />
+  <meta property="og:description" content="Your engineering team runs on meetings, status updates, and managers routing information. That coordination layer can now be built as intelligence infrastructure." />
   <meta property="og:image" content="https://domeworks.tech/og-image.png" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="DomeWorks — AI Infrastructure Engineering for Teams" />
-  <meta name="twitter:description" content="Your team bought AI tools. A few engineers use them. The team isn't shipping faster." />
+  <meta name="twitter:title" content="DomeWorks — Intelligence Infrastructure Engineering" />
+  <meta name="twitter:description" content="Your engineering team runs on meetings, status updates, and managers routing information. That coordination layer can now be built as intelligence infrastructure." />
   <meta name="twitter:image" content="https://domeworks.tech/og-image.png" />
 
   <!-- JSON-LD: Organization + WebSite -->
@@ -33,7 +33,7 @@
         "name": "DomeWorks",
         "url": "https://domeworks.tech",
         "foundingDate": "2025",
-        "description": "AI engineering consultancy specializing in developer workflow automation, agent infrastructure, and shared context systems for engineering teams.",
+        "description": "Intelligence infrastructure engineering consultancy. Replaces coordination overhead with context pipelines, agent orchestration, and quality gates for engineering teams.",
         "founder": {
           "@type": "Person",
           "name": "Piers Rollinson",
@@ -50,59 +50,6 @@
         "@type": "WebSite",
         "name": "DomeWorks",
         "url": "https://domeworks.tech"
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Why not just assign one of our engineers to figure out AI adoption?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "They'd spend 3-6 months learning from scratch while pulled off product work. DomeWorks compresses that to 4-8 weeks with patterns already proven across multiple teams. Your best engineer stays on the product."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What's the difference between the AI Scan and the Assessment?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The Scan shows what's happening — hard data on spend, adoption, and waste. The Assessment explains why and designs what to build. Many clients start with the Scan and proceed to the Assessment once they see the data."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What happens when the DomeWorks engagement ends?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Your team owns everything. DomeWorks builds systems designed to be maintained and extended without ongoing dependency. The AI landscape moves fast — there's always a next phase to build, but you should be choosing it, not depending on a consultant."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How is DomeWorks different from other AI consultants?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Most AI consultants advise. DomeWorks embeds with your team and builds the systems. The deliverable is working infrastructure — shared context, reliable workflows, configured tools — not a strategy deck."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What does 'embed with the team' actually mean?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "DomeWorks joins your standups, pairs with your engineers, sits in on planning, writes code, builds systems, and ships alongside your team. 2-3 days a week, on-site or remote."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Why hire a solo AI consultancy instead of a larger firm?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "You get a senior hands-on builder — not a partner who sells and a junior who delivers. Every hour you pay for is spent by someone with a decade of engineering leadership at DoorDash and Square. No bench, no overhead, no theater."
-            }
-          }
-        ]
       }
     ]
   })}</script>`}
@@ -135,7 +82,7 @@
   <div class="relative w-full max-w-7xl mx-auto px-6 lg:px-8 hero-content-pad flex flex-col justify-between min-h-[inherit]">
     <!-- Top zone: Eyebrow -->
     <div class="hero-eyebrow-row">
-      <span class="hero-eyebrow-text">AI Infrastructure Engineering</span>
+      <span class="hero-eyebrow-text">Intelligence Infrastructure Engineering</span>
       <div class="flex-1 h-px bg-warm-white/8 ml-6" aria-hidden="true" role="presentation"></div>
       <span class="hero-eyebrow-index">San Francisco</span>
     </div>
@@ -143,20 +90,20 @@
     <!-- Middle zone: Headline — editorial scale, staggered lines -->
     <div class="hero-middle">
       <h1 class="hero-headline font-serif font-normal text-warm-white">
-        <span class="hero-line hero-line-1">Your team</span>
-        <span class="hero-line hero-line-2">bought AI tools<span class="text-copper">.</span></span>
-        <span class="hero-line hero-line-3"><em class="hero-headline-em">Nobody built</em></span>
-        <span class="hero-line hero-line-4 text-warm-white/70">the systems<span class="text-copper/70">.</span></span>
+        <span class="hero-line hero-line-1">Coordination</span>
+        <span class="hero-line hero-line-2">is overhead<span class="text-copper">.</span></span>
+        <span class="hero-line hero-line-3"><em class="hero-headline-em">Build it as</em></span>
+        <span class="hero-line hero-line-4 text-warm-white/70">infrastructure<span class="text-copper/70">.</span></span>
       </h1>
 
       <!-- Subtext — positioned as an editorial aside, offset from the headline -->
       <div class="hero-aside">
         <div class="hero-aside-rule" aria-hidden="true" role="presentation"></div>
         <p class="hero-body-text text-warm-white/85 leading-relaxed">
-          The problem isn't the tools. It's that nobody built the systems connecting them to how your team actually works.
+          I spent 10+ years leading engineering teams at DoorDash, Square, and Mudflap. The biggest bottleneck was never the engineering — it was the coordination. That layer can now be built as intelligence infrastructure.
         </p>
         <p class="mt-3 text-sm text-warm-white/75 leading-relaxed hidden sm:block">
-          Developer workflow automation, agent infrastructure, and shared context systems for engineering teams.
+          Most companies bought AI tools and watched adoption flatline. The companies getting real leverage are replacing the coordination layer itself with intelligence infrastructure. DomeWorks builds that infrastructure.
         </p>
         <div class="mt-6 md:mt-8 flex items-center gap-6">
           <Button href={getBookCallUrl()} size="lg">
@@ -185,12 +132,12 @@
         <div class="hero-stat-divider" aria-hidden="true" role="presentation"></div>
         <div class="hero-stat-cell">
           <span class="hero-stat-value font-serif">48hr</span>
-          <span class="hero-stat-label">AI Scan turnaround</span>
+          <span class="hero-stat-label">Intelligence Scan</span>
         </div>
         <div class="hero-stat-divider" aria-hidden="true" role="presentation"></div>
         <div class="hero-stat-cell">
-          <span class="hero-stat-value font-serif">4–8wk</span>
-          <span class="hero-stat-label">Time to team adoption</span>
+          <span class="hero-stat-value font-serif">4 layers</span>
+          <span class="hero-stat-label">Intelligence Stack</span>
         </div>
       </div>
       <!-- Mobile stats -->
@@ -202,12 +149,12 @@
         <div class="hero-stat-divider" aria-hidden="true" role="presentation"></div>
         <div class="hero-stat-cell-mobile">
           <span class="text-2xl font-serif text-warm-white/95">48hr</span>
-          <span class="text-xs text-warm-white/70 mt-1 tracking-wider uppercase leading-tight">Scan delivery</span>
+          <span class="text-xs text-warm-white/70 mt-1 tracking-wider uppercase leading-tight">Intel Scan</span>
         </div>
         <div class="hero-stat-divider" aria-hidden="true" role="presentation"></div>
         <div class="hero-stat-cell-mobile">
-          <span class="text-2xl font-serif text-warm-white/95">4–8wk</span>
-          <span class="text-xs text-warm-white/70 mt-1 tracking-wider uppercase leading-tight">To adoption</span>
+          <span class="text-2xl font-serif text-warm-white/95">4 layers</span>
+          <span class="text-xs text-warm-white/70 mt-1 tracking-wider uppercase leading-tight">Intel Stack</span>
         </div>
       </div>
     </div>
@@ -215,32 +162,99 @@
 </section>
 
 <!-- The Problem -->
-<Section background="muted" padding="lg" eyebrow="01" title="Why AI tools fail at the team level">
+<Section background="muted" padding="lg" eyebrow="01" title="The problem isn't the tools">
   <div class="max-w-2xl mx-auto space-y-6" use:reveal>
     <p class="text-lg text-charcoal/70 leading-relaxed">
-      Your engineers have AI tools. A few power users are productive with them. But at the team level, nothing has changed.
+      Your team has AI tools. But your organization still coordinates the same way it always has — through hierarchy, meetings, and people relaying information.
     </p>
     <p class="text-lg text-charcoal/70 leading-relaxed">
-      Every engineer is on their own — prompting from scratch, getting inconsistent results, reinventing the wheel. There's no shared context about your codebase feeding into AI tools. No standard workflows. No way to make AI-assisted work reliable and reviewable.
+      Engineers re-explain their architecture to every AI prompt. Managers spend their days aggregating context from three teams so a fourth team can act on it. Status meetings exist because information doesn't flow without human relay chains. The tools work fine individually. What's missing is the intelligence infrastructure that replaces the coordination overhead.
     </p>
-    <div class="grid sm:grid-cols-2 gap-4 mt-8">
-      <div class="p-5 bg-warm-white rounded-xl border border-charcoal/10">
-        <p class="text-3xl font-normal font-serif text-charcoal">95%</p>
-        <p class="text-sm text-charcoal/60 mt-1">of AI pilots fail to deliver measurable financial returns <span class="text-charcoal/40">(Rand, 2024)</span></p>
+    <div class="p-6 bg-warm-white rounded-xl border border-charcoal/10 mt-8">
+      <p class="text-charcoal/70 leading-relaxed">
+        <strong class="text-charcoal">Block</strong> (the company behind Square and Cash App) recently published how they're rebuilding their entire organization this way — replacing middle management's coordination function with what they call a <em>"company world model."</em> They have the engineering capacity to build it internally. Most companies don't.
+      </p>
+      <p class="text-sm text-charcoal/50 mt-3">That's where DomeWorks comes in.</p>
+    </div>
+  </div>
+</Section>
+
+<!-- What I Build — The Intelligence Stack -->
+<Section background="white" padding="lg" eyebrow="02" title="The Intelligence Stack">
+  <div class="max-w-4xl mx-auto" use:reveal>
+    <p class="text-lg text-charcoal/70 leading-relaxed text-center mb-12 max-w-2xl mx-auto">
+      Every organization running on AI needs four layers. Most companies have the top and bottom but are missing the middle two.
+    </p>
+
+    <!-- Intelligence Stack visual diagram -->
+    <div class="space-y-2 mb-12">
+      <div class="rounded-t-2xl border border-charcoal/10 bg-warm-white p-5 md:p-6">
+        <div class="flex items-baseline gap-3">
+          <span class="text-xs font-medium tracking-widest text-warm-gray uppercase shrink-0">Surface</span>
+          <span class="text-charcoal/60 text-sm">Where humans decide and act</span>
+        </div>
       </div>
-      <div class="p-5 bg-warm-white rounded-xl border border-charcoal/10">
-        <p class="text-3xl font-normal font-serif text-charcoal">42%</p>
-        <p class="text-sm text-charcoal/60 mt-1">of companies scrapped most of their AI initiatives last year <span class="text-charcoal/40">(S&P Global, 2024)</span></p>
+      <div class="border-2 border-primary bg-primary/5 p-5 md:p-6 relative">
+        <span class="absolute -left-px top-1/2 -translate-y-1/2 -translate-x-full text-[10px] font-medium tracking-widest text-primary uppercase hidden md:block" style="writing-mode: vertical-lr; transform: rotate(180deg) translateX(100%) translateY(-50%);">DomeWorks builds</span>
+        <div class="flex items-baseline gap-3">
+          <span class="text-xs font-medium tracking-widest text-primary uppercase shrink-0">Orchestration</span>
+          <span class="text-charcoal/60 text-sm">Coordinates work, routes output, enforces quality gates</span>
+        </div>
+      </div>
+      <div class="border-2 border-copper bg-copper/5 p-5 md:p-6">
+        <div class="flex items-baseline gap-3">
+          <span class="text-xs font-medium tracking-widest text-copper uppercase shrink-0">Context</span>
+          <span class="text-charcoal/60 text-sm">The world model: domain knowledge, conventions, project state</span>
+        </div>
+      </div>
+      <div class="rounded-b-2xl border border-charcoal/10 bg-warm-white p-5 md:p-6">
+        <div class="flex items-baseline gap-3">
+          <span class="text-xs font-medium tracking-widest text-warm-gray uppercase shrink-0">Edge</span>
+          <span class="text-charcoal/60 text-sm">Tools, APIs, repos, CI/CD</span>
+        </div>
       </div>
     </div>
-    <p class="text-lg text-charcoal/70 leading-relaxed">
-      Not because the tools are bad — because nobody built the connective tissue between the tools and the work.
-    </p>
+
+    <!-- Layer descriptions -->
+    <div class="grid md:grid-cols-2 gap-8 mb-12">
+      <div class="space-y-4">
+        <h3 class="font-medium text-charcoal flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-copper"></span>
+          The Context Layer
+        </h3>
+        <p class="text-charcoal/70 leading-relaxed">
+          Builds your organization's world model — machine-readable representations of your domain knowledge, team conventions, codebase patterns, and project state. With it, every AI interaction has full organizational context. Without it, every prompt starts from zero.
+        </p>
+      </div>
+      <div class="space-y-4">
+        <h3 class="font-medium text-charcoal flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+          The Orchestration Layer
+        </h3>
+        <p class="text-charcoal/70 leading-relaxed">
+          Replaces the coordination function that hierarchy exists to perform. Multi-agent systems that route tasks, compose capabilities, enforce quality gates, and handle failures — so your team reviews and decides instead of relaying and coordinating.
+        </p>
+      </div>
+    </div>
+
+    <div class="max-w-2xl mx-auto space-y-6">
+      <p class="text-lg text-charcoal/70 leading-relaxed border-l-2 border-copper pl-6">
+        I embed with your team 2-3 days a week for 4-12 weeks and build both layers. Most consultancies hand you a strategy deck. I stay until the intelligence infrastructure is running and your team can maintain it without me.
+      </p>
+
+      <!-- Fractional AI Leadership -->
+      <div class="p-6 bg-stone rounded-xl border border-charcoal/10">
+        <h3 class="font-medium text-charcoal mb-2">Fractional AI Leadership</h3>
+        <p class="text-charcoal/70 leading-relaxed text-sm">
+          An ongoing retainer where I act as your part-time Head of AI — 1-2 days a week. I maintain and evolve both layers, close feedback loops so the system gets smarter over time, and make sure the transition from hierarchy to intelligence infrastructure compounds instead of stalling.
+        </p>
+      </div>
+    </div>
   </div>
 </Section>
 
 <!-- How It Works -->
-<Section id="how-it-works" background="white" padding="lg" eyebrow="02" title="How it works">
+<Section id="how-it-works" background="muted" padding="lg" eyebrow="03" title="How it works">
   <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto" use:reveal={{ stagger: true, staggerDelay: 150 }}>
     <a href="/scan/" class="group p-8 bg-warm-white rounded-2xl border border-charcoal/10 hover:border-primary card-lift flex flex-col">
       <span class="inline-block px-3 py-1 text-xs font-medium text-primary bg-primary/10 rounded-full mb-4 w-fit">
@@ -249,120 +263,59 @@
       <h3 class="text-xl font-medium text-charcoal mb-2">AI Scan</h3>
       <p class="text-2xl font-normal font-serif text-charcoal mb-4">$2,500–$3,500</p>
       <p class="text-charcoal/60 text-sm flex-grow">
-        In 48 hours, I map your AI spend, adoption patterns, and wasted seats. You get a clear picture of what's working and what isn't — plus quick wins your team can act on this week.
+        In 48 hours, I diagnose your Intelligence Maturity level — where you are on the path from "bought tools" to "AI coordinates our work." You get a clear picture of what's missing and quick wins your team can act on this week.
       </p>
       <p class="mt-4 text-sm text-primary font-medium group-hover:underline">Learn more &rarr;</p>
     </a>
 
-    <a href="/assessment/" class="group p-8 bg-warm-white rounded-2xl border-2 border-primary flex flex-col relative">
+    <a href="/context-build/" class="group p-8 bg-warm-white rounded-2xl border-2 border-primary flex flex-col relative">
       <span class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 text-xs font-medium text-white bg-primary rounded-full">
         Deep dive
       </span>
-      <h3 class="text-xl font-medium text-charcoal mb-2">Assessment</h3>
-      <p class="text-2xl font-normal font-serif text-charcoal mb-4">$10,000–$15,000</p>
+      <h3 class="text-xl font-medium text-charcoal mb-2">Context Build</h3>
+      <p class="text-2xl font-normal font-serif text-charcoal mb-4">$10,000–$15,000+</p>
       <p class="text-charcoal/60 text-sm flex-grow">
-        The deeper engagement. I interview your stakeholders, assess what's missing between "engineers have tools" and "the team ships faster," and design a build plan. 1-2 weeks.
+        I map your organization's world model gaps, design the Context Layer, and build the infrastructure that feeds your domain knowledge into every AI interaction. Your team goes from "every prompt starts from zero" to "AI knows our business."
       </p>
-      <p class="mt-4 text-sm text-primary font-medium group-hover:underline">Learn more &rarr;</p>
+      <p class="mt-4 text-sm text-charcoal/50">1-2 week assessment + 4-week build</p>
     </a>
 
-    <div class="p-8 bg-warm-white rounded-2xl border border-charcoal/10 border-dashed flex flex-col opacity-90">
-      <h3 class="text-xl font-medium text-charcoal mb-2">Build</h3>
+    <a href="/orchestration-build/" class="group p-8 bg-warm-white rounded-2xl border border-charcoal/10 hover:border-primary card-lift flex flex-col">
+      <h3 class="text-xl font-medium text-charcoal mb-2">Orchestration Build</h3>
       <p class="text-2xl font-normal font-serif text-charcoal mb-4">4–12 weeks</p>
       <p class="text-charcoal/60 text-sm flex-grow">
-        I embed with your team 2-3 days a week and build the systems. Shared context layers, reliable workflows, developer tooling, team training. Not a handoff — I'm in the work with you.
+        I build the Orchestration Layer — multi-agent coordination, quality gates, output routing. Your team goes from "AI helps individual engineers" to "AI coordinates our work."
       </p>
-      <p class="mt-4 text-sm text-charcoal/40">Scoped from assessment findings</p>
-    </div>
+      <p class="mt-4 text-sm text-charcoal/50">Day rate, scoped from assessment</p>
+    </a>
   </div>
 </Section>
 
 <!-- Who This Is For -->
-<Section background="muted" padding="lg" eyebrow="03" title="Who this is for">
+<Section background="white" padding="lg" eyebrow="04" title="Who this is for">
   <div class="max-w-2xl mx-auto" use:reveal>
-    <div class="p-8 md:p-12 bg-warm-white rounded-2xl border border-charcoal/10">
+    <div class="p-8 md:p-12 bg-stone rounded-2xl border border-charcoal/10">
       <p class="text-lg text-charcoal/70 leading-relaxed mb-6">
-        You're a <strong class="text-charcoal">VP of Engineering, Head of Engineering, or CTO</strong> at a mid-market SaaS company (50-500 people) or a funded startup. Your engineers have AI tools but the team isn't shipping faster.
+        You're a <strong class="text-charcoal">VP of Engineering, Head of Engineering, or CTO</strong> at a mid-market SaaS company (50-500 people) or a funded startup. Your engineers have AI tools but your organization still runs on human coordination — meetings, status updates, managers routing information between teams.
       </p>
       <p class="text-lg text-charcoal/70 leading-relaxed mb-6">
-        You've probably thought about assigning a senior engineer to figure this out. But they'd be learning from scratch, and you'd lose their output on product work for months.
+        You've probably thought about assigning a senior engineer to figure this out. But building intelligence infrastructure that replaces coordination overhead isn't a side project. It's infrastructure engineering — context pipelines, agent orchestration, quality gates, observability. You need someone who's already built this, who knows what works and what doesn't, so your team gets the infrastructure without the trial-and-error tax.
       </p>
       <p class="text-lg text-charcoal leading-relaxed font-medium border-l-2 border-copper pl-6">
-        You need someone who's already done this — who knows what works and what doesn't — so your team gets the systems without the trial-and-error tax.
+        You don't need another tool or a strategy deck. You need someone who can build the missing layers of your Intelligence Stack.
       </p>
     </div>
   </div>
 </Section>
 
-<!-- What I Build -->
-<Section background="white" padding="lg" eyebrow="04" title="What AI infrastructure engineering looks like">
-  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto" use:reveal={{ stagger: true, staggerDelay: 100 }}>
-    {#each [
-      { title: 'Shared context layers', desc: 'CLAUDE.md, conventions, and codebase knowledge fed to AI tools so every engineer gets relevant, consistent output.' },
-      { title: 'Agent workflows', desc: 'Reliable, reviewable AI-assisted workflows for code review, PR creation, and testing — so your team can ship AI-assisted code with the same confidence as hand-written code.' },
-      { title: 'CI/CD integration', desc: 'AI tools wired into your deployment pipeline — so AI-generated code gets the same automated checks as human code before it hits production.' },
-      { title: 'Team conventions', desc: 'Working agreements, review standards, and quality gates — so your leads can trust AI-assisted PRs without reviewing every line twice.' },
-      { title: 'Developer tooling', desc: 'Custom tools that fit how your team ships — not how a vendor imagines you should.' },
-      { title: 'Adoption systems', desc: 'Infrastructure that makes AI useful by default, not by individual effort or motivation.' }
-    ] as item}
-      <div class="p-6 bg-stone rounded-xl border border-charcoal/10">
-        <h3 class="font-medium text-charcoal mb-2">{item.title}</h3>
-        <p class="text-sm text-charcoal/60">{item.desc}</p>
-      </div>
-    {/each}
-  </div>
-</Section>
-
-<!-- FAQ -->
-<Section background="muted" padding="lg" eyebrow="05" title="Common questions">
-  <div class="max-w-2xl mx-auto divide-y divide-charcoal/10" use:reveal>
-    {#each [
-      {
-        q: "Why not just assign one of our engineers to figure this out?",
-        a: "They'd spend 3-6 months learning from scratch while pulled off product work. I compress that to 4-8 weeks with patterns already proven across multiple teams. Your best engineer stays on the product."
-      },
-      {
-        q: "What's the difference between the Scan and the Assessment?",
-        a: "The Scan shows what's happening — hard data on spend, adoption, and waste. The Assessment explains why and designs what to build. Many clients start with the Scan and proceed to the Assessment once they see the data."
-      },
-      {
-        q: "What happens when the engagement ends?",
-        a: "Your team owns everything. I build systems designed to be maintained and extended without me. The AI landscape moves fast — there's always a next phase to build, but you should be choosing it, not depending on me."
-      },
-      {
-        q: "How is this different from other AI consultants?",
-        a: "Most AI consultants advise. I embed with your team and build the systems. The deliverable is working infrastructure — shared context, reliable workflows, configured tools — not a strategy deck."
-      },
-      {
-        q: "What does 'embed with the team' actually mean?",
-        a: "I join your standups. I pair with your engineers. I sit in on planning. I write code, build systems, and ship alongside your team. 2-3 days a week, on-site or remote."
-      },
-      {
-        q: "Why a solo consultancy instead of a larger AI consulting firm?",
-        a: "You get a senior hands-on builder — not a partner who sells and a junior who delivers. Every hour you pay for is spent by someone with a decade of engineering leadership at DoorDash and Square. No bench, no overhead, no theater. The firms with 10-50 people charge more and staff you with people learning on the job."
-      }
-    ] as item}
-      <details class="group py-6">
-        <summary class="flex items-center justify-between cursor-pointer list-none py-1 min-h-[44px]">
-          <span class="font-medium text-charcoal pr-4">{item.q}</span>
-          <svg class="w-5 h-5 text-charcoal/40 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-          </svg>
-        </summary>
-        <p class="mt-4 text-charcoal/70 leading-[1.65]">{item.a}</p>
-      </details>
-    {/each}
-  </div>
-</Section>
-
 <!-- Bottom CTA -->
-<Section background="white" padding="lg">
+<Section background="muted" padding="lg">
   <div class="max-w-2xl mx-auto text-center" use:reveal>
     <h2 class="font-serif text-3xl font-normal text-charcoal mb-4">
-      Your team has the tools<span class="text-primary">.</span> Let's make them work<span class="text-primary">.</span>
+      Ready to talk<span class="text-primary">?</span>
     </h2>
     <p class="text-lg text-charcoal/70 mb-8">
-      30-minute call, no obligation. I'll tell you whether this is something I can help with.
+      If your organization is still running on hierarchy and you want to start building the intelligence infrastructure that replaces coordination overhead, let's figure out what's missing.
     </p>
     <Button href={getBookCallUrl()} size="lg">
       Book a call
