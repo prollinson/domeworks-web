@@ -104,10 +104,10 @@
   <div class="max-w-2xl mx-auto" use:reveal>
     <div class="p-8 bg-warm-white rounded-2xl border border-charcoal/10">
       <p class="text-lg text-charcoal/70 leading-relaxed mb-4">
-        This isn't a strategy engagement. I won't interview your stakeholders, diagnose cultural blockers, or design an implementation plan. That's what the <a href="/assessment/" class="text-primary hover:underline">full assessment</a> does.
+        This isn't a strategy engagement. I won't interview your stakeholders, diagnose cultural blockers, or design an implementation plan. That's what the <a href="/context-build/" class="text-primary hover:underline">Context Build</a> does.
       </p>
       <p class="text-lg text-charcoal/70 leading-relaxed">
-        The Scan shows you <strong class="text-charcoal">what's happening</strong>. If you want to understand <strong class="text-charcoal">why</strong> and design <strong class="text-charcoal">what to build</strong>, the assessment is the next step. But there's no obligation — plenty of teams take the Scan, implement the quick wins, and handle the rest internally.
+        The Scan shows you <strong class="text-charcoal">what's happening</strong>. If you want to understand <strong class="text-charcoal">why</strong> and design <strong class="text-charcoal">what to build</strong>, the <a href="/context-build/" class="text-primary hover:underline">Context Build</a> is the next step. But there's no obligation — plenty of teams take the Scan, implement the quick wins, and handle the rest internally.
       </p>
     </div>
   </div>
