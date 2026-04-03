@@ -3,7 +3,7 @@
 
   const navLinks = [
     { href: '/scan/', label: 'AI Scan' },
-    { href: '/assessment/', label: 'Assessment' },
+    { href: '/context-build/', label: 'Context Build' },
     { href: '/about/', label: 'About' },
     { href: '/contact/', label: 'Contact' }
   ]
@@ -46,7 +46,7 @@
             DomeWorks
           </a>
           <p class="mt-4 text-sm text-warm-gray-light">
-            AI infrastructure engineering<br />for teams that ship.
+            Intelligence infrastructure that replaces coordination overhead
           </p>
         </div>
 
@@ -87,7 +87,7 @@
             Contact
           </p>
           <p class="text-sm text-warm-gray-light">
-            piers@domeworks.tech
+            piers@domeworks.ai
           </p>
           <p class="mt-2 text-sm text-warm-gray-light">
             Remote / US-based
@@ -101,7 +101,7 @@
           &copy; {new Date().getFullYear()} DomeWorks. All rights reserved.
         </p>
         <p class="text-xs text-warm-gray">
-          Making AI work at the team level.
+          Replacing coordination overhead with intelligence infrastructure
         </p>
       </div>
     </div>
