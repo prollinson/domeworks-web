@@ -6,20 +6,20 @@
 </script>
 
 <svelte:head>
-  <title>About — Ex-DoorDash, Square Engineering Leader | DomeWorks</title>
-  <meta name="description" content="10+ years of engineering leadership at DoorDash and Square. Now building the AI infrastructure layer for engineering teams." />
-  <link rel="canonical" href="https://domeworks.tech/about/" />
+  <title>About — Ex-DoorDash, Square, Mudflap Engineering Leader | DomeWorks</title>
+  <meta name="description" content="10+ years of engineering leadership at DoorDash, Square, and Mudflap. Now building the AI infrastructure layer for engineering teams." />
+  <link rel="canonical" href="https://domeworks.ai/about/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="DomeWorks" />
-  <meta property="og:url" content="https://domeworks.tech/about/" />
-  <meta property="og:title" content="About — Ex-DoorDash, Square Engineering Leader | DomeWorks" />
-  <meta property="og:description" content="10+ years of engineering leadership at DoorDash and Square. Now building the AI infrastructure layer for engineering teams." />
-  <meta property="og:image" content="https://domeworks.tech/og-image.png" />
+  <meta property="og:url" content="https://domeworks.ai/about/" />
+  <meta property="og:title" content="About — Ex-DoorDash, Square, Mudflap Engineering Leader | DomeWorks" />
+  <meta property="og:description" content="10+ years of engineering leadership at DoorDash, Square, and Mudflap. Now building the AI infrastructure layer for engineering teams." />
+  <meta property="og:image" content="https://domeworks.ai/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="About — Ex-DoorDash, Square Engineering Leader | DomeWorks" />
-  <meta name="twitter:description" content="10+ years of engineering leadership at DoorDash and Square. Now building AI infrastructure for engineering teams." />
-  <meta name="twitter:image" content="https://domeworks.tech/og-image.png" />
+  <meta name="twitter:title" content="About — Ex-DoorDash, Square, Mudflap Engineering Leader | DomeWorks" />
+  <meta name="twitter:description" content="10+ years of engineering leadership at DoorDash, Square, and Mudflap. Now building AI infrastructure for engineering teams." />
+  <meta name="twitter:image" content="https://domeworks.ai/og-image.png" />
 
   {@html `<script type="application/ld+json">${JSON.stringify({
     "@context": "https://schema.org",
@@ -27,8 +27,8 @@
     "name": "Piers Rollinson",
     "jobTitle": "Founder",
     "worksFor": { "@type": "Organization", "name": "DomeWorks" },
-    "description": "10+ years of engineering leadership at DoorDash and Square. Now building the AI infrastructure layer for engineering teams.",
-    "url": "https://domeworks.tech/about/"
+    "description": "10+ years of engineering leadership at DoorDash, Square, and Mudflap. Now building the AI infrastructure layer for engineering teams.",
+    "url": "https://domeworks.ai/about/"
   })}</script>`}
 </svelte:head>
 
@@ -41,7 +41,7 @@
         I've been making engineering teams ship better for a decade<span class="text-primary">.</span> Now I do it with AI<span class="text-primary">.</span>
       </h1>
       <p class="mt-6 text-xl text-charcoal/70 leading-relaxed">
-        I've spent the last decade leading engineering teams at DoorDash and Square. Most of that time was spent figuring out how to make teams ship better, faster, and with less friction.
+        I've spent the last decade leading engineering teams at DoorDash, Square, and Mudflap. Most of that time was spent figuring out how to make teams ship better, faster, and with less friction.
       </p>
     </div>
   </div>
@@ -62,7 +62,7 @@
         I watched the same pattern play out at every company: leadership buys Cursor licenses, rolls them out in a Slack announcement, maybe runs a lunch-and-learn. Three months later, adoption is at 15% and nobody can explain why.
       </p>
       <p>
-        I can explain why. There's no connective tissue between the tools and how the team works. No shared context feeding into AI tools. No standard developer workflows automated around AI. No agent infrastructure connecting your codebase, tickets, and docs to how engineers actually ship.
+        I can explain why. There's no intelligence infrastructure that replaces coordination overhead — nothing connecting the tools to how the team works. No shared context feeding into AI tools. No standard developer workflows automated around AI. No agent infrastructure connecting your codebase, tickets, and docs to how engineers actually ship.
       </p>
       <p class="border-l-2 border-copper pl-6 text-charcoal">
         Over 80% of organizations report no measurable impact on EBIT despite their AI investments <span class="text-charcoal/40">(BCG, 2024)</span>. Nobody is building the layer between the tools and the work. That's where DomeWorks operates.
