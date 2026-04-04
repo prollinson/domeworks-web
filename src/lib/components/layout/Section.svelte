@@ -37,6 +37,26 @@
   const eyebrowColor = $derived(background === 'dark' ? 'text-primary' : 'text-warm-gray')
   const titleColor = $derived(background === 'dark' ? 'text-white' : 'text-charcoal')
   const descColor = $derived(background === 'dark' ? 'text-warm-gray' : 'text-charcoal/70')
+
+  function ruleReveal(node: HTMLElement) {
+    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      node.style.transform = 'scaleX(1)'
+      return { destroy() {} }
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            node.style.transform = 'scaleX(1)'
+            observer.unobserve(node)
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+    observer.observe(node)
+    return { destroy() { observer.disconnect() } }
+  }
 </script>
 
 <section
@@ -55,6 +75,7 @@
           <h2 class="section-title font-serif font-normal {titleColor}">
             {title}
           </h2>
+          <div class="section-rule" aria-hidden="true" use:ruleReveal></div>
         {/if}
         {#if description}
           <p class="mt-4 {descColor} max-w-2xl {centered ? 'mx-auto' : ''}">
@@ -73,5 +94,30 @@
     font-size: clamp(1.875rem, 1.5rem + 1.5vw, 2.5rem);
     line-height: 1.2;
     text-wrap: balance;
+  }
+
+  /* Copper rule-draw accent: extends editorial motif from hero */
+  .section-rule {
+    width: 2.5rem;
+    height: 2px;
+    background: var(--color-copper);
+    opacity: 0.6;
+    margin-top: 1rem;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1) 200ms;
+  }
+
+  :global(.text-center) .section-rule {
+    margin-left: auto;
+    margin-right: auto;
+    transform-origin: center;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .section-rule {
+      transform: scaleX(1) !important;
+      transition: none !important;
+    }
   }
 </style>
