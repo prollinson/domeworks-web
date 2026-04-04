@@ -3,6 +3,7 @@
   import Section from '$lib/components/layout/Section.svelte'
   import { reveal } from '$lib/actions/reveal'
   import { getBookCallUrl } from '$lib/utils/mailto'
+  import JourneyBar from '$lib/components/ui/JourneyBar.svelte'
 </script>
 
 <svelte:head>
@@ -32,13 +33,19 @@
 </svelte:head>
 
 <!-- Hero -->
-<section class="bg-warm-white py-20 md:py-28 relative overflow-hidden">
+<section class="py-20 md:py-28 relative overflow-hidden" style="background: linear-gradient(135deg, #FAFAF7 65%, rgba(176,125,79,0.05));">
   <div class="absolute inset-0 grid-overlay opacity-50"></div>
+  <!-- Architectural SVG: Compound growth curve -->
+  <div class="absolute right-0 bottom-0 w-64 md:w-96 opacity-[0.07] pointer-events-none" aria-hidden="true">
+    <svg viewBox="0 0 200 160" fill="none">
+      <path d="M 20 140 Q 60 135 90 110 Q 120 85 140 50 Q 160 20 180 10" stroke="#B07D4F" stroke-width="1.5"/>
+      <line x1="20" y1="140" x2="180" y2="140" stroke="#B07D4F" stroke-width="0.5"/>
+      <line x1="20" y1="10" x2="20" y2="140" stroke="#B07D4F" stroke-width="0.5"/>
+    </svg>
+  </div>
   <div class="relative max-w-6xl mx-auto px-6 lg:px-8">
     <div class="max-w-3xl">
-      <p class="text-xs font-medium tracking-widest text-copper uppercase mb-6">
-        Fractional AI Leadership
-      </p>
+      <JourneyBar current="fractional" />
       <h1 class="font-serif text-4xl md:text-5xl font-normal text-charcoal leading-[1.2] md:leading-[1.15]">
         Intelligence infrastructure compounds when someone owns it<span class="text-copper">.</span>
       </h1>
@@ -91,6 +98,25 @@
   </div>
 </Section>
 
+<!-- Typical Week -->
+<Section background="muted" padding="lg">
+  <div class="max-w-3xl mx-auto" use:reveal>
+    <p class="text-xs font-medium tracking-widest text-warm-gray uppercase mb-4 text-center">What a typical week looks like</p>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="p-6 bg-warm-white rounded-2xl border border-charcoal/10">
+        <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-3">Mon – Tue</p>
+        <h3 class="font-medium text-charcoal mb-2">Embedded with your team</h3>
+        <p class="text-sm text-charcoal/70 leading-relaxed">Standups, pairing sessions, system maintenance. Hands-on with the infrastructure and the people who depend on it.</p>
+      </div>
+      <div class="p-6 bg-warm-white rounded-2xl border border-charcoal/10">
+        <p class="text-xs font-semibold tracking-widest text-copper uppercase mb-3">Wed – Fri</p>
+        <h3 class="font-medium text-charcoal mb-2">Async & strategic</h3>
+        <p class="text-sm text-charcoal/70 leading-relaxed">Monitoring, feedback loop review, planning next iteration. Identifying what your team is still doing manually that infrastructure could replace.</p>
+      </div>
+    </div>
+  </div>
+</Section>
+
 <!-- Who It's For -->
 <Section background="muted" padding="lg" eyebrow="03" title="Who this is for">
   <div class="max-w-2xl mx-auto" use:reveal>
@@ -130,17 +156,29 @@
   </div>
 </Section>
 
-<!-- CTA -->
-<Section background="muted" padding="lg">
-  <div class="max-w-2xl mx-auto text-center" use:reveal>
-    <h2 class="font-serif text-3xl font-normal text-charcoal mb-4">
-      Want to keep the infrastructure compounding<span class="text-primary">?</span>
-    </h2>
-    <p class="text-lg text-charcoal/70 mb-8">
-      30-minute call to discuss what's in place and whether fractional makes sense for where your team is.
-    </p>
-    <Button href={getBookCallUrl()} size="lg">
-      Book a call
-    </Button>
+<!-- FAQ -->
+<Section background="muted" padding="lg" eyebrow="05" title="Common questions">
+  <div class="max-w-2xl mx-auto space-y-4" use:reveal>
+    <details class="group p-6 bg-warm-white rounded-xl border border-charcoal/10">
+      <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
+        How is this different from a contractor?
+        <svg class="w-5 h-5 text-charcoal/40 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </summary>
+      <p class="mt-4 text-charcoal/70 leading-relaxed">I own the intelligence infrastructure as a system, not just execute tasks. A contractor builds what you spec. I identify what needs building, build it, and make sure it compounds over time.</p>
+    </details>
+    <details class="group p-6 bg-warm-white rounded-xl border border-charcoal/10">
+      <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
+        What's the minimum commitment?
+        <svg class="w-5 h-5 text-charcoal/40 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </summary>
+      <p class="mt-4 text-charcoal/70 leading-relaxed">3 months recommended to see compounding effects. Month-to-month after that. The infrastructure needs time to prove itself before you can evaluate whether ongoing ownership is worth it.</p>
+    </details>
+    <details class="group p-6 bg-warm-white rounded-xl border border-charcoal/10">
+      <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
+        Can this evolve into a full-time hire?
+        <svg class="w-5 h-5 text-charcoal/40 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </summary>
+      <p class="mt-4 text-charcoal/70 leading-relaxed">If your org grows to need a full-time Head of AI, I'll help you hire one and transition. The goal is always a team that doesn't need me — the fractional model buys you time while the capability builds internally.</p>
+    </details>
   </div>
 </Section>
