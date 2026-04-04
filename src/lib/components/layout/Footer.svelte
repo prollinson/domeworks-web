@@ -89,7 +89,7 @@
             Contact
           </p>
           <p class="text-sm text-warm-gray-light">
-            piers@domeworks.ai
+            piers@domeworks.tech
           </p>
           <p class="mt-2 text-sm text-warm-gray-light">
             Remote / US-based

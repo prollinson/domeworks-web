@@ -1,4 +1,4 @@
-const EMAIL = 'piers@domeworks.ai'
+const EMAIL = 'piers@domeworks.tech'
 const CALENDLY = 'https://fantastical.app/piers/domeworks'
 
 export function getBookCallUrl(): string {

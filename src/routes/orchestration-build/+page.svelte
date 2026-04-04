@@ -8,18 +8,18 @@
 <svelte:head>
   <title>Orchestration Build: AI Coordination for Engineering Teams | DomeWorks</title>
   <meta name="description" content="Build the agent coordination layer: multi-agent workflows, quality gates, and output routing that replace human coordination overhead. Milestone-based, scoped from Context Build assessment." />
-  <link rel="canonical" href="https://domeworks.ai/orchestration-build/" />
+  <link rel="canonical" href="https://domeworks.tech/orchestration-build/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="DomeWorks" />
-  <meta property="og:url" content="https://domeworks.ai/orchestration-build/" />
+  <meta property="og:url" content="https://domeworks.tech/orchestration-build/" />
   <meta property="og:title" content="Orchestration Build: AI Coordination for Engineering Teams | DomeWorks" />
   <meta property="og:description" content="Build the agent coordination layer: multi-agent workflows, quality gates, and output routing that replace human coordination overhead." />
-  <meta property="og:image" content="https://domeworks.ai/og-image.png" />
+  <meta property="og:image" content="https://domeworks.tech/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Orchestration Build: AI Coordination for Engineering Teams | DomeWorks" />
   <meta name="twitter:description" content="Build the agent coordination layer: multi-agent workflows, quality gates, and output routing that replace human coordination overhead." />
-  <meta name="twitter:image" content="https://domeworks.ai/og-image.png" />
+  <meta name="twitter:image" content="https://domeworks.tech/og-image.png" />
 
   {@html `<script type="application/ld+json">${JSON.stringify({
     "@context": "https://schema.org",

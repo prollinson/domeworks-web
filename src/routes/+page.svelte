@@ -8,21 +8,21 @@
 <svelte:head>
   <title>DomeWorks | Intelligence Infrastructure Engineering</title>
   <meta name="description" content="Your engineering team runs on meetings, status updates, and managers routing information. That coordination layer can now be built as intelligence infrastructure. DomeWorks builds it." />
-  <link rel="canonical" href="https://domeworks.ai/" />
+  <link rel="canonical" href="https://domeworks.tech/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="DomeWorks" />
-  <meta property="og:url" content="https://domeworks.ai/" />
+  <meta property="og:url" content="https://domeworks.tech/" />
   <meta property="og:title" content="DomeWorks | Intelligence Infrastructure Engineering" />
   <meta property="og:description" content="Your engineering team runs on meetings, status updates, and managers routing information. That coordination layer can now be built as intelligence infrastructure." />
-  <meta property="og:image" content="https://domeworks.ai/og-image.png" />
+  <meta property="og:image" content="https://domeworks.tech/og-image.png" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="DomeWorks | Intelligence Infrastructure Engineering" />
   <meta name="twitter:description" content="Your engineering team runs on meetings, status updates, and managers routing information. That coordination layer can now be built as intelligence infrastructure." />
-  <meta name="twitter:image" content="https://domeworks.ai/og-image.png" />
+  <meta name="twitter:image" content="https://domeworks.tech/og-image.png" />
 
   <!-- JSON-LD: Organization + WebSite -->
   {@html `<script type="application/ld+json">${JSON.stringify({
@@ -31,7 +31,7 @@
       {
         "@type": "Organization",
         "name": "DomeWorks",
-        "url": "https://domeworks.ai",
+        "url": "https://domeworks.tech",
         "foundingDate": "2025",
         "description": "Intelligence infrastructure engineering consultancy. Replaces coordination overhead with context pipelines, agent orchestration, and quality gates for engineering teams.",
         "founder": {
@@ -42,14 +42,14 @@
         },
         "contactPoint": {
           "@type": "ContactPoint",
-          "email": "piers@domeworks.ai",
+          "email": "piers@domeworks.tech",
           "contactType": "sales"
         }
       },
       {
         "@type": "WebSite",
         "name": "DomeWorks",
-        "url": "https://domeworks.ai"
+        "url": "https://domeworks.tech"
       }
     ]
   })}</script>`}

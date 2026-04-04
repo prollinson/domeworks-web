@@ -8,18 +8,18 @@
 <svelte:head>
   <title>About | Ex-DoorDash, Square, Mudflap Engineering Leader | DomeWorks</title>
   <meta name="description" content="10+ years of engineering leadership at DoorDash, Square, and Mudflap. Now building the AI infrastructure layer for engineering teams." />
-  <link rel="canonical" href="https://domeworks.ai/about/" />
+  <link rel="canonical" href="https://domeworks.tech/about/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="DomeWorks" />
-  <meta property="og:url" content="https://domeworks.ai/about/" />
+  <meta property="og:url" content="https://domeworks.tech/about/" />
   <meta property="og:title" content="About | Ex-DoorDash, Square, Mudflap Engineering Leader | DomeWorks" />
   <meta property="og:description" content="10+ years of engineering leadership at DoorDash, Square, and Mudflap. Now building the AI infrastructure layer for engineering teams." />
-  <meta property="og:image" content="https://domeworks.ai/og-image.png" />
+  <meta property="og:image" content="https://domeworks.tech/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="About | Ex-DoorDash, Square, Mudflap Engineering Leader | DomeWorks" />
   <meta name="twitter:description" content="10+ years of engineering leadership at DoorDash, Square, and Mudflap. Now building AI infrastructure for engineering teams." />
-  <meta name="twitter:image" content="https://domeworks.ai/og-image.png" />
+  <meta name="twitter:image" content="https://domeworks.tech/og-image.png" />
 
   {@html `<script type="application/ld+json">${JSON.stringify({
     "@context": "https://schema.org",
@@ -28,7 +28,7 @@
     "jobTitle": "Founder",
     "worksFor": { "@type": "Organization", "name": "DomeWorks" },
     "description": "10+ years of engineering leadership at DoorDash, Square, and Mudflap. Now building the AI infrastructure layer for engineering teams.",
-    "url": "https://domeworks.ai/about/"
+    "url": "https://domeworks.tech/about/"
   })}</script>`}
 </svelte:head>
 

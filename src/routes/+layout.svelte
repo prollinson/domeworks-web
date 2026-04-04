@@ -13,14 +13,14 @@
     '@type': 'ProfessionalService',
     name: 'DomeWorks',
     description: 'AI infrastructure engineering for engineering organizations. We build the context system and agent coordination that replace coordination overhead with AI-native systems.',
-    url: 'https://domeworks.ai',
+    url: 'https://domeworks.tech',
     areaServed: {
       '@type': 'Country',
       name: 'United States'
     },
     serviceType: ['AI Infrastructure Engineering', 'AI Consulting', 'Context System Engineering', 'Agent Coordination Engineering'],
     priceRange: '$2,500–$15,000+',
-    email: 'piers@domeworks.ai'
+    email: 'piers@domeworks.tech'
   }
 
   // Enable View Transitions API for smooth page navigation

@@ -3,7 +3,7 @@
 
   let { title, description }: { title: string; description: string } = $props()
 
-  const siteUrl = 'https://domeworks.ai'
+  const siteUrl = 'https://domeworks.tech'
   const siteName = 'DomeWorks'
   const ogImage = `${siteUrl}/og-image.png`
 

@@ -8,18 +8,18 @@
 <svelte:head>
   <title>Fractional AI Leadership: Ongoing AI Infrastructure | DomeWorks</title>
   <meta name="description" content="1–2 days/week ongoing retainer. I act as your part-time Head of AI, maintaining and evolving your context system and agent coordination as your org changes." />
-  <link rel="canonical" href="https://domeworks.ai/fractional/" />
+  <link rel="canonical" href="https://domeworks.tech/fractional/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="DomeWorks" />
-  <meta property="og:url" content="https://domeworks.ai/fractional/" />
+  <meta property="og:url" content="https://domeworks.tech/fractional/" />
   <meta property="og:title" content="Fractional AI Leadership: Ongoing AI Infrastructure | DomeWorks" />
   <meta property="og:description" content="1–2 days/week ongoing retainer. Maintain and evolve your context system and agent coordination as your org changes." />
-  <meta property="og:image" content="https://domeworks.ai/og-image.png" />
+  <meta property="og:image" content="https://domeworks.tech/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Fractional AI Leadership: Ongoing AI Infrastructure | DomeWorks" />
   <meta name="twitter:description" content="1–2 days/week ongoing retainer. Maintain and evolve your AI infrastructure as your org changes." />
-  <meta name="twitter:image" content="https://domeworks.ai/og-image.png" />
+  <meta name="twitter:image" content="https://domeworks.tech/og-image.png" />
 
   {@html `<script type="application/ld+json">${JSON.stringify({
     "@context": "https://schema.org",

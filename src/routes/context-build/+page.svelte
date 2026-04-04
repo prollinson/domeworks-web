@@ -8,18 +8,18 @@
 <svelte:head>
   <title>Context Build: Build Your Organization's Context System | DomeWorks</title>
   <meta name="description" content="A two-week engagement that diagnoses your AI readiness and designs the context system your AI tools need to work at the team level. $10,000-$15,000." />
-  <link rel="canonical" href="https://domeworks.ai/context-build/" />
+  <link rel="canonical" href="https://domeworks.tech/context-build/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="DomeWorks" />
-  <meta property="og:url" content="https://domeworks.ai/context-build/" />
+  <meta property="og:url" content="https://domeworks.tech/context-build/" />
   <meta property="og:title" content="Context Build: Build Your Organization's Context System | DomeWorks" />
   <meta property="og:description" content="A two-week engagement that diagnoses your AI readiness and designs the context system your AI tools need to work at the team level." />
-  <meta property="og:image" content="https://domeworks.ai/og-image.png" />
+  <meta property="og:image" content="https://domeworks.tech/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Context Build: Build Your Organization's Context System | DomeWorks" />
   <meta name="twitter:description" content="Diagnose your AI readiness and design the context system your AI tools need to work at the team level." />
-  <meta name="twitter:image" content="https://domeworks.ai/og-image.png" />
+  <meta name="twitter:image" content="https://domeworks.tech/og-image.png" />
 
   {@html `<script type="application/ld+json">${JSON.stringify({
     "@context": "https://schema.org",

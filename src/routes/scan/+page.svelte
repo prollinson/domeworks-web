@@ -8,18 +8,18 @@
 <svelte:head>
   <title>AI Scan: What Your AI Spend Is Actually Doing | DomeWorks</title>
   <meta name="description" content="Find out exactly what your AI spend is doing for your team. 48-hour turnaround, $2,500-$3,500 fixed price." />
-  <link rel="canonical" href="https://domeworks.ai/scan/" />
+  <link rel="canonical" href="https://domeworks.tech/scan/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="DomeWorks" />
-  <meta property="og:url" content="https://domeworks.ai/scan/" />
+  <meta property="og:url" content="https://domeworks.tech/scan/" />
   <meta property="og:title" content="AI Scan: What Your AI Spend Is Actually Doing | DomeWorks" />
   <meta property="og:description" content="Find out exactly what your AI spend is doing for your team. 48-hour turnaround, $2,500-$3,500 fixed price." />
-  <meta property="og:image" content="https://domeworks.ai/og-image.png" />
+  <meta property="og:image" content="https://domeworks.tech/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="AI Scan: What Your AI Spend Is Actually Doing | DomeWorks" />
   <meta name="twitter:description" content="Find out exactly what your AI spend is doing for your team. 48-hour turnaround." />
-  <meta name="twitter:image" content="https://domeworks.ai/og-image.png" />
+  <meta name="twitter:image" content="https://domeworks.tech/og-image.png" />
 
   {@html `<script type="application/ld+json">${JSON.stringify({
     "@context": "https://schema.org",
