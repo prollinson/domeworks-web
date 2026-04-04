@@ -49,7 +49,7 @@
         Build the world model your AI tools need to be useful<span class="text-primary">.</span>
       </h1>
       <p class="mt-6 text-xl text-charcoal/70 leading-relaxed">
-        A two-week engagement that diagnoses your Intelligence Maturity and designs the Context Layer: the infrastructure that feeds domain knowledge, team conventions, and codebase patterns into every AI interaction. The transition from Level 1 (tool-first) to Level 2 (context-aware).
+        A two-week engagement that diagnoses your AI readiness and designs the context system: the infrastructure that feeds domain knowledge, team conventions, and codebase patterns into every AI interaction. The foundation for everything that comes after.
       </p>
       <div class="mt-8">
         <Button href={getBookCallUrl()} size="lg">
@@ -66,7 +66,7 @@
     {#each [
       { step: '1', title: 'Stakeholder interviews', desc: "I talk to your engineering leads, product managers, and ops people. Not a survey, but real conversations about how they're using AI, where they're hitting walls, and what would actually help. This is where the real blockers (and the real opportunities) surface." },
       { step: '2', title: 'Tool and spend audit', desc: "I map every AI tool, every seat, every subscription. Who's using what, how often, and whether it's doing anything useful. You're probably paying for more AI tooling than you realize." },
-      { step: '3', title: 'Context Layer diagnosis', desc: "I evaluate what's in place, and what's missing, between your AI tools and how your team actually ships. Shared context, standard workflows, CI/CD integration, developer tooling. Most teams have none of this. That's why adoption stalls at the individual level." },
+      { step: '3', title: 'Context system diagnosis', desc: "I evaluate what's in place, and what's missing, between your AI tools and how your team actually ships. Shared context, standard workflows, CI/CD integration, developer tooling. Most teams have none of this. That's why adoption stalls at the individual level." },
       { step: '4', title: 'Blocker identification', desc: "Adoption stalls for specific reasons, often structural, not motivational. I find out which blockers are in your way (missing systems, cultural resistance, knowledge silos, tooling gaps) and how severe they are." }
     ] as item}
       <div class="flex items-start gap-6">
@@ -86,15 +86,15 @@
 <Section background="white" padding="lg" eyebrow="02" title="What you get">
   <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto" use:reveal={{ stagger: true, staggerDelay: 150 }}>
     <div class="p-8 bg-stone rounded-2xl border border-charcoal/10">
-      <h3 class="text-lg font-medium text-charcoal mb-3">Intelligence Maturity Assessment</h3>
+      <h3 class="text-lg font-medium text-charcoal mb-3">AI Readiness Assessment</h3>
       <p class="text-sm text-charcoal/60">
         What tools are in use, what's working, what's not. The gap between "engineers have AI" and "AI is part of how the team ships." A detailed picture you can share with your leadership team and use to justify next steps.
       </p>
     </div>
     <div class="p-8 bg-stone rounded-2xl border border-charcoal/10">
-      <h3 class="text-lg font-medium text-charcoal mb-3">Context Layer Blueprint</h3>
+      <h3 class="text-lg font-medium text-charcoal mb-3">Context System Blueprint</h3>
       <p class="text-sm text-charcoal/60">
-        What domain knowledge needs to flow into AI interactions, and how. A design for the shared context layers, reliable workflows, and developer tooling that make AI useful beyond ad-hoc prompting.
+        What domain knowledge needs to flow into AI interactions, and how. A design for the shared context, reliable workflows, and developer tooling that make AI useful beyond ad-hoc prompting.
       </p>
     </div>
     <div class="p-8 bg-stone rounded-2xl border border-charcoal/10">
@@ -111,7 +111,7 @@
   <div class="max-w-2xl mx-auto" use:reveal>
     <div class="p-8 bg-warm-white rounded-2xl border border-charcoal/10">
       <p class="text-lg text-charcoal/70 leading-relaxed mb-4">
-        The Context Build is designed to feed into an <a href="/orchestration-build/" class="text-primary hover:underline">Orchestration Build</a>, where we implement the systems the blueprint calls for. But there's no obligation. You get the deliverables either way.
+        The Context Build is designed to feed into an <a href="/orchestration-build/" class="text-primary hover:underline">Orchestration Build</a>, where we build the agent coordination layer the blueprint calls for. But there's no obligation. You get the deliverables either way.
       </p>
       <p class="text-lg text-charcoal/70 leading-relaxed">
         Some teams take the Context Build and build internally. That's fine. The quick wins alone tend to pay for the engagement. If you want to keep going, the Context Build gives us a clear starting point with no re-discovery and no wasted time.
