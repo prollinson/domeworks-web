@@ -14,17 +14,25 @@
     return currentPath.startsWith(href)
   }
 
-  const navLinks = [
+  const serviceLinks = [
     { href: '/scan/', label: 'AI Scan' },
     { href: '/context-build/', label: 'Context Build' },
     { href: '/orchestration-build/', label: 'Orchestration Build' },
-    { href: '/fractional/', label: 'Fractional' },
+    { href: '/fractional/', label: 'Fractional' }
+  ]
+
+  const otherLinks = [
     { href: '/about/', label: 'About' },
     { href: '/contact/', label: 'Contact' }
   ]
 
+  const navLinks = [...serviceLinks, ...otherLinks]
+
+  let servicesOpen = $state(false)
+
   function toggleMenu() {
     menuOpen = !menuOpen
+    if (!menuOpen) servicesOpen = false
   }
 
   /* On hero page, header text is light until scrolled past the dark section */
@@ -99,7 +107,42 @@
     {#if menuOpen}
       <div class="lg:hidden pb-6 border-t border-stone mt-2 pt-4">
         <div class="flex flex-col gap-1">
-          {#each navLinks as link}
+          <!-- Services accordion -->
+          <button
+            onclick={() => servicesOpen = !servicesOpen}
+            class="flex items-center justify-between px-4 py-3 text-base font-medium rounded-lg transition-all
+              {serviceLinks.some(l => isActive(l.href))
+                ? 'text-primary bg-primary/5'
+                : 'text-charcoal/70 hover:text-charcoal hover:bg-stone'}"
+          >
+            Services
+            <svg
+              class="w-4 h-4 transition-transform duration-200 {servicesOpen ? 'rotate-180' : ''}"
+              fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          {#if servicesOpen}
+            <div class="ml-4 flex flex-col gap-1">
+              {#each serviceLinks as link}
+                <a
+                  href={link.href}
+                  class="px-4 py-2.5 text-sm font-medium rounded-lg transition-all
+                    {isActive(link.href)
+                      ? 'text-primary bg-primary/5'
+                      : 'text-charcoal/60 hover:text-charcoal hover:bg-stone'}"
+                  aria-current={isActive(link.href) ? 'page' : undefined}
+                  onclick={() => { menuOpen = false; servicesOpen = false }}
+                >
+                  {link.label}
+                </a>
+              {/each}
+            </div>
+          {/if}
+
+          {#each otherLinks as link}
             <a
               href={link.href}
               class="px-4 py-3 text-base font-medium rounded-lg transition-all
