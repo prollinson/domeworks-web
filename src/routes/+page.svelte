@@ -272,52 +272,58 @@
 
 <!-- How It Works -->
 <Section id="how-it-works" background="muted" padding="lg" eyebrow="04" title="How it works">
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto" use:reveal={{ stagger: true, staggerDelay: 150 }}>
-    <a href="/scan/" class="group p-8 bg-warm-white rounded-2xl border border-charcoal/10 hover:border-primary card-lift flex flex-col">
-      <span class="inline-block px-3 py-1 text-xs font-medium text-primary bg-primary/10 rounded-full mb-4 w-fit">
-        Start here
-      </span>
-      <h3 class="text-xl font-medium text-charcoal mb-2">AI Scan</h3>
-      <p class="text-2xl font-normal font-serif text-charcoal mb-4">$2,500–$3,500</p>
-      <p class="text-charcoal/60 text-sm flex-grow">
-        In 48 hours, I diagnose where you are on the path from "bought tools" to "AI coordinates our work." You get a clear picture of what's missing and quick wins your team can act on this week.
-      </p>
-      <p class="mt-4 text-sm text-primary font-medium group-hover:underline">Learn more &rarr;</p>
-    </a>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto" use:reveal={{ stagger: true, staggerDelay: 150 }}>
+      <a href="/scan/" class="group p-8 bg-warm-white rounded-2xl border border-charcoal/10 hover:border-primary card-lift flex flex-col relative overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-1 bg-primary/30"></div>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-medium text-primary bg-primary/10 rounded-full mb-4 w-fit">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+          Start here
+        </span>
+        <h3 class="text-xl font-medium text-charcoal mb-2">AI Scan</h3>
+        <p class="text-2xl font-normal font-serif text-charcoal mb-4">$2,500–$3,500</p>
+        <p class="text-charcoal/60 text-sm flex-grow">
+          In 48 hours, I diagnose where you are on the path from "bought tools" to "AI coordinates our work." You get a clear picture of what's missing and quick wins your team can act on this week.
+        </p>
+        <p class="mt-4 text-sm text-primary font-medium group-hover:underline">Learn more &rarr;</p>
+      </a>
 
-    <a href="/context-build/" class="group p-8 bg-warm-white rounded-2xl border-2 border-primary flex flex-col relative">
-      <span class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 text-xs font-medium text-white bg-primary rounded-full">
-        Deep dive
-      </span>
-      <h3 class="text-xl font-medium text-charcoal mb-2">Context Build</h3>
-      <p class="text-2xl font-normal font-serif text-charcoal mb-4">$10,000–$15,000+</p>
-      <p class="text-charcoal/60 text-sm flex-grow">
-        I map your organization's world model gaps, design the context system, and build the infrastructure that feeds your domain knowledge into every AI interaction. Your team goes from "every prompt starts from zero" to "AI knows our business."
-      </p>
-      <p class="mt-4 text-sm text-charcoal/50">1-2 week assessment + 4-week build</p>
-    </a>
+      <a href="/context-build/" class="group p-8 rounded-2xl border-2 border-primary bg-primary/[0.03] flex flex-col relative overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-1 bg-primary"></div>
+        <span class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 text-xs font-medium text-white bg-primary rounded-full">
+          Deep dive
+        </span>
+        <h3 class="text-xl font-medium text-charcoal mb-2 mt-2">Context Build</h3>
+        <p class="text-2xl font-normal font-serif text-charcoal mb-4">$10,000–$15,000+</p>
+        <p class="text-charcoal/60 text-sm flex-grow">
+          I map your organization's world model gaps, design the context system, and build the infrastructure that feeds your domain knowledge into every AI interaction. Your team goes from "every prompt starts from zero" to "AI knows our business."
+        </p>
+        <p class="mt-4 text-sm text-charcoal/50">1-2 week assessment + 4-week build</p>
+      </a>
 
-    <a href="/orchestration-build/" class="group p-8 bg-warm-white rounded-2xl border border-charcoal/10 hover:border-primary card-lift flex flex-col">
-      <h3 class="text-xl font-medium text-charcoal mb-2">Orchestration Build</h3>
-      <p class="text-2xl font-normal font-serif text-charcoal mb-4">4–12 weeks</p>
-      <p class="text-charcoal/60 text-sm flex-grow">
-        I build the agent coordination layer: multi-agent workflows, quality gates, output routing. Your team goes from "AI helps individuals" to "AI coordinates our work."
-      </p>
-      <p class="mt-4 text-sm text-charcoal/50">Day rate, scoped from assessment</p>
-    </a>
+      <a href="/orchestration-build/" class="group p-8 bg-warm-white rounded-2xl border border-charcoal/10 hover:border-copper card-lift flex flex-col relative overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-1 bg-copper/30"></div>
+        <h3 class="text-xl font-medium text-charcoal mb-2">Orchestration Build</h3>
+        <p class="text-2xl font-normal font-serif text-charcoal mb-4">4–12 weeks</p>
+        <p class="text-charcoal/60 text-sm flex-grow">
+          I build the agent coordination layer: multi-agent workflows, quality gates, output routing. Your team goes from "AI helps individuals" to "AI coordinates our work."
+        </p>
+        <p class="mt-4 text-sm text-charcoal/50">Day rate, scoped from assessment</p>
+      </a>
 
-    <a href="/fractional/" class="group p-8 bg-warm-white rounded-2xl border border-charcoal/10 hover:border-copper card-lift flex flex-col">
-      <span class="inline-block px-3 py-1 text-xs font-medium text-copper bg-copper/10 rounded-full mb-4 w-fit">
-        What comes after
-      </span>
-      <h3 class="text-xl font-medium text-charcoal mb-2">Fractional AI Leadership</h3>
-      <p class="text-2xl font-normal font-serif text-charcoal mb-4">Monthly retainer</p>
-      <p class="text-charcoal/60 text-sm flex-grow">
-        1–2 days/week. I maintain and evolve the context system and agent coordination, close feedback loops, and make sure the infrastructure compounds as your org changes.
-      </p>
-      <p class="mt-4 text-sm text-copper font-medium group-hover:underline">Learn more &rarr;</p>
-    </a>
-  </div>
+      <a href="/fractional/" class="group p-8 bg-warm-white rounded-2xl border border-charcoal/10 hover:border-copper card-lift flex flex-col relative overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-1 bg-copper/30"></div>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-medium text-copper bg-copper/10 rounded-full mb-4 w-fit">
+          <span class="w-1.5 h-1.5 rounded-full bg-copper"></span>
+          What comes after
+        </span>
+        <h3 class="text-xl font-medium text-charcoal mb-2">Fractional AI Leadership</h3>
+        <p class="text-2xl font-normal font-serif text-charcoal mb-4">Monthly retainer</p>
+        <p class="text-charcoal/60 text-sm flex-grow">
+          1–2 days/week. I maintain and evolve the context system and agent coordination, close feedback loops, and make sure the infrastructure compounds as your org changes.
+        </p>
+        <p class="mt-4 text-sm text-copper font-medium group-hover:underline">Learn more &rarr;</p>
+      </a>
+    </div>
 </Section>
 
 <!-- Bottom CTA -->
