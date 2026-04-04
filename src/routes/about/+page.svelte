@@ -92,7 +92,7 @@
         <span class="flex-shrink-0 text-xs font-medium text-primary tracking-widest">02</span>
         <div>
           <h3 class="font-medium text-charcoal mb-2">Designed to end</h3>
-          <p class="text-charcoal/70 leading-[1.65]">Every engagement has a built-in exit. The goal is a team that has the systems they need and knows how to maintain them. The AI landscape moves fast, and there's always a next phase to build. But you should be choosing it, not depending on me.</p>
+          <p class="text-charcoal/70 leading-[1.65]">Every engagement ships a handoff package: documented systems, runbooks, and a knowledge transfer session. Your team owns what I built and can maintain it without me. If you need ongoing support after that, that's what the <a href="/fractional/" class="text-primary hover:underline">Fractional engagement</a> is for — but you're never locked in.</p>
         </div>
       </div>
 
