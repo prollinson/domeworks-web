@@ -211,9 +211,9 @@
       <div class="md:col-span-2">
         <div class="p-6 bg-warm-white rounded-xl border border-charcoal/10 sticky top-24">
           <p class="text-charcoal/70 leading-relaxed">
-            <strong class="text-charcoal">Block</strong> (the company behind Square and Cash App) recently published how they're rebuilding their entire organization this way, replacing middle management's coordination function with what they call a <em>"company world model."</em> They have the engineering capacity to build it internally. Most companies don't.
+            <strong class="text-charcoal">Block</strong> (the company behind Square and Cash App) recently published how they're replacing coordination overhead with what they call a <em>"company world model."</em> It's the same architecture I've been building with engineering teams — the Context and Orchestration layers of the stack.
           </p>
-          <p class="text-sm text-charcoal/60 mt-3">That's where DomeWorks comes in.</p>
+          <p class="text-sm text-charcoal/60 mt-3">The pattern is showing up independently because the problem is structural, not novel.</p>
         </div>
       </div>
     </div>
