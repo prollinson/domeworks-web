@@ -1,6 +1,8 @@
 <script lang="ts">
   import { page } from '$app/stores'
   import { getBookCallUrl } from '$lib/utils/mailto'
+  import { slide } from 'svelte/transition'
+  import { cubicOut } from 'svelte/easing'
 
   let menuOpen = $state(false)
   let scrolled = $state(false)
@@ -38,7 +40,17 @@
   /* On hero page, header text is light until scrolled past the dark section */
   let heroMode = $derived(isHeroPage && !scrolled)
 
+  let reducedMotion = $state(false)
+
   if (typeof window !== 'undefined') {
+    $effect(() => {
+      const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
+      reducedMotion = mq.matches
+      const handler = (e: MediaQueryListEvent) => { reducedMotion = e.matches }
+      mq.addEventListener('change', handler)
+      return () => mq.removeEventListener('change', handler)
+    })
+
     $effect(() => {
       const handleScroll = () => {
         scrolled = window.scrollY > 20
@@ -105,7 +117,10 @@
     </div>
 
     {#if menuOpen}
-      <div class="lg:hidden pb-6 border-t border-stone mt-2 pt-4">
+      <div
+        transition:slide={{ duration: reducedMotion ? 0 : 250, easing: cubicOut }}
+        class="lg:hidden pb-6 border-t border-stone mt-2 pt-4"
+      >
         <div class="flex flex-col gap-1">
           <!-- Services accordion -->
           <button
@@ -125,7 +140,10 @@
           </button>
 
           {#if servicesOpen}
-            <div class="ml-4 flex flex-col gap-1">
+            <div
+              transition:slide={{ duration: reducedMotion ? 0 : 200, easing: cubicOut }}
+              class="ml-4 flex flex-col gap-1"
+            >
               {#each serviceLinks as link}
                 <a
                   href={link.href}
