@@ -6,7 +6,7 @@ export function getBookCallUrl(): string {
 }
 
 export function generateScanMailto(): string {
-  const subject = encodeURIComponent('AI Scan — interested')
+  const subject = encodeURIComponent('AI Scan: interested')
 
   const body = encodeURIComponent(`Hi Piers,
 
@@ -23,7 +23,7 @@ Best time for a 15-min call:`)
 }
 
 export function generateContextBuildMailto(): string {
-  const subject = encodeURIComponent('Context Build — interested')
+  const subject = encodeURIComponent('Context Build: interested')
 
   const body = encodeURIComponent(`Hi Piers,
 
@@ -41,7 +41,7 @@ Best time for a 30-min call:`)
 }
 
 export function generateGeneralMailto(): string {
-  const subject = encodeURIComponent('DomeWorks — inquiry')
+  const subject = encodeURIComponent('DomeWorks | inquiry')
 
   const body = encodeURIComponent(`Hi Piers,
 

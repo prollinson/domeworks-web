@@ -6,18 +6,18 @@
 </script>
 
 <svelte:head>
-  <title>About — Ex-DoorDash, Square, Mudflap Engineering Leader | DomeWorks</title>
+  <title>About | Ex-DoorDash, Square, Mudflap Engineering Leader | DomeWorks</title>
   <meta name="description" content="10+ years of engineering leadership at DoorDash, Square, and Mudflap. Now building the AI infrastructure layer for engineering teams." />
   <link rel="canonical" href="https://domeworks.ai/about/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="DomeWorks" />
   <meta property="og:url" content="https://domeworks.ai/about/" />
-  <meta property="og:title" content="About — Ex-DoorDash, Square, Mudflap Engineering Leader | DomeWorks" />
+  <meta property="og:title" content="About | Ex-DoorDash, Square, Mudflap Engineering Leader | DomeWorks" />
   <meta property="og:description" content="10+ years of engineering leadership at DoorDash, Square, and Mudflap. Now building the AI infrastructure layer for engineering teams." />
   <meta property="og:image" content="https://domeworks.ai/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="About — Ex-DoorDash, Square, Mudflap Engineering Leader | DomeWorks" />
+  <meta name="twitter:title" content="About | Ex-DoorDash, Square, Mudflap Engineering Leader | DomeWorks" />
   <meta name="twitter:description" content="10+ years of engineering leadership at DoorDash, Square, and Mudflap. Now building AI infrastructure for engineering teams." />
   <meta name="twitter:image" content="https://domeworks.ai/og-image.png" />
 
@@ -56,13 +56,13 @@
     </h2>
     <div class="space-y-6 text-lg text-charcoal/70 leading-[1.65]">
       <p>
-        Recently, that work shifted to AI. Not the hype cycle version — the engineering version. How do you take a team that has AI tools and make those tools actually change how the team ships?
+        Recently, that work shifted to AI. Not the hype cycle version, but the engineering version. How do you take a team that has AI tools and make those tools actually change how the team ships?
       </p>
       <p>
         I watched the same pattern play out at every company: leadership buys Cursor licenses, rolls them out in a Slack announcement, maybe runs a lunch-and-learn. Three months later, adoption is at 15% and nobody can explain why.
       </p>
       <p>
-        I can explain why. There's no intelligence infrastructure that replaces coordination overhead — nothing connecting the tools to how the team works. No shared context feeding into AI tools. No standard developer workflows automated around AI. No agent infrastructure connecting your codebase, tickets, and docs to how engineers actually ship.
+        I can explain why. There's no intelligence infrastructure that replaces coordination overhead. Nothing connects the tools to how the team works. No shared context feeding into AI tools. No standard developer workflows automated around AI. No agent infrastructure connecting your codebase, tickets, and docs to how engineers actually ship.
       </p>
       <p class="border-l-2 border-copper pl-6 text-charcoal">
         Over 80% of organizations report no measurable impact on EBIT despite their AI investments <span class="text-charcoal/40">(BCG, 2024)</span>. Nobody is building the layer between the tools and the work. That's where DomeWorks operates.
@@ -92,7 +92,7 @@
         <span class="flex-shrink-0 text-xs font-medium text-primary tracking-widest">02</span>
         <div>
           <h3 class="font-medium text-charcoal mb-2">Designed to end</h3>
-          <p class="text-charcoal/70 leading-[1.65]">Every engagement has a built-in exit. The goal is a team that has the systems they need and knows how to maintain them. The AI landscape moves fast — there's always a next phase to build, but you should be choosing it, not depending on me.</p>
+          <p class="text-charcoal/70 leading-[1.65]">Every engagement has a built-in exit. The goal is a team that has the systems they need and knows how to maintain them. The AI landscape moves fast, and there's always a next phase to build. But you should be choosing it, not depending on me.</p>
         </div>
       </div>
 
