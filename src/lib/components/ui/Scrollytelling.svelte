@@ -73,10 +73,10 @@
             <span class="text-sm font-medium tracking-widest text-primary uppercase mb-4 block">
               {step.number}
             </span>
-            <h3 class="text-2xl md:text-3xl font-serif font-semibold text-slate-900 mb-4">
+            <h3 class="text-2xl md:text-3xl font-serif font-semibold text-charcoal mb-4">
               {step.title}
             </h3>
-            <p class="text-lg text-slate-600 leading-relaxed">
+            <p class="text-lg text-charcoal/70 leading-relaxed">
               {step.description}
             </p>
           </div>
@@ -86,13 +86,13 @@
 
     <!-- Right: Sticky Visual -->
     <div class="hidden lg:block">
-      <div class="sticky top-32 h-[60vh] rounded-2xl overflow-hidden bg-slate-900 border border-slate-800">
+      <div class="sticky top-32 h-[60vh] rounded-2xl overflow-hidden bg-ink border border-white/10">
         <!-- Discovery Visual -->
         <div
           class="absolute inset-0 p-8 transition-all duration-700 {activeStep === 0 ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}"
         >
           <div class="h-full flex flex-col">
-            <span class="text-xs font-medium text-slate-500 uppercase tracking-wider mb-4">Current State</span>
+            <span class="text-xs font-medium text-warm-gray uppercase tracking-wider mb-4">Current State</span>
             <div class="flex-1 relative">
               <!-- Messy sticky notes / whiteboard look -->
               <div class="absolute top-4 left-4 w-24 h-24 bg-yellow-200 rounded shadow-lg rotate-3 p-2">
@@ -111,7 +111,7 @@
                 <div class="text-xs text-orange-900 font-mono">Ask Sarah again</div>
               </div>
               <!-- Question marks floating -->
-              <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-6xl text-slate-700 opacity-20 animate-pulse">
+              <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-6xl text-warm-white opacity-20 animate-pulse">
                 ?
               </div>
             </div>
@@ -123,7 +123,7 @@
           class="absolute inset-0 p-8 transition-all duration-700 {activeStep === 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}"
         >
           <div class="h-full flex flex-col">
-            <span class="text-xs font-medium text-slate-500 uppercase tracking-wider mb-4">Architecture</span>
+            <span class="text-xs font-medium text-warm-gray uppercase tracking-wider mb-4">Architecture</span>
             <div class="flex-1 flex items-center justify-center">
               <svg viewBox="0 0 300 200" class="w-full h-full max-w-md">
                 <!-- Clean flowchart -->
@@ -160,8 +160,8 @@
           class="absolute inset-0 p-8 transition-all duration-700 {activeStep === 2 ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}"
         >
           <div class="h-full flex flex-col">
-            <span class="text-xs font-medium text-slate-500 uppercase tracking-wider mb-4">Implementation</span>
-            <div class="flex-1 font-mono text-xs text-slate-400 overflow-hidden">
+            <span class="text-xs font-medium text-warm-gray uppercase tracking-wider mb-4">Implementation</span>
+            <div class="flex-1 font-mono text-xs text-warm-gray-light overflow-hidden">
               <div class="space-y-1 animate-code-scroll">
                 <div><span class="text-purple-400">async</span> <span class="text-blue-400">function</span> <span class="text-yellow-300">processWorkflow</span>() {'{'}</div>
                 <div class="pl-4"><span class="text-purple-400">const</span> input = <span class="text-purple-400">await</span> <span class="text-yellow-300">getInput</span>();</div>
@@ -189,51 +189,51 @@
           class="absolute inset-0 p-8 transition-all duration-700 {activeStep === 3 ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}"
         >
           <div class="h-full flex flex-col">
-            <span class="text-xs font-medium text-slate-500 uppercase tracking-wider mb-4">Live Dashboard</span>
+            <span class="text-xs font-medium text-warm-gray uppercase tracking-wider mb-4">Live Dashboard</span>
             <div class="flex-1 space-y-4">
               <!-- Status bar -->
-              <div class="flex items-center justify-between p-3 bg-slate-800 rounded-lg">
+              <div class="flex items-center justify-between p-3 bg-white/5 rounded-lg">
                 <div class="flex items-center gap-2">
                   <span class="w-2 h-2 rounded-full bg-green-400 status-dot"></span>
                   <span class="text-sm text-white">Production</span>
                 </div>
-                <span class="text-xs text-slate-400">Uptime: 99.9%</span>
+                <span class="text-xs text-warm-gray-light">Uptime: 99.9%</span>
               </div>
 
               <!-- Metrics -->
               <div class="grid grid-cols-3 gap-3">
-                <div class="p-3 bg-slate-800 rounded-lg text-center">
+                <div class="p-3 bg-white/5 rounded-lg text-center">
                   <div class="text-2xl font-bold text-primary counter-animate">1,247</div>
-                  <div class="text-xs text-slate-500">Runs today</div>
+                  <div class="text-xs text-warm-gray">Runs today</div>
                 </div>
-                <div class="p-3 bg-slate-800 rounded-lg text-center">
+                <div class="p-3 bg-white/5 rounded-lg text-center">
                   <div class="text-2xl font-bold text-green-400">2.3s</div>
-                  <div class="text-xs text-slate-500">Avg time</div>
+                  <div class="text-xs text-warm-gray">Avg time</div>
                 </div>
-                <div class="p-3 bg-slate-800 rounded-lg text-center">
+                <div class="p-3 bg-white/5 rounded-lg text-center">
                   <div class="text-2xl font-bold text-white">0</div>
-                  <div class="text-xs text-slate-500">Errors</div>
+                  <div class="text-xs text-warm-gray">Errors</div>
                 </div>
               </div>
 
               <!-- Activity feed -->
-              <div class="flex-1 p-3 bg-slate-800 rounded-lg overflow-hidden">
-                <div class="text-xs text-slate-500 mb-2">Recent Activity</div>
+              <div class="flex-1 p-3 bg-white/5 rounded-lg overflow-hidden">
+                <div class="text-xs text-warm-gray mb-2">Recent Activity</div>
                 <div class="space-y-2 text-xs">
-                  <div class="flex items-center gap-2 text-slate-400">
+                  <div class="flex items-center gap-2 text-warm-gray-light">
                     <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>
                     <span>Workflow completed - Lead #4521</span>
-                    <span class="ml-auto text-slate-600">2s ago</span>
+                    <span class="ml-auto text-warm-gray">2s ago</span>
                   </div>
-                  <div class="flex items-center gap-2 text-slate-400">
+                  <div class="flex items-center gap-2 text-warm-gray-light">
                     <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>
                     <span>Workflow completed - Lead #4520</span>
-                    <span class="ml-auto text-slate-600">8s ago</span>
+                    <span class="ml-auto text-warm-gray">8s ago</span>
                   </div>
-                  <div class="flex items-center gap-2 text-slate-400">
+                  <div class="flex items-center gap-2 text-warm-gray-light">
                     <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>
                     <span>Workflow completed - Lead #4519</span>
-                    <span class="ml-auto text-slate-600">15s ago</span>
+                    <span class="ml-auto text-warm-gray">15s ago</span>
                   </div>
                 </div>
               </div>
@@ -245,7 +245,7 @@
                 </svg>
                 <div>
                   <div class="text-sm font-medium text-white">You own this</div>
-                  <div class="text-xs text-slate-400">Full docs + admin access transferred</div>
+                  <div class="text-xs text-warm-gray">Full docs + admin access transferred</div>
                 </div>
               </div>
             </div>
