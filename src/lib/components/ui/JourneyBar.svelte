@@ -34,7 +34,7 @@
 <nav class="mb-8" aria-label="Service journey">
   <div class="flex items-center gap-1.5 mb-3">
     {#each steps as step, i}
-      <div class="flex-1 h-[3px] rounded-full {segmentColor(i)} transition-colors duration-300"></div>
+      <div class="flex-1 h-[3px] rounded-full {segmentColor(i)} transition-all duration-300 {i === currentIndex ? 'scale-y-[1.6] origin-center' : ''}"></div>
     {/each}
   </div>
   <div class="flex items-center gap-1 text-[11px] tracking-wide">
