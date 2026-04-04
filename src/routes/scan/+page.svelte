@@ -1,6 +1,7 @@
 <script lang="ts">
   import Button from '$lib/components/ui/Button.svelte'
   import Section from '$lib/components/layout/Section.svelte'
+  import JourneyBar from '$lib/components/ui/JourneyBar.svelte'
   import { reveal } from '$lib/actions/reveal'
   import { getBookCallUrl } from '$lib/utils/mailto'
 </script>
@@ -38,13 +39,21 @@
 </svelte:head>
 
 <!-- Hero -->
-<section class="bg-warm-white py-20 md:py-28 relative overflow-hidden">
+<section class="py-20 md:py-28 relative overflow-hidden" style="background: linear-gradient(135deg, #FAFAF7 70%, rgba(13,107,99,0.04));">
   <div class="absolute inset-0 grid-overlay opacity-50"></div>
+  <!-- Architectural SVG: Radar sweep -->
+  <div class="absolute right-0 bottom-0 w-64 md:w-96 opacity-[0.07] pointer-events-none" aria-hidden="true">
+    <svg viewBox="0 0 200 200" fill="none">
+      <circle cx="100" cy="100" r="90" stroke="#0d6b63" stroke-width="1"/>
+      <circle cx="100" cy="100" r="60" stroke="#0d6b63" stroke-width="0.8"/>
+      <circle cx="100" cy="100" r="30" stroke="#0d6b63" stroke-width="0.5"/>
+      <line x1="100" y1="100" x2="170" y2="40" stroke="#0d6b63" stroke-width="1.5"/>
+      <circle cx="100" cy="100" r="3" fill="#0d6b63"/>
+    </svg>
+  </div>
   <div class="relative max-w-6xl mx-auto px-6 lg:px-8">
     <div class="max-w-3xl">
-      <p class="text-xs font-medium tracking-widest text-primary uppercase mb-6">
-        AI Scan
-      </p>
+      <JourneyBar current="scan" />
       <h1 class="font-serif text-4xl md:text-5xl font-normal text-charcoal leading-[1.2] md:leading-[1.15]">
         What you're spending on AI<span class="text-primary">.</span> What you're getting from it<span class="text-primary">.</span> In 48 hours<span class="text-primary">.</span>
       </h1>
@@ -146,17 +155,38 @@
   </div>
 </Section>
 
-<!-- CTA -->
-<Section background="muted" padding="lg">
-  <div class="max-w-2xl mx-auto text-center" use:reveal>
-    <h2 class="font-serif text-3xl font-normal text-charcoal mb-4">
-      Find out what your AI spend is doing
-    </h2>
-    <p class="text-lg text-charcoal/70 mb-8">
-      30-minute call, no obligation. I'll tell you whether a Scan makes sense for your team.
-    </p>
-    <Button href={getBookCallUrl()} size="lg">
-      Book a call
-    </Button>
+<!-- FAQ -->
+<Section background="white" padding="lg" eyebrow="05" title="Common questions">
+  <div class="max-w-2xl mx-auto space-y-4" use:reveal>
+    <details class="group p-6 bg-stone rounded-xl border border-charcoal/10">
+      <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
+        What access do you need?
+        <svg class="w-5 h-5 text-charcoal/40 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </summary>
+      <p class="mt-4 text-charcoal/70 leading-relaxed">Admin credentials or exports from your AI tools (Cursor, Copilot, Claude, ChatGPT for Teams, etc.) plus a 15-minute walkthrough of your team structure.</p>
+    </details>
+    <details class="group p-6 bg-stone rounded-xl border border-charcoal/10">
+      <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
+        What if we're a remote team?
+        <svg class="w-5 h-5 text-charcoal/40 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </summary>
+      <p class="mt-4 text-charcoal/70 leading-relaxed">Fully remote-friendly. The survey is async, the report is delivered digitally. No on-site requirement.</p>
+    </details>
+    <details class="group p-6 bg-stone rounded-xl border border-charcoal/10">
+      <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
+        Is there any obligation after the Scan?
+        <svg class="w-5 h-5 text-charcoal/40 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </summary>
+      <p class="mt-4 text-charcoal/70 leading-relaxed">No. Many teams take the quick wins and run. The Scan stands on its own — if you want to go further, the <a href="/context-build/" class="text-primary hover:underline">Context Build</a> is the next step, but there's no obligation.</p>
+    </details>
   </div>
 </Section>
+
+<!-- Journey nudge -->
+<div class="border-t border-charcoal/8 py-8">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8 text-center">
+    <p class="text-sm text-charcoal/60">
+      Next in the journey: <a href="/context-build/" class="text-primary hover:underline font-medium">Context Build &rarr;</a>
+    </p>
+  </div>
+</div>
