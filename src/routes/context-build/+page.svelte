@@ -3,6 +3,7 @@
   import Section from '$lib/components/layout/Section.svelte'
   import { reveal } from '$lib/actions/reveal'
   import { getBookCallUrl } from '$lib/utils/mailto'
+  import JourneyBar from '$lib/components/ui/JourneyBar.svelte'
 </script>
 
 <svelte:head>
@@ -38,13 +39,23 @@
 </svelte:head>
 
 <!-- Hero -->
-<section class="bg-warm-white py-20 md:py-28 relative overflow-hidden">
+<section class="py-20 md:py-28 relative overflow-hidden" style="background: linear-gradient(135deg, #FAFAF7 65%, rgba(13,107,99,0.06));">
   <div class="absolute inset-0 grid-overlay opacity-50"></div>
+  <!-- Architectural SVG: Pipeline diagram -->
+  <div class="absolute right-0 bottom-0 w-64 md:w-96 opacity-[0.07] pointer-events-none" aria-hidden="true">
+    <svg viewBox="0 0 200 160" fill="none">
+      <rect x="10" y="10" width="50" height="30" rx="6" stroke="#0d6b63" stroke-width="1"/>
+      <rect x="10" y="55" width="50" height="30" rx="6" stroke="#0d6b63" stroke-width="1"/>
+      <rect x="10" y="100" width="50" height="30" rx="6" stroke="#0d6b63" stroke-width="1"/>
+      <rect x="120" y="45" width="70" height="45" rx="8" stroke="#0d6b63" stroke-width="1.5"/>
+      <line x1="60" y1="25" x2="120" y2="62" stroke="#0d6b63" stroke-width="0.8"/>
+      <line x1="60" y1="70" x2="120" y2="67" stroke="#0d6b63" stroke-width="0.8"/>
+      <line x1="60" y1="115" x2="120" y2="75" stroke="#0d6b63" stroke-width="0.8"/>
+    </svg>
+  </div>
   <div class="relative max-w-6xl mx-auto px-6 lg:px-8">
     <div class="max-w-3xl">
-      <p class="text-xs font-medium tracking-widest text-primary uppercase mb-6">
-        Context Build
-      </p>
+      <JourneyBar current="context-build" />
       <h1 class="font-serif text-4xl md:text-5xl font-normal text-charcoal leading-[1.2] md:leading-[1.15]">
         Build the world model your AI tools need to be useful<span class="text-primary">.</span>
       </h1>
@@ -217,17 +228,38 @@
   </div>
 </Section>
 
-<!-- CTA -->
-<Section background="muted" padding="lg">
-  <div class="max-w-2xl mx-auto text-center" use:reveal>
-    <h2 class="font-serif text-3xl font-normal text-charcoal mb-4">
-      Ready to build the context layer your team needs?
-    </h2>
-    <p class="text-lg text-charcoal/70 mb-8">
-      30-minute call, no obligation. I'll tell you whether a Context Build is the right move, or if a <a href="/scan/" class="text-primary hover:underline">Scan</a> is enough.
-    </p>
-    <Button href={getBookCallUrl()} size="lg">
-      Book a call
-    </Button>
+<!-- FAQ -->
+<Section background="muted" padding="lg" eyebrow="05" title="Common questions">
+  <div class="max-w-2xl mx-auto space-y-4" use:reveal>
+    <details class="group p-6 bg-warm-white rounded-xl border border-charcoal/10">
+      <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
+        What access do you need?
+        <svg class="w-5 h-5 text-charcoal/40 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </summary>
+      <p class="mt-4 text-charcoal/70 leading-relaxed">Stakeholder time (30-minute interviews with 3–5 people), plus tool admin access for the audit. I'll provide a specific list after the kickoff call.</p>
+    </details>
+    <details class="group p-6 bg-warm-white rounded-xl border border-charcoal/10">
+      <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
+        Do you sign NDAs?
+        <svg class="w-5 h-5 text-charcoal/40 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </summary>
+      <p class="mt-4 text-charcoal/70 leading-relaxed">Yes, standard mutual NDA before any access is granted. I can use yours or provide mine.</p>
+    </details>
+    <details class="group p-6 bg-warm-white rounded-xl border border-charcoal/10">
+      <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
+        What if we want to build internally after?
+        <svg class="w-5 h-5 text-charcoal/40 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </summary>
+      <p class="mt-4 text-charcoal/70 leading-relaxed">That's fine. The deliverables are designed to be actionable without me. Some teams take the Context Build and handle the rest internally — the quick wins alone tend to pay for the engagement.</p>
+    </details>
   </div>
 </Section>
+
+<!-- Journey nudge -->
+<div class="border-t border-charcoal/8 py-8">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8 text-center">
+    <p class="text-sm text-charcoal/60">
+      Next in the journey: <a href="/orchestration-build/" class="text-primary hover:underline font-medium">Orchestration Build &rarr;</a>
+    </p>
+  </div>
+</div>
