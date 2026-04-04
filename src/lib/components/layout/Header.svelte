@@ -1,187 +1,219 @@
 <script lang="ts">
-  import { page } from '$app/stores'
-  import { getBookCallUrl } from '$lib/utils/mailto'
-  import { slide } from 'svelte/transition'
-  import { cubicOut } from 'svelte/easing'
+	import { page } from '$app/stores';
+	import { getBookCallUrl } from '$lib/utils/mailto';
+	import { slide } from 'svelte/transition';
+	import { cubicOut } from 'svelte/easing';
 
-  let menuOpen = $state(false)
-  let scrolled = $state(false)
-  let isHeroPage = $derived($page.url.pathname === '/')
+	let menuOpen = $state(false);
+	let scrolled = $state(false);
+	let isHeroPage = $derived($page.url.pathname === '/');
 
-  function isActive(href: string): boolean {
-    const currentPath = $page.url.pathname
-    if (href === '/') {
-      return currentPath === '/'
-    }
-    return currentPath.startsWith(href)
-  }
+	function isActive(href: string): boolean {
+		const currentPath = $page.url.pathname;
+		if (href === '/') {
+			return currentPath === '/';
+		}
+		return currentPath.startsWith(href);
+	}
 
-  const serviceLinks = [
-    { href: '/scan/', label: 'AI Scan' },
-    { href: '/context-build/', label: 'Context Build' },
-    { href: '/orchestration-build/', label: 'Orchestration Build' },
-    { href: '/fractional/', label: 'Fractional' }
-  ]
+	const serviceLinks = [
+		{ href: '/scan/', label: 'AI Scan' },
+		{ href: '/context-build/', label: 'Context Build' },
+		{ href: '/orchestration-build/', label: 'Orchestration Build' },
+		{ href: '/fractional/', label: 'Fractional' }
+	];
 
-  const otherLinks = [
-    { href: '/about/', label: 'About' },
-    { href: '/contact/', label: 'Contact' }
-  ]
+	const otherLinks = [
+		{ href: '/about/', label: 'About' },
+		{ href: '/contact/', label: 'Contact' }
+	];
 
-  const navLinks = [...serviceLinks, ...otherLinks]
+	const navLinks = [...serviceLinks, ...otherLinks];
 
-  let servicesOpen = $state(false)
+	let servicesOpen = $state(false);
 
-  function toggleMenu() {
-    menuOpen = !menuOpen
-    if (!menuOpen) servicesOpen = false
-  }
+	function toggleMenu() {
+		menuOpen = !menuOpen;
+		if (!menuOpen) servicesOpen = false;
+	}
 
-  /* On hero page, header text is light until scrolled past the dark section */
-  let heroMode = $derived(isHeroPage && !scrolled)
+	/* On hero page, header text is light until scrolled past the dark section */
+	let heroMode = $derived(isHeroPage && !scrolled);
 
-  let reducedMotion = $state(false)
+	let reducedMotion = $state(false);
 
-  if (typeof window !== 'undefined') {
-    $effect(() => {
-      const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
-      reducedMotion = mq.matches
-      const handler = (e: MediaQueryListEvent) => { reducedMotion = e.matches }
-      mq.addEventListener('change', handler)
-      return () => mq.removeEventListener('change', handler)
-    })
+	if (typeof window !== 'undefined') {
+		$effect(() => {
+			const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+			reducedMotion = mq.matches;
+			const handler = (e: MediaQueryListEvent) => {
+				reducedMotion = e.matches;
+			};
+			mq.addEventListener('change', handler);
+			return () => mq.removeEventListener('change', handler);
+		});
 
-    $effect(() => {
-      const handleScroll = () => {
-        scrolled = window.scrollY > 20
-      }
-      window.addEventListener('scroll', handleScroll)
-      return () => window.removeEventListener('scroll', handleScroll)
-    })
-  }
+		$effect(() => {
+			const handleScroll = () => {
+				scrolled = window.scrollY > 20;
+			};
+			window.addEventListener('scroll', handleScroll);
+			return () => window.removeEventListener('scroll', handleScroll);
+		});
+	}
 </script>
 
 <header
-  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300
-    {scrolled ? 'bg-warm-white/80 backdrop-blur-md shadow-sm border-b border-charcoal/5' : 'bg-transparent'}"
+	class="fixed top-0 left-0 right-0 z-50 transition-all duration-300
+    {scrolled
+		? 'bg-warm-white/80 backdrop-blur-md shadow-sm border-b border-charcoal/5'
+		: 'bg-transparent'}"
 >
-  <nav class="max-w-6xl mx-auto px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16 md:h-20">
-      <a
-        href="/"
-        class="text-xl font-semibold tracking-tight transition-colors
-          {heroMode ? 'text-warm-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)] hover:text-warm-white/90' : 'text-charcoal hover:text-primary'}"
-      >
-        DomeWorks
-      </a>
+	<nav class="max-w-6xl mx-auto px-6 lg:px-8">
+		<div class="flex items-center justify-between h-16 md:h-20">
+			<a
+				href="/"
+				class="text-xl font-semibold tracking-tight transition-colors
+          {heroMode
+					? 'text-warm-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)] hover:text-warm-white/90'
+					: 'text-charcoal hover:text-primary'}"
+			>
+				DomeWorks
+			</a>
 
-      <div class="hidden lg:flex items-center gap-1">
-        {#each navLinks as link}
-          <a
-            href={link.href}
-            class="px-4 py-2 text-sm font-medium rounded-lg transition-all
+			<div class="hidden lg:flex items-center gap-1">
+				{#each navLinks as link}
+					<a
+						href={link.href}
+						class="px-4 py-2 text-sm font-medium rounded-lg transition-all
               {isActive(link.href)
-                ? heroMode ? 'text-warm-white bg-warm-white/10' : 'text-primary bg-primary/5'
-                : heroMode ? 'text-warm-white/70 hover:text-warm-white hover:bg-warm-white/5' : 'text-charcoal/70 hover:text-charcoal hover:bg-stone'}"
-            aria-current={isActive(link.href) ? 'page' : undefined}
-          >
-            {link.label}
-          </a>
-        {/each}
+							? heroMode
+								? 'text-warm-white bg-warm-white/10'
+								: 'text-primary bg-primary/5'
+							: heroMode
+								? 'text-warm-white/70 hover:text-warm-white hover:bg-warm-white/5'
+								: 'text-charcoal/70 hover:text-charcoal hover:bg-stone'}"
+						aria-current={isActive(link.href) ? 'page' : undefined}
+					>
+						{link.label}
+					</a>
+				{/each}
 
-        <a
-          href={getBookCallUrl()}
-          class="ml-4 px-5 py-2.5 text-sm font-medium text-white bg-primary hover:bg-primary-hover rounded-lg transition-all shadow-sm hover:shadow"
-        >
-          Book a call
-        </a>
-      </div>
+				<a
+					href={getBookCallUrl()}
+					class="ml-4 px-5 py-2.5 text-sm font-medium text-white bg-primary hover:bg-primary-hover rounded-lg transition-all shadow-sm hover:shadow"
+				>
+					Book a call
+				</a>
+			</div>
 
-      <button
-        onclick={toggleMenu}
-        class="lg:hidden p-2 -mr-2 rounded-lg transition-all
-          {heroMode ? 'text-warm-white/70 hover:text-warm-white hover:bg-warm-white/5' : 'text-charcoal/70 hover:text-charcoal hover:bg-stone'}"
-        aria-label="Toggle menu"
-        aria-expanded={menuOpen}
-      >
-        {#if menuOpen}
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        {:else}
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        {/if}
-      </button>
-    </div>
+			<button
+				onclick={toggleMenu}
+				class="lg:hidden p-2 -mr-2 rounded-lg transition-all
+          {heroMode
+					? 'text-warm-white/70 hover:text-warm-white hover:bg-warm-white/5'
+					: 'text-charcoal/70 hover:text-charcoal hover:bg-stone'}"
+				aria-label="Toggle menu"
+				aria-expanded={menuOpen}
+			>
+				{#if menuOpen}
+					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="1.5"
+							d="M6 18L18 6M6 6l12 12"
+						/>
+					</svg>
+				{:else}
+					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="1.5"
+							d="M4 6h16M4 12h16M4 18h16"
+						/>
+					</svg>
+				{/if}
+			</button>
+		</div>
 
-    {#if menuOpen}
-      <div
-        transition:slide={{ duration: reducedMotion ? 0 : 250, easing: cubicOut }}
-        class="lg:hidden pb-6 border-t border-stone mt-2 pt-4"
-      >
-        <div class="flex flex-col gap-1">
-          <!-- Services accordion -->
-          <button
-            onclick={() => servicesOpen = !servicesOpen}
-            class="flex items-center justify-between px-4 py-3 text-base font-medium rounded-lg transition-all
-              {serviceLinks.some(l => isActive(l.href))
-                ? 'text-primary bg-primary/5'
-                : 'text-charcoal/70 hover:text-charcoal hover:bg-stone'}"
-          >
-            Services
-            <svg
-              class="w-4 h-4 transition-transform duration-200 {servicesOpen ? 'rotate-180' : ''}"
-              fill="none" stroke="currentColor" viewBox="0 0 24 24"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
+		{#if menuOpen}
+			<div
+				transition:slide={{ duration: reducedMotion ? 0 : 250, easing: cubicOut }}
+				class="lg:hidden pb-6 border-t border-stone mt-2 pt-4"
+			>
+				<div class="flex flex-col gap-1">
+					<!-- Services accordion -->
+					<button
+						onclick={() => (servicesOpen = !servicesOpen)}
+						class="flex items-center justify-between px-4 py-3 text-base font-medium rounded-lg transition-all
+              {serviceLinks.some((l) => isActive(l.href))
+							? 'text-primary bg-primary/5'
+							: 'text-charcoal/70 hover:text-charcoal hover:bg-stone'}"
+					>
+						Services
+						<svg
+							class="w-4 h-4 transition-transform duration-200 {servicesOpen ? 'rotate-180' : ''}"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M19 9l-7 7-7-7"
+							/>
+						</svg>
+					</button>
 
-          {#if servicesOpen}
-            <div
-              transition:slide={{ duration: reducedMotion ? 0 : 200, easing: cubicOut }}
-              class="ml-4 flex flex-col gap-1"
-            >
-              {#each serviceLinks as link}
-                <a
-                  href={link.href}
-                  class="px-4 py-2.5 text-sm font-medium rounded-lg transition-all
+					{#if servicesOpen}
+						<div
+							transition:slide={{ duration: reducedMotion ? 0 : 200, easing: cubicOut }}
+							class="ml-4 flex flex-col gap-1"
+						>
+							{#each serviceLinks as link}
+								<a
+									href={link.href}
+									class="px-4 py-2.5 text-sm font-medium rounded-lg transition-all
                     {isActive(link.href)
-                      ? 'text-primary bg-primary/5'
-                      : 'text-charcoal/60 hover:text-charcoal hover:bg-stone'}"
-                  aria-current={isActive(link.href) ? 'page' : undefined}
-                  onclick={() => { menuOpen = false; servicesOpen = false }}
-                >
-                  {link.label}
-                </a>
-              {/each}
-            </div>
-          {/if}
+										? 'text-primary bg-primary/5'
+										: 'text-charcoal/60 hover:text-charcoal hover:bg-stone'}"
+									aria-current={isActive(link.href) ? 'page' : undefined}
+									onclick={() => {
+										menuOpen = false;
+										servicesOpen = false;
+									}}
+								>
+									{link.label}
+								</a>
+							{/each}
+						</div>
+					{/if}
 
-          {#each otherLinks as link}
-            <a
-              href={link.href}
-              class="px-4 py-3 text-base font-medium rounded-lg transition-all
+					{#each otherLinks as link}
+						<a
+							href={link.href}
+							class="px-4 py-3 text-base font-medium rounded-lg transition-all
                 {isActive(link.href)
-                  ? 'text-primary bg-primary/5'
-                  : 'text-charcoal/70 hover:text-charcoal hover:bg-stone'}"
-              aria-current={isActive(link.href) ? 'page' : undefined}
-              onclick={() => menuOpen = false}
-            >
-              {link.label}
-            </a>
-          {/each}
+								? 'text-primary bg-primary/5'
+								: 'text-charcoal/70 hover:text-charcoal hover:bg-stone'}"
+							aria-current={isActive(link.href) ? 'page' : undefined}
+							onclick={() => (menuOpen = false)}
+						>
+							{link.label}
+						</a>
+					{/each}
 
-          <a
-            href={getBookCallUrl()}
-            class="mt-4 px-5 py-3 text-center text-base font-medium text-white bg-primary hover:bg-primary-hover rounded-lg transition-all"
-          >
-            Book a call
-          </a>
-        </div>
-      </div>
-    {/if}
-  </nav>
+					<a
+						href={getBookCallUrl()}
+						class="mt-4 px-5 py-3 text-center text-base font-medium text-white bg-primary hover:bg-primary-hover rounded-lg transition-all"
+					>
+						Book a call
+					</a>
+				</div>
+			</div>
+		{/if}
+	</nav>
 </header>

@@ -5,7 +5,10 @@
 	import { getBookCallUrl } from '$lib/utils/mailto';
 
 	function stackReveal(node: HTMLElement) {
-		if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+		if (
+			typeof window !== 'undefined' &&
+			window.matchMedia('(prefers-reduced-motion: reduce)').matches
+		) {
 			node.classList.add('revealed');
 			return { destroy() {} };
 		}
@@ -22,7 +25,11 @@
 			{ threshold: 0.2 }
 		);
 		observer.observe(node);
-		return { destroy() { observer.disconnect(); } };
+		return {
+			destroy() {
+				observer.disconnect();
+			}
+		};
 	}
 </script>
 
