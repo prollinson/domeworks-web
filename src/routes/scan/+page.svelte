@@ -49,7 +49,7 @@
         What you're spending on AI<span class="text-primary">.</span> What you're getting from it<span class="text-primary">.</span> In 48 hours<span class="text-primary">.</span>
       </h1>
       <p class="mt-6 text-xl text-charcoal/70 leading-relaxed">
-        You're probably paying for more AI tooling than you realize. Some of it's being used well. Some of it's shelfware. The AI Scan maps it all (every tool, every seat, every dollar) and diagnoses your Intelligence Maturity level: where you are on the path from "bought tools" to "AI coordinates our work."
+        You're probably paying for more AI tooling than you realize. Some of it's being used well. Some of it's shelfware. The AI Scan maps it all (every tool, every seat, every dollar) and diagnoses your AI readiness score: where you are on the path from "bought tools" to "AI coordinates our work."
       </p>
       <div class="mt-8">
         <Button href={getBookCallUrl()} size="lg">
@@ -89,7 +89,7 @@
       { title: 'Adoption Heatmap', desc: 'Where AI usage is concentrated (usually 2-3 power users) and where it\'s absent (usually 70-80% of the team). The gap visualized.' },
       { title: 'Wasted Spend Report', desc: 'Licensed-but-idle seats, redundant subscriptions, misconfigured plans. Typically finds $2,000-$8,000/year in immediate savings.' },
       { title: '3 Quick Wins', desc: 'Specific actions your team can take this week. Not "consider an AI strategy," but things like "cancel these 12 idle seats" or "set up a team working agreement for AI-assisted code review."' },
-      { title: 'Intelligence Maturity Score', desc: 'A 1-5 rating across five dimensions: tool coverage, adoption rate, workflow integration, spend efficiency, team capability. Shows where you are on the path from "bought tools" to "AI coordinates our work," designed to be shareable with your CEO.' }
+      { title: 'AI Readiness Score', desc: 'A 1-5 rating across five dimensions: tool coverage, adoption rate, workflow integration, spend efficiency, team capability. Shows where you are on the path from "bought tools" to "AI coordinates our work," designed to be shareable with your CEO.' }
     ] as item}
       <div class="p-6 bg-stone rounded-xl border border-charcoal/10">
         <h3 class="font-medium text-charcoal mb-2">{item.title}</h3>
