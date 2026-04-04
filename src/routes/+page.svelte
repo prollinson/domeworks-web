@@ -379,6 +379,13 @@
 						<p class="text-white/90 text-lg md:text-xl font-serif leading-snug max-w-xl">
 							Replaces the coordination work that hierarchy exists to perform.
 						</p>
+						<ul class="mt-3 space-y-1 text-white/60 text-sm">
+							<li>
+								Route PR reviews to the right engineer based on code ownership and availability
+							</li>
+							<li>Triage incoming bugs without a morning standup</li>
+							<li>Distribute sprint context across teams so nobody re-explains the architecture</li>
+						</ul>
 					</div>
 				</div>
 
@@ -400,6 +407,20 @@
 						<p class="text-white/90 text-lg md:text-xl font-serif leading-snug max-w-xl">
 							Builds the world model so AI doesn't start from zero every time.
 						</p>
+						<ul class="mt-3 space-y-1 text-white/60 text-sm">
+							<li>
+								Feed your coding standards, architectural decisions, and team conventions into every
+								AI interaction
+							</li>
+							<li>
+								Keep your ticketing system, docs, and codebase connected so AI knows what's already
+								been decided
+							</li>
+							<li>
+								Give new engineers' AI tools the same context a senior engineer carries in their
+								head
+							</li>
+						</ul>
 					</div>
 				</div>
 
@@ -410,6 +431,34 @@
 							>Edge</span
 						>
 						<span class="text-charcoal/60 text-sm md:text-base">Tools, APIs, repos, CI/CD</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Before/After comparison -->
+		<div class="max-w-3xl mx-auto mb-16" use:reveal>
+			<div class="bg-stone rounded-xl border border-charcoal/10 p-6 md:p-8">
+				<div class="grid grid-cols-2 gap-6 md:gap-8">
+					<div>
+						<p class="text-xs font-semibold tracking-widest text-charcoal/40 uppercase mb-4">
+							Before
+						</p>
+						<ul class="space-y-3 text-sm text-charcoal/60">
+							<li>Engineers re-explain architecture to every AI prompt</li>
+							<li>Managers relay context between teams in meetings</li>
+							<li>Status updates exist because information doesn't flow</li>
+							<li>AI tools help individuals but don't coordinate work</li>
+						</ul>
+					</div>
+					<div>
+						<p class="text-xs font-semibold tracking-widest text-primary uppercase mb-4">After</p>
+						<ul class="space-y-3 text-sm text-charcoal/80">
+							<li>Context system feeds it automatically</li>
+							<li>Agent coordination routes it in real time</li>
+							<li>Information flows through infrastructure, not people</li>
+							<li>Multi-agent workflows coordinate across the team</li>
+						</ul>
 					</div>
 				</div>
 			</div>
