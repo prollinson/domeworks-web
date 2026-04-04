@@ -6,7 +6,7 @@
 </script>
 
 <svelte:head>
-  <title>DomeWorks — Intelligence Infrastructure Engineering</title>
+  <title>DomeWorks - Intelligence Infrastructure Engineering</title>
   <meta name="description" content="Your engineering team runs on meetings, status updates, and managers routing information. That coordination layer can now be built as intelligence infrastructure. DomeWorks builds it." />
   <link rel="canonical" href="https://domeworks.ai/" />
 
@@ -14,13 +14,13 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="DomeWorks" />
   <meta property="og:url" content="https://domeworks.ai/" />
-  <meta property="og:title" content="DomeWorks — Intelligence Infrastructure Engineering" />
+  <meta property="og:title" content="DomeWorks - Intelligence Infrastructure Engineering" />
   <meta property="og:description" content="Your engineering team runs on meetings, status updates, and managers routing information. That coordination layer can now be built as intelligence infrastructure." />
   <meta property="og:image" content="https://domeworks.ai/og-image.png" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="DomeWorks — Intelligence Infrastructure Engineering" />
+  <meta name="twitter:title" content="DomeWorks - Intelligence Infrastructure Engineering" />
   <meta name="twitter:description" content="Your engineering team runs on meetings, status updates, and managers routing information. That coordination layer can now be built as intelligence infrastructure." />
   <meta name="twitter:image" content="https://domeworks.ai/og-image.png" />
 
@@ -64,19 +64,19 @@
 <section class="relative hero-section bg-ink overflow-hidden -mt-16 md:-mt-20" aria-label="Hero">
   <!-- Architectural grid background -->
   <div class="absolute inset-0 hero-grid" aria-hidden="true" role="presentation"></div>
-  <!-- Warm ambient glow — bottom-left copper, top-right teal -->
+  <!-- Warm ambient glow - bottom-left copper, top-right teal -->
   <div class="absolute inset-0 hero-glow" aria-hidden="true" role="presentation"></div>
   <!-- Grain texture -->
   <div class="absolute inset-0 texture-grain" aria-hidden="true" role="presentation"></div>
   <!-- Horizontal architectural rules -->
   <div class="absolute inset-0 pointer-events-none hero-rules" aria-hidden="true" role="presentation"></div>
 
-  <!-- Monogram as architectural column — anchored to right edge, structurally integrated -->
+  <!-- Monogram as architectural column - anchored to right edge, structurally integrated -->
   <div class="absolute inset-0 pointer-events-none hero-monogram-container" aria-hidden="true" role="presentation">
     <span class="hero-monogram font-serif select-none">D</span>
   </div>
 
-  <!-- Vertical accent line — copper rule that runs the height of the hero -->
+  <!-- Vertical accent line - copper rule that runs the height of the hero -->
   <div class="absolute hero-accent-line" aria-hidden="true" role="presentation"></div>
 
   <div class="relative w-full max-w-7xl mx-auto px-6 lg:px-8 hero-content-pad flex flex-col justify-between min-h-[inherit]">
@@ -87,7 +87,7 @@
       <span class="hero-eyebrow-index">San Francisco</span>
     </div>
 
-    <!-- Middle zone: Headline — editorial scale, staggered lines -->
+    <!-- Middle zone: Headline - editorial scale, staggered lines -->
     <div class="hero-middle">
       <h1 class="hero-headline font-serif font-normal text-warm-white">
         <span class="hero-line hero-line-1">Coordination</span>
@@ -96,11 +96,11 @@
         <span class="hero-line hero-line-4 text-warm-white/70">infrastructure<span class="text-copper/70">.</span></span>
       </h1>
 
-      <!-- Subtext — positioned as an editorial aside, offset from the headline -->
+      <!-- Subtext - positioned as an editorial aside, offset from the headline -->
       <div class="hero-aside">
         <div class="hero-aside-rule" aria-hidden="true" role="presentation"></div>
         <p class="hero-body-text text-warm-white/85 leading-relaxed">
-          I spent 10+ years leading engineering teams at DoorDash, Square, and Mudflap. The biggest bottleneck was never the engineering — it was the coordination. That layer can now be built as intelligence infrastructure.
+          I spent 10+ years leading engineering teams at DoorDash, Square, and Mudflap. The biggest bottleneck was never the engineering - it was the coordination. That layer can now be built as intelligence infrastructure.
         </p>
         <p class="mt-3 text-sm text-warm-white/75 leading-relaxed hidden sm:block">
           Most companies bought AI tools and watched adoption flatline. The companies getting real leverage are replacing the coordination layer itself with intelligence infrastructure. DomeWorks builds that infrastructure.
@@ -121,7 +121,7 @@
       </div>
     </div>
 
-    <!-- Bottom zone: Stat strip — editorial data bar -->
+    <!-- Bottom zone: Stat strip - editorial data bar -->
     <div class="hero-stat-bar">
       <!-- Desktop stats -->
       <div class="hidden md:flex items-stretch">
@@ -165,21 +165,21 @@
 <Section background="muted" padding="lg" eyebrow="01" title="The problem isn't the tools">
   <div class="max-w-2xl mx-auto space-y-6" use:reveal>
     <p class="text-lg text-charcoal/70 leading-relaxed">
-      Your team has AI tools. But your organization still coordinates the same way it always has — through hierarchy, meetings, and people relaying information.
+      Your team has AI tools. But your organization still coordinates the same way it always has - through hierarchy, meetings, and people relaying information.
     </p>
     <p class="text-lg text-charcoal/70 leading-relaxed">
       Engineers re-explain their architecture to every AI prompt. Managers spend their days aggregating context from three teams so a fourth team can act on it. Status meetings exist because information doesn't flow without human relay chains. The tools work fine individually. What's missing is the intelligence infrastructure that replaces the coordination overhead.
     </p>
     <div class="p-6 bg-warm-white rounded-xl border border-charcoal/10 mt-8">
       <p class="text-charcoal/70 leading-relaxed">
-        <strong class="text-charcoal">Block</strong> (the company behind Square and Cash App) recently published how they're rebuilding their entire organization this way — replacing middle management's coordination function with what they call a <em>"company world model."</em> They have the engineering capacity to build it internally. Most companies don't.
+        <strong class="text-charcoal">Block</strong> (the company behind Square and Cash App) recently published how they're rebuilding their entire organization this way - replacing middle management's coordination function with what they call a <em>"company world model."</em> They have the engineering capacity to build it internally. Most companies don't.
       </p>
       <p class="text-sm text-charcoal/50 mt-3">That's where DomeWorks comes in.</p>
     </div>
   </div>
 </Section>
 
-<!-- What I Build — The Intelligence Stack -->
+<!-- What I Build - The Intelligence Stack -->
 <Section background="white" padding="lg" eyebrow="02" title="The Intelligence Stack">
   <div class="max-w-4xl mx-auto" use:reveal>
     <p class="text-lg text-charcoal/70 leading-relaxed text-center mb-12 max-w-2xl mx-auto">
@@ -223,7 +223,7 @@
           The Context Layer
         </h3>
         <p class="text-charcoal/70 leading-relaxed">
-          Builds your organization's world model — machine-readable representations of your domain knowledge, team conventions, codebase patterns, and project state. With it, every AI interaction has full organizational context. Without it, every prompt starts from zero.
+          Builds your organization's world model - machine-readable representations of your domain knowledge, team conventions, codebase patterns, and project state. With it, every AI interaction has full organizational context. Without it, every prompt starts from zero.
         </p>
       </div>
       <div class="space-y-4">
@@ -232,7 +232,7 @@
           The Orchestration Layer
         </h3>
         <p class="text-charcoal/70 leading-relaxed">
-          Replaces the coordination function that hierarchy exists to perform. Multi-agent systems that route tasks, compose capabilities, enforce quality gates, and handle failures — so your team reviews and decides instead of relaying and coordinating.
+          Replaces the coordination function that hierarchy exists to perform. Multi-agent systems that route tasks, compose capabilities, enforce quality gates, and handle failures - so your team reviews and decides instead of relaying and coordinating.
         </p>
       </div>
     </div>
@@ -246,7 +246,7 @@
       <div class="p-6 bg-stone rounded-xl border border-charcoal/10">
         <h3 class="font-medium text-charcoal mb-2">Fractional AI Leadership</h3>
         <p class="text-charcoal/70 leading-relaxed text-sm">
-          An ongoing retainer where I act as your part-time Head of AI — 1-2 days a week. I maintain and evolve both layers, close feedback loops so the system gets smarter over time, and make sure the transition from hierarchy to intelligence infrastructure compounds instead of stalling.
+          An ongoing retainer where I act as your part-time Head of AI - 1-2 days a week. I maintain and evolve both layers, close feedback loops so the system gets smarter over time, and make sure the transition from hierarchy to intelligence infrastructure compounds instead of stalling.
         </p>
       </div>
     </div>
@@ -263,7 +263,7 @@
       <h3 class="text-xl font-medium text-charcoal mb-2">AI Scan</h3>
       <p class="text-2xl font-normal font-serif text-charcoal mb-4">$2,500–$3,500</p>
       <p class="text-charcoal/60 text-sm flex-grow">
-        In 48 hours, I diagnose your Intelligence Maturity level — where you are on the path from "bought tools" to "AI coordinates our work." You get a clear picture of what's missing and quick wins your team can act on this week.
+        In 48 hours, I diagnose your Intelligence Maturity level - where you are on the path from "bought tools" to "AI coordinates our work." You get a clear picture of what's missing and quick wins your team can act on this week.
       </p>
       <p class="mt-4 text-sm text-primary font-medium group-hover:underline">Learn more &rarr;</p>
     </a>
@@ -284,7 +284,7 @@
       <h3 class="text-xl font-medium text-charcoal mb-2">Orchestration Build</h3>
       <p class="text-2xl font-normal font-serif text-charcoal mb-4">4–12 weeks</p>
       <p class="text-charcoal/60 text-sm flex-grow">
-        I build the Orchestration Layer — multi-agent coordination, quality gates, output routing. Your team goes from "AI helps individual engineers" to "AI coordinates our work."
+        I build the Orchestration Layer - multi-agent coordination, quality gates, output routing. Your team goes from "AI helps individual engineers" to "AI coordinates our work."
       </p>
       <p class="mt-4 text-sm text-charcoal/50">Day rate, scoped from assessment</p>
     </a>
@@ -296,10 +296,10 @@
   <div class="max-w-2xl mx-auto" use:reveal>
     <div class="p-8 md:p-12 bg-stone rounded-2xl border border-charcoal/10">
       <p class="text-lg text-charcoal/70 leading-relaxed mb-6">
-        You're a <strong class="text-charcoal">VP of Engineering, Head of Engineering, or CTO</strong> at a mid-market SaaS company (50-500 people) or a funded startup. Your engineers have AI tools but your organization still runs on human coordination — meetings, status updates, managers routing information between teams.
+        You're a <strong class="text-charcoal">VP of Engineering, Head of Engineering, or CTO</strong> at a mid-market SaaS company (50-500 people) or a funded startup. Your engineers have AI tools but your organization still runs on human coordination - meetings, status updates, managers routing information between teams.
       </p>
       <p class="text-lg text-charcoal/70 leading-relaxed mb-6">
-        You've probably thought about assigning a senior engineer to figure this out. But building intelligence infrastructure that replaces coordination overhead isn't a side project. It's infrastructure engineering — context pipelines, agent orchestration, quality gates, observability. You need someone who's already built this, who knows what works and what doesn't, so your team gets the infrastructure without the trial-and-error tax.
+        You've probably thought about assigning a senior engineer to figure this out. But building intelligence infrastructure that replaces coordination overhead isn't a side project. It's infrastructure engineering - context pipelines, agent orchestration, quality gates, observability. You need someone who's already built this, who knows what works and what doesn't, so your team gets the infrastructure without the trial-and-error tax.
       </p>
       <p class="text-lg text-charcoal leading-relaxed font-medium border-l-2 border-copper pl-6">
         You don't need another tool or a strategy deck. You need someone who can build the missing layers of your Intelligence Stack.

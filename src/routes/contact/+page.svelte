@@ -4,18 +4,18 @@
 </script>
 
 <svelte:head>
-  <title>Book a Discovery Call — AI Infrastructure Help | DomeWorks</title>
+  <title>Book a Discovery Call - AI Infrastructure Help | DomeWorks</title>
   <meta name="description" content="Book a 30-minute discovery call to discuss your team's AI adoption. I'll ask about your team, your tools, and where things are stuck." />
   <link rel="canonical" href="https://domeworks.ai/contact/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="DomeWorks" />
   <meta property="og:url" content="https://domeworks.ai/contact/" />
-  <meta property="og:title" content="Book a Discovery Call — AI Infrastructure Help | DomeWorks" />
+  <meta property="og:title" content="Book a Discovery Call - AI Infrastructure Help | DomeWorks" />
   <meta property="og:description" content="Book a 30-minute discovery call to discuss your team's AI adoption." />
   <meta property="og:image" content="https://domeworks.ai/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Book a Discovery Call — AI Infrastructure Help | DomeWorks" />
+  <meta name="twitter:title" content="Book a Discovery Call - AI Infrastructure Help | DomeWorks" />
   <meta name="twitter:description" content="Book a 30-minute discovery call to discuss your team's AI adoption." />
   <meta name="twitter:image" content="https://domeworks.ai/og-image.png" />
 </svelte:head>

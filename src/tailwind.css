@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Brand palette — DomeWorks Brand Identity v3 */
+  /* Brand palette - DomeWorks Brand Identity v3 */
   --color-primary: #0d6b63;
   --color-primary-hover: #0a5850;
   --color-primary-light: rgba(13, 107, 99, 0.06);
@@ -15,7 +15,7 @@
   --color-warm-gray: #A3A096;
   --color-warm-gray-light: #BBB8AD;
 
-  /* Typography — Inter (Söhne fallback) + Newsreader (Freight Display fallback) */
+  /* Typography - Inter (Söhne fallback) + Newsreader (Freight Display fallback) */
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-serif: 'Newsreader', Georgia, serif;
 
@@ -30,7 +30,7 @@
 
 /* ===== HERO SECTION ===== */
 
-/* Hero — dark architectural grid */
+/* Hero - dark architectural grid */
 .hero-grid {
   background-image:
     linear-gradient(to right, rgb(255 255 255 / 0.025) 1px, transparent 1px),
@@ -38,7 +38,7 @@
   background-size: clamp(3rem, 6vw, 6rem) clamp(3rem, 6vw, 6rem);
 }
 
-/* Hero — warm ambient glow, more dramatic and layered */
+/* Hero - warm ambient glow, more dramatic and layered */
 .hero-glow {
   background:
     radial-gradient(ellipse 70% 60% at 5% 95%, rgba(176, 125, 79, 0.2), transparent 65%),
@@ -46,7 +46,7 @@
     radial-gradient(ellipse 30% 40% at 50% 50%, rgba(20, 20, 20, 0.0), transparent);
 }
 
-/* Horizontal architectural rules — subtle lines that create structure */
+/* Horizontal architectural rules - subtle lines that create structure */
 .hero-rules {
   background-image:
     linear-gradient(to bottom,
@@ -61,7 +61,7 @@
     );
 }
 
-/* Monogram — architectural column element, not a background wash */
+/* Monogram - architectural column element, not a background wash */
 .hero-monogram-container {
   display: flex;
   align-items: center;
@@ -99,9 +99,9 @@
   }
 }
 
-/* Monogram scales fluidly — no hard breakpoint */
+/* Monogram scales fluidly - no hard breakpoint */
 
-/* Vertical copper accent line — left gutter architectural element */
+/* Vertical copper accent line - left gutter architectural element */
 .hero-accent-line {
   left: clamp(1.5rem, 4vw, 3rem);
   top: 0;
@@ -137,12 +137,12 @@
   }
 }
 
-/* Hero section — full viewport, fluid min-height */
+/* Hero section - full viewport, fluid min-height */
 .hero-section {
   min-height: clamp(85svh, 92svh, 100svh);
 }
 
-/* Hero content padding — fluid vertical layout, accounts for negative margin pulling hero behind fixed header */
+/* Hero content padding - fluid vertical layout, accounts for negative margin pulling hero behind fixed header */
 .hero-content-pad {
   padding-bottom: clamp(1.5rem, 3vw, 3rem);
   padding-top: clamp(9rem, 14vw, 14rem);
@@ -155,7 +155,7 @@
   }
 }
 
-/* Eyebrow row — top of hero */
+/* Eyebrow row - top of hero */
 .hero-eyebrow-row {
   display: flex;
   align-items: center;
@@ -186,7 +186,7 @@
   margin-left: 1.5rem;
 }
 
-/* Middle zone — headline + aside */
+/* Middle zone - headline + aside */
 .hero-middle {
   flex: 1;
   display: flex;
@@ -203,7 +203,7 @@
   }
 }
 
-/* Hero headline — editorial scale, each line staggered */
+/* Hero headline - editorial scale, each line staggered */
 .hero-headline {
   font-size: clamp(2.75rem, 8vw, 6rem);
   line-height: 1.02;
@@ -224,7 +224,7 @@
   }
 }
 
-/* Individual headline lines — staggered entrance */
+/* Individual headline lines - staggered entrance */
 .hero-line {
   display: block;
   animation: hero-line-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -261,7 +261,7 @@
   font-weight: 400;
 }
 
-/* Editorial aside — body text block with copper rule accent */
+/* Editorial aside - body text block with copper rule accent */
 .hero-aside {
   max-width: 28rem;
   margin-top: 2rem;
@@ -295,13 +295,13 @@
   }
 }
 
-/* Hero body text — fluid sizing */
+/* Hero body text - fluid sizing */
 .hero-body-text {
   font-size: clamp(0.9375rem, 1.5vw, 1.125rem);
   line-height: 1.65;
 }
 
-/* Hero stat bar — editorial data strip */
+/* Hero stat bar - editorial data strip */
 .hero-stat-bar {
   border-top: 1px solid rgba(250, 250, 247, 0.08);
   padding-top: 1.25rem;
@@ -360,7 +360,7 @@
   text-align: right;
 }
 
-/* Small screen stat bar — comfortable spacing at 320px */
+/* Small screen stat bar - comfortable spacing at 320px */
 @media (max-width: 359px) {
   .hero-stat-cell-mobile {
     padding: 0.375rem 0.5rem;
@@ -394,7 +394,7 @@
   }
 }
 
-/* Secondary CTA — animated down-arrow text link */
+/* Secondary CTA - animated down-arrow text link */
 .hero-cta-secondary {
   display: inline-flex;
   align-items: center;
