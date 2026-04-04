@@ -6,18 +6,18 @@
 </script>
 
 <svelte:head>
-  <title>AI Scan - What Your AI Spend Is Actually Doing | DomeWorks</title>
+  <title>AI Scan — What Your AI Spend Is Actually Doing | DomeWorks</title>
   <meta name="description" content="Find out exactly what your AI spend is doing for your team. 48-hour turnaround, $2,500-$3,500 fixed price." />
   <link rel="canonical" href="https://domeworks.ai/scan/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="DomeWorks" />
   <meta property="og:url" content="https://domeworks.ai/scan/" />
-  <meta property="og:title" content="AI Scan - What Your AI Spend Is Actually Doing | DomeWorks" />
+  <meta property="og:title" content="AI Scan — What Your AI Spend Is Actually Doing | DomeWorks" />
   <meta property="og:description" content="Find out exactly what your AI spend is doing for your team. 48-hour turnaround, $2,500-$3,500 fixed price." />
   <meta property="og:image" content="https://domeworks.ai/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="AI Scan - What Your AI Spend Is Actually Doing | DomeWorks" />
+  <meta name="twitter:title" content="AI Scan — What Your AI Spend Is Actually Doing | DomeWorks" />
   <meta name="twitter:description" content="Find out exactly what your AI spend is doing for your team. 48-hour turnaround." />
   <meta name="twitter:image" content="https://domeworks.ai/og-image.png" />
 
@@ -49,7 +49,7 @@
         What you're spending on AI<span class="text-primary">.</span> What you're getting from it<span class="text-primary">.</span> In 48 hours<span class="text-primary">.</span>
       </h1>
       <p class="mt-6 text-xl text-charcoal/70 leading-relaxed">
-        You're probably paying for more AI tooling than you realize. Some of it's being used well. Some of it's shelfware. The AI Scan maps it all - every tool, every seat, every dollar - and diagnoses your Intelligence Maturity level: where you are on the path from "bought tools" to "AI coordinates our work."
+        You're probably paying for more AI tooling than you realize. Some of it's being used well. Some of it's shelfware. The AI Scan maps it all — every tool, every seat, every dollar — and diagnoses your Intelligence Maturity level: where you are on the path from "bought tools" to "AI coordinates our work."
       </p>
       <div class="mt-8">
         <Button href={getBookCallUrl()} size="lg">
@@ -88,8 +88,8 @@
       { title: 'AI Spend Map', desc: 'Every AI tool your company pays for, what it costs, who has access, and who\'s actually using it. Most teams discover 20-40% of their AI seats are idle.' },
       { title: 'Adoption Heatmap', desc: 'Where AI usage is concentrated (usually 2-3 power users) and where it\'s absent (usually 70-80% of the team). The gap visualized.' },
       { title: 'Wasted Spend Report', desc: 'Licensed-but-idle seats, redundant subscriptions, misconfigured plans. Typically finds $2,000-$8,000/year in immediate savings.' },
-      { title: '3 Quick Wins', desc: 'Specific actions your team can take this week. Not "consider an AI strategy" - things like "cancel these 12 idle seats" or "set up a team working agreement for AI-assisted code review."' },
-      { title: 'Intelligence Maturity Score', desc: 'A 1-5 rating across five dimensions: tool coverage, adoption rate, workflow integration, spend efficiency, team capability. Shows where you are on the path from "bought tools" to "AI coordinates our work" - designed to be shareable with your CEO.' }
+      { title: '3 Quick Wins', desc: 'Specific actions your team can take this week. Not "consider an AI strategy" — things like "cancel these 12 idle seats" or "set up a team working agreement for AI-assisted code review."' },
+      { title: 'Intelligence Maturity Score', desc: 'A 1-5 rating across five dimensions: tool coverage, adoption rate, workflow integration, spend efficiency, team capability. Shows where you are on the path from "bought tools" to "AI coordinates our work" — designed to be shareable with your CEO.' }
     ] as item}
       <div class="p-6 bg-stone rounded-xl border border-charcoal/10">
         <h3 class="font-medium text-charcoal mb-2">{item.title}</h3>
@@ -107,7 +107,7 @@
         This isn't a strategy engagement. I won't interview your stakeholders, diagnose cultural blockers, or design an implementation plan. That's what the <a href="/context-build/" class="text-primary hover:underline">Context Build</a> does.
       </p>
       <p class="text-lg text-charcoal/70 leading-relaxed">
-        The Scan shows you <strong class="text-charcoal">what's happening</strong>. If you want to understand <strong class="text-charcoal">why</strong> and design <strong class="text-charcoal">what to build</strong>, the <a href="/context-build/" class="text-primary hover:underline">Context Build</a> is the next step. But there's no obligation - plenty of teams take the Scan, implement the quick wins, and handle the rest internally.
+        The Scan shows you <strong class="text-charcoal">what's happening</strong>. If you want to understand <strong class="text-charcoal">why</strong> and design <strong class="text-charcoal">what to build</strong>, the <a href="/context-build/" class="text-primary hover:underline">Context Build</a> is the next step. But there's no obligation — plenty of teams take the Scan, implement the quick wins, and handle the rest internally.
       </p>
     </div>
   </div>
