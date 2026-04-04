@@ -157,34 +157,8 @@
   </div>
 </section>
 
-<!-- The Problem -->
-<Section background="muted" padding="lg" eyebrow="01" title="The problem isn't the tools">
-  <div class="max-w-5xl mx-auto" use:reveal>
-    <div class="grid md:grid-cols-5 gap-10 md:gap-16 items-start">
-      <!-- Left column: prose -->
-      <div class="md:col-span-3 space-y-6">
-        <p class="text-lg text-charcoal/70 leading-relaxed">
-          Your team has AI tools. But your organization still coordinates the same way it always has: through hierarchy, meetings, and people relaying information.
-        </p>
-        <p class="text-lg text-charcoal/70 leading-relaxed">
-          Engineers re-explain their architecture to every AI prompt. Managers spend their days aggregating context from three teams so a fourth team can act on it. Status meetings exist because information doesn't flow without human relay chains. The tools work fine individually. What's missing is the intelligence infrastructure that replaces the coordination overhead.
-        </p>
-      </div>
-      <!-- Right column: Block proof point -->
-      <div class="md:col-span-2">
-        <div class="p-6 bg-warm-white rounded-xl border border-charcoal/10 sticky top-24">
-          <p class="text-charcoal/70 leading-relaxed">
-            <strong class="text-charcoal">Block</strong> (the company behind Square and Cash App) recently published how they're rebuilding their entire organization this way, replacing middle management's coordination function with what they call a <em>"company world model."</em> They have the engineering capacity to build it internally. Most companies don't.
-          </p>
-          <p class="text-sm text-charcoal/60 mt-3">That's where DomeWorks comes in.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</Section>
-
 <!-- Who This Is For -->
-<Section background="white" padding="lg" eyebrow="02" title="Who this is for">
+<Section background="muted" padding="lg" eyebrow="01" title="Who this is for">
   <div class="max-w-2xl mx-auto" use:reveal>
     <div class="p-8 md:p-12 bg-stone rounded-2xl border border-charcoal/10">
       <ul class="space-y-5 text-lg text-charcoal/70 leading-relaxed mb-6">
@@ -220,11 +194,37 @@
   </div>
 </Section>
 
+<!-- The Problem -->
+<Section background="white" padding="lg" eyebrow="02" title="The problem isn't the tools">
+  <div class="max-w-5xl mx-auto" use:reveal>
+    <div class="grid md:grid-cols-5 gap-10 md:gap-16 items-start">
+      <!-- Left column: prose -->
+      <div class="md:col-span-3 space-y-6">
+        <p class="text-lg text-charcoal/70 leading-relaxed">
+          Your team has AI tools. But your organization still coordinates the same way it always has: through hierarchy, meetings, and people relaying information.
+        </p>
+        <p class="text-lg text-charcoal/70 leading-relaxed">
+          Engineers re-explain their architecture to every AI prompt. Managers spend their days aggregating context from three teams so a fourth team can act on it. Status meetings exist because information doesn't flow without human relay chains. The tools work fine individually. What's missing is the intelligence infrastructure that replaces the coordination overhead.
+        </p>
+      </div>
+      <!-- Right column: Block proof point -->
+      <div class="md:col-span-2">
+        <div class="p-6 bg-warm-white rounded-xl border border-charcoal/10 sticky top-24">
+          <p class="text-charcoal/70 leading-relaxed">
+            <strong class="text-charcoal">Block</strong> (the company behind Square and Cash App) recently published how they're rebuilding their entire organization this way, replacing middle management's coordination function with what they call a <em>"company world model."</em> They have the engineering capacity to build it internally. Most companies don't.
+          </p>
+          <p class="text-sm text-charcoal/60 mt-3">That's where DomeWorks comes in.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Section>
+
 <!-- The AI Stack -->
 <Section background="white" padding="lg" eyebrow="03" title="The AI stack">
   <div class="max-w-5xl mx-auto" use:reveal>
     <p class="text-lg text-charcoal/70 leading-relaxed text-center mb-16 max-w-2xl mx-auto">
-      Every organization running on AI needs four layers. Most have the top and bottom. The middle two are where AI actually coordinates work instead of just helping individuals.
+      Here's the architecture that fixes it. Every organization running on AI needs four layers. Most have the top and bottom. The middle two are where coordination becomes infrastructure.
     </p>
 
     <!-- AI Stack visual: bold stacked layers -->
