@@ -4,6 +4,8 @@
   const navLinks = [
     { href: '/scan/', label: 'AI Scan' },
     { href: '/context-build/', label: 'Context Build' },
+    { href: '/orchestration-build/', label: 'Orchestration Build' },
+    { href: '/fractional/', label: 'Fractional' },
     { href: '/about/', label: 'About' },
     { href: '/contact/', label: 'Contact' }
   ]
@@ -46,7 +48,7 @@
             DomeWorks
           </a>
           <p class="mt-4 text-sm text-warm-gray-light">
-            Intelligence infrastructure that replaces coordination overhead
+            AI infrastructure that replaces coordination overhead
           </p>
         </div>
 
@@ -101,7 +103,7 @@
           &copy; {new Date().getFullYear()} DomeWorks. All rights reserved.
         </p>
         <p class="text-xs text-warm-gray">
-          Replacing coordination overhead with intelligence infrastructure
+          Replacing coordination overhead with AI infrastructure
         </p>
       </div>
     </div>
