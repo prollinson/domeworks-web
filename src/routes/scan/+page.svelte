@@ -161,21 +161,21 @@
     <details class="group p-6 bg-stone rounded-xl border border-charcoal/10">
       <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
         What access do you need?
-        <svg class="w-5 h-5 text-charcoal/40 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        <svg class="w-5 h-5 text-charcoal/60 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
       </summary>
       <p class="mt-4 text-charcoal/70 leading-relaxed">Admin credentials or exports from your AI tools (Cursor, Copilot, Claude, ChatGPT for Teams, etc.) plus a 15-minute walkthrough of your team structure.</p>
     </details>
     <details class="group p-6 bg-stone rounded-xl border border-charcoal/10">
       <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
         What if we're a remote team?
-        <svg class="w-5 h-5 text-charcoal/40 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        <svg class="w-5 h-5 text-charcoal/60 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
       </summary>
       <p class="mt-4 text-charcoal/70 leading-relaxed">Fully remote-friendly. The survey is async, the report is delivered digitally. No on-site requirement.</p>
     </details>
     <details class="group p-6 bg-stone rounded-xl border border-charcoal/10">
       <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
         Is there any obligation after the Scan?
-        <svg class="w-5 h-5 text-charcoal/40 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        <svg class="w-5 h-5 text-charcoal/60 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
       </summary>
       <p class="mt-4 text-charcoal/70 leading-relaxed">No. Many teams take the quick wins and run. The Scan stands on its own — if you want to go further, the <a href="/context-build/" class="text-primary hover:underline">Context Build</a> is the next step, but there's no obligation.</p>
     </details>

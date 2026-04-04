@@ -234,21 +234,21 @@
     <details class="group p-6 bg-warm-white rounded-xl border border-charcoal/10">
       <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
         What access do you need?
-        <svg class="w-5 h-5 text-charcoal/40 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        <svg class="w-5 h-5 text-charcoal/60 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
       </summary>
       <p class="mt-4 text-charcoal/70 leading-relaxed">Stakeholder time (30-minute interviews with 3–5 people), plus tool admin access for the audit. I'll provide a specific list after the kickoff call.</p>
     </details>
     <details class="group p-6 bg-warm-white rounded-xl border border-charcoal/10">
       <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
         Do you sign NDAs?
-        <svg class="w-5 h-5 text-charcoal/40 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        <svg class="w-5 h-5 text-charcoal/60 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
       </summary>
       <p class="mt-4 text-charcoal/70 leading-relaxed">Yes, standard mutual NDA before any access is granted. I can use yours or provide mine.</p>
     </details>
     <details class="group p-6 bg-warm-white rounded-xl border border-charcoal/10">
       <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
         What if we want to build internally after?
-        <svg class="w-5 h-5 text-charcoal/40 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        <svg class="w-5 h-5 text-charcoal/60 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
       </summary>
       <p class="mt-4 text-charcoal/70 leading-relaxed">That's fine. The deliverables are designed to be actionable without me. Some teams take the Context Build and handle the rest internally — the quick wins alone tend to pay for the engagement.</p>
     </details>

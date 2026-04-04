@@ -150,21 +150,21 @@
     <details class="group p-6 bg-warm-white rounded-xl border border-charcoal/10">
       <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
         Do we need a Context Build first?
-        <svg class="w-5 h-5 text-charcoal/40 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        <svg class="w-5 h-5 text-charcoal/60 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
       </summary>
       <p class="mt-4 text-charcoal/70 leading-relaxed">Yes, or an equivalent assessment. Agent coordination without a context system is automating noise. The Context Build gives us the blueprint — this is where we build it.</p>
     </details>
     <details class="group p-6 bg-warm-white rounded-xl border border-charcoal/10">
       <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
         How embedded are you?
-        <svg class="w-5 h-5 text-charcoal/40 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        <svg class="w-5 h-5 text-charcoal/60 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
       </summary>
       <p class="mt-4 text-charcoal/70 leading-relaxed">2–3 days/week, in standups, pairing with engineers, shipping alongside your team. I'm not advising from the outside — I'm building with you.</p>
     </details>
     <details class="group p-6 bg-warm-white rounded-xl border border-charcoal/10">
       <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
         What does the handoff look like?
-        <svg class="w-5 h-5 text-charcoal/40 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        <svg class="w-5 h-5 text-charcoal/60 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
       </summary>
       <p class="mt-4 text-charcoal/70 leading-relaxed">Documented systems, runbooks, and knowledge transfer sessions. Your team owns everything. The goal is always a team that can maintain the systems without me.</p>
     </details>

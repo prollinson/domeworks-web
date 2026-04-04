@@ -162,21 +162,21 @@
     <details class="group p-6 bg-warm-white rounded-xl border border-charcoal/10">
       <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
         How is this different from a contractor?
-        <svg class="w-5 h-5 text-charcoal/40 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        <svg class="w-5 h-5 text-charcoal/60 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
       </summary>
       <p class="mt-4 text-charcoal/70 leading-relaxed">I own the intelligence infrastructure as a system, not just execute tasks. A contractor builds what you spec. I identify what needs building, build it, and make sure it compounds over time.</p>
     </details>
     <details class="group p-6 bg-warm-white rounded-xl border border-charcoal/10">
       <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
         What's the minimum commitment?
-        <svg class="w-5 h-5 text-charcoal/40 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        <svg class="w-5 h-5 text-charcoal/60 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
       </summary>
       <p class="mt-4 text-charcoal/70 leading-relaxed">3 months recommended to see compounding effects. Month-to-month after that. The infrastructure needs time to prove itself before you can evaluate whether ongoing ownership is worth it.</p>
     </details>
     <details class="group p-6 bg-warm-white rounded-xl border border-charcoal/10">
       <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
         Can this evolve into a full-time hire?
-        <svg class="w-5 h-5 text-charcoal/40 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        <svg class="w-5 h-5 text-charcoal/60 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
       </summary>
       <p class="mt-4 text-charcoal/70 leading-relaxed">If your org grows to need a full-time Head of AI, I'll help you hire one and transition. The goal is always a team that doesn't need me — the fractional model buys you time while the capability builds internally.</p>
     </details>
