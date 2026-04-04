@@ -28,10 +28,10 @@
   }
 
   const paddingClasses = {
-    sm: 'py-12 md:py-16',
-    md: 'py-16 md:py-20',
-    lg: 'py-20 md:py-28',
-    xl: 'py-28 md:py-36'
+    sm: 'py-10 md:py-14',
+    md: 'py-14 md:py-18',
+    lg: 'py-16 md:py-24',
+    xl: 'py-24 md:py-32'
   }
 
   const eyebrowColor = $derived(background === 'dark' ? 'text-primary' : 'text-warm-gray')
