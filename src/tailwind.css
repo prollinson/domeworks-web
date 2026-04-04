@@ -526,6 +526,38 @@ header {
   animation: none;
 }
 
+/* ===== AI Stack build animation: layers build from bottom to top ===== */
+.stack-build > * {
+  opacity: 0;
+  transform: translateY(12px);
+  filter: blur(4px);
+  transition:
+    opacity 400ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 400ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stack-build.revealed > * {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0px);
+}
+
+/* Build from bottom: Edge (4th) appears first, Surface (1st) last */
+.stack-build.revealed > *:nth-child(4) { transition-delay: 0ms; }
+.stack-build.revealed > *:nth-child(3) { transition-delay: 120ms; }
+.stack-build.revealed > *:nth-child(2) { transition-delay: 240ms; }
+.stack-build.revealed > *:nth-child(1) { transition-delay: 360ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .stack-build > * {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}
+
 /* ===== Structural Footer ===== */
 .footer-headline {
   font-size: clamp(2.5rem, 8vw, 8rem);

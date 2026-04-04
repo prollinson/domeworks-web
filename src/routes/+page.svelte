@@ -3,6 +3,27 @@
 	import Section from '$lib/components/layout/Section.svelte';
 	import { reveal } from '$lib/actions/reveal';
 	import { getBookCallUrl } from '$lib/utils/mailto';
+
+	function stackReveal(node: HTMLElement) {
+		if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+			node.classList.add('revealed');
+			return { destroy() {} };
+		}
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						node.classList.add('revealed');
+						observer.unobserve(node);
+					}
+				});
+			},
+			{ threshold: 0.2 }
+		);
+		observer.observe(node);
+		return { destroy() { observer.disconnect(); } };
+	}
 </script>
 
 <svelte:head>
@@ -322,7 +343,7 @@
 				<div class="flex-1"></div>
 			</div>
 
-			<div class="space-y-1 lg:pl-16">
+			<div class="space-y-1 lg:pl-16 stack-build" use:stackReveal>
 				<!-- Surface layer -->
 				<div class="rounded-t-2xl bg-stone border border-charcoal/8 px-8 py-6 md:px-10 md:py-7">
 					<div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
