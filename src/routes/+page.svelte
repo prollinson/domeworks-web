@@ -80,30 +80,26 @@
   <div class="absolute hero-accent-line" aria-hidden="true" role="presentation"></div>
 
   <div class="relative w-full max-w-7xl mx-auto px-6 lg:px-8 hero-content-pad flex flex-col justify-between min-h-[inherit]">
-    <!-- Top zone: Eyebrow -->
-    <div class="hero-eyebrow-row">
-      <span class="hero-eyebrow-text">Intelligence Infrastructure Engineering</span>
-      <div class="flex-1 h-px bg-warm-white/8 ml-6" aria-hidden="true" role="presentation"></div>
-      <span class="hero-eyebrow-index">San Francisco</span>
-    </div>
+    <!-- Top zone: spacer (eyebrow removed per council feedback) -->
+    <div class="hero-eyebrow-row"></div>
 
     <!-- Middle zone: Headline, editorial scale, staggered lines -->
     <div class="hero-middle">
       <h1 class="hero-headline font-serif font-normal text-warm-white">
-        <span class="hero-line hero-line-1">Coordination</span>
-        <span class="hero-line hero-line-2">is overhead<span class="text-copper">.</span></span>
-        <span class="hero-line hero-line-3"><em class="hero-headline-em">Build it as</em></span>
-        <span class="hero-line hero-line-4 text-warm-white/70">infrastructure<span class="text-copper/70">.</span></span>
+        <span class="hero-line hero-line-1">Your team bought</span>
+        <span class="hero-line hero-line-2">AI tools<span class="text-copper">.</span></span>
+        <span class="hero-line hero-line-3"><em class="hero-headline-em">Nobody built</em></span>
+        <span class="hero-line hero-line-4 text-warm-white/70">the systems between them<span class="text-copper/70">.</span></span>
       </h1>
 
       <!-- Subtext positioned as an editorial aside, offset from the headline -->
       <div class="hero-aside">
         <div class="hero-aside-rule" aria-hidden="true" role="presentation"></div>
         <p class="hero-body-text text-warm-white/85 leading-relaxed">
-          I spent 10+ years leading engineering teams at DoorDash, Square, and Mudflap. The biggest bottleneck was never the engineering. It was the coordination. That layer can now be built as intelligence infrastructure.
+          I embed with your team and build working systems — not strategy decks. Every engagement is designed to end. You keep what I build.
         </p>
         <p class="mt-3 text-sm text-warm-white/75 leading-relaxed hidden sm:block">
-          Most companies bought AI tools and watched adoption flatline. The companies getting real leverage are replacing the coordination layer itself with intelligence infrastructure. DomeWorks builds that infrastructure.
+          10+ years of engineering leadership at DoorDash, Square, and Mudflap. The biggest bottleneck was never the engineering — it was the coordination. That layer can now be built as infrastructure.
         </p>
         <div class="mt-6 md:mt-8 flex items-center gap-6">
           <Button href={getBookCallUrl()} size="lg">
