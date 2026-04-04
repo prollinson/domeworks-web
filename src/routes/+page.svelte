@@ -198,63 +198,71 @@
 
 <!-- The AI Stack -->
 <Section background="white" padding="lg" eyebrow="03" title="The AI stack">
-  <div class="max-w-4xl mx-auto" use:reveal>
-    <p class="text-lg text-charcoal/70 leading-relaxed text-center mb-12 max-w-2xl mx-auto">
+  <div class="max-w-5xl mx-auto" use:reveal>
+    <p class="text-lg text-charcoal/70 leading-relaxed text-center mb-16 max-w-2xl mx-auto">
       Every organization running on AI needs four layers. Most have the top and bottom. The middle two are where AI actually coordinates work instead of just helping individuals.
     </p>
 
-    <!-- AI Stack visual diagram -->
-    <div class="space-y-2 mb-12">
-      <div class="rounded-t-2xl border border-charcoal/10 bg-warm-white p-5 md:p-6">
-        <div class="flex items-baseline gap-3">
-          <span class="text-xs font-medium tracking-widest text-warm-gray uppercase shrink-0">Surface</span>
-          <span class="text-charcoal/60 text-sm">Where humans decide and act</span>
+    <!-- AI Stack visual: bold stacked layers -->
+    <div class="relative mb-16">
+      <!-- "DomeWorks builds" indicator on left -->
+      <div class="absolute -left-2 md:left-0 top-0 bottom-0 hidden lg:flex flex-col items-center" style="width: 3rem;">
+        <div class="flex-1"></div>
+        <div class="relative flex flex-col items-center" style="height: 50%;">
+          <div class="w-px h-full bg-gradient-to-b from-primary via-copper to-primary opacity-40"></div>
+          <span class="absolute top-1/2 -translate-y-1/2 -translate-x-2 text-[10px] font-semibold tracking-[0.2em] text-primary uppercase whitespace-nowrap" style="writing-mode: vertical-lr; transform: rotate(180deg) translateX(100%) translateY(-50%);">DomeWorks builds</span>
         </div>
+        <div class="flex-1"></div>
       </div>
-      <div class="border-2 border-primary bg-primary/5 p-5 md:p-6 relative">
-        <span class="absolute -left-px top-1/2 -translate-y-1/2 -translate-x-full text-[10px] font-medium tracking-widest text-primary uppercase hidden md:block" style="writing-mode: vertical-lr; transform: rotate(180deg) translateX(100%) translateY(-50%);">DomeWorks builds</span>
-        <div class="flex items-baseline gap-3">
-          <span class="text-xs font-medium tracking-widest text-primary uppercase shrink-0">Agent Coordination</span>
-          <span class="text-charcoal/60 text-sm">Routes work, validates output, closes feedback loops</span>
+
+      <div class="space-y-1 lg:pl-16">
+        <!-- Surface layer -->
+        <div class="rounded-t-2xl bg-stone border border-charcoal/8 px-8 py-6 md:px-10 md:py-7">
+          <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
+            <span class="text-sm font-semibold tracking-[0.15em] text-warm-gray uppercase">Surface</span>
+            <span class="text-charcoal/50 text-sm md:text-base">Where humans decide and act</span>
+          </div>
         </div>
-      </div>
-      <div class="border-2 border-copper bg-copper/5 p-5 md:p-6">
-        <div class="flex items-baseline gap-3">
-          <span class="text-xs font-medium tracking-widest text-copper uppercase shrink-0">Context System</span>
-          <span class="text-charcoal/60 text-sm">Domain knowledge, team conventions, project state — fed into every AI interaction</span>
+
+        <!-- Agent Coordination layer — primary highlight -->
+        <div class="bg-primary px-8 py-8 md:px-10 md:py-10 relative overflow-hidden">
+          <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(135deg, transparent 25%, rgba(255,255,255,0.1) 25%, rgba(255,255,255,0.1) 50%, transparent 50%, transparent 75%, rgba(255,255,255,0.1) 75%); background-size: 20px 20px;"></div>
+          <div class="relative">
+            <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-3">
+              <span class="text-sm font-semibold tracking-[0.15em] text-white/80 uppercase">Agent Coordination</span>
+              <span class="text-white/60 text-sm md:text-base">Routes work, validates output, closes feedback loops</span>
+            </div>
+            <p class="text-white/90 text-lg md:text-xl font-serif leading-snug max-w-xl">
+              Replaces the coordination work that hierarchy exists to perform.
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="rounded-b-2xl border border-charcoal/10 bg-warm-white p-5 md:p-6">
-        <div class="flex items-baseline gap-3">
-          <span class="text-xs font-medium tracking-widest text-warm-gray uppercase shrink-0">Edge</span>
-          <span class="text-charcoal/60 text-sm">Tools, APIs, repos, CI/CD</span>
+
+        <!-- Context System layer — copper highlight -->
+        <div class="bg-copper px-8 py-8 md:px-10 md:py-10 relative overflow-hidden">
+          <div class="absolute inset-0 opacity-8" style="background-image: linear-gradient(135deg, transparent 25%, rgba(255,255,255,0.08) 25%, rgba(255,255,255,0.08) 50%, transparent 50%, transparent 75%, rgba(255,255,255,0.08) 75%); background-size: 20px 20px;"></div>
+          <div class="relative">
+            <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-3">
+              <span class="text-sm font-semibold tracking-[0.15em] text-white/80 uppercase">Context System</span>
+              <span class="text-white/60 text-sm md:text-base">Domain knowledge fed into every AI interaction</span>
+            </div>
+            <p class="text-white/90 text-lg md:text-xl font-serif leading-snug max-w-xl">
+              Builds the world model so AI doesn't start from zero every time.
+            </p>
+          </div>
+        </div>
+
+        <!-- Edge layer -->
+        <div class="rounded-b-2xl bg-stone border border-charcoal/8 px-8 py-6 md:px-10 md:py-7">
+          <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
+            <span class="text-sm font-semibold tracking-[0.15em] text-warm-gray uppercase">Edge</span>
+            <span class="text-charcoal/50 text-sm md:text-base">Tools, APIs, repos, CI/CD</span>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Layer descriptions -->
-    <div class="grid md:grid-cols-2 gap-8 mb-12">
-      <div class="space-y-4">
-        <h3 class="font-medium text-charcoal flex items-center gap-2">
-          <span class="w-2.5 h-2.5 rounded-full bg-copper"></span>
-          The context system
-        </h3>
-        <p class="text-charcoal/70 leading-relaxed">
-          Builds your organization's world model: domain knowledge, team conventions, codebase patterns, and project state in machine-readable form. With it, every AI interaction has full organizational context. Without it, every prompt starts from zero.
-        </p>
-      </div>
-      <div class="space-y-4">
-        <h3 class="font-medium text-charcoal flex items-center gap-2">
-          <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
-          Agent coordination
-        </h3>
-        <p class="text-charcoal/70 leading-relaxed">
-          Replaces the coordination work that hierarchy exists to perform. Multi-agent systems that route tasks, validate output, and handle failures — so your team reviews and decides instead of relaying and coordinating.
-        </p>
-      </div>
-    </div>
-
-    <div class="max-w-2xl mx-auto space-y-6">
+    <div class="max-w-2xl mx-auto">
       <p class="text-lg text-charcoal/70 leading-relaxed border-l-2 border-copper pl-6">
         I embed with your team 2–3 days a week and build both layers. Most consultancies hand you a strategy deck. I stay until the context system and agent coordination are running and your team can maintain them without me.
       </p>
