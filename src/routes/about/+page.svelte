@@ -107,6 +107,29 @@
   </div>
 </Section>
 
+<!-- Case Study -->
+<Section background="muted" padding="lg">
+  <div class="max-w-2xl mx-auto" use:reveal>
+    <p class="text-xs font-medium tracking-widest text-warm-gray uppercase mb-4">03</p>
+    <h2 class="font-serif text-3xl font-normal text-charcoal mb-8">
+      Work in progress
+    </h2>
+    <div class="p-8 bg-warm-white rounded-2xl border border-charcoal/10">
+      <p class="text-xs font-medium tracking-widest text-primary uppercase mb-3">Case study — Q2 2026</p>
+      <h3 class="font-medium text-charcoal text-lg mb-3">Autonomous coding agent for a national professional services organization</h3>
+      <p class="text-charcoal/70 leading-relaxed mb-4">
+        An engineering organization with a backlog of well-scoped maintenance tasks — lint fixes, dependency updates, test coverage gaps — each taking 2–3 days to complete including queue time and context-switching, even when the actual work was under an hour.
+      </p>
+      <p class="text-charcoal/70 leading-relaxed mb-4">
+        I built a one-shot autonomous coding agent system: receives a task, executes in an isolated environment, validates against CI, delivers a pull request. No human intervention during execution.
+      </p>
+      <p class="text-charcoal/70 leading-relaxed">
+        Target: median task completion of 15 minutes from dispatch to PR, down from 2–3 days. Publishing the full case study when the engagement closes.
+      </p>
+    </div>
+  </div>
+</Section>
+
 <!-- CTA -->
 <Section background="muted" padding="lg">
   <div class="max-w-2xl mx-auto text-center" use:reveal>
