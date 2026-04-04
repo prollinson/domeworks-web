@@ -17,6 +17,8 @@
   const navLinks = [
     { href: '/scan/', label: 'AI Scan' },
     { href: '/context-build/', label: 'Context Build' },
+    { href: '/orchestration-build/', label: 'Orchestration Build' },
+    { href: '/fractional/', label: 'Fractional' },
     { href: '/about/', label: 'About' },
     { href: '/contact/', label: 'Contact' }
   ]
