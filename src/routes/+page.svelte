@@ -137,7 +137,7 @@
         <div class="hero-stat-divider" aria-hidden="true" role="presentation"></div>
         <div class="hero-stat-cell">
           <span class="hero-stat-value font-serif">4 layers</span>
-          <span class="hero-stat-label">Intelligence Stack</span>
+          <span class="hero-stat-label">AI stack</span>
         </div>
       </div>
       <!-- Mobile stats -->
@@ -154,7 +154,7 @@
         <div class="hero-stat-divider" aria-hidden="true" role="presentation"></div>
         <div class="hero-stat-cell-mobile">
           <span class="text-2xl font-serif text-warm-white/95">4 layers</span>
-          <span class="text-xs text-warm-white/70 mt-1 tracking-wider uppercase leading-tight">Intel Stack</span>
+          <span class="text-xs text-warm-white/70 mt-1 tracking-wider uppercase leading-tight">AI stack</span>
         </div>
       </div>
     </div>
@@ -179,14 +179,31 @@
   </div>
 </Section>
 
-<!-- What I Build: The Intelligence Stack -->
-<Section background="white" padding="lg" eyebrow="02" title="The Intelligence Stack">
+<!-- Who This Is For -->
+<Section background="white" padding="lg" eyebrow="02" title="Who this is for">
+  <div class="max-w-2xl mx-auto" use:reveal>
+    <div class="p-8 md:p-12 bg-stone rounded-2xl border border-charcoal/10">
+      <p class="text-lg text-charcoal/70 leading-relaxed mb-6">
+        You're a <strong class="text-charcoal">VP of Engineering, Head of Engineering, or CTO</strong> at a mid-market SaaS company (50-500 people) or a funded startup. Your engineers have AI tools but your organization still runs on human coordination: meetings, status updates, managers routing information between teams.
+      </p>
+      <p class="text-lg text-charcoal/70 leading-relaxed mb-6">
+        You've probably thought about assigning a senior engineer to figure this out. But building intelligence infrastructure that replaces coordination overhead isn't a side project. It's infrastructure engineering: context pipelines, agent orchestration, quality gates, observability. You need someone who's already built this, who knows what works and what doesn't, so your team gets the infrastructure without the trial-and-error tax.
+      </p>
+      <p class="text-lg text-charcoal leading-relaxed font-medium border-l-2 border-copper pl-6">
+        You don't need another tool or a strategy deck. You need someone who can build the missing layers of your AI stack.
+      </p>
+    </div>
+  </div>
+</Section>
+
+<!-- The AI Stack -->
+<Section background="white" padding="lg" eyebrow="03" title="The AI stack">
   <div class="max-w-4xl mx-auto" use:reveal>
     <p class="text-lg text-charcoal/70 leading-relaxed text-center mb-12 max-w-2xl mx-auto">
-      Every organization running on AI needs four layers. Most companies have the top and bottom but are missing the middle two.
+      Every organization running on AI needs four layers. Most have the top and bottom. The middle two are where AI actually coordinates work instead of just helping individuals.
     </p>
 
-    <!-- Intelligence Stack visual diagram -->
+    <!-- AI Stack visual diagram -->
     <div class="space-y-2 mb-12">
       <div class="rounded-t-2xl border border-charcoal/10 bg-warm-white p-5 md:p-6">
         <div class="flex items-baseline gap-3">
@@ -197,14 +214,14 @@
       <div class="border-2 border-primary bg-primary/5 p-5 md:p-6 relative">
         <span class="absolute -left-px top-1/2 -translate-y-1/2 -translate-x-full text-[10px] font-medium tracking-widest text-primary uppercase hidden md:block" style="writing-mode: vertical-lr; transform: rotate(180deg) translateX(100%) translateY(-50%);">DomeWorks builds</span>
         <div class="flex items-baseline gap-3">
-          <span class="text-xs font-medium tracking-widest text-primary uppercase shrink-0">Orchestration</span>
-          <span class="text-charcoal/60 text-sm">Coordinates work, routes output, enforces quality gates</span>
+          <span class="text-xs font-medium tracking-widest text-primary uppercase shrink-0">Agent Coordination</span>
+          <span class="text-charcoal/60 text-sm">Routes work, validates output, closes feedback loops</span>
         </div>
       </div>
       <div class="border-2 border-copper bg-copper/5 p-5 md:p-6">
         <div class="flex items-baseline gap-3">
-          <span class="text-xs font-medium tracking-widest text-copper uppercase shrink-0">Context</span>
-          <span class="text-charcoal/60 text-sm">The world model: domain knowledge, conventions, project state</span>
+          <span class="text-xs font-medium tracking-widest text-copper uppercase shrink-0">Context System</span>
+          <span class="text-charcoal/60 text-sm">Domain knowledge, team conventions, project state — fed into every AI interaction</span>
         </div>
       </div>
       <div class="rounded-b-2xl border border-charcoal/10 bg-warm-white p-5 md:p-6">
@@ -220,42 +237,34 @@
       <div class="space-y-4">
         <h3 class="font-medium text-charcoal flex items-center gap-2">
           <span class="w-2.5 h-2.5 rounded-full bg-copper"></span>
-          The Context Layer
+          The context system
         </h3>
         <p class="text-charcoal/70 leading-relaxed">
-          Builds your organization's world model: machine-readable representations of your domain knowledge, team conventions, codebase patterns, and project state. With it, every AI interaction has full organizational context. Without it, every prompt starts from zero.
+          Builds your organization's world model: domain knowledge, team conventions, codebase patterns, and project state in machine-readable form. With it, every AI interaction has full organizational context. Without it, every prompt starts from zero.
         </p>
       </div>
       <div class="space-y-4">
         <h3 class="font-medium text-charcoal flex items-center gap-2">
           <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
-          The Orchestration Layer
+          Agent coordination
         </h3>
         <p class="text-charcoal/70 leading-relaxed">
-          Replaces the coordination function that hierarchy exists to perform. Multi-agent systems that route tasks, compose capabilities, enforce quality gates, and handle failures, so your team reviews and decides instead of relaying and coordinating.
+          Replaces the coordination work that hierarchy exists to perform. Multi-agent systems that route tasks, validate output, and handle failures — so your team reviews and decides instead of relaying and coordinating.
         </p>
       </div>
     </div>
 
     <div class="max-w-2xl mx-auto space-y-6">
       <p class="text-lg text-charcoal/70 leading-relaxed border-l-2 border-copper pl-6">
-        I embed with your team 2-3 days a week for 4-12 weeks and build both layers. Most consultancies hand you a strategy deck. I stay until the intelligence infrastructure is running and your team can maintain it without me.
+        I embed with your team 2–3 days a week and build both layers. Most consultancies hand you a strategy deck. I stay until the context system and agent coordination are running and your team can maintain them without me.
       </p>
-
-      <!-- Fractional AI Leadership -->
-      <div class="p-6 bg-stone rounded-xl border border-charcoal/10">
-        <h3 class="font-medium text-charcoal mb-2">Fractional AI Leadership</h3>
-        <p class="text-charcoal/70 leading-relaxed text-sm">
-          An ongoing retainer where I act as your part-time Head of AI, 1-2 days a week. I maintain and evolve both layers, close feedback loops so the system gets smarter over time, and make sure the transition from hierarchy to intelligence infrastructure compounds instead of stalling.
-        </p>
-      </div>
     </div>
   </div>
 </Section>
 
 <!-- How It Works -->
-<Section id="how-it-works" background="muted" padding="lg" eyebrow="03" title="How it works">
-  <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto" use:reveal={{ stagger: true, staggerDelay: 150 }}>
+<Section id="how-it-works" background="muted" padding="lg" eyebrow="04" title="How it works">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto" use:reveal={{ stagger: true, staggerDelay: 150 }}>
     <a href="/scan/" class="group p-8 bg-warm-white rounded-2xl border border-charcoal/10 hover:border-primary card-lift flex flex-col">
       <span class="inline-block px-3 py-1 text-xs font-medium text-primary bg-primary/10 rounded-full mb-4 w-fit">
         Start here
@@ -284,27 +293,22 @@
       <h3 class="text-xl font-medium text-charcoal mb-2">Orchestration Build</h3>
       <p class="text-2xl font-normal font-serif text-charcoal mb-4">4–12 weeks</p>
       <p class="text-charcoal/60 text-sm flex-grow">
-        I build the Orchestration Layer: multi-agent coordination, quality gates, output routing. Your team goes from "AI helps individual engineers" to "AI coordinates our work."
+        I build the agent coordination layer: multi-agent workflows, quality gates, output routing. Your team goes from "AI helps individuals" to "AI coordinates our work."
       </p>
       <p class="mt-4 text-sm text-charcoal/50">Day rate, scoped from assessment</p>
     </a>
-  </div>
-</Section>
 
-<!-- Who This Is For -->
-<Section background="white" padding="lg" eyebrow="04" title="Who this is for">
-  <div class="max-w-2xl mx-auto" use:reveal>
-    <div class="p-8 md:p-12 bg-stone rounded-2xl border border-charcoal/10">
-      <p class="text-lg text-charcoal/70 leading-relaxed mb-6">
-        You're a <strong class="text-charcoal">VP of Engineering, Head of Engineering, or CTO</strong> at a mid-market SaaS company (50-500 people) or a funded startup. Your engineers have AI tools but your organization still runs on human coordination: meetings, status updates, managers routing information between teams.
+    <a href="/fractional/" class="group p-8 bg-warm-white rounded-2xl border border-charcoal/10 hover:border-copper card-lift flex flex-col">
+      <span class="inline-block px-3 py-1 text-xs font-medium text-copper bg-copper/10 rounded-full mb-4 w-fit">
+        What comes after
+      </span>
+      <h3 class="text-xl font-medium text-charcoal mb-2">Fractional AI Leadership</h3>
+      <p class="text-2xl font-normal font-serif text-charcoal mb-4">Monthly retainer</p>
+      <p class="text-charcoal/60 text-sm flex-grow">
+        1–2 days/week. I maintain and evolve the context system and agent coordination, close feedback loops, and make sure the infrastructure compounds as your org changes.
       </p>
-      <p class="text-lg text-charcoal/70 leading-relaxed mb-6">
-        You've probably thought about assigning a senior engineer to figure this out. But building intelligence infrastructure that replaces coordination overhead isn't a side project. It's infrastructure engineering: context pipelines, agent orchestration, quality gates, observability. You need someone who's already built this, who knows what works and what doesn't, so your team gets the infrastructure without the trial-and-error tax.
-      </p>
-      <p class="text-lg text-charcoal leading-relaxed font-medium border-l-2 border-copper pl-6">
-        You don't need another tool or a strategy deck. You need someone who can build the missing layers of your Intelligence Stack.
-      </p>
-    </div>
+      <p class="mt-4 text-sm text-copper font-medium group-hover:underline">Learn more &rarr;</p>
+    </a>
   </div>
 </Section>
 
