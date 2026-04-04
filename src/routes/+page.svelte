@@ -191,12 +191,32 @@
 <Section background="white" padding="lg" eyebrow="02" title="Who this is for">
   <div class="max-w-2xl mx-auto" use:reveal>
     <div class="p-8 md:p-12 bg-stone rounded-2xl border border-charcoal/10">
-      <p class="text-lg text-charcoal/70 leading-relaxed mb-6">
-        You're a <strong class="text-charcoal">VP of Engineering, Head of Engineering, or CTO</strong> at a mid-market SaaS company (50-500 people) or a funded startup. Your engineers have AI tools but your organization still runs on human coordination: meetings, status updates, managers routing information between teams.
-      </p>
-      <p class="text-lg text-charcoal/70 leading-relaxed mb-6">
-        You've probably thought about assigning a senior engineer to figure this out. But building intelligence infrastructure that replaces coordination overhead isn't a side project. It's infrastructure engineering: context pipelines, agent orchestration, quality gates, observability. You need someone who's already built this, who knows what works and what doesn't, so your team gets the infrastructure without the trial-and-error tax.
-      </p>
+      <ul class="space-y-5 text-lg text-charcoal/70 leading-relaxed mb-6">
+        <li class="flex items-start gap-4">
+          <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-1">
+            <span class="w-2 h-2 rounded-full bg-primary"></span>
+          </span>
+          <span>You're a <strong class="text-charcoal">VP of Engineering, Head of Engineering, or CTO</strong> at a mid-market SaaS company (50–500 people) or a funded startup</span>
+        </li>
+        <li class="flex items-start gap-4">
+          <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-1">
+            <span class="w-2 h-2 rounded-full bg-primary"></span>
+          </span>
+          <span>Your engineers have AI tools but your organization still runs on human coordination: meetings, status updates, managers routing information between teams</span>
+        </li>
+        <li class="flex items-start gap-4">
+          <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-1">
+            <span class="w-2 h-2 rounded-full bg-primary"></span>
+          </span>
+          <span>You've probably thought about assigning a senior engineer to figure this out — but building intelligence infrastructure that replaces coordination overhead isn't a side project</span>
+        </li>
+        <li class="flex items-start gap-4">
+          <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-1">
+            <span class="w-2 h-2 rounded-full bg-primary"></span>
+          </span>
+          <span>You need someone who's already built this, who knows what works and what doesn't, so your team gets the infrastructure without the trial-and-error tax</span>
+        </li>
+      </ul>
       <p class="text-lg text-charcoal leading-relaxed font-medium border-l-2 border-copper pl-6">
         You don't need another tool or a strategy deck. You need someone who can build the missing layers of your AI stack.
       </p>
@@ -306,6 +326,7 @@
           I map your organization's world model gaps, design the context system, and build the infrastructure that feeds your domain knowledge into every AI interaction. Your team goes from "every prompt starts from zero" to "AI knows our business."
         </p>
         <p class="mt-4 text-sm text-charcoal/60">1-2 week assessment + 4-week build</p>
+        <p class="mt-4 text-sm text-primary font-medium group-hover:underline">Learn more &rarr;</p>
       </a>
 
       <a href="/orchestration-build/" class="group p-8 bg-warm-white rounded-2xl border border-charcoal/10 hover:border-copper card-lift flex flex-col relative overflow-hidden">
@@ -316,6 +337,7 @@
           I build the agent coordination layer: multi-agent workflows, quality gates, output routing. Your team goes from "AI helps individuals" to "AI coordinates our work."
         </p>
         <p class="mt-4 text-sm text-charcoal/60">Day rate, scoped from assessment</p>
+        <p class="mt-4 text-sm text-copper font-medium group-hover:underline">Learn more &rarr;</p>
       </a>
 
       <a href="/fractional/" class="group p-8 bg-warm-white rounded-2xl border border-charcoal/10 hover:border-copper card-lift flex flex-col relative overflow-hidden">
