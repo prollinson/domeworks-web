@@ -112,7 +112,7 @@
   <div class="max-w-2xl mx-auto" use:reveal>
     <p class="text-xs font-medium tracking-widest text-warm-gray uppercase mb-4">03</p>
     <h2 class="font-serif text-3xl font-normal text-charcoal mb-8">
-      Work in progress
+      Current engagement
     </h2>
     <div class="p-8 bg-warm-white rounded-2xl border border-charcoal/10">
       <p class="text-xs font-medium tracking-widest text-primary uppercase mb-3">Case study — Q2 2026</p>

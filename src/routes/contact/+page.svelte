@@ -56,8 +56,24 @@
       </div>
     </div>
 
+    <!-- What happens on the call -->
+    <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-3 text-sm text-charcoal/70">
+      <div class="flex sm:flex-col items-center sm:items-start gap-3 sm:gap-1.5 text-center sm:text-left">
+        <span class="flex-shrink-0 w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center text-xs font-medium text-primary">1</span>
+        <span>You tell me about your team</span>
+      </div>
+      <div class="flex sm:flex-col items-center sm:items-start gap-3 sm:gap-1.5 text-center sm:text-left">
+        <span class="flex-shrink-0 w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center text-xs font-medium text-primary">2</span>
+        <span>I share 2–3 observations</span>
+      </div>
+      <div class="flex sm:flex-col items-center sm:items-start gap-3 sm:gap-1.5 text-center sm:text-left">
+        <span class="flex-shrink-0 w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center text-xs font-medium text-primary">3</span>
+        <span>We figure out if there's a fit</span>
+      </div>
+    </div>
+
     <!-- What to Expect -->
-    <div class="mt-12 p-8 bg-stone rounded-2xl">
+    <div class="mt-8 p-8 bg-stone rounded-2xl">
       <h2 class="text-lg font-medium text-charcoal mb-4">What to expect</h2>
       <p class="text-charcoal/70 leading-[1.65]">
         On the call, I'll ask about your team size, what AI tools you're using, and where things are stuck. I'll share 2-3 observations about where you might have leverage. If there's a fit, I'll recommend where to start — usually an <a href="/scan/" class="text-primary hover:underline">AI Scan</a> ($2,500) if you need a clear picture first, or a <a href="/context-build/" class="text-primary hover:underline">Context Build</a> ($10,000+) if the gaps are already clear. If there isn't a fit, I'll tell you that too.
