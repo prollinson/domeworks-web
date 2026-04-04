@@ -65,7 +65,7 @@
         I can explain why. There's no intelligence infrastructure that replaces coordination overhead. Nothing connects the tools to how the team works. No shared context feeding into AI tools. No standard developer workflows automated around AI. No agent infrastructure connecting your codebase, tickets, and docs to how engineers actually ship.
       </p>
       <p class="border-l-2 border-copper pl-6 text-charcoal">
-        Over 80% of organizations report no measurable impact on EBIT despite their AI investments <span class="text-charcoal/40">(BCG, 2024)</span>. Nobody is building the layer between the tools and the work. That's where DomeWorks operates.
+        Over 80% of organizations report no measurable impact on EBIT despite their AI investments <span class="text-charcoal/60">(BCG, 2024)</span>. Nobody is building the layer between the tools and the work. That's where DomeWorks operates.
       </p>
     </div>
   </div>

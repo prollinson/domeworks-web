@@ -211,7 +211,7 @@
         <strong>Founding client rate:</strong> $7,000–$10,000 for the first 3-5 clients, in exchange for a case study and testimonial. Mention it on the call.
       </p>
     </div>
-    <p class="text-center text-charcoal/50 text-sm mt-4">
+    <p class="text-center text-charcoal/60 text-sm mt-4">
       I'll give you an exact number after a 30-minute call. No hourly billing surprises, no change orders.
     </p>
   </div>

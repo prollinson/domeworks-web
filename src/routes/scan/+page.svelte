@@ -140,7 +140,7 @@
         </tbody>
       </table>
     </div>
-    <p class="text-center text-charcoal/50 text-sm mt-4">
+    <p class="text-center text-charcoal/60 text-sm mt-4">
       Fixed price, no surprises. 48-hour turnaround.
     </p>
   </div>

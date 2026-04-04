@@ -180,7 +180,7 @@
           <p class="text-charcoal/70 leading-relaxed">
             <strong class="text-charcoal">Block</strong> (the company behind Square and Cash App) recently published how they're rebuilding their entire organization this way, replacing middle management's coordination function with what they call a <em>"company world model."</em> They have the engineering capacity to build it internally. Most companies don't.
           </p>
-          <p class="text-sm text-charcoal/50 mt-3">That's where DomeWorks comes in.</p>
+          <p class="text-sm text-charcoal/60 mt-3">That's where DomeWorks comes in.</p>
         </div>
       </div>
     </div>
@@ -228,7 +228,7 @@
         <div class="rounded-t-2xl bg-stone border border-charcoal/8 px-8 py-6 md:px-10 md:py-7">
           <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
             <span class="text-sm font-semibold tracking-[0.15em] text-warm-gray uppercase">Surface</span>
-            <span class="text-charcoal/50 text-sm md:text-base">Where humans decide and act</span>
+            <span class="text-charcoal/60 text-sm md:text-base">Where humans decide and act</span>
           </div>
         </div>
 
@@ -264,7 +264,7 @@
         <div class="rounded-b-2xl bg-stone border border-charcoal/8 px-8 py-6 md:px-10 md:py-7">
           <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
             <span class="text-sm font-semibold tracking-[0.15em] text-warm-gray uppercase">Edge</span>
-            <span class="text-charcoal/50 text-sm md:text-base">Tools, APIs, repos, CI/CD</span>
+            <span class="text-charcoal/60 text-sm md:text-base">Tools, APIs, repos, CI/CD</span>
           </div>
         </div>
       </div>
@@ -305,7 +305,7 @@
         <p class="text-charcoal/60 text-sm flex-grow">
           I map your organization's world model gaps, design the context system, and build the infrastructure that feeds your domain knowledge into every AI interaction. Your team goes from "every prompt starts from zero" to "AI knows our business."
         </p>
-        <p class="mt-4 text-sm text-charcoal/50">1-2 week assessment + 4-week build</p>
+        <p class="mt-4 text-sm text-charcoal/60">1-2 week assessment + 4-week build</p>
       </a>
 
       <a href="/orchestration-build/" class="group p-8 bg-warm-white rounded-2xl border border-charcoal/10 hover:border-copper card-lift flex flex-col relative overflow-hidden">
@@ -315,7 +315,7 @@
         <p class="text-charcoal/60 text-sm flex-grow">
           I build the agent coordination layer: multi-agent workflows, quality gates, output routing. Your team goes from "AI helps individuals" to "AI coordinates our work."
         </p>
-        <p class="mt-4 text-sm text-charcoal/50">Day rate, scoped from assessment</p>
+        <p class="mt-4 text-sm text-charcoal/60">Day rate, scoped from assessment</p>
       </a>
 
       <a href="/fractional/" class="group p-8 bg-warm-white rounded-2xl border border-charcoal/10 hover:border-copper card-lift flex flex-col relative overflow-hidden">

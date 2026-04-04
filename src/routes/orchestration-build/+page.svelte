@@ -127,7 +127,7 @@
         </div>
       </div>
     </div>
-    <p class="text-center text-charcoal/50 text-sm mt-4">
+    <p class="text-center text-charcoal/60 text-sm mt-4">
       Exact scope and rate are defined after reviewing Context Build deliverables. Book a call to discuss.
     </p>
   </div>

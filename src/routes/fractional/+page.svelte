@@ -124,7 +124,7 @@
         </div>
       </div>
     </div>
-    <p class="text-center text-charcoal/50 text-sm mt-4">
+    <p class="text-center text-charcoal/60 text-sm mt-4">
       Rate depends on scope and what infrastructure is already in place.
     </p>
   </div>
