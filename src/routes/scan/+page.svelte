@@ -108,15 +108,15 @@
   </div>
 </Section>
 
-<!-- What This Isn't -->
-<Section background="muted" padding="lg" eyebrow="03" title="What this isn't">
+<!-- What Your Scan Tells You -->
+<Section background="muted" padding="lg" eyebrow="03" title="What your Scan tells you">
   <div class="max-w-2xl mx-auto" use:reveal>
     <div class="p-8 bg-warm-white rounded-2xl border border-charcoal/10">
       <p class="text-lg text-charcoal/70 leading-relaxed mb-4">
-        This isn't a strategy engagement. I won't interview your stakeholders, diagnose cultural blockers, or design an implementation plan. That's what the <a href="/context-build/" class="text-primary hover:underline">Context Build</a> does.
+        The Scan shows you where you are. For most teams, the readout surfaces a clear gap: no shared context flowing into AI interactions, no coordination between tools and how the team ships.
       </p>
       <p class="text-lg text-charcoal/70 leading-relaxed">
-        The Scan shows you <strong class="text-charcoal">what's happening</strong>. If you want to understand <strong class="text-charcoal">why</strong> and design <strong class="text-charcoal">what to build</strong>, the <a href="/context-build/" class="text-primary hover:underline">Context Build</a> is the next step. There's no obligation, though. Plenty of teams take the Scan, implement the quick wins, and handle the rest internally.
+        When that's the case, I'll tell you exactly what a <a href="/context-build/" class="text-primary hover:underline">Context Build</a> would address and what it wouldn't — so you can decide whether to build it internally or with me. Plenty of teams take the quick wins and run. There's no obligation.
       </p>
     </div>
   </div>
