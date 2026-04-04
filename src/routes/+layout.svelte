@@ -12,13 +12,13 @@
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
     name: 'DomeWorks',
-    description: 'Intelligence infrastructure engineering for engineering organizations. We build the Context and Orchestration layers that replace coordination overhead with AI-native systems.',
+    description: 'AI infrastructure engineering for engineering organizations. We build the context system and agent coordination that replace coordination overhead with AI-native systems.',
     url: 'https://domeworks.ai',
     areaServed: {
       '@type': 'Country',
       name: 'United States'
     },
-    serviceType: ['Intelligence Infrastructure Engineering', 'AI Consulting', 'Context Layer Engineering', 'Orchestration Layer Engineering'],
+    serviceType: ['AI Infrastructure Engineering', 'AI Consulting', 'Context System Engineering', 'Agent Coordination Engineering'],
     priceRange: '$2,500–$15,000+',
     email: 'piers@domeworks.ai'
   }
