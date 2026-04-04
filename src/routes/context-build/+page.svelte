@@ -85,22 +85,81 @@
 <!-- What You Get -->
 <Section background="white" padding="lg" eyebrow="02" title="What you get">
   <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto" use:reveal={{ stagger: true, staggerDelay: 150 }}>
-    <div class="p-8 bg-stone rounded-2xl border border-charcoal/10">
-      <h3 class="text-lg font-medium text-charcoal mb-3">AI Readiness Assessment</h3>
-      <p class="text-sm text-charcoal/60">
-        What tools are in use, what's working, what's not. The gap between "engineers have AI" and "AI is part of how the team ships." A detailed picture you can share with your leadership team and use to justify next steps.
-      </p>
+    <!-- AI Readiness Assessment — dark visual card with blueprint diagram -->
+    <div class="p-8 bg-ink rounded-2xl relative overflow-hidden">
+      <div class="absolute inset-0 texture-grain"></div>
+      <div class="relative">
+        <h3 class="text-lg font-medium text-white mb-1">AI Readiness Assessment</h3>
+        <p class="text-xs text-warm-gray-light mb-6 leading-relaxed">
+          How your tools, teams, and workflows map to the four-layer AI stack.
+        </p>
+        <!-- Blueprint SVG: sources → pipeline → surfaces -->
+        <svg viewBox="0 0 220 160" class="w-full block" aria-label="Context system blueprint diagram showing sources flowing through a context pipeline to surfaces">
+          <!-- Source nodes -->
+          <rect x="8" y="8" width="60" height="28" rx="6" fill="rgba(13,107,99,0.15)" stroke="rgba(13,107,99,0.4)" stroke-width="1"/>
+          <text x="38" y="26" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8" font-weight="500">Codebase</text>
+          <rect x="80" y="8" width="60" height="28" rx="6" fill="rgba(13,107,99,0.15)" stroke="rgba(13,107,99,0.4)" stroke-width="1"/>
+          <text x="110" y="26" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8" font-weight="500">Docs</text>
+          <rect x="152" y="8" width="60" height="28" rx="6" fill="rgba(13,107,99,0.15)" stroke="rgba(13,107,99,0.4)" stroke-width="1"/>
+          <text x="182" y="26" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8" font-weight="500">Tickets</text>
+          <!-- Arrows down -->
+          <line x1="38" y1="36" x2="38" y2="58" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+          <line x1="110" y1="36" x2="110" y2="58" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+          <line x1="182" y1="36" x2="182" y2="58" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+          <!-- Context Pipeline -->
+          <rect x="8" y="58" width="204" height="36" rx="8" fill="rgba(176,125,79,0.12)" stroke="rgba(176,125,79,0.4)" stroke-width="1.5"/>
+          <text x="110" y="80" text-anchor="middle" fill="#B07D4F" font-size="9" font-weight="600" letter-spacing="0.08em">CONTEXT PIPELINE</text>
+          <!-- Arrows down -->
+          <line x1="38" y1="94" x2="38" y2="116" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+          <line x1="110" y1="94" x2="110" y2="116" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+          <line x1="182" y1="94" x2="182" y2="116" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+          <!-- Surface nodes -->
+          <rect x="8" y="116" width="60" height="28" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+          <text x="38" y="134" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8">IDE</text>
+          <rect x="80" y="116" width="60" height="28" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+          <text x="110" y="134" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8">CI/CD</text>
+          <rect x="152" y="116" width="60" height="28" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+          <text x="182" y="134" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8">Chat</text>
+        </svg>
+      </div>
     </div>
+
+    <!-- Prioritized Opportunity Map — dark visual card with impact bars -->
+    <div class="p-8 bg-ink rounded-2xl relative overflow-hidden">
+      <div class="absolute inset-0 texture-grain"></div>
+      <div class="relative">
+        <h3 class="text-lg font-medium text-white mb-1">Prioritized Opportunity Map</h3>
+        <p class="text-xs text-warm-gray-light mb-6 leading-relaxed">
+          Ranked actions with effort, impact, and dependencies.
+        </p>
+        <!-- Opportunity items -->
+        <div class="flex flex-col gap-4">
+          {#each [
+            { name: 'Shared context files', effort: '1 week', width: '92%', color: 'bg-primary', dot: 'bg-primary' },
+            { name: 'PR review agent', effort: '2 weeks', width: '75%', color: 'bg-primary', dot: 'bg-primary' },
+            { name: 'Onboarding automation', effort: '3 weeks', width: '55%', color: 'bg-copper', dot: 'bg-copper' },
+            { name: 'Meeting summaries', effort: '4 weeks', width: '30%', color: 'bg-warm-gray', dot: 'bg-warm-gray' }
+          ] as item}
+            <div>
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="w-1.5 h-1.5 rounded-full {item.dot} shrink-0"></span>
+                <span class="text-[11px] text-warm-white/80">{item.name}</span>
+                <span class="ml-auto text-[9px] text-warm-white/35 font-medium">{item.effort}</span>
+              </div>
+              <div class="h-[5px] bg-warm-white/[0.06] rounded-full overflow-hidden ml-3.5">
+                <div class="h-full {item.color} rounded-full opacity-70" style="width: {item.width}"></div>
+              </div>
+            </div>
+          {/each}
+        </div>
+      </div>
+    </div>
+
+    <!-- Context System Blueprint — text card -->
     <div class="p-8 bg-stone rounded-2xl border border-charcoal/10">
       <h3 class="text-lg font-medium text-charcoal mb-3">Context System Blueprint</h3>
       <p class="text-sm text-charcoal/60">
         What domain knowledge needs to flow into AI interactions, and how. A design for the shared context, reliable workflows, and developer tooling that make AI useful beyond ad-hoc prompting.
-      </p>
-    </div>
-    <div class="p-8 bg-stone rounded-2xl border border-charcoal/10">
-      <h3 class="text-lg font-medium text-charcoal mb-3">Prioritized Opportunity Map</h3>
-      <p class="text-sm text-charcoal/60">
-        A ranked list of specific systems and changes for your team. Each one has estimated effort, expected impact, and dependencies. You'll know exactly what to build first and why, plus two to three quick wins that pay off in days, not months.
       </p>
     </div>
   </div>
