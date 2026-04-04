@@ -16,7 +16,7 @@
   --color-warm-gray-light: #BBB8AD;
 
   /* Typography: Inter (Söhne fallback) + Newsreader (Freight Display fallback) */
-  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
   --font-serif: 'Newsreader', Georgia, serif;
 
 }
