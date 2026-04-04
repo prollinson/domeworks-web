@@ -3,6 +3,7 @@
   import Section from '$lib/components/layout/Section.svelte'
   import { reveal } from '$lib/actions/reveal'
   import { getBookCallUrl } from '$lib/utils/mailto'
+  import JourneyBar from '$lib/components/ui/JourneyBar.svelte'
 </script>
 
 <svelte:head>
@@ -32,13 +33,23 @@
 </svelte:head>
 
 <!-- Hero -->
-<section class="bg-warm-white py-20 md:py-28 relative overflow-hidden">
+<section class="py-20 md:py-28 relative overflow-hidden" style="background: linear-gradient(135deg, #FAFAF7 65%, rgba(160,115,65,0.05));">
   <div class="absolute inset-0 grid-overlay opacity-50"></div>
+  <!-- Architectural SVG: Multi-node routing -->
+  <div class="absolute right-0 bottom-0 w-64 md:w-96 opacity-[0.07] pointer-events-none" aria-hidden="true">
+    <svg viewBox="0 0 200 160" fill="none">
+      <circle cx="100" cy="30" r="16" stroke="#B07D4F" stroke-width="1.5"/>
+      <circle cx="40" cy="120" r="14" stroke="#B07D4F" stroke-width="1"/>
+      <circle cx="100" cy="120" r="14" stroke="#B07D4F" stroke-width="1"/>
+      <circle cx="160" cy="120" r="14" stroke="#B07D4F" stroke-width="1"/>
+      <line x1="90" y1="44" x2="50" y2="108" stroke="#B07D4F" stroke-width="0.8"/>
+      <line x1="100" y1="46" x2="100" y2="106" stroke="#B07D4F" stroke-width="0.8"/>
+      <line x1="110" y1="44" x2="150" y2="108" stroke="#B07D4F" stroke-width="0.8"/>
+    </svg>
+  </div>
   <div class="relative max-w-6xl mx-auto px-6 lg:px-8">
     <div class="max-w-3xl">
-      <p class="text-xs font-medium tracking-widest text-primary uppercase mb-6">
-        Orchestration Build
-      </p>
+      <JourneyBar current="orchestration-build" />
       <h1 class="font-serif text-4xl md:text-5xl font-normal text-charcoal leading-[1.2] md:leading-[1.15]">
         Your team goes from AI helping individuals to AI coordinating your work<span class="text-primary">.</span>
       </h1>
@@ -133,17 +144,38 @@
   </div>
 </Section>
 
-<!-- CTA -->
-<Section background="muted" padding="lg">
-  <div class="max-w-2xl mx-auto text-center" use:reveal>
-    <h2 class="font-serif text-3xl font-normal text-charcoal mb-4">
-      Ready to build the coordination layer<span class="text-primary">?</span>
-    </h2>
-    <p class="text-lg text-charcoal/70 mb-8">
-      30-minute call, no obligation. If you've completed a Context Build, I'll walk through the assessment and outline the Orchestration Build scope.
-    </p>
-    <Button href={getBookCallUrl()} size="lg">
-      Book a call
-    </Button>
+<!-- FAQ -->
+<Section background="muted" padding="lg" eyebrow="05" title="Common questions">
+  <div class="max-w-2xl mx-auto space-y-4" use:reveal>
+    <details class="group p-6 bg-warm-white rounded-xl border border-charcoal/10">
+      <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
+        Do we need a Context Build first?
+        <svg class="w-5 h-5 text-charcoal/40 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </summary>
+      <p class="mt-4 text-charcoal/70 leading-relaxed">Yes, or an equivalent assessment. Agent coordination without a context system is automating noise. The Context Build gives us the blueprint — this is where we build it.</p>
+    </details>
+    <details class="group p-6 bg-warm-white rounded-xl border border-charcoal/10">
+      <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
+        How embedded are you?
+        <svg class="w-5 h-5 text-charcoal/40 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </summary>
+      <p class="mt-4 text-charcoal/70 leading-relaxed">2–3 days/week, in standups, pairing with engineers, shipping alongside your team. I'm not advising from the outside — I'm building with you.</p>
+    </details>
+    <details class="group p-6 bg-warm-white rounded-xl border border-charcoal/10">
+      <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
+        What does the handoff look like?
+        <svg class="w-5 h-5 text-charcoal/40 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </summary>
+      <p class="mt-4 text-charcoal/70 leading-relaxed">Documented systems, runbooks, and knowledge transfer sessions. Your team owns everything. The goal is always a team that can maintain the systems without me.</p>
+    </details>
   </div>
 </Section>
+
+<!-- Journey nudge -->
+<div class="border-t border-charcoal/8 py-8">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8 text-center">
+    <p class="text-sm text-charcoal/60">
+      Next in the journey: <a href="/fractional/" class="text-copper hover:underline font-medium">Fractional AI Leadership &rarr;</a>
+    </p>
+  </div>
+</div>
