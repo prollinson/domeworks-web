@@ -272,7 +272,7 @@
       <h3 class="text-xl font-medium text-charcoal mb-2">AI Scan</h3>
       <p class="text-2xl font-normal font-serif text-charcoal mb-4">$2,500–$3,500</p>
       <p class="text-charcoal/60 text-sm flex-grow">
-        In 48 hours, I diagnose your Intelligence Maturity level: where you are on the path from "bought tools" to "AI coordinates our work." You get a clear picture of what's missing and quick wins your team can act on this week.
+        In 48 hours, I diagnose where you are on the path from "bought tools" to "AI coordinates our work." You get a clear picture of what's missing and quick wins your team can act on this week.
       </p>
       <p class="mt-4 text-sm text-primary font-medium group-hover:underline">Learn more &rarr;</p>
     </a>
@@ -284,7 +284,7 @@
       <h3 class="text-xl font-medium text-charcoal mb-2">Context Build</h3>
       <p class="text-2xl font-normal font-serif text-charcoal mb-4">$10,000–$15,000+</p>
       <p class="text-charcoal/60 text-sm flex-grow">
-        I map your organization's world model gaps, design the Context Layer, and build the infrastructure that feeds your domain knowledge into every AI interaction. Your team goes from "every prompt starts from zero" to "AI knows our business."
+        I map your organization's world model gaps, design the context system, and build the infrastructure that feeds your domain knowledge into every AI interaction. Your team goes from "every prompt starts from zero" to "AI knows our business."
       </p>
       <p class="mt-4 text-sm text-charcoal/50">1-2 week assessment + 4-week build</p>
     </a>
