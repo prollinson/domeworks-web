@@ -37,7 +37,7 @@
 	<title>DomeWorks | Intelligence Infrastructure Engineering</title>
 	<meta
 		name="description"
-		content="Your engineering team runs on meetings, status updates, and managers routing information. That coordination layer can now be built as intelligence infrastructure. DomeWorks builds it."
+		content="Your team runs on meetings, status updates, and managers routing information. That coordination layer can now be built as intelligence infrastructure. DomeWorks builds it."
 	/>
 	<link rel="canonical" href="https://domeworks.tech/" />
 
@@ -48,7 +48,7 @@
 	<meta property="og:title" content="DomeWorks | Intelligence Infrastructure Engineering" />
 	<meta
 		property="og:description"
-		content="Your engineering team runs on meetings, status updates, and managers routing information. That coordination layer can now be built as intelligence infrastructure."
+		content="Your team runs on meetings, status updates, and managers routing information. That coordination layer can now be built as intelligence infrastructure."
 	/>
 	<meta property="og:image" content="https://domeworks.tech/og-image.png" />
 
@@ -57,7 +57,7 @@
 	<meta name="twitter:title" content="DomeWorks | Intelligence Infrastructure Engineering" />
 	<meta
 		name="twitter:description"
-		content="Your engineering team runs on meetings, status updates, and managers routing information. That coordination layer can now be built as intelligence infrastructure."
+		content="Your team runs on meetings, status updates, and managers routing information. That coordination layer can now be built as intelligence infrastructure."
 	/>
 	<meta name="twitter:image" content="https://domeworks.tech/og-image.png" />
 
@@ -71,7 +71,7 @@
 				url: 'https://domeworks.tech',
 				foundingDate: '2025',
 				description:
-					'Intelligence infrastructure engineering consultancy. Replaces coordination overhead with context pipelines, agent orchestration, and quality gates for engineering teams.',
+					'Intelligence infrastructure consultancy. Replaces coordination overhead with context pipelines, agent orchestration, and quality gates.',
 				founder: {
 					'@type': 'Person',
 					name: 'Piers Rollinson',
@@ -153,8 +153,8 @@
 					designed to end. You keep what I build.
 				</p>
 				<p class="mt-3 text-sm text-warm-white/75 leading-relaxed hidden sm:block">
-					10+ years of engineering leadership at DoorDash, Square, and Mudflap. The biggest
-					bottleneck was never the engineering — it was the coordination. That layer can now be
+					10+ years leading teams at DoorDash, Square, and Mudflap. The biggest
+					bottleneck was never the work — it was the coordination. That layer can now be
 					built as infrastructure.
 				</p>
 				<div class="mt-6 md:mt-8 flex items-center gap-6">
@@ -238,8 +238,8 @@
 					</span>
 					<span
 						>You're a <strong class="text-charcoal"
-							>VP of Engineering, Head of Engineering, or CTO</strong
-						> at a mid-market SaaS company (50–500 people) or a funded startup</span
+							>technical leader or firm owner</strong
+						> whose team has AI tools but still coordinates through meetings, status updates, and manual handoffs</span
 					>
 				</li>
 				<li class="flex items-start gap-4">
