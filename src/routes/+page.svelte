@@ -153,9 +153,8 @@
 					designed to end. You keep what I build.
 				</p>
 				<p class="mt-3 text-sm text-warm-white/75 leading-relaxed hidden sm:block">
-					10+ years leading teams at DoorDash, Square, and Mudflap. The biggest
-					bottleneck was never the work — it was the coordination. That layer can now be
-					built as infrastructure.
+					10+ years leading teams at DoorDash, Square, and Mudflap. The biggest bottleneck was never
+					the work — it was the coordination. That layer can now be built as infrastructure.
 				</p>
 				<div class="mt-6 md:mt-8 flex items-center gap-6">
 					<Button href={getBookCallUrl()} size="lg">Book a call</Button>
@@ -237,9 +236,8 @@
 						<span class="w-2 h-2 rounded-full bg-primary"></span>
 					</span>
 					<span
-						>You're a <strong class="text-charcoal"
-							>technical leader or firm owner</strong
-						> whose team has AI tools but still coordinates through meetings, status updates, and manual handoffs</span
+						>You're a <strong class="text-charcoal">technical leader or firm owner</strong> whose team
+						has AI tools but still coordinates through meetings, status updates, and manual handoffs</span
 					>
 				</li>
 				<li class="flex items-start gap-4">
