@@ -40,6 +40,10 @@ Best time for a 30-min call:`)
   return `mailto:${EMAIL}?subject=${subject}&body=${body}`
 }
 
+export function getAuditCallUrl(): string {
+  return CALENDLY
+}
+
 export function generateGeneralMailto(): string {
   const subject = encodeURIComponent('DomeWorks | inquiry')
 
