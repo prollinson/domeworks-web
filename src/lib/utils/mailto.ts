@@ -40,8 +40,10 @@ Best time for a 30-min call:`)
   return `mailto:${EMAIL}?subject=${subject}&body=${body}`
 }
 
+const AUDIT_CAL = 'https://cal.com/prollinson/ai-audit'
+
 export function getAuditCallUrl(): string {
-  return CALENDLY
+  return AUDIT_CAL
 }
 
 export function generateGeneralMailto(): string {

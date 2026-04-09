@@ -8,6 +8,8 @@
 
   let { children } = $props()
 
+  const isLanding = $derived($page.url.pathname.startsWith('/ai-audit'))
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
@@ -50,10 +52,14 @@
   {@html `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`}
 </svelte:head>
 
-<Header />
+{#if !isLanding}
+  <Header />
+{/if}
 
-<main class="pt-16 md:pt-20">
+<main class={isLanding ? '' : 'pt-16 md:pt-20'}>
   {@render children()}
 </main>
 
-<Footer />
+{#if !isLanding}
+  <Footer />
+{/if}
