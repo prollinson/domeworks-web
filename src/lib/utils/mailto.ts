@@ -6,7 +6,7 @@ export function getBookCallUrl(): string {
 }
 
 export function generateScanMailto(): string {
-  const subject = encodeURIComponent('AI Scan — interested')
+  const subject = encodeURIComponent('AI Scan: interested')
 
   const body = encodeURIComponent(`Hi Piers,
 
@@ -22,12 +22,12 @@ Best time for a 15-min call:`)
   return `mailto:${EMAIL}?subject=${subject}&body=${body}`
 }
 
-export function generateAssessmentMailto(): string {
-  const subject = encodeURIComponent('AI Assessment — interested')
+export function generateContextBuildMailto(): string {
+  const subject = encodeURIComponent('Context Build: interested')
 
   const body = encodeURIComponent(`Hi Piers,
 
-I'm interested in the AI Infrastructure Assessment.
+I'm interested in the Context Build.
 
 Company:
 Role:
@@ -40,8 +40,14 @@ Best time for a 30-min call:`)
   return `mailto:${EMAIL}?subject=${subject}&body=${body}`
 }
 
+const AUDIT_CAL = 'https://cal.com/prollinson/ai-audit'
+
+export function getAuditCallUrl(): string {
+  return AUDIT_CAL
+}
+
 export function generateGeneralMailto(): string {
-  const subject = encodeURIComponent('DomeWorks — inquiry')
+  const subject = encodeURIComponent('DomeWorks | inquiry')
 
   const body = encodeURIComponent(`Hi Piers,
 

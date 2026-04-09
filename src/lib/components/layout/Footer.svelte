@@ -3,7 +3,9 @@
 
   const navLinks = [
     { href: '/scan/', label: 'AI Scan' },
-    { href: '/assessment/', label: 'Assessment' },
+    { href: '/context-build/', label: 'Context Build' },
+    { href: '/orchestration-build/', label: 'Orchestration Build' },
+    { href: '/fractional/', label: 'Fractional' },
     { href: '/about/', label: 'About' },
     { href: '/contact/', label: 'Contact' }
   ]
@@ -25,7 +27,7 @@
         </p>
         <a
           href={getBookCallUrl()}
-          class="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-charcoal bg-warm-white hover:bg-stone rounded-lg transition-all active:scale-[0.98]"
+          class="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white bg-primary hover:bg-primary-hover rounded-lg transition-all active:scale-[0.98] shadow-[0_4px_14px_-2px_rgba(13,107,99,0.4)] hover:shadow-[0_6px_20px_-2px_rgba(13,107,99,0.5)]"
         >
           Book a discovery call
           <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -46,7 +48,7 @@
             DomeWorks
           </a>
           <p class="mt-4 text-sm text-warm-gray-light">
-            AI infrastructure engineering<br />for teams that ship.
+            AI infrastructure that replaces coordination overhead
           </p>
         </div>
 
@@ -101,7 +103,7 @@
           &copy; {new Date().getFullYear()} DomeWorks. All rights reserved.
         </p>
         <p class="text-xs text-warm-gray">
-          Making AI work at the team level.
+          Replacing coordination overhead with AI infrastructure
         </p>
       </div>
     </div>

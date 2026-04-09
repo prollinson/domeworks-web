@@ -4,7 +4,7 @@
   let { title, description }: { title: string; description: string } = $props()
 
   const siteUrl = 'https://domeworks.tech'
-  const siteName = 'Dome Works'
+  const siteName = 'DomeWorks'
   const ogImage = `${siteUrl}/og-image.png`
 
   let canonicalUrl = $derived(`${siteUrl}${page.url.pathname}`)
