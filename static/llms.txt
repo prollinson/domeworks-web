@@ -1,0 +1,22 @@
+# DomeWorks
+
+> DomeWorks builds intelligence infrastructure for engineering teams — replacing coordination overhead (meetings, status updates, information routing) with AI systems that do that work automatically.
+
+Founded by Piers Rollinson, an engineering leader with 10+ years at DoorDash, Square, and Mudflap. DomeWorks offers a structured engagement path from diagnostic through build to ongoing ownership.
+
+## Services
+
+- [AI Scan](https://domeworks.tech/scan/): A 48-hour audit of your team's AI tool spend, adoption patterns, and wasted seats. Fixed price $2,500–$3,500. Deliverable: clear picture of what your AI investment is actually doing and where the waste is.
+- [Context Build](https://domeworks.tech/context-build/): A two-week engagement diagnosing AI readiness and designing the context system your AI tools need to work at the team level. $10,000–$15,000. Deliverable: stakeholder interviews, tool and spend audit, context system design, workflow mapping, and a prioritized opportunity map.
+- [Orchestration Build](https://domeworks.tech/orchestration-build/): Milestone-based build of the agent coordination layer — multi-agent workflows, quality gates, and output routing that replace human coordination overhead. Scoped from the Context Build assessment.
+- [Fractional AI Leadership](https://domeworks.tech/fractional/): Ongoing monthly retainer, 1–2 days per week. Part-time Head of AI role — maintaining and evolving the context system and agent coordination as the organization changes.
+
+## SMB Offering
+
+- [AI Audit for Professional Services](https://domeworks.tech/ai-audit/): A structured assessment of where AI tools can recover 5–7 hours per week for professional services firms in Henderson/Las Vegas, NV. Free for the first 5 firms (normally $999). Includes a discovery call, AI analysis, and a written report with prioritized opportunities.
+
+## Company
+
+- [About](https://domeworks.tech/about/): Piers Rollinson — founder background, engineering leadership experience at DoorDash, Square, and Mudflap, and the reasoning behind DomeWorks.
+- [Contact](https://domeworks.tech/contact/): Get in touch or book a call.
+- [Assessment](https://domeworks.tech/assessment/): Self-assessment tool to evaluate your team's AI infrastructure readiness.
