@@ -2,13 +2,14 @@
 // for information about these interfaces
 // and what to do when importing types
 
-// Cloudflare Email binding, attached in Pages project settings.
+// Cloudflare Send Email binding (declared in wrangler.jsonc).
 // Requires Email Routing enabled on domeworks.tech with piers@domeworks.tech as a verified destination.
 interface SendEmailBinding {
 	send(message: {
 		from: string;
 		to: string;
-		raw: ReadableStream | string;
+		subject: string;
+		text: string;
 	}): Promise<void>;
 }
 

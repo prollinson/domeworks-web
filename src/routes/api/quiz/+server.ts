@@ -28,37 +28,20 @@ function isValid(p: QuizPayload): p is Required<QuizPayload> {
 	);
 }
 
-function buildRaw(p: Required<QuizPayload>): string {
-	const date = new Date().toUTCString();
-	const body = [
-		'Hi Piers,',
-		'',
-		'Please send me the AI Action Plan based on these answers.',
+function buildBody(p: Required<QuizPayload>): string {
+	return [
+		'New AI Readiness Quiz submission.',
 		'',
 		`Industry: ${p.industry}`,
 		`Company size: ${p.size}`,
 		`Annual revenue: ${p.revenue}`,
-		`My role: ${p.role}`,
+		`Role: ${p.role}`,
 		`Biggest time leak area: ${p.timeLeak}`,
 		`Most-dreaded task: ${p.dreadedTask}`,
 		`AI tool usage so far: ${p.aiUsage}`,
 		'',
-		`My email: ${p.email}`,
-		'',
-		'Thanks,'
-	].join('\r\n');
-
-	return [
-		'From: Quiz <quiz@domeworks.tech>',
-		'To: Piers <piers@domeworks.tech>',
-		`Reply-To: ${p.email}`,
-		'Subject: AI Readiness Quiz: action plan request',
-		`Date: ${date}`,
-		'MIME-Version: 1.0',
-		'Content-Type: text/plain; charset=utf-8',
-		'',
-		body
-	].join('\r\n');
+		`Reply to: ${p.email}`
+	].join('\n');
 }
 
 export const POST: RequestHandler = async ({ request, platform }) => {
@@ -83,7 +66,8 @@ export const POST: RequestHandler = async ({ request, platform }) => {
 		await seb.send({
 			from: 'quiz@domeworks.tech',
 			to: 'piers@domeworks.tech',
-			raw: buildRaw(payload)
+			subject: `Quiz: ${payload.industry} · ${payload.size} · ${payload.email}`,
+			text: buildBody(payload)
 		});
 	} catch (e) {
 		const msg = e instanceof Error ? e.message : 'send failed';
