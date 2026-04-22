@@ -72,6 +72,9 @@ importers:
       vite:
         specifier: ^7.0.0
         version: 7.3.2(@types/node@25.6.0)(jiti@2.6.1)(lightningcss@1.32.0)
+      wrangler:
+        specifier: ^4.84.1
+        version: 4.84.1(@cloudflare/workers-types@4.20260422.1)
 
 packages:
 
