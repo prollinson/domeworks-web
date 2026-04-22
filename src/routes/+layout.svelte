@@ -8,7 +8,10 @@
 
   let { children } = $props()
 
-  const isLanding = $derived($page.url.pathname.startsWith('/ai-audit'))
+  const isLanding = $derived(
+    $page.url.pathname.startsWith('/ai-tools-assessment') ||
+    $page.url.pathname.startsWith('/ai-audit')
+  )
 
   const jsonLd = {
     '@context': 'https://schema.org',

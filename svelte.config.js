@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-static';
+import adapter from '@sveltejs/adapter-cloudflare';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { mdsvex } from 'mdsvex';
 
@@ -14,9 +14,9 @@ const config = {
 	],
 
 	kit: {
-		adapter: adapter({
-			precompress: true
-		})
+		// Cloudflare Pages. Pages prerender by default via src/routes/+layout.ts;
+		// dynamic endpoints (e.g. /api/quiz) run as Pages Functions on the Worker runtime.
+		adapter: adapter()
 	}
 };
 

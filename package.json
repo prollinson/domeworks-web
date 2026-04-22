@@ -2,6 +2,7 @@
 	"name": "domeworks-web",
 	"version": "0.0.1",
 	"private": true,
+	"packageManager": "pnpm@9.14.4",
 	"engines": {
 		"node": ">=22.0.0"
 	},
@@ -17,8 +18,9 @@
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
+		"@cloudflare/workers-types": "^4.20260422.1",
 		"@playwright/test": "^1.49.0",
-		"@sveltejs/adapter-static": "^3.0.0",
+		"@sveltejs/adapter-cloudflare": "^7.2.8",
 		"@sveltejs/kit": "^2.11.0",
 		"@sveltejs/vite-plugin-svelte": "^6.0.0",
 		"@tailwindcss/vite": "^4.0.0",
