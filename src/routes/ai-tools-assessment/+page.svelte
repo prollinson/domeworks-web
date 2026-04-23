@@ -165,91 +165,47 @@
 	})}</script>`}
 </svelte:head>
 
-<!-- Hero — editorial vocabulary from homepage -->
-<section class="relative bg-ink overflow-hidden -mt-16 md:-mt-20" aria-label="Hero" use:trackHeroExit>
-	<!-- Architectural grid background -->
-	<div class="absolute inset-0 hero-grid" aria-hidden="true" role="presentation"></div>
-	<!-- Warm ambient glow -->
-	<div class="absolute inset-0 hero-glow" aria-hidden="true" role="presentation"></div>
-	<!-- Grain texture -->
-	<div class="absolute inset-0 texture-grain" aria-hidden="true" role="presentation"></div>
-	<!-- Horizontal architectural rules -->
-	<div class="absolute inset-0 pointer-events-none hero-rules" aria-hidden="true" role="presentation"></div>
-
-	<!-- Monogram: "A" for Audit -->
-	<div class="absolute inset-0 pointer-events-none hero-monogram-container" aria-hidden="true" role="presentation">
-		<span class="hero-monogram font-serif select-none">A</span>
-	</div>
-
-	<!-- Vertical copper accent line -->
-	<div class="absolute hero-accent-line" aria-hidden="true" role="presentation"></div>
-
-	<div class="relative w-full max-w-7xl mx-auto px-6 lg:px-8 hero-content-pad flex flex-col justify-between min-h-[clamp(70svh,80svh,90svh)]">
-		<!-- Top zone: eyebrow -->
-		<div class="hero-eyebrow-row">
-			<span class="hero-eyebrow-text">AI Tools Assessment</span>
-			<span class="hero-eyebrow-index">Services businesses · 10–50 people</span>
+<!-- Hero: flat dark, editorial -->
+<section class="relative bg-ink text-paper overflow-hidden -mt-16 md:-mt-20" aria-label="Hero" use:trackHeroExit>
+	<div class="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pt-36 md:pt-40 pb-14 md:pb-20 flex flex-col gap-12 min-h-[clamp(70svh,80svh,90svh)]">
+		<!-- Top: eyebrow -->
+		<div class="flex flex-wrap items-baseline gap-x-4 gap-y-1 text-[0.6875rem] font-semibold uppercase tracking-[0.14em]">
+			<span class="text-accent-light">AI Tools Assessment</span>
+			<span class="text-paper/55 font-normal tracking-[0.08em]">Services businesses · 10–50 people</span>
 		</div>
 
-		<!-- Middle zone: headline + aside -->
-		<div class="hero-middle">
-			<h1 class="hero-headline font-serif font-normal text-warm-white">
-				<span class="hero-line hero-line-1">Stop bleeding</span>
-				<span class="hero-line hero-line-2">hours, leads, revenue<span class="text-copper">.</span></span>
-				<span class="hero-line hero-line-3"><em class="hero-headline-em">I'll show you</em></span>
-				<span class="hero-line hero-line-4 text-warm-white/70">where AI gets them back<span class="text-copper/70">.</span></span>
+		<!-- Middle: headline + aside -->
+		<div class="flex-1 flex flex-col justify-center max-w-4xl">
+			<h1 class="font-sans font-semibold text-[clamp(2.5rem,7vw,4.5rem)] leading-[1.02] tracking-[-0.035em]">
+				Stop bleeding hours, leads, revenue.
 			</h1>
-
-			<div class="hero-aside">
-				<div class="hero-aside-rule" aria-hidden="true" role="presentation"></div>
-				<p class="hero-body-text text-warm-white/85 leading-relaxed">
-					A 45-minute call. An action plan <em>you can start this week</em>. What to install, what to skip.
-				</p>
-				<p class="mt-3 text-sm text-warm-white/75 leading-relaxed hidden sm:block">
-					Ex-DoorDash, Square, Mudflap. I'll handle the AI — you handle your business.
-				</p>
-				<div class="mt-6 md:mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
-					<Button href={getAssessmentCallUrl()} size="lg">Book the assessment</Button>
-					<a href="/quiz/" class="text-sm text-warm-white/85 hover:text-copper underline underline-offset-4 transition-colors">
-						Not ready? Take the 2-min quiz first →
-					</a>
-				</div>
+			<p class="mt-6 font-serif text-xl md:text-2xl leading-[1.55] text-paper/75 max-w-2xl font-normal">
+				A 45 minute call. An action plan <em class="text-accent-light not-italic font-medium">you can start this week</em>. What to install, what to skip.
+			</p>
+			<p class="mt-4 text-sm text-paper/65 max-w-2xl">
+				Ex-DoorDash, Square, Mudflap. I'll handle the AI — you handle your business.
+			</p>
+			<div class="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
+				<Button href={getAssessmentCallUrl()} size="lg">Book the assessment</Button>
+				<a href="/quiz/" class="text-sm text-paper/85 underline underline-offset-4 hover:text-accent-light transition-colors">
+					Not ready? Take the 2-min quiz first →
+				</a>
 			</div>
 		</div>
 
-		<!-- Bottom zone: stat strip -->
-		<div class="hero-stat-bar">
-			<div class="hidden md:flex items-stretch">
-				<div class="hero-stat-cell">
-					<span class="hero-stat-value font-serif">5–7 hrs</span>
-					<span class="hero-stat-label">Recovered / week</span>
-				</div>
-				<div class="hero-stat-divider" aria-hidden="true" role="presentation"></div>
-				<div class="hero-stat-cell">
-					<span class="hero-stat-value font-serif">45 min</span>
-					<span class="hero-stat-label">Your time</span>
-				</div>
-				<div class="hero-stat-divider" aria-hidden="true" role="presentation"></div>
-				<div class="hero-stat-cell">
-					<span class="hero-stat-value font-serif">48 hrs</span>
-					<span class="hero-stat-label">Plan delivered</span>
-				</div>
+		<!-- Bottom: stat strip -->
+		<div class="pt-6 border-t border-paper/10 grid grid-cols-3 gap-4 md:gap-12">
+			<div>
+				<div class="text-2xl md:text-3xl font-medium tracking-[-0.02em]">5–7 hrs</div>
+				<div class="mt-1 text-[0.6875rem] uppercase tracking-[0.12em] text-paper/55 font-medium">Recovered / week</div>
 			</div>
-			<div class="flex min-[360px]:flex md:hidden items-stretch">
-				<div class="hero-stat-cell-mobile">
-					<span class="text-2xl font-serif text-warm-white/95">5–7 hrs</span>
-					<span class="text-xs text-warm-white/70 mt-1 tracking-wider uppercase leading-tight">Recovered / wk</span>
-				</div>
-				<div class="hero-stat-divider" aria-hidden="true" role="presentation"></div>
-				<div class="hero-stat-cell-mobile">
-					<span class="text-2xl font-serif text-warm-white/95">45 min</span>
-					<span class="text-xs text-warm-white/70 mt-1 tracking-wider uppercase leading-tight">Your time</span>
-				</div>
-				<div class="hero-stat-divider" aria-hidden="true" role="presentation"></div>
-				<div class="hero-stat-cell-mobile">
-					<span class="text-2xl font-serif text-warm-white/95">48 hrs</span>
-					<span class="text-xs text-warm-white/70 mt-1 tracking-wider uppercase leading-tight">Plan delivered</span>
-				</div>
+			<div>
+				<div class="text-2xl md:text-3xl font-medium tracking-[-0.02em]">45 min</div>
+				<div class="mt-1 text-[0.6875rem] uppercase tracking-[0.12em] text-paper/55 font-medium">Your time</div>
+			</div>
+			<div>
+				<div class="text-2xl md:text-3xl font-medium tracking-[-0.02em]">48 hrs</div>
+				<div class="mt-1 text-[0.6875rem] uppercase tracking-[0.12em] text-paper/55 font-medium">Plan delivered</div>
 			</div>
 		</div>
 	</div>
