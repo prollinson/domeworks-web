@@ -12,9 +12,9 @@
 	--color-subtle: #737373;
 	--color-faint: #a3a3a3;
 
-	/* --- Accent: vermilion --- */
-	--color-accent: #ea580c;
-	--color-accent-hover: #c2410c;
+	/* --- Accent: vermilion (tuned for WCAG AA on white) --- */
+	--color-accent: #c2410c;
+	--color-accent-hover: #9a3412;
 	--color-accent-light: #fb923c;
 
 	/* --- Retained (legacy aliases for pages not yet migrated) --- */

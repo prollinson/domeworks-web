@@ -643,7 +643,7 @@
 					<p class="font-serif text-sm text-ink/60 mt-3">
 						Your own hours count too — and those are usually the most expensive.
 					</p>
-					<p class="font-serif text-sm text-ink/50 mt-4 pt-4 border-t border-rule">
+					<p class="font-serif text-sm text-muted mt-4 pt-4 border-t border-rule">
 						The tools cost $30–$80/month in aggregate. Most teams recoup the $999 within the first
 						week of implementation.
 					</p>
@@ -712,30 +712,30 @@
 				</p>
 				<ul class="space-y-3 font-serif text-sm text-ink/80 leading-relaxed">
 					<li class="flex gap-3">
-						<span class="text-ink/30 flex-shrink-0 mt-0.5 font-sans font-semibold">✕</span>
+						<span class="text-subtle flex-shrink-0 mt-0.5 font-sans font-semibold">✕</span>
 						<span
 							>Want a tool list without spending 45 minutes on how your business actually works.</span
 						>
 					</li>
 					<li class="flex gap-3">
-						<span class="text-ink/30 flex-shrink-0 mt-0.5 font-sans font-semibold">✕</span>
+						<span class="text-subtle flex-shrink-0 mt-0.5 font-sans font-semibold">✕</span>
 						<span>Want software resold or managed. I don't do either.</span>
 					</li>
 					<li class="flex gap-3">
-						<span class="text-ink/30 flex-shrink-0 mt-0.5 font-sans font-semibold">✕</span>
+						<span class="text-subtle flex-shrink-0 mt-0.5 font-sans font-semibold">✕</span>
 						<span
 							>Have a process broken at the client, vendor, or staffing level. AI won't fix a human
 							problem.</span
 						>
 					</li>
 					<li class="flex gap-3">
-						<span class="text-ink/30 flex-shrink-0 mt-0.5 font-sans font-semibold">✕</span>
+						<span class="text-subtle flex-shrink-0 mt-0.5 font-sans font-semibold">✕</span>
 						<span
 							>Want a "transformation" or a six-figure roadmap. I do small, specific, measurable.</span
 						>
 					</li>
 					<li class="flex gap-3">
-						<span class="text-ink/30 flex-shrink-0 mt-0.5 font-sans font-semibold">✕</span>
+						<span class="text-subtle flex-shrink-0 mt-0.5 font-sans font-semibold">✕</span>
 						<span
 							>Have no core software or repeatable process yet. Start there, then come back.</span
 						>
