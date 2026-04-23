@@ -211,35 +211,32 @@
 	</div>
 </section>
 
-<!-- Orientation block: answers "What this is / Who it's for / Why me" at a glance -->
+<!-- Orientation: at-a-glance what this is / who it's for / why me -->
 <Section background="muted" padding="md" eyebrow="The short version">
-	<div class="max-w-5xl mx-auto" use:reveal>
-		<div class="grid md:grid-cols-3 gap-6">
-			<!-- What this is -->
-			<div class="p-6 bg-warm-white rounded-xl border border-charcoal/8">
-				<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-3">What this is</p>
-				<p class="text-sm text-charcoal/75 leading-relaxed mb-3">
+	<div class="max-w-6xl mx-auto" use:reveal>
+		<div class="hairline-grid grid md:grid-cols-3">
+			<div class="cell">
+				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-3">What this is</p>
+				<p class="font-serif text-sm text-ink/80 leading-relaxed mb-3">
 					A 45-minute assessment. You walk away with:
 				</p>
-				<ul class="space-y-2 text-sm text-charcoal/75 leading-relaxed">
-					<li class="flex items-start gap-2"><span class="text-copper flex-shrink-0 mt-0.5">→</span><span>Where hours, leads, and revenue are actually leaking</span></li>
-					<li class="flex items-start gap-2"><span class="text-copper flex-shrink-0 mt-0.5">→</span><span>The 3–7 AI tools worth installing this week</span></li>
-					<li class="flex items-start gap-2"><span class="text-copper flex-shrink-0 mt-0.5">→</span><span>An explicit list of what <em>not</em> to automate</span></li>
+				<ul class="space-y-2 font-serif text-sm text-ink/80 leading-relaxed">
+					<li class="flex items-start gap-2"><span class="text-accent flex-shrink-0 mt-0.5">→</span><span>Where hours, leads, and revenue are actually leaking</span></li>
+					<li class="flex items-start gap-2"><span class="text-accent flex-shrink-0 mt-0.5">→</span><span>The 3–7 AI tools worth installing this week</span></li>
+					<li class="flex items-start gap-2"><span class="text-accent flex-shrink-0 mt-0.5">→</span><span>An explicit list of what <em>not</em> to automate</span></li>
 				</ul>
 			</div>
 
-			<!-- Who it's for -->
-			<div class="p-6 bg-warm-white rounded-xl border border-charcoal/8">
-				<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-3">Who it's for</p>
-				<p class="text-sm text-charcoal/75 leading-relaxed">
+			<div class="cell">
+				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-3">Who it's for</p>
+				<p class="font-serif text-sm text-ink/80 leading-relaxed">
 					Owner-operated services businesses with 10–50 people. Where staff time is expensive, leads go cold, and admin eats the week. Accountants, attorneys, trades, real estate, and similar firms.
 				</p>
 			</div>
 
-			<!-- Why me -->
-			<div class="p-6 bg-warm-white rounded-xl border border-charcoal/8">
-				<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-3">Why me</p>
-				<p class="text-sm text-charcoal/75 leading-relaxed">
+			<div class="cell">
+				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-3">Why me</p>
+				<p class="font-serif text-sm text-ink/80 leading-relaxed">
 					I'll tell you where AI doesn't belong as clearly as where it does. No software reselling, no affiliate deals. 15 years at DoorDash, Square, and Mudflap before this, now based in Henderson.
 				</p>
 			</div>
