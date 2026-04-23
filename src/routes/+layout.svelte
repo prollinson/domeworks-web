@@ -9,7 +9,8 @@
 	let { children } = $props();
 
 	const isLanding = $derived(
-		$page.url.pathname.startsWith('/ai-tools-assessment') ||
+		$page.url.pathname.startsWith('/smb') ||
+			$page.url.pathname.startsWith('/ai-tools-assessment') ||
 			$page.url.pathname.startsWith('/ai-audit')
 	);
 

@@ -234,7 +234,7 @@
 	<div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-6" use:reveal>
 		<!-- Track A: Owner-operator services -->
 		<a
-			href="/ai-tools-assessment/"
+			href="/smb/"
 			class="group relative p-8 md:p-10 bg-stone rounded-2xl border border-charcoal/10 hover:border-copper/40 hover:shadow-lg transition-all duration-200 flex flex-col"
 			aria-label="Owner-operator services track — AI Tools Assessment"
 		>
@@ -300,7 +300,7 @@
 	<div class="max-w-4xl mx-auto mt-8 text-center">
 		<p class="text-sm text-charcoal/55">
 			Not sure which applies? The sections below go deeper on Track B. If you're owner-operator, the <a
-				href="/ai-tools-assessment/"
+				href="/smb/"
 				class="text-copper underline underline-offset-2">Assessment page</a
 			> is the better read.
 		</p>

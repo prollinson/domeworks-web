@@ -396,7 +396,7 @@
 					<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-2">Good fit</p>
 					<p class="text-charcoal/75 leading-relaxed">
 						You're squarely in the size I work with most. If the Action Plan lands and you want to
-						go further, the full <a href="/ai-tools-assessment/" class="text-copper underline"
+						go further, the full <a href="/smb/" class="text-copper underline"
 							>AI Tools Assessment</a
 						> is the natural next step.
 					</p>

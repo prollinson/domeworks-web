@@ -14,7 +14,7 @@ Founded by Piers Rollinson, an engineering leader with 10+ years at DoorDash, Sq
 ## SMB Offering
 
 - [AI Readiness Quiz](https://domeworks.tech/quiz/): Free 2-minute quiz that pinpoints your biggest time leak across admin, marketing, and delivery. Delivers a personalized Action Plan by email within 24 hours with three quick wins and step-by-step setup instructions (30–60 min each, no technical background required). Also names workflows where AI is the wrong tool.
-- [AI Tools Assessment for Professional Services](https://domeworks.tech/ai-tools-assessment/): A structured diagnostic of where AI tools fit in your services business and where they shouldn't go. For owner-operated services businesses doing $3–10M in revenue with 10–50 people. Three-phase method: Assess, Prescribe, Build. Deliverable includes a discovery call, a written report in 48 hours with prioritized opportunities, an explicit list of workflows not to automate, and a review call.
+- [AI Tools Assessment for Professional Services](https://domeworks.tech/smb/): A structured diagnostic of where AI tools fit in your services business and where they shouldn't go. For owner-operated services businesses doing $3–10M in revenue with 10–50 people. Three-phase method: Assess, Prescribe, Build. Deliverable includes a discovery call, a written report in 48 hours with prioritized opportunities, an explicit list of workflows not to automate, and a review call.
 
 ## Company
 
