@@ -244,27 +244,25 @@
 	</div>
 </Section>
 
-<!-- 01: Where the time goes — interactive business-type selector -->
+<!-- 01: Where the time goes -->
 <Section id="where-time-goes" background="white" padding="md" eyebrow="01" title="Where the time goes">
 	<div use:reveal>
-		<!-- Lead -->
-		<div class="max-w-3xl mx-auto mb-8 text-center">
-			<p class="text-lg text-charcoal/70 leading-relaxed">
+		<div class="max-w-3xl mx-auto mb-10 text-center">
+			<p class="font-serif text-lg text-ink/75 leading-relaxed">
 				Every services business leaks hours, leads, and revenue in the same few places. Pick yours to see where it's probably hiding.
 			</p>
 		</div>
 
-		<!-- Business type selector -->
 		<div class="max-w-5xl mx-auto mb-8">
-			<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-3 text-center">Your business type</p>
+			<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-subtle uppercase mb-3 text-center">Your business type</p>
 			<div class="flex flex-wrap justify-center gap-2">
 				{#each Object.entries(patterns) as [key, p]}
 					<button
 						type="button"
 						onclick={() => (selectedType = key as keyof typeof patterns)}
-						class="px-4 py-2 text-sm rounded-full border transition-all {selectedType === key
-							? 'bg-copper text-warm-white border-copper shadow-sm'
-							: 'bg-warm-white text-charcoal/75 border-charcoal/15 hover:border-charcoal/30 hover:bg-stone'}"
+						class="px-4 py-2 text-sm rounded-lg border transition-all {selectedType === key
+							? 'bg-accent text-white border-accent'
+							: 'bg-paper text-ink/75 border-rule hover:border-ink/30 hover:bg-paper-alt'}"
 						aria-pressed={selectedType === key}
 					>
 						{p.label}
@@ -273,18 +271,17 @@
 			</div>
 		</div>
 
-		<!-- Context line for the selected vertical -->
 		<div class="max-w-3xl mx-auto mb-8 text-center">
-			<p class="text-sm text-charcoal/60 italic">{currentPattern.lead}</p>
+			<p class="font-serif text-sm text-subtle italic">{currentPattern.lead}</p>
 		</div>
 
 		{#snippet speedCallout(spacingClass: string)}
-			<div class="max-w-5xl mx-auto {spacingClass} p-6 bg-copper/[0.06] rounded-xl border border-copper/20">
+			<div class="max-w-5xl mx-auto {spacingClass} p-6 bg-accent/[0.06] rounded-lg">
 				<div class="flex items-start gap-4">
-					<span class="text-xs font-semibold tracking-widest text-copper uppercase flex-shrink-0 pt-1">The #1 pattern</span>
+					<span class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase flex-shrink-0 pt-1">The #1 pattern</span>
 					<div>
-						<h3 class="font-medium text-charcoal mb-2">Speed-to-lead: inbound response latency</h3>
-						<p class="text-sm text-charcoal/75 leading-relaxed">
+						<h3 class="font-sans font-medium text-ink mb-2">Speed-to-lead: inbound response latency</h3>
+						<p class="font-serif text-sm text-ink/80 leading-relaxed">
 							The single highest-value pattern I find in owner-operated businesses. Prospect sends an inquiry at 9pm. You see it at 8am. By then they've already called two competitors. Cutting that response time from hours to minutes is often worth more than everything else on this page combined.
 						</p>
 					</div>
@@ -292,22 +289,19 @@
 			</div>
 		{/snippet}
 
-		<!-- Speed-to-lead above the grid for verticals where it's the defining pain -->
 		{#if currentPattern.leadsWithSpeed}
 			{@render speedCallout('mb-6')}
 		{/if}
 
-		<!-- Problem cards: swap based on selection -->
-		<div class="max-w-5xl mx-auto grid sm:grid-cols-2 gap-6">
+		<div class="max-w-5xl mx-auto hairline-grid grid sm:grid-cols-2">
 			{#each currentPattern.cards as card (selectedType + card.title)}
-				<div class="p-6 bg-stone rounded-xl border border-charcoal/8 cursor-default">
-					<h3 class="font-medium text-charcoal mb-2">{card.title}</h3>
-					<p class="text-sm text-charcoal/70">{card.body}</p>
+				<div class="cell">
+					<h3 class="font-sans font-medium text-ink mb-2">{card.title}</h3>
+					<p class="font-serif text-sm text-ink/75 leading-relaxed">{card.body}</p>
 				</div>
 			{/each}
 		</div>
 
-		<!-- Speed-to-lead below the grid for all other verticals -->
 		{#if !currentPattern.leadsWithSpeed}
 			{@render speedCallout('mt-6')}
 		{/if}
