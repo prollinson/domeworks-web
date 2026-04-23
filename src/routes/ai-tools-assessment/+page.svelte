@@ -572,27 +572,23 @@
 	</div>
 </Section>
 
-<!-- CTA: dark closing section — strong finish -->
-<section class="relative bg-ink overflow-hidden" aria-label="Book your Assessment">
-	<!-- Subtle grid echo from hero -->
-	<div class="absolute inset-0 hero-grid" aria-hidden="true" role="presentation"></div>
-	<div class="absolute inset-0" style="background: radial-gradient(ellipse 60% 60% at 50% 80%, rgba(176, 125, 79, 0.12), transparent 70%);" aria-hidden="true" role="presentation"></div>
-
-	<div class="relative max-w-4xl mx-auto px-6 lg:px-8 py-20 md:py-28" use:reveal>
-		<!-- What comes next — Phases of the method -->
+<!-- Dark CTA footer -->
+<section class="relative bg-ink text-paper overflow-hidden" aria-label="Book your Assessment">
+	<div class="relative max-w-4xl mx-auto px-6 lg:px-8 py-20 md:py-24" use:reveal>
+		<!-- What comes next -->
 		<div class="grid sm:grid-cols-2 gap-5 mb-14">
-			<div class="p-5 rounded-xl border border-warm-white/10 bg-warm-white/[0.04]">
-				<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-2">After Talk + Plan</p>
-				<h3 class="font-medium text-warm-white mb-1.5">Implement on your own</h3>
-				<p class="text-sm text-warm-white/60 leading-relaxed">
+			<div class="p-5 rounded-lg border border-paper/10 bg-paper/[0.04]">
+				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent-light uppercase mb-2">After Talk + Plan</p>
+				<h3 class="font-sans font-medium text-paper mb-1.5">Implement on your own</h3>
+				<p class="font-serif text-sm text-paper/65 leading-relaxed">
 					The action plan includes specific tool recommendations and a quick-start sequence.
 					Many owners take it and run. That's the whole point.
 				</p>
 			</div>
-			<div class="p-5 rounded-xl border border-warm-white/10 bg-warm-white/[0.04]">
-				<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-2">Or add the Build phase</p>
-				<h3 class="font-medium text-warm-white mb-1.5">I embed and build it</h3>
-				<p class="text-sm text-warm-white/60 leading-relaxed">
+			<div class="p-5 rounded-lg border border-paper/10 bg-paper/[0.04]">
+				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent-light uppercase mb-2">Or add the Build phase</p>
+				<h3 class="font-sans font-medium text-paper mb-1.5">I embed and build it</h3>
+				<p class="font-serif text-sm text-paper/65 leading-relaxed">
 					I build the systems, train your team, and hand off working infrastructure.
 					Fixed scope. You keep what I build.
 				</p>
@@ -601,15 +597,15 @@
 
 		<!-- Primary CTA -->
 		<div class="text-center">
-			<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-4">Ready when you are</p>
-			<h2 class="font-serif text-3xl md:text-4xl font-normal text-warm-white mb-3">
+			<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent-light uppercase mb-4">Ready when you are</p>
+			<h2 class="font-sans font-semibold text-3xl md:text-4xl text-paper mb-3 tracking-[-0.025em]">
 				Stop bleeding. Start this week.
 			</h2>
-			<p class="text-warm-white/60 mb-2">$999 flat. 45-minute call. Written action plan in 48 hours.</p>
-			<p class="text-sm text-warm-white/50 mb-10">If you don't find the Assessment valuable, I'll refund you. No questions asked.</p>
+			<p class="text-paper/65 mb-2">$999 flat. 45-minute call. Written action plan in 48 hours.</p>
+			<p class="text-sm text-paper/50 mb-10">If you don't find the Assessment valuable, I'll refund you. No questions asked.</p>
 			<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
 				<Button href={getAssessmentCallUrl()} size="lg">Book the $999 assessment</Button>
-				<a href="mailto:piers@domeworks.tech?subject=AI%20Tools%20Assessment%20question" class="text-sm text-warm-white/60 hover:text-copper transition-colors">
+				<a href="mailto:piers@domeworks.tech?subject=AI%20Tools%20Assessment%20question" class="text-sm text-paper/65 hover:text-accent-light transition-colors">
 					Or email a question first
 				</a>
 			</div>
@@ -619,8 +615,8 @@
 
 <!-- Sticky mobile CTA -->
 {#if showStickyCta}
-<div class="fixed bottom-0 inset-x-0 z-50 md:hidden bg-ink/95 backdrop-blur-sm border-t border-warm-white/10 px-4 py-3 flex items-center justify-between gap-3" role="complementary" aria-label="Book Assessment">
-	<p class="text-sm text-warm-white/70 truncate">45-min AI assessment</p>
-	<Button href={getAssessmentCallUrl()} size="sm">Book it</Button>
-</div>
+	<div class="fixed bottom-0 inset-x-0 z-50 md:hidden bg-ink/95 backdrop-blur-sm border-t border-paper/10 px-4 py-3 flex items-center justify-between gap-3" role="complementary" aria-label="Book Assessment">
+		<p class="text-sm text-paper/70 truncate font-sans">45-min AI assessment</p>
+		<Button href={getAssessmentCallUrl()} size="sm">Book it</Button>
+	</div>
 {/if}
