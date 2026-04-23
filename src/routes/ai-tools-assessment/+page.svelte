@@ -308,62 +308,57 @@
 	</div>
 </Section>
 
-<!-- 02: What you walk away with — named method: Talk. Plan. Build. -->
+<!-- 02: What you walk away with — Talk. Plan. Build. -->
 <Section background="muted" padding="md" eyebrow="02" title="What you walk away with">
 	<div class="max-w-5xl mx-auto" use:reveal>
-		<!-- Method tagline -->
-		<div class="text-center mb-10">
-			<p class="font-serif text-2xl md:text-3xl text-charcoal leading-tight">
-				<span class="text-copper">Talk.</span>
-				<span class="text-copper">Plan.</span>
-				<span class="text-copper">Build.</span>
+		<div class="text-center mb-12">
+			<p class="font-sans font-semibold text-2xl md:text-3xl text-ink leading-tight tracking-[-0.02em]">
+				<span class="text-accent">Talk.</span>
+				<span class="text-accent">Plan.</span>
+				<span class="text-accent">Build.</span>
 			</p>
-			<p class="mt-3 text-sm text-charcoal/60 tracking-wider uppercase">
+			<p class="mt-3 text-xs text-subtle tracking-[0.12em] uppercase font-medium">
 				Three phases. Fixed scope.
 			</p>
 		</div>
 
-		<div class="grid md:grid-cols-3 gap-6">
-			<!-- Phase 1: Talk -->
-			<div class="p-6 bg-warm-white rounded-xl border border-charcoal/8 flex flex-col">
-				<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-2">Phase 01</p>
-				<h3 class="font-serif text-2xl text-charcoal mb-3">Talk</h3>
-				<p class="text-sm text-charcoal/70 leading-relaxed mb-4">
+		<div class="hairline-grid grid md:grid-cols-3">
+			<div class="cell flex flex-col">
+				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">Phase 01</p>
+				<h3 class="font-sans font-medium text-xl text-ink mb-3">Talk</h3>
+				<p class="font-serif text-sm text-ink/75 leading-relaxed mb-4">
 					A 45-minute conversation about how your business actually runs day to day. Where time gets stuck, what you've tried, what you dread. You talk. I take notes. No pitch.
 				</p>
-				<div class="mt-auto pt-4 border-t border-charcoal/8">
-					<p class="text-xs text-charcoal/50">Your time: 45 minutes. One call.</p>
+				<div class="mt-auto pt-4 border-t border-rule">
+					<p class="text-xs text-subtle">Your time: 45 minutes. One call.</p>
 				</div>
 			</div>
 
-			<!-- Phase 2: Plan -->
-			<div class="p-6 bg-warm-white rounded-xl border border-charcoal/8 flex flex-col">
-				<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-2">Phase 02</p>
-				<h3 class="font-serif text-2xl text-charcoal mb-3">Plan</h3>
-				<p class="text-sm text-charcoal/70 leading-relaxed mb-4">
+			<div class="cell flex flex-col">
+				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">Phase 02</p>
+				<h3 class="font-sans font-medium text-xl text-ink mb-3">Plan</h3>
+				<p class="font-serif text-sm text-ink/75 leading-relaxed mb-4">
 					Written action plan in 48 hours. The 3–7 AI tools worth installing this week, an explicit list of what <em>not</em> to automate, and financial impact in hours and dollars. Yours to use — implement on your own or hand it to your team.
 				</p>
-				<div class="mt-auto pt-4 border-t border-charcoal/8">
-					<p class="text-xs text-charcoal/50">Your time: 45-minute review call.</p>
+				<div class="mt-auto pt-4 border-t border-rule">
+					<p class="text-xs text-subtle">Your time: 45-minute review call.</p>
 				</div>
 			</div>
 
-			<!-- Phase 3: Build -->
-			<div class="p-6 bg-warm-white rounded-xl border border-charcoal/8 flex flex-col">
-				<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-2">Phase 03</p>
-				<h3 class="font-serif text-2xl text-charcoal mb-3">Build</h3>
-				<p class="text-sm text-charcoal/70 leading-relaxed mb-4">
+			<div class="cell flex flex-col">
+				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">Phase 03</p>
+				<h3 class="font-sans font-medium text-xl text-ink mb-3">Build</h3>
+				<p class="font-serif text-sm text-ink/75 leading-relaxed mb-4">
 					Optional. If you want hands-on implementation rather than a self-serve roadmap, I embed for a fixed-scope engagement. I build the systems, train the staff who'll actually use them, and handle the change-resistance that always comes with new tools. You keep what I build.
 				</p>
-				<div class="mt-auto pt-4 border-t border-charcoal/8">
-					<p class="text-xs text-charcoal/50">Priced separately. Zero obligation from the Assessment.</p>
+				<div class="mt-auto pt-4 border-t border-rule">
+					<p class="text-xs text-subtle">Priced separately. Zero obligation from the Assessment.</p>
 				</div>
 			</div>
 		</div>
 
-		<!-- Total time investment reassurance -->
 		<div class="mt-8 text-center">
-			<p class="text-sm text-charcoal/60">
+			<p class="text-sm text-subtle">
 				Two 45-minute calls across the process. Everything in between is on me.
 			</p>
 		</div>
