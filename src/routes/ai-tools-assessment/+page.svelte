@@ -327,6 +327,34 @@
 						Not ready? Take the 2-min quiz first →
 					</a>
 				</div>
+
+				<!-- Tablet-only meta row: surfaces trust signals where the vertical aside is hidden (md↔lg). -->
+				<div
+					class="hidden md:flex lg:hidden flex-wrap items-baseline gap-x-8 gap-y-3 mt-8 pt-6 border-t border-paper/10"
+					aria-label="Assessment details"
+				>
+					<div class="flex items-baseline gap-2">
+						<span
+							class="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-accent-light"
+							>Based in</span
+						>
+						<span class="text-sm text-paper/80">Henderson, NV</span>
+					</div>
+					<div class="flex items-baseline gap-2">
+						<span
+							class="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-accent-light"
+							>Flat fee</span
+						>
+						<span class="text-sm text-paper/80">$999</span>
+					</div>
+					<div class="flex items-baseline gap-2">
+						<span
+							class="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-accent-light"
+							>Plan in</span
+						>
+						<span class="text-sm text-paper/80">48 hours</span>
+					</div>
+				</div>
 			</div>
 
 			<!-- Meta aside: balances right-half weight on desktop. Reads as a dateline. -->
@@ -563,7 +591,13 @@
 </Section>
 
 <!-- 02: What you walk away with — Talk. Plan. Build. -->
-<Section background="muted" padding="md" eyebrow="02" title="What you walk away with" centered={false}>
+<Section
+	background="muted"
+	padding="md"
+	eyebrow="02"
+	title="What you walk away with"
+	centered={false}
+>
 	<div class="max-w-5xl">
 		<div class="mb-12" use:reveal={{ duration: 400 }}>
 			<p
@@ -635,7 +669,13 @@
 </Section>
 
 <!-- 03: What I won't automate — honesty gate -->
-<Section background="white" padding="md" eyebrow="03" title="What I won't tell you to automate" centered={false}>
+<Section
+	background="white"
+	padding="md"
+	eyebrow="03"
+	title="What I won't tell you to automate"
+	centered={false}
+>
 	<div class="max-w-5xl">
 		<div class="mb-10 max-w-3xl" use:reveal={{ duration: 400 }}>
 			<p class="font-serif text-lg text-muted leading-relaxed">
@@ -702,21 +742,19 @@
 </Section>
 
 <!-- 04: The math -->
-<Section background="muted" padding="md">
-	<div class="max-w-5xl mx-auto">
+<Section background="muted" padding="md" eyebrow="04" title="The math" centered={false}>
+	<div>
 		<div
 			class="grid md:grid-cols-2 gap-10 md:gap-16 items-center"
 			use:reveal={{ stagger: true, staggerDelay: 180, duration: 550 }}
 		>
-			<div class="text-center md:text-left">
-				<p class="text-xs font-medium tracking-widest text-subtle uppercase mb-5">
-					<span class="text-accent">04</span> · The math
-				</p>
-				<h2
+			<div>
+				<p
 					class="font-sans font-semibold text-[clamp(3rem,6vw,5rem)] leading-[0.95] tracking-[-0.03em] text-ink"
+					aria-label="Five to seven hours per week"
 				>
 					5–7 hours<span class="text-accent">/</span><span class="text-subtle">week</span>
-				</h2>
+				</p>
 				<p class="font-serif text-muted mt-3 text-lg">recovered per person, on average</p>
 			</div>
 			<div class="space-y-5">
@@ -820,7 +858,13 @@
 -->
 
 <!-- 05: Right fit / Not a fit -->
-<Section background="white" padding="md" eyebrow="05" title="Is this the right fit?" centered={false}>
+<Section
+	background="white"
+	padding="md"
+	eyebrow="05"
+	title="Is this the right fit?"
+	centered={false}
+>
 	<div class="max-w-5xl">
 		<div
 			class="hairline-grid grid md:grid-cols-2"
@@ -958,7 +1002,7 @@
 			<button
 				type="button"
 				onclick={() => (faqAllOpen = !faqAllOpen)}
-				class="text-[0.6875rem] font-semibold tracking-[0.14em] uppercase text-muted hover:text-accent transition-colors underline underline-offset-4 decoration-accent/60 hover:decoration-accent rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
+				class="inline-flex items-center min-h-[44px] px-3.5 py-2.5 text-xs font-semibold tracking-[0.14em] uppercase text-muted hover:text-accent transition-colors underline underline-offset-4 decoration-accent/60 hover:decoration-accent rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
 				aria-expanded={faqAllOpen}
 			>
 				{faqAllOpen ? 'Collapse all' : 'Expand all'}
@@ -991,7 +1035,10 @@
 
 <!-- Dark CTA footer -->
 <section class="relative bg-ink text-paper overflow-hidden" aria-label="Book your Assessment">
-	<div class="relative max-w-4xl mx-auto px-6 lg:px-8 py-20 md:py-24" use:reveal={{ duration: 500 }}>
+	<div
+		class="relative max-w-4xl mx-auto px-6 lg:px-8 py-20 md:py-24"
+		use:reveal={{ duration: 500 }}
+	>
 		<!-- What comes next -->
 		<div class="grid sm:grid-cols-2 gap-5 mb-14">
 			<div class="p-5 rounded-lg border border-paper/10 bg-paper/[0.04]">
