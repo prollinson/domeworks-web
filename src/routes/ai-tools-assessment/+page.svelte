@@ -506,13 +506,13 @@
 	</div>
 </Section>
 
-<!-- 06: Who's behind this — with credential badges -->
+<!-- 06: Who's behind this -->
 <Section background="muted" padding="md" eyebrow="06" title="Who's behind this">
 	<div class="max-w-4xl mx-auto" use:reveal>
-		<div class="grid md:grid-cols-3 gap-8 items-start">
-			<div class="md:col-span-2 space-y-4 text-lg text-charcoal/70 leading-relaxed">
+		<div class="grid md:grid-cols-3 gap-10 items-start">
+			<div class="md:col-span-2 space-y-4 font-serif text-lg text-ink/80 leading-relaxed">
 				<p>
-					I'm <strong class="text-charcoal">Piers Rollinson</strong>. Fifteen years at DoorDash,
+					I'm <strong class="font-sans font-semibold text-ink">Piers Rollinson</strong>. Fifteen years at DoorDash,
 					Square, and Mudflap building systems that move millions of orders, payments, and drivers.
 					The same thinking that lands 10 million orders correctly at DoorDash lands 100 client
 					intakes correctly at a 12-person firm.
@@ -526,18 +526,18 @@
 					decks, no software to resell. I build working systems. Fixed scope. You keep what I build.
 				</p>
 			</div>
-			<div class="space-y-3">
-				<div class="p-4 bg-warm-white rounded-lg border border-charcoal/8">
-					<p class="text-xs font-semibold tracking-widest text-warm-gray uppercase mb-1">Previously</p>
-					<p class="text-sm text-charcoal font-medium">DoorDash, Square, Mudflap</p>
+			<div class="space-y-5">
+				<div class="border-l border-accent pl-4">
+					<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-subtle uppercase mb-1">Previously</p>
+					<p class="font-sans text-sm text-ink font-medium">DoorDash, Square, Mudflap</p>
 				</div>
-				<div class="p-4 bg-warm-white rounded-lg border border-charcoal/8">
-					<p class="text-xs font-semibold tracking-widest text-warm-gray uppercase mb-1">Focus</p>
-					<p class="text-sm text-charcoal font-medium">AI for services firms</p>
+				<div class="border-l border-accent pl-4">
+					<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-subtle uppercase mb-1">Focus</p>
+					<p class="font-sans text-sm text-ink font-medium">AI for services firms</p>
 				</div>
-				<div class="p-4 bg-warm-white rounded-lg border border-charcoal/8">
-					<p class="text-xs font-semibold tracking-widest text-warm-gray uppercase mb-1">Based in</p>
-					<p class="text-sm text-charcoal font-medium">Henderson, NV</p>
+				<div class="border-l border-accent pl-4">
+					<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-subtle uppercase mb-1">Based in</p>
+					<p class="font-sans text-sm text-ink font-medium">Henderson, NV</p>
 				</div>
 			</div>
 		</div>
