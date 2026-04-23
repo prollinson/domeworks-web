@@ -15,9 +15,9 @@
 	--color-warm-gray: #a3a096;
 	--color-warm-gray-light: #bbb8ad;
 
-	/* Typography: Inter (Söhne fallback) + Newsreader (Freight Display fallback) */
-	--font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
-	--font-serif: 'Newsreader', Georgia, serif;
+	/* Typography: General Sans (display + UI) + Recia (long-form prose, subheads) */
+	--font-sans: 'General Sans', ui-sans-serif, system-ui, sans-serif;
+	--font-serif: 'Recia', Georgia, serif;
 }
 
 /* Craft signal: subtle container grid lines */
