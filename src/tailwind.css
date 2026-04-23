@@ -428,34 +428,36 @@ header {
 }
 
 /* ===== Editorial hairlines ===== */
-/* Broadsheet-style card grid: structural top/bottom rules, vertical cell dividers, no card backgrounds. */
+/* Broadsheet-style card grid: structural top/bottom rules, interior rules drawn by
+   grid gap revealing the container's rule-colored background. Works at any column
+   count and any wrap — no dangling edge borders, no missing row separators. */
 
 .hairline-grid {
+	display: grid;
+	gap: 1px;
+	background: var(--color-rule);
 	border-top: 1px solid var(--color-rule-strong);
 	border-bottom: 1px solid var(--color-rule);
 }
 
 .hairline-grid > .cell {
 	padding: 1.5rem 1.25rem;
-	border-right: 1px solid var(--color-rule);
+	background: var(--color-paper);
 }
 
-.hairline-grid > .cell:last-child {
-	border-right: none;
-}
-
-@media (max-width: 767px) {
-	.hairline-grid > .cell {
-		border-right: none;
-		border-bottom: 1px solid var(--color-rule);
-	}
-	.hairline-grid > .cell:last-child {
-		border-bottom: none;
-	}
+/* When a hairline grid sits inside a muted section, cells match the muted bg. */
+.hairline-grid.on-muted > .cell {
+	background: var(--color-paper-alt);
 }
 
 /* Left-accent rule: for side-of-block emphasis (e.g., Math section quote block). */
 .rule-left-accent {
 	border-left: 2px solid var(--color-accent);
 	padding-left: 1.25rem;
+}
+
+/* Thinner variant for smaller meta blocks (e.g., bio sidebar). */
+.rule-left-accent-sm {
+	border-left: 1px solid var(--color-accent);
+	padding-left: 1rem;
 }

@@ -231,6 +231,8 @@
 
 	let selectedType = $state<keyof typeof patterns>('generic');
 	const currentPattern = $derived(patterns[selectedType]);
+
+	let faqAllOpen = $state(false);
 </script>
 
 <svelte:head>
@@ -275,50 +277,84 @@
 </svelte:head>
 
 <!-- Hero: flat dark, editorial -->
-<section
-	class="relative bg-ink text-paper overflow-hidden -mt-16 md:-mt-20"
-	aria-label="Hero"
-	use:trackHeroExit
->
-	<div
-		class="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pt-36 md:pt-40 pb-14 md:pb-20 flex flex-col gap-12 min-h-[clamp(70svh,80svh,90svh)]"
+<section class="relative bg-ink text-paper overflow-hidden" aria-label="Hero" use:trackHeroExit>
+	<!-- Minimal home link: the only navigation escape on this landing page -->
+	<a
+		href="/"
+		class="absolute top-6 left-6 lg:top-8 lg:left-8 z-10 text-sm font-sans font-semibold tracking-tight text-paper/80 hover:text-paper transition-colors"
 	>
-		<!-- Top: eyebrow -->
+		DomeWorks<span class="text-accent-light">.</span>
+	</a>
+
+	<div
+		class="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pt-24 md:pt-28 pb-14 md:pb-20 flex flex-col gap-12 min-h-[clamp(70svh,80svh,90svh)]"
+	>
+		<!-- Top: eyebrow (vertical-rule divider avoids dual-eyebrow collision) -->
 		<div
-			class="flex flex-wrap items-baseline gap-x-4 gap-y-1 text-[0.6875rem] font-semibold uppercase tracking-[0.14em]"
+			class="flex flex-wrap items-center gap-x-4 gap-y-1 text-[0.6875rem] font-semibold uppercase tracking-[0.14em]"
 		>
 			<span class="text-accent-light">AI Tools Assessment</span>
-			<span class="text-paper/55 font-normal tracking-[0.08em]"
+			<span class="h-3 w-px bg-paper/25" aria-hidden="true"></span>
+			<span class="text-paper/65 font-normal tracking-[0.08em]"
 				>Services businesses · 10–50 people</span
 			>
 		</div>
 
-		<!-- Middle: headline + aside -->
-		<div class="flex-1 flex flex-col justify-center max-w-4xl">
-			<h1
-				class="font-sans font-semibold text-[clamp(2.5rem,7vw,4.5rem)] leading-[1.02] tracking-[-0.035em]"
-			>
-				Stop bleeding hours, leads, revenue.
-			</h1>
-			<p
-				class="mt-6 font-serif text-xl md:text-2xl leading-[1.55] text-paper/75 max-w-2xl font-normal"
-			>
-				A 45 minute call. An action plan <em class="text-accent-light not-italic font-medium"
-					>you can start this week</em
-				>. What to install, what to skip.
-			</p>
-			<p class="mt-4 text-sm text-paper/65 max-w-2xl">
-				Ex-DoorDash, Square, Mudflap. I'll handle the AI — you handle your business.
-			</p>
-			<div class="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
-				<Button href={getAssessmentCallUrl()} size="lg">Book the assessment</Button>
-				<a
-					href="/quiz/"
-					class="text-sm text-paper/85 underline underline-offset-4 hover:text-accent-light transition-colors"
+		<!-- Middle: headline + meta aside (meta balances right-half weight on lg+) -->
+		<div class="flex-1 grid lg:grid-cols-[minmax(0,1fr)_auto] gap-10 lg:gap-16 items-center">
+			<div class="max-w-4xl">
+				<h1
+					class="font-sans font-semibold text-[clamp(2.5rem,7vw,4.5rem)] leading-[1.02] tracking-[-0.035em]"
 				>
-					Not ready? Take the 2-min quiz first →
-				</a>
+					Stop bleeding hours, leads, revenue.
+				</h1>
+				<p
+					class="mt-6 font-serif text-xl md:text-2xl leading-[1.55] text-paper/75 max-w-2xl font-normal"
+				>
+					A 45-minute call. An action plan <strong class="text-accent-light font-medium font-serif"
+						>you can start this week</strong
+					>. What to install, what to skip.
+				</p>
+				<p class="mt-4 text-sm text-paper/65 max-w-2xl">
+					Ex-DoorDash, Square, Mudflap. I'll handle the AI — you handle your business.
+				</p>
+				<div class="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
+					<Button href={getAssessmentCallUrl()} size="lg">Book the assessment</Button>
+					<a
+						href="/quiz/"
+						class="text-sm text-paper/85 underline underline-offset-4 hover:text-accent-light transition-colors"
+					>
+						Not ready? Take the 2-min quiz first →
+					</a>
+				</div>
 			</div>
+
+			<!-- Meta aside: balances right-half weight on desktop. Reads as a dateline. -->
+			<aside
+				class="hidden lg:flex flex-col gap-4 border-l border-paper/15 pl-8 text-[0.6875rem] uppercase tracking-[0.14em] font-semibold self-center"
+				aria-label="Assessment details"
+			>
+				<div>
+					<div class="text-accent-light mb-1">Based in</div>
+					<div class="text-paper/80 font-normal tracking-[0.08em] normal-case text-sm">
+						Henderson, NV
+					</div>
+				</div>
+				<div>
+					<div class="text-accent-light mb-1">Time</div>
+					<div class="text-paper/80 font-normal tracking-[0.08em] normal-case text-sm">45 min</div>
+				</div>
+				<div>
+					<div class="text-accent-light mb-1">Flat fee</div>
+					<div class="text-paper/80 font-normal tracking-[0.08em] normal-case text-sm">$999</div>
+				</div>
+				<div>
+					<div class="text-accent-light mb-1">Plan in</div>
+					<div class="text-paper/80 font-normal tracking-[0.08em] normal-case text-sm">
+						48 hours
+					</div>
+				</div>
+			</aside>
 		</div>
 
 		<!-- Bottom: stat strip -->
@@ -348,15 +384,15 @@
 <!-- Orientation: at-a-glance what this is / who it's for / why me -->
 <Section background="muted" padding="md" eyebrow="The short version">
 	<div class="max-w-6xl mx-auto" use:reveal>
-		<div class="hairline-grid grid md:grid-cols-3">
+		<div class="hairline-grid on-muted grid md:grid-cols-3">
 			<div class="cell">
 				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-3">
 					What this is
 				</p>
-				<p class="font-serif text-sm text-ink/80 leading-relaxed mb-3">
+				<p class="font-serif text-sm text-muted leading-relaxed mb-3">
 					A 45-minute assessment. You walk away with:
 				</p>
-				<ul class="space-y-2 font-serif text-sm text-ink/80 leading-relaxed">
+				<ul class="space-y-2 font-serif text-sm text-muted leading-relaxed">
 					<li class="flex items-start gap-2">
 						<span class="text-accent flex-shrink-0 mt-0.5">→</span><span
 							>Where hours, leads, and revenue are actually leaking</span
@@ -379,7 +415,7 @@
 				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-3">
 					Who it's for
 				</p>
-				<p class="font-serif text-sm text-ink/80 leading-relaxed">
+				<p class="font-serif text-sm text-muted leading-relaxed">
 					Owner-operated services businesses with 10–50 people. Where staff time is expensive, leads
 					go cold, and admin eats the week. Accountants, attorneys, trades, real estate, and similar
 					firms.
@@ -390,7 +426,7 @@
 				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-3">
 					Why me
 				</p>
-				<p class="font-serif text-sm text-ink/80 leading-relaxed">
+				<p class="font-serif text-sm text-muted leading-relaxed">
 					I'll tell you where AI doesn't belong as clearly as where it does. No software reselling,
 					no affiliate deals. 15 years at DoorDash, Square, and Mudflap before this, now based in
 					Henderson.
@@ -410,76 +446,80 @@
 >
 	<div use:reveal>
 		<div class="max-w-3xl mx-auto mb-10 text-center">
-			<p class="font-serif text-lg text-ink/75 leading-relaxed">
+			<p class="font-serif text-lg text-muted leading-relaxed">
 				Every services business leaks hours, leads, and revenue in the same few places. Pick yours
 				to see where it's probably hiding.
 			</p>
 		</div>
 
-		<div class="max-w-5xl mx-auto mb-8">
-			<p
-				class="text-[0.6875rem] font-semibold tracking-[0.14em] text-subtle uppercase mb-3 text-center"
-			>
-				Your business type
-			</p>
-			<div class="flex flex-wrap justify-center gap-2">
-				{#each Object.entries(patterns) as [key, p]}
-					<button
-						type="button"
-						onclick={() => (selectedType = key as keyof typeof patterns)}
-						class="px-4 py-2 text-sm rounded-lg border transition-all {selectedType === key
-							? 'bg-accent text-white border-accent'
-							: 'bg-paper text-ink/75 border-rule hover:border-ink/30 hover:bg-paper-alt'}"
-						aria-pressed={selectedType === key}
-					>
-						{p.label}
-					</button>
-				{/each}
+		<div
+			class="sticky top-0 z-20 bg-paper -mx-6 lg:-mx-8 px-6 lg:px-8 py-4 mb-10 border-b border-rule shadow-[0_1px_0_0_var(--color-rule)]"
+		>
+			<div class="max-w-5xl mx-auto">
+				<p
+					class="text-[0.6875rem] font-semibold tracking-[0.14em] text-subtle uppercase mb-3 text-center"
+				>
+					Your business type
+				</p>
+				<div class="flex flex-wrap justify-center items-baseline gap-x-5 gap-y-0">
+					{#each Object.entries(patterns) as [key, p], i}
+						{#if i > 0}
+							<span class="text-faint select-none" aria-hidden="true">·</span>
+						{/if}
+						<button
+							type="button"
+							onclick={() => (selectedType = key as keyof typeof patterns)}
+							class="py-2 text-sm font-sans transition-colors underline-offset-[6px] decoration-2 {selectedType ===
+							key
+								? 'text-accent font-semibold underline decoration-accent'
+								: 'text-muted hover:text-ink hover:underline decoration-rule'}"
+							aria-pressed={selectedType === key}
+						>
+							{p.label}
+						</button>
+					{/each}
+				</div>
 			</div>
 		</div>
 
-		<div class="max-w-3xl mx-auto mb-8 text-center">
+		<div class="max-w-3xl mx-auto mb-6 text-center">
 			<p class="font-serif text-sm text-subtle italic">{currentPattern.lead}</p>
 		</div>
 
-		{#snippet speedCallout(spacingClass: string)}
-			<div class="max-w-5xl mx-auto {spacingClass} p-6 bg-accent/[0.06] rounded-lg">
-				<div class="flex items-start gap-4">
-					<span
-						class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase flex-shrink-0 pt-1"
-						>The #1 pattern</span
-					>
-					<div>
-						<h3 class="font-sans font-medium text-ink mb-2">
-							Speed-to-lead: inbound response latency
-						</h3>
-						<p class="font-serif text-sm text-ink/80 leading-relaxed">
-							The single highest-value pattern I find in owner-operated businesses. Prospect sends
-							an inquiry at 9pm. You see it at 8am. By then they've already called two competitors.
-							Cutting that response time from hours to minutes is often worth more than everything
-							else on this page combined.
-						</p>
-					</div>
+		<!-- Speed-to-lead callout: locked above cards. Intensity increases when the
+			selected vertical leadsWithSpeed. -->
+		<div
+			class="max-w-5xl mx-auto mb-6 p-6 rounded-lg border-l-2 {currentPattern.leadsWithSpeed
+				? 'bg-accent/[0.14] border-accent'
+				: 'bg-accent/[0.1] border-accent/60'}"
+		>
+			<div class="flex flex-col md:flex-row items-start gap-3 md:gap-5">
+				<span
+					class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase flex-shrink-0 md:pt-1 md:w-32"
+					>The #1 pattern</span
+				>
+				<div class="flex-1">
+					<h3 class="font-sans font-medium text-ink mb-2">
+						Speed-to-lead: inbound response latency
+					</h3>
+					<p class="font-serif text-sm text-muted leading-relaxed">
+						The single highest-value pattern I find in owner-operated businesses. Prospect sends an
+						inquiry at 9pm. You see it at 8am. By then they've already called two competitors.
+						Cutting that response time from hours to minutes is often worth more than everything
+						else on this page combined.
+					</p>
 				</div>
 			</div>
-		{/snippet}
-
-		{#if currentPattern.leadsWithSpeed}
-			{@render speedCallout('mb-6')}
-		{/if}
+		</div>
 
 		<div class="max-w-5xl mx-auto hairline-grid grid sm:grid-cols-2">
 			{#each currentPattern.cards as card (selectedType + card.title)}
 				<div class="cell">
 					<h3 class="font-sans font-medium text-ink mb-2">{card.title}</h3>
-					<p class="font-serif text-sm text-ink/75 leading-relaxed">{card.body}</p>
+					<p class="font-serif text-sm text-muted leading-relaxed">{card.body}</p>
 				</div>
 			{/each}
 		</div>
-
-		{#if !currentPattern.leadsWithSpeed}
-			{@render speedCallout('mt-6')}
-		{/if}
 	</div>
 </Section>
 
@@ -490,22 +530,20 @@
 			<p
 				class="font-sans font-semibold text-2xl md:text-3xl text-ink leading-tight tracking-[-0.02em]"
 			>
-				<span class="text-accent">Talk.</span>
-				<span class="text-accent">Plan.</span>
-				<span class="text-accent">Build.</span>
+				Talk. Plan. <span class="text-accent">Build.</span>
 			</p>
 			<p class="mt-3 text-xs text-subtle tracking-[0.12em] uppercase font-medium">
 				Three phases. Fixed scope.
 			</p>
 		</div>
 
-		<div class="hairline-grid grid md:grid-cols-3">
+		<div class="hairline-grid on-muted grid md:grid-cols-3">
 			<div class="cell flex flex-col">
 				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
 					Phase 01
 				</p>
 				<h3 class="font-sans font-medium text-xl text-ink mb-3">Talk</h3>
-				<p class="font-serif text-sm text-ink/75 leading-relaxed mb-4">
+				<p class="font-serif text-sm text-muted leading-relaxed mb-4">
 					A 45-minute conversation about how your business actually runs day to day. Where time gets
 					stuck, what you've tried, what you dread. You talk. I take notes. No pitch.
 				</p>
@@ -519,7 +557,7 @@
 					Phase 02
 				</p>
 				<h3 class="font-sans font-medium text-xl text-ink mb-3">Plan</h3>
-				<p class="font-serif text-sm text-ink/75 leading-relaxed mb-4">
+				<p class="font-serif text-sm text-muted leading-relaxed mb-4">
 					Written action plan in 48 hours. The 3–7 AI tools worth installing this week, an explicit
 					list of what <em>not</em> to automate, and financial impact in hours and dollars. Yours to use
 					— implement on your own or hand it to your team.
@@ -534,7 +572,7 @@
 					Phase 03
 				</p>
 				<h3 class="font-sans font-medium text-xl text-ink mb-3">Build</h3>
-				<p class="font-serif text-sm text-ink/75 leading-relaxed mb-4">
+				<p class="font-serif text-sm text-muted leading-relaxed mb-4">
 					Optional. If you want hands-on implementation rather than a self-serve roadmap, I embed
 					for a fixed-scope engagement. I build the systems, train the staff who'll actually use
 					them, and handle the change-resistance that always comes with new tools. You keep what I
@@ -558,7 +596,7 @@
 <Section background="white" padding="md" eyebrow="03" title="What I won't tell you to automate">
 	<div class="max-w-5xl mx-auto" use:reveal>
 		<div class="mb-10 max-w-3xl">
-			<p class="font-serif text-lg text-ink/75 leading-relaxed">
+			<p class="font-serif text-lg text-muted leading-relaxed">
 				Half the value of this Assessment is the workflows I tell you to leave alone. AI is the
 				wrong tool in more places than most consultants will admit. Here's where I'll push back.
 			</p>
@@ -570,7 +608,7 @@
 					Don't automate
 				</p>
 				<h3 class="font-sans font-medium text-ink mb-2">Your sales motion</h3>
-				<p class="font-serif text-sm text-ink/75 leading-relaxed">
+				<p class="font-serif text-sm text-muted leading-relaxed">
 					Automated outbound cold sequences destroy more trust than they generate. If anything, your
 					sales motion needs more human attention, not less. I'll be the first to say so.
 				</p>
@@ -580,7 +618,7 @@
 					Don't automate
 				</p>
 				<h3 class="font-sans font-medium text-ink mb-2">Broken processes</h3>
-				<p class="font-serif text-sm text-ink/75 leading-relaxed">
+				<p class="font-serif text-sm text-muted leading-relaxed">
 					If clients are unhappy or staff is burned out, AI on top only speeds up the problem. Fix
 					the process first. I'll tell you so.
 				</p>
@@ -590,7 +628,7 @@
 					Don't automate
 				</p>
 				<h3 class="font-sans font-medium text-ink mb-2">Human-judgement work</h3>
-				<p class="font-serif text-sm text-ink/75 leading-relaxed">
+				<p class="font-serif text-sm text-muted leading-relaxed">
 					Client calls, review that requires context, exception handling, anything where your
 					reputation is on the line. These stay human. That's your edge.
 				</p>
@@ -600,15 +638,15 @@
 					Don't automate
 				</p>
 				<h3 class="font-sans font-medium text-ink mb-2">Low-volume tasks</h3>
-				<p class="font-serif text-sm text-ink/75 leading-relaxed">
+				<p class="font-serif text-sm text-muted leading-relaxed">
 					If the task happens twice a month, the setup cost of automating it is higher than the time
 					you'd save. Keep it manual. I'll say so.
 				</p>
 			</div>
 		</div>
 
-		<div class="mt-8 p-5 bg-accent/[0.06] rounded-lg max-w-4xl">
-			<p class="font-serif text-sm text-ink/80 leading-relaxed">
+		<div class="mt-8 p-5 bg-accent/[0.1] border-l-2 border-accent/60 rounded-lg max-w-4xl">
+			<p class="font-serif text-sm text-muted leading-relaxed">
 				<strong class="font-sans font-semibold text-ink"
 					>If the honest answer is "don't use AI here," I'll say so on the call.</strong
 				> If the honest answer is "hire the person you were going to hire," I'll say so. The action plan
@@ -619,20 +657,23 @@
 </Section>
 
 <!-- 04: The math -->
-<Section background="muted" padding="md" eyebrow="04" title="The math">
+<Section background="muted" padding="md">
 	<div class="max-w-5xl mx-auto" use:reveal>
 		<div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
 			<div class="text-center md:text-left">
-				<p
+				<p class="text-xs font-medium tracking-widest text-subtle uppercase mb-5">
+					<span class="text-accent">04</span> · The math
+				</p>
+				<h2
 					class="font-sans font-semibold text-[clamp(3rem,6vw,5rem)] leading-[0.95] tracking-[-0.03em] text-ink"
 				>
 					5–7 hours<span class="text-accent">/</span><span class="text-subtle">week</span>
-				</p>
-				<p class="font-serif text-ink/70 mt-3 text-lg">recovered per person, on average</p>
+				</h2>
+				<p class="font-serif text-muted mt-3 text-lg">recovered per person, on average</p>
 			</div>
 			<div class="space-y-5">
 				<div class="rule-left-accent">
-					<p class="font-serif text-lg text-ink/75 leading-relaxed">
+					<p class="font-serif text-lg text-muted leading-relaxed">
 						For a team where staff time is worth $50–$200/hour loaded, that's
 						<strong class="font-sans font-semibold text-ink">$250–$1,400 per person per week</strong
 						>
@@ -640,7 +681,7 @@
 						teams land around
 						<strong class="font-sans font-semibold text-ink">$600–$800 per person per week</strong>.
 					</p>
-					<p class="font-serif text-sm text-ink/60 mt-3">
+					<p class="font-serif text-sm text-subtle mt-3">
 						Your own hours count too — and those are usually the most expensive.
 					</p>
 					<p class="font-serif text-sm text-muted mt-4 pt-4 border-t border-rule">
@@ -648,22 +689,33 @@
 						week of implementation.
 					</p>
 				</div>
-				<div class="flex items-start gap-3 pt-4 border-t border-rule-strong">
-					<svg
-						class="w-5 h-5 text-accent flex-shrink-0 mt-1"
-						fill="none"
-						stroke="currentColor"
-						viewBox="0 0 24 24"
-						stroke-width="2"
-						><path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-						/></svg
+			</div>
+		</div>
+
+		<!-- Promoted guarantee badge: the highest-trust copy on the page, display-level. -->
+		<div class="mt-14 max-w-3xl mx-auto">
+			<div class="bg-accent text-paper rounded-lg p-6 md:p-7 flex items-start gap-4 shadow-sm">
+				<svg
+					class="w-7 h-7 text-paper flex-shrink-0 mt-0.5"
+					fill="none"
+					stroke="currentColor"
+					viewBox="0 0 24 24"
+					stroke-width="2"
+					aria-hidden="true"
+					><path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+					/></svg
+				>
+				<div>
+					<p
+						class="text-[0.6875rem] font-semibold tracking-[0.14em] uppercase text-paper/80 mb-1.5"
 					>
-					<p class="font-serif text-sm text-ink/80 leading-relaxed">
-						<strong class="font-sans font-semibold text-ink">Guarantee:</strong> implement the recommendations
-						and save 5+ hours/week within 30 days, or full refund. No questions asked.
+						30-day guarantee
+					</p>
+					<p class="font-sans font-medium text-lg md:text-xl text-paper leading-snug">
+						Save 5+ hours/week within 30 days, or I refund the $999. No questions asked.
 					</p>
 				</div>
 			</div>
@@ -671,15 +723,63 @@
 	</div>
 </Section>
 
+<!-- Mid-page CTA: catches buy-signal after the math before qualifying sections -->
+<section class="bg-paper border-y border-rule-strong" aria-label="Book assessment">
+	<div
+		class="max-w-5xl mx-auto px-6 lg:px-8 py-10 md:py-12 flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10"
+	>
+		<div class="flex-1">
+			<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
+				Seen enough of the math?
+			</p>
+			<p class="font-sans text-lg md:text-xl font-medium text-ink leading-snug">
+				Book the $999 Assessment. Written plan in 48 hours. Refund if it doesn't pay.
+			</p>
+		</div>
+		<div class="flex items-center gap-5 flex-shrink-0">
+			<Button href={getAssessmentCallUrl()} size="md">Book the assessment</Button>
+			<a
+				href="#common-questions"
+				class="text-sm text-muted underline underline-offset-4 decoration-rule hover:text-ink transition-colors"
+			>
+				Questions first →
+			</a>
+		</div>
+	</div>
+</section>
+
+<!--
+	Proof — uncomment and fill in when a real, attributable testimonial is available.
+	Placement here is intentional: after "The math" (claim) → proof (evidence) → "Right fit" (qualify).
+	Needs: 2–3 sentence quote with a specific outcome (hours/week, lead speed, revenue), name, title, firm.
+
+<Section background="white" padding="md">
+	<div class="max-w-3xl mx-auto" use:reveal>
+		<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-subtle uppercase mb-6 text-center">
+			What this looked like for one firm
+		</p>
+		<blockquote class="rule-left-accent">
+			<p class="font-serif text-xl md:text-2xl text-ink leading-[1.45]">
+				TODO — drop real 2–3 sentence testimonial here.
+			</p>
+			<footer class="mt-4">
+				<p class="font-sans font-medium text-sm text-ink">— TODO Name, TODO Title</p>
+				<p class="font-sans text-xs text-subtle mt-0.5">TODO Firm · TODO Vertical · TODO Size</p>
+			</footer>
+		</blockquote>
+	</div>
+</Section>
+-->
+
 <!-- 05: Right fit / Not a fit -->
 <Section background="white" padding="md" eyebrow="05" title="Is this the right fit?">
 	<div class="max-w-5xl mx-auto" use:reveal>
 		<div class="hairline-grid grid md:grid-cols-2">
 			<div class="cell">
-				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-4">
+				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-subtle uppercase mb-4">
 					Right fit if you
 				</p>
-				<ul class="space-y-3 font-serif text-sm text-ink/80 leading-relaxed">
+				<ul class="space-y-3 font-serif text-sm text-muted leading-relaxed">
 					<li class="flex gap-3">
 						<span class="text-accent flex-shrink-0 mt-0.5 font-sans font-semibold">✓</span>
 						<span>Own or lead a services business doing $3M to $10M in annual revenue.</span>
@@ -710,7 +810,7 @@
 				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-subtle uppercase mb-4">
 					Not a fit if you
 				</p>
-				<ul class="space-y-3 font-serif text-sm text-ink/80 leading-relaxed">
+				<ul class="space-y-3 font-serif text-sm text-muted leading-relaxed">
 					<li class="flex gap-3">
 						<span class="text-subtle flex-shrink-0 mt-0.5 font-sans font-semibold">✕</span>
 						<span
@@ -750,7 +850,7 @@
 <Section background="muted" padding="md" eyebrow="06" title="Who's behind this">
 	<div class="max-w-4xl mx-auto" use:reveal>
 		<div class="grid md:grid-cols-3 gap-10 items-start">
-			<div class="md:col-span-2 space-y-4 font-serif text-lg text-ink/80 leading-relaxed">
+			<div class="md:col-span-2 space-y-4 font-serif text-lg text-muted leading-relaxed">
 				<p>
 					I'm <strong class="font-sans font-semibold text-ink">Piers Rollinson</strong>. Fifteen
 					years at DoorDash, Square, and Mudflap building systems that move millions of orders,
@@ -767,19 +867,19 @@
 				</p>
 			</div>
 			<div class="space-y-5">
-				<div class="border-l border-accent pl-4">
+				<div class="rule-left-accent-sm">
 					<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-subtle uppercase mb-1">
 						Previously
 					</p>
 					<p class="font-sans text-sm text-ink font-medium">DoorDash, Square, Mudflap</p>
 				</div>
-				<div class="border-l border-accent pl-4">
+				<div class="rule-left-accent-sm">
 					<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-subtle uppercase mb-1">
 						Focus
 					</p>
 					<p class="font-sans text-sm text-ink font-medium">AI for services firms</p>
 				</div>
-				<div class="border-l border-accent pl-4">
+				<div class="rule-left-accent-sm">
 					<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-subtle uppercase mb-1">
 						Based in
 					</p>
@@ -791,11 +891,27 @@
 </Section>
 
 <!-- 07: FAQ -->
-<Section background="white" padding="md" eyebrow="07" title="Common questions">
+<Section
+	id="common-questions"
+	background="white"
+	padding="md"
+	eyebrow="07"
+	title="Common questions"
+>
 	<div class="max-w-3xl mx-auto" use:reveal>
+		<div class="flex justify-end mb-3">
+			<button
+				type="button"
+				onclick={() => (faqAllOpen = !faqAllOpen)}
+				class="text-[0.6875rem] font-semibold tracking-[0.14em] uppercase text-muted hover:text-accent transition-colors underline underline-offset-4 decoration-rule hover:decoration-accent"
+				aria-expanded={faqAllOpen}
+			>
+				{faqAllOpen ? 'Collapse all' : 'Expand all'}
+			</button>
+		</div>
 		<div class="border-t border-rule-strong">
-			{#each [{ q: "What if I've already tried AI and it didn't stick?", a: 'Common — most owners have dabbled with ChatGPT or tried a tool their accountant mentioned, and not much changed. The difference here is specificity. You walk away with a written plan tied to specific workflows in your business, not a generic "try AI" suggestion. And if the honest answer is "you tried the right thing, it just needs better prompts," I\'ll say so.' }, { q: 'What if the honest answer is "don\'t use AI for that"?', a: "That's half the value. The action plan explicitly flags workflows where AI is the wrong tool — broken processes, human-judgement work, low-volume tasks. I'll also tell you if the honest answer is \"hire the person you were going to hire anyway.\" No pretending AI solves problems it doesn't." }, { q: 'What does this cost?', a: "$999 flat. Includes the 45-minute call, written action plan, and review call. If you don't find the Assessment valuable, I'll refund you — no conditions. There's no upsell during the Assessment and no obligation to hire me afterward." }, { q: 'What do I need to prepare?', a: "Nothing. You don't need to know AI — that's my job. Just show up ready to talk about how your business actually works day-to-day. I'll ask the questions. No homework, no intake forms." }, { q: 'Who will I be on the call with?', a: "Me. Every call, every action plan, every build. No junior consultants, no handoffs. If you hire me for the Build phase, I'm still the one doing the work." }, { q: 'Do you sell software?', a: "No. The action plan recommends existing tools — things like ChatGPT, Claude, Dext, Karbon — whatever fits your workflow. I don't resell software and I have no affiliate deals. The recommendations are genuinely neutral." }, { q: 'How long until I get the action plan?', a: 'Within 48 hours of the discovery call. The review call happens shortly after, at a time that works for you. Total calendar time from first call to final action plan: about one week.' }, { q: 'What happens after the Assessment?', a: "That's entirely up to you. Many owners implement on their own — the action plan is designed for that. If you want hands-on help, we can talk about the Build phase. Fixed-scope engagements typically run $3K–$15K depending on what we're building. Zero pressure either way." }] as faq}
-				<details class="group border-b border-rule py-5">
+			{#each [{ q: "What if I've already tried AI and it didn't stick?", a: 'Common — most owners have dabbled with ChatGPT or tried a tool their accountant mentioned, and not much changed. The difference here is specificity. You walk away with a written plan tied to specific workflows in your business, not a generic "try AI" suggestion. And if the honest answer is "you tried the right thing, it just needs better prompts," I\'ll say so.' }, { q: 'What if the honest answer is "don\'t use AI for that"?', a: "That's half the value. The action plan explicitly flags workflows where AI is the wrong tool — broken processes, human-judgement work, low-volume tasks. I'll also tell you if the honest answer is \"hire the person you were going to hire anyway.\" No pretending AI solves problems it doesn't." }, { q: 'What does this cost?', a: "$999 flat. Includes the 45-minute call, written action plan, and review call. If you don't find the Assessment valuable, I'll refund you — no conditions. There's no upsell during the Assessment and no obligation to hire me afterward." }, { q: 'What do I need to prepare?', a: "Nothing. You don't need to know AI — that's my job. Just show up ready to talk about how your business actually works day-to-day. I'll ask the questions. No homework, no intake forms." }, { q: 'Who will I be on the call with?', a: "Me. Every call, every action plan, every build. No junior consultants, no handoffs. If you hire me for the Build phase, I'm still the one doing the work." }, { q: 'Do you sell software?', a: "No. The action plan recommends existing tools — things like ChatGPT, Claude, Dext, Karbon — whatever fits your workflow. I don't resell software and I have no affiliate deals. The recommendations are genuinely neutral." }, { q: 'How long until I get the action plan?', a: 'Within 48 hours of the discovery call. The review call happens shortly after, at a time that works for you. Total calendar time from first call to final action plan: about one week.' }, { q: 'What happens after the Assessment?', a: "That's entirely up to you. Many owners implement on their own — the action plan is designed for that. If you want hands-on help, we can talk about the Build phase. Fixed-scope engagements typically run $3K–$15K depending on what we're building. Zero pressure either way." }] as faq, i}
+				<details class="group border-b border-rule py-5" open={faqAllOpen || i === 0}>
 					<summary
 						class="flex items-center justify-between cursor-pointer list-none font-sans font-medium text-ink"
 					>
