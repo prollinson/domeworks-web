@@ -544,88 +544,31 @@
 	</div>
 </Section>
 
-<!-- 07: FAQ — objection handling -->
+<!-- 07: FAQ -->
 <Section background="white" padding="md" eyebrow="07" title="Common questions">
-	<div class="max-w-3xl mx-auto space-y-4" use:reveal>
-		<details class="group p-5 bg-stone rounded-xl border border-charcoal/8">
-			<summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
-				What if I've already tried AI and it didn't stick?
-				<svg class="w-5 h-5 text-charcoal/40 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
-			</summary>
-			<p class="mt-3 text-charcoal/70 leading-relaxed">
-				Common — most owners have dabbled with ChatGPT or tried a tool their accountant mentioned, and not much changed. The difference here is specificity. You walk away with a written plan tied to specific workflows in your business, not a generic "try AI" suggestion. And if the honest answer is "you tried the right thing, it just needs better prompts," I'll say so.
-			</p>
-		</details>
-
-		<details class="group p-5 bg-stone rounded-xl border border-charcoal/8">
-			<summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
-				What if the honest answer is "don't use AI for that"?
-				<svg class="w-5 h-5 text-charcoal/40 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
-			</summary>
-			<p class="mt-3 text-charcoal/70 leading-relaxed">
-				That's half the value. The action plan explicitly flags workflows where AI is the wrong tool — broken processes, human-judgement work, low-volume tasks. I'll also tell you if the honest answer is "hire the person you were going to hire anyway." No pretending AI solves problems it doesn't.
-			</p>
-		</details>
-
-		<details class="group p-5 bg-stone rounded-xl border border-charcoal/8">
-			<summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
-				What does this cost?
-				<svg class="w-5 h-5 text-charcoal/40 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
-			</summary>
-			<p class="mt-3 text-charcoal/70 leading-relaxed">
-				$999 flat. Includes the 45-minute call, written action plan, and review call. If you don't find the Assessment valuable, I'll refund you — no conditions. There's no upsell during the Assessment and no obligation to hire me afterward.
-			</p>
-		</details>
-
-		<details class="group p-5 bg-stone rounded-xl border border-charcoal/8">
-			<summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
-				What do I need to prepare?
-				<svg class="w-5 h-5 text-charcoal/40 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
-			</summary>
-			<p class="mt-3 text-charcoal/70 leading-relaxed">
-				Nothing. You don't need to know AI — that's my job. Just show up ready to talk about how your business actually works day-to-day. I'll ask the questions. No homework, no intake forms.
-			</p>
-		</details>
-
-		<details class="group p-5 bg-stone rounded-xl border border-charcoal/8">
-			<summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
-				Who will I be on the call with?
-				<svg class="w-5 h-5 text-charcoal/40 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
-			</summary>
-			<p class="mt-3 text-charcoal/70 leading-relaxed">
-				Me. Every call, every action plan, every build. No junior consultants, no handoffs. If you hire me for the Build phase, I'm still the one doing the work.
-			</p>
-		</details>
-
-		<details class="group p-5 bg-stone rounded-xl border border-charcoal/8">
-			<summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
-				Do you sell software?
-				<svg class="w-5 h-5 text-charcoal/40 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
-			</summary>
-			<p class="mt-3 text-charcoal/70 leading-relaxed">
-				No. The action plan recommends existing tools — things like ChatGPT, Claude, Dext, Karbon — whatever fits your workflow. I don't resell software and I have no affiliate deals. The recommendations are genuinely neutral.
-			</p>
-		</details>
-
-		<details class="group p-5 bg-stone rounded-xl border border-charcoal/8">
-			<summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
-				How long until I get the action plan?
-				<svg class="w-5 h-5 text-charcoal/40 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
-			</summary>
-			<p class="mt-3 text-charcoal/70 leading-relaxed">
-				Within 48 hours of the discovery call. The review call happens shortly after, at a time that works for you. Total calendar time from first call to final action plan: about one week.
-			</p>
-		</details>
-
-		<details class="group p-5 bg-stone rounded-xl border border-charcoal/8">
-			<summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
-				What happens after the Assessment?
-				<svg class="w-5 h-5 text-charcoal/40 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
-			</summary>
-			<p class="mt-3 text-charcoal/70 leading-relaxed">
-				That's entirely up to you. Many owners implement on their own — the action plan is designed for that. If you want hands-on help, we can talk about the Build phase. Fixed-scope engagements typically run $3K–$15K depending on what we're building. Zero pressure either way.
-			</p>
-		</details>
+	<div class="max-w-3xl mx-auto" use:reveal>
+		<div class="border-t border-rule-strong">
+			{#each [
+				{ q: "What if I've already tried AI and it didn't stick?", a: "Common — most owners have dabbled with ChatGPT or tried a tool their accountant mentioned, and not much changed. The difference here is specificity. You walk away with a written plan tied to specific workflows in your business, not a generic \"try AI\" suggestion. And if the honest answer is \"you tried the right thing, it just needs better prompts,\" I'll say so." },
+				{ q: 'What if the honest answer is "don\'t use AI for that"?', a: "That's half the value. The action plan explicitly flags workflows where AI is the wrong tool — broken processes, human-judgement work, low-volume tasks. I'll also tell you if the honest answer is \"hire the person you were going to hire anyway.\" No pretending AI solves problems it doesn't." },
+				{ q: 'What does this cost?', a: "$999 flat. Includes the 45-minute call, written action plan, and review call. If you don't find the Assessment valuable, I'll refund you — no conditions. There's no upsell during the Assessment and no obligation to hire me afterward." },
+				{ q: 'What do I need to prepare?', a: "Nothing. You don't need to know AI — that's my job. Just show up ready to talk about how your business actually works day-to-day. I'll ask the questions. No homework, no intake forms." },
+				{ q: 'Who will I be on the call with?', a: "Me. Every call, every action plan, every build. No junior consultants, no handoffs. If you hire me for the Build phase, I'm still the one doing the work." },
+				{ q: 'Do you sell software?', a: "No. The action plan recommends existing tools — things like ChatGPT, Claude, Dext, Karbon — whatever fits your workflow. I don't resell software and I have no affiliate deals. The recommendations are genuinely neutral." },
+				{ q: 'How long until I get the action plan?', a: "Within 48 hours of the discovery call. The review call happens shortly after, at a time that works for you. Total calendar time from first call to final action plan: about one week." },
+				{ q: 'What happens after the Assessment?', a: "That's entirely up to you. Many owners implement on their own — the action plan is designed for that. If you want hands-on help, we can talk about the Build phase. Fixed-scope engagements typically run $3K–$15K depending on what we're building. Zero pressure either way." }
+			] as faq}
+				<details class="group border-b border-rule py-5">
+					<summary class="flex items-center justify-between cursor-pointer list-none font-sans font-medium text-ink">
+						{faq.q}
+						<svg class="w-5 h-5 text-ink/40 transition-transform duration-200 group-open:rotate-180 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+					</summary>
+					<p class="mt-3 font-serif text-muted leading-relaxed">
+						{faq.a}
+					</p>
+				</details>
+			{/each}
+		</div>
 	</div>
 </Section>
 
