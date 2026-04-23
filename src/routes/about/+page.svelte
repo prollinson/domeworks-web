@@ -62,9 +62,8 @@
 				Now I do it with AI<span class="text-primary">.</span>
 			</h1>
 			<p class="mt-6 text-xl text-charcoal/70 leading-relaxed">
-				I've spent the last decade leading engineering teams at DoorDash, Square, and Mudflap. Most
-				of that time was spent figuring out how to make teams ship better, faster, and with less
-				friction.
+				Ten years at DoorDash, Square, and Mudflap, mostly working on one problem: how engineering
+				teams actually ship faster — not just look busier.
 			</p>
 		</div>
 	</div>

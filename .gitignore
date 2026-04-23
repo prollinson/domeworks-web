@@ -7,3 +7,6 @@ node_modules
 .env.*
 !.env.example
 .superpowers/
+.wrangler/
+council-report-*.html
+council-transcript-*.md

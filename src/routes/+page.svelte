@@ -303,8 +303,8 @@
 						<span class="w-2 h-2 rounded-full bg-primary"></span>
 					</span>
 					<span
-						>You're a <strong class="text-charcoal">technical leader or firm owner</strong> whose team
-						has AI tools but still coordinates through meetings, status updates, and manual handoffs</span
+						>You're a <strong class="text-charcoal">VP Engineering, CTO, or technical founder</strong>
+						— 50 to 500 engineers, Series B or C, AI tooling already rolled out</span
 					>
 				</li>
 				<li class="flex items-start gap-4">
@@ -314,8 +314,8 @@
 						<span class="w-2 h-2 rounded-full bg-primary"></span>
 					</span>
 					<span
-						>Your engineers have AI tools but your organization still runs on human coordination:
-						meetings, status updates, managers routing information between teams</span
+						>Individual productivity is up. Team-level throughput is flat —
+						because the handoffs between people haven't changed</span
 					>
 				</li>
 				<li class="flex items-start gap-4">
@@ -325,9 +325,8 @@
 						<span class="w-2 h-2 rounded-full bg-primary"></span>
 					</span>
 					<span
-						>You've probably thought about assigning a senior engineer to figure this out — but
-						building intelligence infrastructure that replaces coordination overhead isn't a side
-						project</span
+						>You've thought about assigning a senior engineer to fix it — but building the
+						infrastructure that replaces coordination overhead isn't a side project</span
 					>
 				</li>
 				<li class="flex items-start gap-4">
@@ -337,8 +336,8 @@
 						<span class="w-2 h-2 rounded-full bg-primary"></span>
 					</span>
 					<span
-						>You need someone who's already built this, who knows what works and what doesn't, so
-						your team gets the infrastructure without the trial-and-error tax</span
+						>You want someone who's already built this, so your team gets the result without the
+						trial-and-error tax</span
 					>
 				</li>
 			</ul>
@@ -357,15 +356,14 @@
 			<!-- Left column: prose -->
 			<div class="md:col-span-3 space-y-6">
 				<p class="text-lg text-charcoal/70 leading-relaxed">
-					Your team has AI tools. But your organization still coordinates the same way it always
-					has: through hierarchy, meetings, and people relaying information.
+					The tools work fine individually. They write code, answer questions, summarize
+					documents. What breaks is everything between them.
 				</p>
 				<p class="text-lg text-charcoal/70 leading-relaxed">
-					Engineers re-explain their architecture to every AI prompt. Managers spend their days
-					aggregating context from three teams so a fourth team can act on it. Status meetings exist
-					because information doesn't flow without human relay chains. The tools work fine
-					individually. What's missing is the intelligence infrastructure that replaces the
-					coordination overhead.
+					Engineers re-explain the architecture to every AI prompt. Managers spend their days
+					aggregating context from three teams so a fourth can act on it. Status meetings exist
+					because information doesn't flow without human relay chains. That coordination layer —
+					the thing managers and meetings used to be — is what now has to be built.
 				</p>
 			</div>
 			<!-- Right column: Block proof point -->
@@ -631,9 +629,8 @@
 			Ready to talk<span class="text-primary">?</span>
 		</h2>
 		<p class="text-lg text-charcoal/70 mb-8">
-			If your organization is still running on hierarchy and you want to start building the
-			intelligence infrastructure that replaces coordination overhead, let's figure out what's
-			missing.
+			Tell me what your team has shipped with AI so far. I'll tell you where the coordination
+			layer is most likely to break first — and whether a Scan is worth your 48 hours.
 		</p>
 		<Button href={getBookCallUrl()} size="lg">Book a call</Button>
 	</div>

@@ -7,27 +7,27 @@
 </script>
 
 <svelte:head>
-	<title>AI Scan: What Your AI Spend Is Actually Doing | DomeWorks</title>
+	<title>AI Scan: 48-hour audit of your team's AI tooling | DomeWorks</title>
 	<meta
 		name="description"
-		content="Find out exactly what your AI spend is doing for your team. 48-hour turnaround, $2,500-$3,500 fixed price."
+		content="A 48-hour audit of your team's AI tooling: every tool, every seat, every dollar — plus three quick wins and a readiness score. $2,500–$3,500 fixed price."
 	/>
 	<link rel="canonical" href="https://domeworks.tech/scan/" />
 
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="DomeWorks" />
 	<meta property="og:url" content="https://domeworks.tech/scan/" />
-	<meta property="og:title" content="AI Scan: What Your AI Spend Is Actually Doing | DomeWorks" />
+	<meta property="og:title" content="AI Scan: 48-hour audit of your team's AI tooling | DomeWorks" />
 	<meta
 		property="og:description"
-		content="Find out exactly what your AI spend is doing for your team. 48-hour turnaround, $2,500-$3,500 fixed price."
+		content="A 48-hour audit of your team's AI tooling: every tool, every seat, every dollar — plus three quick wins and a readiness score. $2,500–$3,500 fixed price."
 	/>
 	<meta property="og:image" content="https://domeworks.tech/og-image.png" />
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="AI Scan: What Your AI Spend Is Actually Doing | DomeWorks" />
+	<meta name="twitter:title" content="AI Scan: 48-hour audit of your team's AI tooling | DomeWorks" />
 	<meta
 		name="twitter:description"
-		content="Find out exactly what your AI spend is doing for your team. 48-hour turnaround."
+		content="A 48-hour audit of your team's AI tooling: every tool, every seat, every dollar — plus three quick wins and a readiness score."
 	/>
 	<meta name="twitter:image" content="https://domeworks.tech/og-image.png" />
 
@@ -79,10 +79,9 @@
 				In 48 hours<span class="text-primary">.</span>
 			</h1>
 			<p class="mt-6 text-xl text-charcoal/70 leading-relaxed">
-				You're probably paying for more AI tooling than you realize. Some of it's being used well.
-				Some of it's shelfware. The AI Scan maps it all (every tool, every seat, every dollar) and
-				diagnoses your AI readiness score: where you are on the path from "bought tools" to "AI
-				coordinates our work."
+				You're paying for more AI tooling than you realize. Some of it works. Some of it sits
+				idle. The Scan maps every tool, every seat, every dollar — and tells you whether your
+				team is actually moving from "bought tools" to "AI coordinates our work."
 			</p>
 			<div class="mt-8">
 				<Button href={getBookCallUrl()} size="lg">Book a call</Button>
@@ -126,19 +125,18 @@
 </Section>
 
 <!-- What Your Scan Tells You -->
-<Section background="muted" padding="lg" eyebrow="03" title="What your Scan tells you">
+<Section background="muted" padding="lg" eyebrow="03" title="Most teams find the same gap">
 	<div class="max-w-2xl mx-auto" use:reveal>
 		<div class="p-8 bg-warm-white rounded-2xl border border-charcoal/10">
 			<p class="text-lg text-charcoal/70 leading-relaxed mb-4">
-				The Scan shows you where you are. For most teams, the readout surfaces a clear gap: no
-				shared context flowing into AI interactions, no coordination between tools and how the team
-				ships.
+				No shared context flowing into AI interactions. No coordination between the tools and
+				how the team actually ships. Individual engineers are faster; the team isn't.
 			</p>
 			<p class="text-lg text-charcoal/70 leading-relaxed">
-				When that's the case, I'll tell you exactly what a <a
+				When that's what the Scan surfaces, I'll tell you exactly what a <a
 					href="/context-build/"
 					class="text-primary hover:underline">Context Build</a
-				> would address and what it wouldn't — so you can decide whether to build it internally or with
+				> would address and what it wouldn't — so you can decide whether to build it in-house or with
 				me. Plenty of teams take the quick wins and run. There's no obligation.
 			</p>
 		</div>

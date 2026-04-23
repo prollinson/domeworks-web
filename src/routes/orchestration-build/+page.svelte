@@ -54,7 +54,7 @@
         Your team goes from AI helping individuals to AI coordinating your work<span class="text-primary">.</span>
       </h1>
       <p class="mt-6 text-xl text-charcoal/70 leading-relaxed">
-        The Orchestration Build takes the context system built during the Context Build and constructs agent coordination on top of it: multi-agent workflows, quality gates, and output routing that replace human coordination overhead. Scope and milestones are defined from the Context Build assessment.
+        The layer on top of the context system: multi-agent workflows, quality gates, and output routing that replace the human coordination overhead. Scope and milestones flow directly from the Context Build assessment.
       </p>
       <div class="mt-8">
         <Button href={getBookCallUrl()} size="lg">

@@ -60,7 +60,7 @@
         Build the world model your AI tools need to be useful<span class="text-primary">.</span>
       </h1>
       <p class="mt-6 text-xl text-charcoal/70 leading-relaxed">
-        A two-week engagement that diagnoses your AI readiness and designs the context system: the infrastructure that feeds domain knowledge, team conventions, and codebase patterns into every AI interaction. The foundation for everything that comes after.
+        A two-week engagement that designs the context system — the infrastructure that feeds your domain knowledge, team conventions, and codebase patterns into every AI interaction. The foundation for everything that comes after.
       </p>
       <div class="mt-8">
         <Button href={getBookCallUrl()} size="lg">

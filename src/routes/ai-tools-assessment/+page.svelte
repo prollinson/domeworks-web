@@ -21,17 +21,18 @@
 		label: string;
 		lead: string;
 		cards: Array<{ title: string; body: string }>;
+		leadsWithSpeed?: boolean;
 	};
 
 	const patterns: Record<string, Pattern> = {
 		generic: {
 			label: 'Services (general)',
-			lead: 'Different businesses, same four leaks. Pick your vertical to see what I usually find.',
+			lead: 'Different businesses, same few leaks. Pick your vertical to see what I usually find.',
 			cards: [
-				{ title: 'Admin drag', body: 'Invoicing, scheduling, email triage, document chasing. Work that follows rules, not judgement.' },
-				{ title: 'Correspondence and drafting', body: 'Proposals, updates, client communications. Template-based work that still takes hours.' },
-				{ title: 'Meeting prep and follow-up', body: 'Pre-read, meeting notes, action-item tracking. 30 to 60 minutes per interaction.' },
-				{ title: 'Research and staying current', body: 'Industry updates, competitor scans, market data. Hours that a tool can compress to minutes.' }
+				{ title: 'The inbox never clears', body: 'Invoices, scheduling, document chasing, email triage. Rule-based work that eats the hours your best people should be billing.' },
+				{ title: 'Drafting from scratch, every time', body: 'Proposals, client updates, status emails. Template-shaped but not template-speed. Thirty minutes of manual tweaks, every single one.' },
+				{ title: 'Meeting prep is its own meeting', body: 'Pre-read, briefing docs, notes, action items. 30–60 minutes per interaction — and most of it goes stale before the next one.' },
+				{ title: 'Staying current costs a full day', body: 'Industry news, competitor scans, regulatory changes. Hours you would rather spend on client work.' }
 			]
 		},
 		accounting: {
@@ -67,6 +68,7 @@
 		trades: {
 			label: 'Trades / field services',
 			lead: 'HVAC, plumbing, landscaping, electrical. The pattern is more leads than you can answer fast enough.',
+			leadsWithSpeed: true,
 			cards: [
 				{ title: 'After-hours lead response', body: 'Inbound quote requests at 9pm. By 8am the prospect called two competitors.' },
 				{ title: 'Quoting turnaround', body: 'Site measurement to written quote takes days. Most jobs go to whoever quotes first.' },
@@ -77,6 +79,7 @@
 		'real-estate': {
 			label: 'Real estate',
 			lead: 'Real estate agents and teams run on response speed. The slow link is usually admin, not judgement.',
+			leadsWithSpeed: true,
 			cards: [
 				{ title: 'Lead response and showing requests', body: 'Minutes matter. Prospects who get a reply in 5 minutes convert far better than those who wait an hour.' },
 				{ title: 'Listing prep and CMA generation', body: 'Comparative market analyses, photo coordination, MLS entry.' },
@@ -87,6 +90,7 @@
 		agency: {
 			label: 'Marketing / creative agency',
 			lead: 'Marketing and creative agencies lose time to internal coordination, not client work.',
+			leadsWithSpeed: true,
 			cards: [
 				{ title: 'New-business proposals and pitches', body: 'Custom decks and scopes drafted from scratch for every lead.' },
 				{ title: 'Monthly client reports', body: 'Analytics compilation across platforms, narrative write-up, packaging.' },
@@ -124,7 +128,7 @@
 	<title>AI Tools Assessment | DomeWorks</title>
 	<meta
 		name="description"
-		content="A structured assessment of where AI tools fit in your services business, and where they shouldn't go. Free for the first 5 businesses."
+		content="A 45-minute assessment of where AI tools fit in your services business — and the workflows where they'd do more harm than good. For owner-operated firms with 10–50 people."
 	/>
 	<link rel="canonical" href="https://domeworks.tech/ai-tools-assessment/" />
 
@@ -151,12 +155,12 @@
 		name: 'AI Tools Assessment',
 		provider: { '@type': 'Organization', name: 'DomeWorks' },
 		description:
-			'Structured assessment of where AI tools fit in a services business and where they shouldn\'t go. Discovery call, analysis, written prescription, review call. Assess, Prescribe, Build.',
+			'45-minute assessment of where AI tools fit in a services business and where they shouldn\'t. Discovery call, written action plan, review call. Talk, Plan, Build.',
 		offers: {
 			'@type': 'Offer',
-			price: '0',
+			price: '999',
 			priceCurrency: 'USD',
-			description: 'Free for the first 5 businesses (normally $999)'
+			description: '45-minute AI Tools Assessment for services businesses with 10–50 people'
 		}
 	})}</script>`}
 </svelte:head>
@@ -190,22 +194,22 @@
 		<!-- Middle zone: headline + aside -->
 		<div class="hero-middle">
 			<h1 class="hero-headline font-serif font-normal text-warm-white">
-				<span class="hero-line hero-line-1">Your business runs on</span>
-				<span class="hero-line hero-line-2">manual workflows<span class="text-copper">.</span></span>
-				<span class="hero-line hero-line-3"><em class="hero-headline-em">Most of them</em></span>
-				<span class="hero-line hero-line-4 text-warm-white/70">don't have to<span class="text-copper/70">.</span></span>
+				<span class="hero-line hero-line-1">Stop bleeding</span>
+				<span class="hero-line hero-line-2">hours, leads, revenue<span class="text-copper">.</span></span>
+				<span class="hero-line hero-line-3"><em class="hero-headline-em">I'll show you</em></span>
+				<span class="hero-line hero-line-4 text-warm-white/70">where AI gets them back<span class="text-copper/70">.</span></span>
 			</h1>
 
 			<div class="hero-aside">
 				<div class="hero-aside-rule" aria-hidden="true" role="presentation"></div>
 				<p class="hero-body-text text-warm-white/85 leading-relaxed">
-					A structured assessment of where AI tools fit in your business <em>and where they shouldn't go</em>. Not a sales pitch. Not a software demo.
+					A 45-minute call. An action plan <em>you can start this week</em>. What to install, what to skip.
 				</p>
 				<p class="mt-3 text-sm text-warm-white/75 leading-relaxed hidden sm:block">
-					Built by someone who spent 15 years building systems at DoorDash, Square, and Mudflap.
+					Ex-DoorDash, Square, Mudflap. I'll handle the AI — you handle your business.
 				</p>
 				<div class="mt-6 md:mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
-					<Button href={getAssessmentCallUrl()} size="lg">Book the discovery call</Button>
+					<Button href={getAssessmentCallUrl()} size="lg">Book the assessment</Button>
 					<a href="/quiz/" class="text-sm text-warm-white/85 hover:text-copper underline underline-offset-4 transition-colors">
 						Not ready? Take the 2-min quiz first →
 					</a>
@@ -222,13 +226,13 @@
 				</div>
 				<div class="hero-stat-divider" aria-hidden="true" role="presentation"></div>
 				<div class="hero-stat-cell">
-					<span class="hero-stat-value font-serif">90 min</span>
-					<span class="hero-stat-label">Your time investment</span>
+					<span class="hero-stat-value font-serif">45 min</span>
+					<span class="hero-stat-label">Your time</span>
 				</div>
 				<div class="hero-stat-divider" aria-hidden="true" role="presentation"></div>
 				<div class="hero-stat-cell">
-					<span class="hero-stat-value font-serif">3 left</span>
-					<span class="hero-stat-label">Free spots</span>
+					<span class="hero-stat-value font-serif">48 hrs</span>
+					<span class="hero-stat-label">Plan delivered</span>
 				</div>
 			</div>
 			<div class="flex min-[360px]:flex md:hidden items-stretch">
@@ -238,18 +242,54 @@
 				</div>
 				<div class="hero-stat-divider" aria-hidden="true" role="presentation"></div>
 				<div class="hero-stat-cell-mobile">
-					<span class="text-2xl font-serif text-warm-white/95">90 min</span>
-					<span class="text-xs text-warm-white/70 mt-1 tracking-wider uppercase leading-tight">Your investment</span>
+					<span class="text-2xl font-serif text-warm-white/95">45 min</span>
+					<span class="text-xs text-warm-white/70 mt-1 tracking-wider uppercase leading-tight">Your time</span>
 				</div>
 				<div class="hero-stat-divider" aria-hidden="true" role="presentation"></div>
 				<div class="hero-stat-cell-mobile">
-					<span class="text-2xl font-serif text-warm-white/95">3 left</span>
-					<span class="text-xs text-warm-white/70 mt-1 tracking-wider uppercase leading-tight">Free spots</span>
+					<span class="text-2xl font-serif text-warm-white/95">48 hrs</span>
+					<span class="text-xs text-warm-white/70 mt-1 tracking-wider uppercase leading-tight">Plan delivered</span>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
+
+<!-- Orientation block: answers "What this is / Who it's for / Why me" at a glance -->
+<Section background="muted" padding="md" eyebrow="The short version">
+	<div class="max-w-5xl mx-auto" use:reveal>
+		<div class="grid md:grid-cols-3 gap-6">
+			<!-- What this is -->
+			<div class="p-6 bg-warm-white rounded-xl border border-charcoal/8">
+				<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-3">What this is</p>
+				<p class="text-sm text-charcoal/75 leading-relaxed mb-3">
+					A 45-minute assessment. You walk away with:
+				</p>
+				<ul class="space-y-2 text-sm text-charcoal/75 leading-relaxed">
+					<li class="flex items-start gap-2"><span class="text-copper flex-shrink-0 mt-0.5">→</span><span>Where hours, leads, and revenue are actually leaking</span></li>
+					<li class="flex items-start gap-2"><span class="text-copper flex-shrink-0 mt-0.5">→</span><span>The 3–7 AI tools worth installing this week</span></li>
+					<li class="flex items-start gap-2"><span class="text-copper flex-shrink-0 mt-0.5">→</span><span>An explicit list of what <em>not</em> to automate</span></li>
+				</ul>
+			</div>
+
+			<!-- Who it's for -->
+			<div class="p-6 bg-warm-white rounded-xl border border-charcoal/8">
+				<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-3">Who it's for</p>
+				<p class="text-sm text-charcoal/75 leading-relaxed">
+					Owner-operated services businesses with 10–50 people. Where staff time is expensive, leads go cold, and admin eats the week. Accountants, attorneys, trades, real estate, and similar firms.
+				</p>
+			</div>
+
+			<!-- Why me -->
+			<div class="p-6 bg-warm-white rounded-xl border border-charcoal/8">
+				<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-3">Why me</p>
+				<p class="text-sm text-charcoal/75 leading-relaxed">
+					I'll tell you where AI doesn't belong as clearly as where it does. No software reselling, no affiliate deals. 15 years at DoorDash, Square, and Mudflap before this, now based in Henderson.
+				</p>
+			</div>
+		</div>
+	</div>
+</Section>
 
 <!-- 01: Where the time goes — interactive business-type selector -->
 <Section id="where-time-goes" background="white" padding="md" eyebrow="01" title="Where the time goes">
@@ -257,7 +297,7 @@
 		<!-- Lead -->
 		<div class="max-w-3xl mx-auto mb-8 text-center">
 			<p class="text-lg text-charcoal/70 leading-relaxed">
-				Services businesses lose hours to work that follows rules, not judgement. The specifics shift by industry. Pick yours to see the pattern I usually find.
+				Every services business leaks hours, leads, and revenue in the same few places. Pick yours to see where it's probably hiding.
 			</p>
 		</div>
 
@@ -285,6 +325,25 @@
 			<p class="text-sm text-charcoal/60 italic">{currentPattern.lead}</p>
 		</div>
 
+		{#snippet speedCallout(spacingClass: string)}
+			<div class="max-w-5xl mx-auto {spacingClass} p-6 bg-copper/[0.06] rounded-xl border border-copper/20">
+				<div class="flex items-start gap-4">
+					<span class="text-xs font-semibold tracking-widest text-copper uppercase flex-shrink-0 pt-1">The #1 pattern</span>
+					<div>
+						<h3 class="font-medium text-charcoal mb-2">Speed-to-lead: inbound response latency</h3>
+						<p class="text-sm text-charcoal/75 leading-relaxed">
+							The single highest-value pattern I find in owner-operated businesses. Prospect sends an inquiry at 9pm. You see it at 8am. By then they've already called two competitors. Cutting that response time from hours to minutes is often worth more than everything else on this page combined.
+						</p>
+					</div>
+				</div>
+			</div>
+		{/snippet}
+
+		<!-- Speed-to-lead above the grid for verticals where it's the defining pain -->
+		{#if currentPattern.leadsWithSpeed}
+			{@render speedCallout('mb-6')}
+		{/if}
+
 		<!-- Problem cards: swap based on selection -->
 		<div class="max-w-5xl mx-auto grid sm:grid-cols-2 gap-6">
 			{#each currentPattern.cards as card (selectedType + card.title)}
@@ -295,55 +354,47 @@
 			{/each}
 		</div>
 
-		<!-- Speed-to-lead: full-width priority callout, distinct treatment -->
-		<div class="max-w-5xl mx-auto mt-6 p-6 bg-copper/[0.06] rounded-xl border border-copper/20">
-			<div class="flex items-start gap-4">
-				<span class="text-xs font-semibold tracking-widest text-copper uppercase flex-shrink-0 pt-1">Priority pattern</span>
-				<div>
-					<h3 class="font-medium text-charcoal mb-2">Speed-to-lead: inbound response latency</h3>
-					<p class="text-sm text-charcoal/75 leading-relaxed">
-						The single highest-value pattern I find in owner-operated businesses. Prospect sends an inquiry at 9pm. You see it at 8am. By then they've already called two competitors. Cutting that response time from hours to minutes is often worth more than everything else on this page combined.
-					</p>
-				</div>
-			</div>
-		</div>
+		<!-- Speed-to-lead below the grid for all other verticals -->
+		{#if !currentPattern.leadsWithSpeed}
+			{@render speedCallout('mt-6')}
+		{/if}
 	</div>
 </Section>
 
-<!-- 02: How I work — named method: Assess. Prescribe. Build. -->
-<Section background="muted" padding="md" eyebrow="02" title="How I work">
+<!-- 02: What you walk away with — named method: Talk. Plan. Build. -->
+<Section background="muted" padding="md" eyebrow="02" title="What you walk away with">
 	<div class="max-w-5xl mx-auto" use:reveal>
 		<!-- Method tagline -->
 		<div class="text-center mb-10">
 			<p class="font-serif text-2xl md:text-3xl text-charcoal leading-tight">
-				<span class="text-copper">Assess.</span>
-				<span class="text-copper">Prescribe.</span>
+				<span class="text-copper">Talk.</span>
+				<span class="text-copper">Plan.</span>
 				<span class="text-copper">Build.</span>
 			</p>
 			<p class="mt-3 text-sm text-charcoal/60 tracking-wider uppercase">
-				Three phases. Each designed to end.
+				Three phases. Fixed scope.
 			</p>
 		</div>
 
 		<div class="grid md:grid-cols-3 gap-6">
-			<!-- Phase 1: Assess -->
+			<!-- Phase 1: Talk -->
 			<div class="p-6 bg-warm-white rounded-xl border border-charcoal/8 flex flex-col">
 				<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-2">Phase 01</p>
-				<h3 class="font-serif text-2xl text-charcoal mb-3">Assess</h3>
+				<h3 class="font-serif text-2xl text-charcoal mb-3">Talk</h3>
 				<p class="text-sm text-charcoal/70 leading-relaxed mb-4">
-					45-minute discovery call. I ask about your workflow: where time gets stuck, what you've tried, what you dread. No pitch, just questions.
+					A 45-minute conversation about how your business actually runs day to day. Where time gets stuck, what you've tried, what you dread. You talk. I take notes. No pitch.
 				</p>
 				<div class="mt-auto pt-4 border-t border-charcoal/8">
 					<p class="text-xs text-charcoal/50">Your time: 45 minutes. One call.</p>
 				</div>
 			</div>
 
-			<!-- Phase 2: Prescribe -->
+			<!-- Phase 2: Plan -->
 			<div class="p-6 bg-warm-white rounded-xl border border-charcoal/8 flex flex-col">
 				<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-2">Phase 02</p>
-				<h3 class="font-serif text-2xl text-charcoal mb-3">Prescribe</h3>
+				<h3 class="font-serif text-2xl text-charcoal mb-3">Plan</h3>
 				<p class="text-sm text-charcoal/70 leading-relaxed mb-4">
-					Written report in 48 hours. Top 3 to 7 AI opportunities ranked by impact and effort. An explicit list of workflows I recommend you <em>don't</em> automate. A financial impact estimate you can act on.
+					Written action plan in 48 hours. The 3–7 AI tools worth installing this week, an explicit list of what <em>not</em> to automate, and financial impact in hours and dollars. Yours to use — implement on your own or hand it to your team.
 				</p>
 				<div class="mt-auto pt-4 border-t border-charcoal/8">
 					<p class="text-xs text-charcoal/50">Your time: 45-minute review call.</p>
@@ -355,7 +406,7 @@
 				<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-2">Phase 03</p>
 				<h3 class="font-serif text-2xl text-charcoal mb-3">Build</h3>
 				<p class="text-sm text-charcoal/70 leading-relaxed mb-4">
-					Optional. If you want hands-on implementation rather than a self-serve roadmap, I embed for a fixed-scope engagement. I build the systems, train the staff who'll actually use them, and handle the change-resistance that always comes with new tools. You keep what I build. The engagement ends.
+					Optional. If you want hands-on implementation rather than a self-serve roadmap, I embed for a fixed-scope engagement. I build the systems, train the staff who'll actually use them, and handle the change-resistance that always comes with new tools. You keep what I build.
 				</p>
 				<div class="mt-auto pt-4 border-t border-charcoal/8">
 					<p class="text-xs text-charcoal/50">Priced separately. Zero obligation from the Assessment.</p>
@@ -366,7 +417,7 @@
 		<!-- Total time investment reassurance -->
 		<div class="mt-8 text-center">
 			<p class="text-sm text-charcoal/60">
-				Your total time investment for the Assessment (Phases 01 and 02): about 90 minutes across two calls.
+				Two 45-minute calls across the process. Everything in between is on me.
 			</p>
 		</div>
 	</div>
@@ -400,7 +451,7 @@
 				<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-2">Don't automate</p>
 				<h3 class="font-medium text-charcoal mb-2">Human-judgement work</h3>
 				<p class="text-sm text-charcoal/70 leading-relaxed">
-					Client calls, review that requires context, exception handling, anything where your reputation is on the line. These stay human. That's the moat.
+					Client calls, review that requires context, exception handling, anything where your reputation is on the line. These stay human. That's your edge.
 				</p>
 			</div>
 			<div class="p-5 bg-stone rounded-xl border border-charcoal/8">
@@ -414,7 +465,7 @@
 
 		<div class="mt-8 p-5 bg-copper/[0.06] rounded-xl border border-copper/15">
 			<p class="text-sm text-charcoal/70 leading-relaxed">
-				<strong class="text-charcoal">If the honest answer is "don't use AI here," I'll say so on the call.</strong> If the honest answer is "hire the person you were going to hire," I'll say so. The report you walk away with reflects what I actually found, not what I'm paid to recommend.
+				<strong class="text-charcoal">If the honest answer is "don't use AI here," I'll say so on the call.</strong> If the honest answer is "hire the person you were going to hire," I'll say so. The action plan you walk away with reflects what I actually found, not what I'm paid to recommend.
 			</p>
 		</div>
 	</div>
@@ -434,17 +485,20 @@
 				<div class="p-8 bg-stone rounded-2xl border border-charcoal/10">
 					<p class="text-lg text-charcoal/70 leading-relaxed">
 						For a team where staff time is worth $50–$200/hour loaded, that's
-						<strong class="text-charcoal">$250–$1,400 per person per week</strong> in recovered capacity, or the ability to take on more clients without adding headcount.
+						<strong class="text-charcoal">$250–$1,400 per person per week</strong> in recovered capacity, or the ability to take on more clients without adding headcount. Most teams land around <strong class="text-charcoal">$600–$800 per person per week</strong>.
+					</p>
+					<p class="text-sm text-charcoal/60 mt-3">
+						Your own hours count too — and those are usually the most expensive.
 					</p>
 					<div class="h-px bg-charcoal/10 my-5"></div>
 					<p class="text-sm text-charcoal/50">
-						The tools cost $30–$80/month in aggregate. Payback is measured in days.
+						The tools cost $30–$80/month in aggregate. Most teams recoup the $999 within the first week of implementation.
 					</p>
 				</div>
 				<div class="p-4 bg-primary/[0.04] rounded-lg border border-primary/15 flex items-start gap-3">
 					<svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
 					<p class="text-sm text-charcoal/70">
-						<strong class="text-charcoal">Guarantee:</strong> implement the recommendations and save 5+ hours/week within 30 days, or full refund on paid Assessments. No questions asked.
+						<strong class="text-charcoal">Guarantee:</strong> implement the recommendations and save 5+ hours/week within 30 days, or full refund. No questions asked.
 					</p>
 				</div>
 			</div>
@@ -474,7 +528,7 @@
 					</li>
 					<li class="flex gap-3">
 						<span class="text-copper flex-shrink-0 mt-0.5">✓</span>
-						<span>Lose real hours to rule-based admin work or slow inbound lead response.</span>
+						<span>Lose hours to admin, leads to slow response, or revenue to both.</span>
 					</li>
 					<li class="flex gap-3">
 						<span class="text-copper flex-shrink-0 mt-0.5">✓</span>
@@ -519,14 +573,18 @@
 		<div class="grid md:grid-cols-3 gap-8 items-start">
 			<div class="md:col-span-2 space-y-4 text-lg text-charcoal/70 leading-relaxed">
 				<p>
-					I'm <strong class="text-charcoal">Piers Rollinson</strong>, founder of DomeWorks. I've spent
-					15 years building systems that replace manual coordination — first at DoorDash, Square, and
-					Mudflap, now for owner-operated services businesses.
+					I'm <strong class="text-charcoal">Piers Rollinson</strong>. Fifteen years at DoorDash,
+					Square, and Mudflap building systems that move millions of orders, payments, and drivers.
+					The same thinking that lands 10 million orders correctly at DoorDash lands 100 client
+					intakes correctly at a 12-person firm.
 				</p>
 				<p>
-					I live in Henderson with my wife and three kids. I'm not a software salesman. I build
-					working systems, not strategy decks — and every engagement is designed to end. You keep what
-					I build.
+					I've been an entrepreneur and advisor to small businesses throughout my career. That's
+					where DomeWorks comes from.
+				</p>
+				<p>
+					I live in Henderson with my wife and three kids. I'm direct — no BS, no glossy pitch
+					decks, no software to resell. I build working systems. Fixed scope. You keep what I build.
 				</p>
 			</div>
 			<div class="space-y-3">
@@ -536,7 +594,7 @@
 				</div>
 				<div class="p-4 bg-warm-white rounded-lg border border-charcoal/8">
 					<p class="text-xs font-semibold tracking-widest text-warm-gray uppercase mb-1">Focus</p>
-					<p class="text-sm text-charcoal font-medium">AI systems for services businesses</p>
+					<p class="text-sm text-charcoal font-medium">AI for services firms</p>
 				</div>
 				<div class="p-4 bg-warm-white rounded-lg border border-charcoal/8">
 					<p class="text-xs font-semibold tracking-widest text-warm-gray uppercase mb-1">Based in</p>
@@ -552,21 +610,31 @@
 	<div class="max-w-3xl mx-auto space-y-4" use:reveal>
 		<details class="group p-5 bg-stone rounded-xl border border-charcoal/8">
 			<summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
-				What if the honest answer is "don't use AI for that"?
+				What if I've already tried AI and it didn't stick?
 				<svg class="w-5 h-5 text-charcoal/40 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
 			</summary>
 			<p class="mt-3 text-charcoal/70 leading-relaxed">
-				That's half the value. The report explicitly flags workflows where AI is the wrong tool. Broken processes, human-judgement work, low-volume tasks. I'll also tell you if the honest answer is "hire the person you were going to hire anyway." No pretending AI solves problems it doesn't.
+				Common — most owners have dabbled with ChatGPT or tried a tool their accountant mentioned, and not much changed. The difference here is specificity. You walk away with a written plan tied to specific workflows in your business, not a generic "try AI" suggestion. And if the honest answer is "you tried the right thing, it just needs better prompts," I'll say so.
 			</p>
 		</details>
 
 		<details class="group p-5 bg-stone rounded-xl border border-charcoal/8">
 			<summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
-				Is this actually free?
+				What if the honest answer is "don't use AI for that"?
 				<svg class="w-5 h-5 text-charcoal/40 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
 			</summary>
 			<p class="mt-3 text-charcoal/70 leading-relaxed">
-				Yes. The first 5 businesses get the full Assessment at no cost. Same deliverable that normally costs $999. I'm building case studies and relationships. There's no upsell during the Assessment, and no obligation to hire me afterward.
+				That's half the value. The action plan explicitly flags workflows where AI is the wrong tool — broken processes, human-judgement work, low-volume tasks. I'll also tell you if the honest answer is "hire the person you were going to hire anyway." No pretending AI solves problems it doesn't.
+			</p>
+		</details>
+
+		<details class="group p-5 bg-stone rounded-xl border border-charcoal/8">
+			<summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
+				What does this cost?
+				<svg class="w-5 h-5 text-charcoal/40 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+			</summary>
+			<p class="mt-3 text-charcoal/70 leading-relaxed">
+				$999 flat. Includes the 45-minute call, written action plan, and review call. If you don't find the Assessment valuable, I'll refund you — no conditions. There's no upsell during the Assessment and no obligation to hire me afterward.
 			</p>
 		</details>
 
@@ -576,17 +644,17 @@
 				<svg class="w-5 h-5 text-charcoal/40 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
 			</summary>
 			<p class="mt-3 text-charcoal/70 leading-relaxed">
-				Nothing. Just show up to the discovery call ready to talk about how your business actually works day-to-day. I'll ask the right questions. No homework, no intake forms.
+				Nothing. You don't need to know AI — that's my job. Just show up ready to talk about how your business actually works day-to-day. I'll ask the questions. No homework, no intake forms.
 			</p>
 		</details>
 
 		<details class="group p-5 bg-stone rounded-xl border border-charcoal/8">
 			<summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
-				How long until I get the report?
+				Who will I be on the call with?
 				<svg class="w-5 h-5 text-charcoal/40 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
 			</summary>
 			<p class="mt-3 text-charcoal/70 leading-relaxed">
-				Within 48 hours of the discovery call. The review call happens shortly after, at a time that works for you. Total calendar time from first call to final report: about one week.
+				Me. Every call, every action plan, every build. No junior consultants, no handoffs. If you hire me for the Build phase, I'm still the one doing the work.
 			</p>
 		</details>
 
@@ -596,7 +664,17 @@
 				<svg class="w-5 h-5 text-charcoal/40 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
 			</summary>
 			<p class="mt-3 text-charcoal/70 leading-relaxed">
-				No. The report recommends existing tools — things like ChatGPT, Claude, Dext, Karbon — whatever fits your workflow. I don't resell software and I have no affiliate deals. The recommendations are genuinely neutral.
+				No. The action plan recommends existing tools — things like ChatGPT, Claude, Dext, Karbon — whatever fits your workflow. I don't resell software and I have no affiliate deals. The recommendations are genuinely neutral.
+			</p>
+		</details>
+
+		<details class="group p-5 bg-stone rounded-xl border border-charcoal/8">
+			<summary class="flex items-center justify-between cursor-pointer list-none font-medium text-charcoal">
+				How long until I get the action plan?
+				<svg class="w-5 h-5 text-charcoal/40 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+			</summary>
+			<p class="mt-3 text-charcoal/70 leading-relaxed">
+				Within 48 hours of the discovery call. The review call happens shortly after, at a time that works for you. Total calendar time from first call to final action plan: about one week.
 			</p>
 		</details>
 
@@ -606,7 +684,7 @@
 				<svg class="w-5 h-5 text-charcoal/40 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
 			</summary>
 			<p class="mt-3 text-charcoal/70 leading-relaxed">
-				That's entirely up to you. Many businesses implement on their own. The report is designed for that. If you want hands-on help, we can talk about the Build phase, a fixed-scope engagement where I embed and build the systems for you. But there's zero pressure either way.
+				That's entirely up to you. Many owners implement on their own — the action plan is designed for that. If you want hands-on help, we can talk about the Build phase. Fixed-scope engagements typically run $3K–$15K depending on what we're building. Zero pressure either way.
 			</p>
 		</details>
 	</div>
@@ -622,10 +700,10 @@
 		<!-- What comes next — Phases of the method -->
 		<div class="grid sm:grid-cols-2 gap-5 mb-14">
 			<div class="p-5 rounded-xl border border-warm-white/10 bg-warm-white/[0.04]">
-				<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-2">After Assess + Prescribe</p>
+				<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-2">After Talk + Plan</p>
 				<h3 class="font-medium text-warm-white mb-1.5">Implement on your own</h3>
 				<p class="text-sm text-warm-white/60 leading-relaxed">
-					The report includes specific tool recommendations and a quick-start plan.
+					The action plan includes specific tool recommendations and a quick-start sequence.
 					Many owners take it and run. That's the whole point.
 				</p>
 			</div>
@@ -634,21 +712,21 @@
 				<h3 class="font-medium text-warm-white mb-1.5">I embed and build it</h3>
 				<p class="text-sm text-warm-white/60 leading-relaxed">
 					I build the systems, train your team, and hand off working infrastructure.
-					Fixed-scope, designed to end. You keep what I build.
+					Fixed scope. You keep what I build.
 				</p>
 			</div>
 		</div>
 
 		<!-- Primary CTA -->
 		<div class="text-center">
-			<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-4">Limited availability</p>
+			<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-4">Ready when you are</p>
 			<h2 class="font-serif text-3xl md:text-4xl font-normal text-warm-white mb-3">
-				Free for the first 5 businesses
+				Stop bleeding. Start this week.
 			</h2>
-			<p class="text-warm-white/60 mb-2">Services businesses, 10 to 50 people. <span class="line-through text-warm-white/40">Normally $999</span></p>
-			<p class="text-sm text-warm-white/50 mb-10">If you don't find the Assessment valuable, I'll refund you. One sentence guarantee, no conditions.</p>
+			<p class="text-warm-white/60 mb-2">$999 flat. 45-minute call. Written action plan in 48 hours.</p>
+			<p class="text-sm text-warm-white/50 mb-10">If you don't find the Assessment valuable, I'll refund you. No questions asked.</p>
 			<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-				<Button href={getAssessmentCallUrl()} size="lg">Book the discovery call</Button>
+				<Button href={getAssessmentCallUrl()} size="lg">Book the $999 assessment</Button>
 				<a href="mailto:piers@domeworks.tech?subject=AI%20Tools%20Assessment%20question" class="text-sm text-warm-white/60 hover:text-copper transition-colors">
 					Or email a question first
 				</a>
@@ -660,7 +738,7 @@
 <!-- Sticky mobile CTA -->
 {#if showStickyCta}
 <div class="fixed bottom-0 inset-x-0 z-50 md:hidden bg-ink/95 backdrop-blur-sm border-t border-warm-white/10 px-4 py-3 flex items-center justify-between gap-3" role="complementary" aria-label="Book Assessment">
-	<p class="text-sm text-warm-white/70 truncate">3 free spots left</p>
-	<Button href={getAssessmentCallUrl()} size="sm">Book call</Button>
+	<p class="text-sm text-warm-white/70 truncate">45-min AI assessment</p>
+	<Button href={getAssessmentCallUrl()} size="sm">Book it</Button>
 </div>
 {/if}
