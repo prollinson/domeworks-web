@@ -281,7 +281,7 @@
 	<!-- Minimal home link: the only navigation escape on this landing page -->
 	<a
 		href="/"
-		class="absolute top-6 left-6 lg:top-8 lg:left-8 z-10 text-sm font-sans font-semibold tracking-tight text-paper/80 hover:text-paper transition-colors"
+		class="absolute top-6 left-6 lg:top-8 lg:left-8 z-10 text-sm font-sans font-semibold tracking-tight text-paper/80 hover:text-paper transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-light focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
 	>
 		DomeWorks<span class="text-accent-light">.</span>
 	</a>
@@ -322,7 +322,7 @@
 					<Button href={getAssessmentCallUrl()} size="lg">Book the assessment</Button>
 					<a
 						href="/quiz/"
-						class="text-sm text-paper/85 underline underline-offset-4 hover:text-accent-light transition-colors"
+						class="text-sm text-paper/85 underline underline-offset-4 hover:text-accent-light transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-light focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
 					>
 						Not ready? Take the 2-min quiz first →
 					</a>
@@ -357,23 +357,26 @@
 			</aside>
 		</div>
 
-		<!-- Bottom: stat strip -->
-		<div class="pt-6 border-t border-paper/10 grid grid-cols-3 gap-4 md:gap-12">
-			<div>
+		<!-- Bottom: stat strip. At <sm we stack rows (number + label inline) so 375px stays legible;
+			 at sm+ a 3-col strip. Contrast upgraded from /55 → /75 for small-text AA. -->
+		<div
+			class="pt-6 border-t border-paper/10 grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 md:gap-12"
+		>
+			<div class="flex sm:flex-col items-baseline sm:items-start gap-3 sm:gap-1">
 				<div class="text-2xl md:text-3xl font-medium tracking-[-0.02em]">5–7 hrs</div>
-				<div class="mt-1 text-[0.6875rem] uppercase tracking-[0.12em] text-paper/55 font-medium">
+				<div class="text-[0.6875rem] uppercase tracking-[0.12em] text-paper/75 font-medium">
 					Recovered / week
 				</div>
 			</div>
-			<div>
+			<div class="flex sm:flex-col items-baseline sm:items-start gap-3 sm:gap-1">
 				<div class="text-2xl md:text-3xl font-medium tracking-[-0.02em]">45 min</div>
-				<div class="mt-1 text-[0.6875rem] uppercase tracking-[0.12em] text-paper/55 font-medium">
+				<div class="text-[0.6875rem] uppercase tracking-[0.12em] text-paper/75 font-medium">
 					Your time
 				</div>
 			</div>
-			<div>
+			<div class="flex sm:flex-col items-baseline sm:items-start gap-3 sm:gap-1">
 				<div class="text-2xl md:text-3xl font-medium tracking-[-0.02em]">48 hrs</div>
-				<div class="mt-1 text-[0.6875rem] uppercase tracking-[0.12em] text-paper/55 font-medium">
+				<div class="text-[0.6875rem] uppercase tracking-[0.12em] text-paper/75 font-medium">
 					Plan delivered
 				</div>
 			</div>
@@ -382,9 +385,12 @@
 </section>
 
 <!-- Orientation: at-a-glance what this is / who it's for / why me -->
-<Section background="muted" padding="md" eyebrow="The short version">
-	<div class="max-w-6xl mx-auto" use:reveal>
-		<div class="hairline-grid on-muted grid md:grid-cols-3">
+<Section background="muted" padding="md" eyebrow="The short version" centered={false}>
+	<div>
+		<div
+			class="hairline-grid on-muted grid md:grid-cols-3"
+			use:reveal={{ stagger: true, staggerDelay: 90, duration: 450 }}
+		>
 			<div class="cell">
 				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-3">
 					What this is
@@ -443,9 +449,10 @@
 	padding="md"
 	eyebrow="01"
 	title="Where the time goes"
+	centered={false}
 >
-	<div use:reveal>
-		<div class="max-w-3xl mx-auto mb-10 text-center">
+	<div>
+		<div class="max-w-3xl mb-10" use:reveal={{ duration: 400 }}>
 			<p class="font-serif text-lg text-muted leading-relaxed">
 				Every services business leaks hours, leads, and revenue in the same few places. Pick yours
 				to see where it's probably hiding.
@@ -457,11 +464,40 @@
 		>
 			<div class="max-w-5xl mx-auto">
 				<p
-					class="text-[0.6875rem] font-semibold tracking-[0.14em] text-subtle uppercase mb-3 text-center"
+					class="text-[0.6875rem] font-semibold tracking-[0.14em] text-subtle uppercase mb-3 text-center lg:text-center"
 				>
 					Your business type
 				</p>
-				<div class="flex flex-wrap justify-center items-baseline gap-x-5 gap-y-0">
+
+				<!-- <lg: native select. Editorial, reliable, no two-row dot-soup on tablets. -->
+				<div class="lg:hidden max-w-md mx-auto">
+					<label for="biz-type-select" class="sr-only">Your business type</label>
+					<div class="relative">
+						<select
+							id="biz-type-select"
+							bind:value={selectedType}
+							class="w-full appearance-none bg-paper border border-ink/90 text-ink font-sans font-medium text-base py-3 pl-4 pr-11 tracking-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-paper transition-colors hover:border-accent cursor-pointer"
+						>
+							{#each Object.entries(patterns) as [key, p]}
+								<option value={key}>{p.label}</option>
+							{/each}
+						</select>
+						<!-- Custom chevron — accent color, pointer-events off so click falls through -->
+						<svg
+							class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-accent"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+							stroke-width="2.5"
+							aria-hidden="true"
+						>
+							<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+						</svg>
+					</div>
+				</div>
+
+				<!-- lg+: pill row — wide viewport accommodates 9 labels on one line. -->
+				<div class="hidden lg:flex flex-wrap justify-center items-baseline gap-x-5 gap-y-0">
 					{#each Object.entries(patterns) as [key, p], i}
 						{#if i > 0}
 							<span class="text-faint select-none" aria-hidden="true">·</span>
@@ -469,10 +505,10 @@
 						<button
 							type="button"
 							onclick={() => (selectedType = key as keyof typeof patterns)}
-							class="py-2 text-sm font-sans transition-colors underline-offset-[6px] decoration-2 {selectedType ===
+							class="py-2 text-sm font-sans transition-colors underline-offset-[6px] decoration-2 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-paper {selectedType ===
 							key
 								? 'text-accent font-semibold underline decoration-accent'
-								: 'text-muted hover:text-ink hover:underline decoration-rule'}"
+								: 'text-muted hover:text-ink hover:underline decoration-accent/40'}"
 							aria-pressed={selectedType === key}
 						>
 							{p.label}
@@ -482,14 +518,14 @@
 			</div>
 		</div>
 
-		<div class="max-w-3xl mx-auto mb-6 text-center">
+		<div class="max-w-3xl mb-6">
 			<p class="font-serif text-sm text-subtle italic">{currentPattern.lead}</p>
 		</div>
 
 		<!-- Speed-to-lead callout: locked above cards. Intensity increases when the
 			selected vertical leadsWithSpeed. -->
 		<div
-			class="max-w-5xl mx-auto mb-6 p-6 rounded-lg border-l-2 {currentPattern.leadsWithSpeed
+			class="max-w-5xl mb-6 p-6 rounded-lg border-l-2 {currentPattern.leadsWithSpeed
 				? 'bg-accent/[0.14] border-accent'
 				: 'bg-accent/[0.1] border-accent/60'}"
 		>
@@ -512,7 +548,10 @@
 			</div>
 		</div>
 
-		<div class="max-w-5xl mx-auto hairline-grid grid sm:grid-cols-2">
+		<div
+			class="max-w-5xl hairline-grid grid sm:grid-cols-2"
+			use:reveal={{ stagger: true, staggerDelay: 80, duration: 420 }}
+		>
 			{#each currentPattern.cards as card (selectedType + card.title)}
 				<div class="cell">
 					<h3 class="font-sans font-medium text-ink mb-2">{card.title}</h3>
@@ -524,9 +563,9 @@
 </Section>
 
 <!-- 02: What you walk away with — Talk. Plan. Build. -->
-<Section background="muted" padding="md" eyebrow="02" title="What you walk away with">
-	<div class="max-w-5xl mx-auto" use:reveal>
-		<div class="text-center mb-12">
+<Section background="muted" padding="md" eyebrow="02" title="What you walk away with" centered={false}>
+	<div class="max-w-5xl">
+		<div class="mb-12" use:reveal={{ duration: 400 }}>
 			<p
 				class="font-sans font-semibold text-2xl md:text-3xl text-ink leading-tight tracking-[-0.02em]"
 			>
@@ -537,7 +576,10 @@
 			</p>
 		</div>
 
-		<div class="hairline-grid on-muted grid md:grid-cols-3">
+		<div
+			class="hairline-grid on-muted grid md:grid-cols-3"
+			use:reveal={{ stagger: true, staggerDelay: 120, duration: 500, delay: 100 }}
+		>
 			<div class="cell flex flex-col">
 				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
 					Phase 01
@@ -584,7 +626,7 @@
 			</div>
 		</div>
 
-		<div class="mt-8 text-center">
+		<div class="mt-8">
 			<p class="text-sm text-subtle">
 				Two 45-minute calls across the process. Everything in between is on me.
 			</p>
@@ -593,16 +635,19 @@
 </Section>
 
 <!-- 03: What I won't automate — honesty gate -->
-<Section background="white" padding="md" eyebrow="03" title="What I won't tell you to automate">
-	<div class="max-w-5xl mx-auto" use:reveal>
-		<div class="mb-10 max-w-3xl">
+<Section background="white" padding="md" eyebrow="03" title="What I won't tell you to automate" centered={false}>
+	<div class="max-w-5xl">
+		<div class="mb-10 max-w-3xl" use:reveal={{ duration: 400 }}>
 			<p class="font-serif text-lg text-muted leading-relaxed">
 				Half the value of this Assessment is the workflows I tell you to leave alone. AI is the
 				wrong tool in more places than most consultants will admit. Here's where I'll push back.
 			</p>
 		</div>
 
-		<div class="hairline-grid grid sm:grid-cols-2 lg:grid-cols-4">
+		<div
+			class="hairline-grid grid sm:grid-cols-2 lg:grid-cols-4"
+			use:reveal={{ stagger: true, staggerDelay: 70, duration: 420 }}
+		>
 			<div class="cell">
 				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
 					Don't automate
@@ -658,8 +703,11 @@
 
 <!-- 04: The math -->
 <Section background="muted" padding="md">
-	<div class="max-w-5xl mx-auto" use:reveal>
-		<div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+	<div class="max-w-5xl mx-auto">
+		<div
+			class="grid md:grid-cols-2 gap-10 md:gap-16 items-center"
+			use:reveal={{ stagger: true, staggerDelay: 180, duration: 550 }}
+		>
 			<div class="text-center md:text-left">
 				<p class="text-xs font-medium tracking-widest text-subtle uppercase mb-5">
 					<span class="text-accent">04</span> · The math
@@ -693,7 +741,7 @@
 		</div>
 
 		<!-- Promoted guarantee badge: the highest-trust copy on the page, display-level. -->
-		<div class="mt-14 max-w-3xl mx-auto">
+		<div class="mt-14 max-w-3xl mx-auto" use:reveal={{ duration: 450, delay: 150 }}>
 			<div class="bg-accent text-paper rounded-lg p-6 md:p-7 flex items-start gap-4 shadow-sm">
 				<svg
 					class="w-7 h-7 text-paper flex-shrink-0 mt-0.5"
@@ -740,7 +788,7 @@
 			<Button href={getAssessmentCallUrl()} size="md">Book the assessment</Button>
 			<a
 				href="#common-questions"
-				class="text-sm text-muted underline underline-offset-4 decoration-rule hover:text-ink transition-colors"
+				class="text-sm text-muted underline underline-offset-4 decoration-accent/60 hover:text-ink hover:decoration-accent transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
 			>
 				Questions first →
 			</a>
@@ -772,9 +820,12 @@
 -->
 
 <!-- 05: Right fit / Not a fit -->
-<Section background="white" padding="md" eyebrow="05" title="Is this the right fit?">
-	<div class="max-w-5xl mx-auto" use:reveal>
-		<div class="hairline-grid grid md:grid-cols-2">
+<Section background="white" padding="md" eyebrow="05" title="Is this the right fit?" centered={false}>
+	<div class="max-w-5xl">
+		<div
+			class="hairline-grid grid md:grid-cols-2"
+			use:reveal={{ stagger: true, staggerDelay: 120, duration: 460 }}
+		>
 			<div class="cell">
 				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-subtle uppercase mb-4">
 					Right fit if you
@@ -847,9 +898,12 @@
 </Section>
 
 <!-- 06: Who's behind this -->
-<Section background="muted" padding="md" eyebrow="06" title="Who's behind this">
-	<div class="max-w-4xl mx-auto" use:reveal>
-		<div class="grid md:grid-cols-3 gap-10 items-start">
+<Section background="muted" padding="md" eyebrow="06" title="Who's behind this" centered={false}>
+	<div class="max-w-4xl">
+		<div
+			class="grid md:grid-cols-3 gap-10 items-start"
+			use:reveal={{ stagger: true, staggerDelay: 160, duration: 500 }}
+		>
 			<div class="md:col-span-2 space-y-4 font-serif text-lg text-muted leading-relaxed">
 				<p>
 					I'm <strong class="font-sans font-semibold text-ink">Piers Rollinson</strong>. Fifteen
@@ -897,13 +951,14 @@
 	padding="md"
 	eyebrow="07"
 	title="Common questions"
+	centered={false}
 >
-	<div class="max-w-3xl mx-auto" use:reveal>
+	<div class="max-w-3xl" use:reveal={{ duration: 400 }}>
 		<div class="flex justify-end mb-3">
 			<button
 				type="button"
 				onclick={() => (faqAllOpen = !faqAllOpen)}
-				class="text-[0.6875rem] font-semibold tracking-[0.14em] uppercase text-muted hover:text-accent transition-colors underline underline-offset-4 decoration-rule hover:decoration-accent"
+				class="text-[0.6875rem] font-semibold tracking-[0.14em] uppercase text-muted hover:text-accent transition-colors underline underline-offset-4 decoration-accent/60 hover:decoration-accent rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
 				aria-expanded={faqAllOpen}
 			>
 				{faqAllOpen ? 'Collapse all' : 'Expand all'}
@@ -913,7 +968,7 @@
 			{#each [{ q: "What if I've already tried AI and it didn't stick?", a: 'Common — most owners have dabbled with ChatGPT or tried a tool their accountant mentioned, and not much changed. The difference here is specificity. You walk away with a written plan tied to specific workflows in your business, not a generic "try AI" suggestion. And if the honest answer is "you tried the right thing, it just needs better prompts," I\'ll say so.' }, { q: 'What if the honest answer is "don\'t use AI for that"?', a: "That's half the value. The action plan explicitly flags workflows where AI is the wrong tool — broken processes, human-judgement work, low-volume tasks. I'll also tell you if the honest answer is \"hire the person you were going to hire anyway.\" No pretending AI solves problems it doesn't." }, { q: 'What does this cost?', a: "$999 flat. Includes the 45-minute call, written action plan, and review call. If you don't find the Assessment valuable, I'll refund you — no conditions. There's no upsell during the Assessment and no obligation to hire me afterward." }, { q: 'What do I need to prepare?', a: "Nothing. You don't need to know AI — that's my job. Just show up ready to talk about how your business actually works day-to-day. I'll ask the questions. No homework, no intake forms." }, { q: 'Who will I be on the call with?', a: "Me. Every call, every action plan, every build. No junior consultants, no handoffs. If you hire me for the Build phase, I'm still the one doing the work." }, { q: 'Do you sell software?', a: "No. The action plan recommends existing tools — things like ChatGPT, Claude, Dext, Karbon — whatever fits your workflow. I don't resell software and I have no affiliate deals. The recommendations are genuinely neutral." }, { q: 'How long until I get the action plan?', a: 'Within 48 hours of the discovery call. The review call happens shortly after, at a time that works for you. Total calendar time from first call to final action plan: about one week.' }, { q: 'What happens after the Assessment?', a: "That's entirely up to you. Many owners implement on their own — the action plan is designed for that. If you want hands-on help, we can talk about the Build phase. Fixed-scope engagements typically run $3K–$15K depending on what we're building. Zero pressure either way." }] as faq, i}
 				<details class="group border-b border-rule py-5" open={faqAllOpen || i === 0}>
 					<summary
-						class="flex items-center justify-between cursor-pointer list-none font-sans font-medium text-ink"
+						class="flex items-center justify-between cursor-pointer list-none font-sans font-medium text-ink rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
 					>
 						{faq.q}
 						<svg
@@ -936,7 +991,7 @@
 
 <!-- Dark CTA footer -->
 <section class="relative bg-ink text-paper overflow-hidden" aria-label="Book your Assessment">
-	<div class="relative max-w-4xl mx-auto px-6 lg:px-8 py-20 md:py-24" use:reveal>
+	<div class="relative max-w-4xl mx-auto px-6 lg:px-8 py-20 md:py-24" use:reveal={{ duration: 500 }}>
 		<!-- What comes next -->
 		<div class="grid sm:grid-cols-2 gap-5 mb-14">
 			<div class="p-5 rounded-lg border border-paper/10 bg-paper/[0.04]">
@@ -946,7 +1001,7 @@
 					After Talk + Plan
 				</p>
 				<h3 class="font-sans font-medium text-paper mb-1.5">Implement on your own</h3>
-				<p class="font-serif text-sm text-paper/65 leading-relaxed">
+				<p class="font-serif text-sm text-paper/75 leading-relaxed">
 					The action plan includes specific tool recommendations and a quick-start sequence. Many
 					owners take it and run. That's the whole point.
 				</p>
@@ -958,7 +1013,7 @@
 					Or add the Build phase
 				</p>
 				<h3 class="font-sans font-medium text-paper mb-1.5">I embed and build it</h3>
-				<p class="font-serif text-sm text-paper/65 leading-relaxed">
+				<p class="font-serif text-sm text-paper/75 leading-relaxed">
 					I build the systems, train your team, and hand off working infrastructure. Fixed scope.
 					You keep what I build.
 				</p>
@@ -973,15 +1028,15 @@
 			<h2 class="font-sans font-semibold text-3xl md:text-4xl text-paper mb-3 tracking-[-0.025em]">
 				Stop bleeding. Start this week.
 			</h2>
-			<p class="text-paper/65 mb-2">$999 flat. 45-minute call. Written action plan in 48 hours.</p>
-			<p class="text-sm text-paper/50 mb-10">
+			<p class="text-paper/80 mb-2">$999 flat. 45-minute call. Written action plan in 48 hours.</p>
+			<p class="text-sm text-paper/70 mb-10">
 				If you don't find the Assessment valuable, I'll refund you. No questions asked.
 			</p>
 			<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
 				<Button href={getAssessmentCallUrl()} size="lg">Book the $999 assessment</Button>
 				<a
 					href="mailto:piers@domeworks.tech?subject=AI%20Tools%20Assessment%20question"
-					class="text-sm text-paper/65 hover:text-accent-light transition-colors"
+					class="text-sm text-paper/80 hover:text-accent-light transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-light focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
 				>
 					Or email a question first
 				</a>
