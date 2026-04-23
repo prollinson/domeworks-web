@@ -336,13 +336,6 @@
 					<div class="flex items-baseline gap-2">
 						<span
 							class="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-accent-light"
-							>Based in</span
-						>
-						<span class="text-sm text-paper/80">Henderson, NV</span>
-					</div>
-					<div class="flex items-baseline gap-2">
-						<span
-							class="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-accent-light"
 							>Flat fee</span
 						>
 						<span class="text-sm text-paper/80">$999</span>
@@ -362,12 +355,6 @@
 				class="hidden lg:flex flex-col gap-4 border-l border-paper/15 pl-8 text-[0.6875rem] uppercase tracking-[0.14em] font-semibold self-center"
 				aria-label="Assessment details"
 			>
-				<div>
-					<div class="text-accent-light mb-1">Based in</div>
-					<div class="text-paper/80 font-normal tracking-[0.08em] normal-case text-sm">
-						Henderson, NV
-					</div>
-				</div>
 				<div>
 					<div class="text-accent-light mb-1">Time</div>
 					<div class="text-paper/80 font-normal tracking-[0.08em] normal-case text-sm">45 min</div>
@@ -413,7 +400,7 @@
 </section>
 
 <!-- Orientation: at-a-glance what this is / who it's for / why me -->
-<Section background="muted" padding="md" eyebrow="The short version" centered={false}>
+<Section background="muted" padding="md" centered={false}>
 	<div>
 		<div
 			class="hairline-grid on-muted grid md:grid-cols-3"
@@ -475,7 +462,6 @@
 	id="where-time-goes"
 	background="white"
 	padding="md"
-	eyebrow="01"
 	title="Where the time goes"
 	centered={false}
 >
@@ -487,61 +473,36 @@
 			</p>
 		</div>
 
+		<!-- Editorial inline dropdown: reads like a published author byline, not a form control.
+			 "Show me leaks for [Legal ▾]" — the selected vertical is the sentence verb.
+			 Single control at all breakpoints; the sticky bar keeps it in view while cards scroll. -->
 		<div
-			class="sticky top-0 z-20 bg-paper -mx-6 lg:-mx-8 px-6 lg:px-8 py-4 mb-10 border-b border-rule shadow-[0_1px_0_0_var(--color-rule)]"
+			class="sticky top-0 z-20 bg-paper -mx-6 lg:-mx-8 px-6 lg:px-8 py-5 mb-10 border-b border-rule shadow-[0_1px_0_0_var(--color-rule)]"
 		>
-			<div class="max-w-5xl mx-auto">
-				<p
-					class="text-[0.6875rem] font-semibold tracking-[0.14em] text-subtle uppercase mb-3 text-center lg:text-center"
-				>
-					Your business type
-				</p>
-
-				<!-- <lg: native select. Editorial, reliable, no two-row dot-soup on tablets. -->
-				<div class="lg:hidden max-w-md mx-auto">
-					<label for="biz-type-select" class="sr-only">Your business type</label>
-					<div class="relative">
-						<select
-							id="biz-type-select"
-							bind:value={selectedType}
-							class="w-full appearance-none bg-paper border border-ink/90 text-ink font-sans font-medium text-base py-3 pl-4 pr-11 tracking-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-paper transition-colors hover:border-accent cursor-pointer"
-						>
-							{#each Object.entries(patterns) as [key, p]}
-								<option value={key}>{p.label}</option>
-							{/each}
-						</select>
-						<!-- Custom chevron — accent color, pointer-events off so click falls through -->
-						<svg
-							class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-accent"
-							fill="none"
-							stroke="currentColor"
-							viewBox="0 0 24 24"
-							stroke-width="2.5"
-							aria-hidden="true"
-						>
-							<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-						</svg>
-					</div>
-				</div>
-
-				<!-- lg+: pill row — wide viewport accommodates 9 labels on one line. -->
-				<div class="hidden lg:flex flex-wrap justify-center items-baseline gap-x-5 gap-y-0">
-					{#each Object.entries(patterns) as [key, p], i}
-						{#if i > 0}
-							<span class="text-faint select-none" aria-hidden="true">·</span>
-						{/if}
-						<button
-							type="button"
-							onclick={() => (selectedType = key as keyof typeof patterns)}
-							class="py-2 text-sm font-sans transition-colors underline-offset-[6px] decoration-2 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-paper {selectedType ===
-							key
-								? 'text-accent font-semibold underline decoration-accent'
-								: 'text-muted hover:text-ink hover:underline decoration-accent/40'}"
-							aria-pressed={selectedType === key}
-						>
-							{p.label}
-						</button>
-					{/each}
+			<div class="max-w-3xl mx-auto flex flex-wrap items-baseline gap-x-3 gap-y-2">
+				<span class="font-serif text-base md:text-lg text-muted">Show me leaks for</span>
+				<label for="biz-type-select" class="sr-only">Your business type</label>
+				<div class="relative inline-block">
+					<select
+						id="biz-type-select"
+						bind:value={selectedType}
+						class="appearance-none bg-transparent border-0 border-b-2 border-accent text-ink font-sans font-semibold text-xl md:text-2xl leading-tight tracking-tight py-1 pl-0 pr-8 cursor-pointer hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-paper rounded-sm transition-colors"
+					>
+						{#each Object.entries(patterns) as [key, p]}
+							<option value={key}>{p.label}</option>
+						{/each}
+					</select>
+					<!-- Accent chevron, slightly weighted to read as a pencil mark -->
+					<svg
+						class="pointer-events-none absolute right-0 top-1/2 -translate-y-[45%] w-5 h-5 text-accent"
+						fill="none"
+						stroke="currentColor"
+						viewBox="0 0 24 24"
+						stroke-width="2.5"
+						aria-hidden="true"
+					>
+						<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+					</svg>
 				</div>
 			</div>
 		</div>
@@ -590,23 +551,15 @@
 	</div>
 </Section>
 
-<!-- 02: What you walk away with — Talk. Plan. Build. -->
-<Section
-	background="muted"
-	padding="md"
-	eyebrow="02"
-	title="What you walk away with"
-	centered={false}
->
+<!-- 02: What you walk away with -->
+<Section background="muted" padding="md" title="What you walk away with" centered={false}>
 	<div class="max-w-5xl">
-		<div class="mb-12" use:reveal={{ duration: 400 }}>
-			<p
-				class="font-sans font-semibold text-2xl md:text-3xl text-ink leading-tight tracking-[-0.02em]"
-			>
-				Talk. Plan. <span class="text-accent">Build.</span>
-			</p>
-			<p class="mt-3 text-xs text-subtle tracking-[0.12em] uppercase font-medium">
-				Three phases. Fixed scope.
+		<div class="mb-10 max-w-3xl" use:reveal={{ duration: 400 }}>
+			<p class="font-serif text-lg text-muted leading-relaxed">
+				Three phases, fixed scope. A 45-minute <strong class="text-ink font-medium">Talk</strong>, a
+				written <strong class="text-ink font-medium">Plan</strong> in 48 hours, and — if you want
+				hands-on implementation — an optional <strong class="text-ink font-medium">Build</strong>.
+				Two 45-minute calls across the whole process; everything in between is on me.
 			</p>
 		</div>
 
@@ -615,10 +568,24 @@
 			use:reveal={{ stagger: true, staggerDelay: 120, duration: 500, delay: 100 }}
 		>
 			<div class="cell flex flex-col">
+				<!-- Icon: chat-bubble (Heroicons outline) — subtle visual anchor, accent color -->
+				<svg
+					class="w-7 h-7 text-accent mb-4"
+					fill="none"
+					stroke="currentColor"
+					viewBox="0 0 24 24"
+					stroke-width="1.5"
+					aria-hidden="true"
+					><path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						d="M8.625 9.75a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 0 1 .778-.332 48.294 48.294 0 0 0 5.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z"
+					/></svg
+				>
 				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
-					Phase 01
+					Talk
 				</p>
-				<h3 class="font-sans font-medium text-xl text-ink mb-3">Talk</h3>
+				<h3 class="font-sans font-medium text-xl text-ink mb-3">The discovery call</h3>
 				<p class="font-serif text-sm text-muted leading-relaxed mb-4">
 					A 45-minute conversation about how your business actually runs day to day. Where time gets
 					stuck, what you've tried, what you dread. You talk. I take notes. No pitch.
@@ -629,14 +596,28 @@
 			</div>
 
 			<div class="cell flex flex-col">
+				<!-- Icon: document-text (Heroicons outline) -->
+				<svg
+					class="w-7 h-7 text-accent mb-4"
+					fill="none"
+					stroke="currentColor"
+					viewBox="0 0 24 24"
+					stroke-width="1.5"
+					aria-hidden="true"
+					><path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"
+					/></svg
+				>
 				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
-					Phase 02
+					Plan
 				</p>
-				<h3 class="font-sans font-medium text-xl text-ink mb-3">Plan</h3>
+				<h3 class="font-sans font-medium text-xl text-ink mb-3">The written action plan</h3>
 				<p class="font-serif text-sm text-muted leading-relaxed mb-4">
-					Written action plan in 48 hours. The 3–7 AI tools worth installing this week, an explicit
-					list of what <em>not</em> to automate, and financial impact in hours and dollars. Yours to use
-					— implement on your own or hand it to your team.
+					Delivered in 48 hours. The 3–7 AI tools worth installing this week, an explicit list of
+					what <em>not</em> to automate, and financial impact in hours and dollars. Yours to use — implement
+					on your own or hand it to your team.
 				</p>
 				<div class="mt-auto pt-4 border-t border-rule">
 					<p class="text-xs text-subtle">Your time: 45-minute review call.</p>
@@ -644,38 +625,39 @@
 			</div>
 
 			<div class="cell flex flex-col">
+				<!-- Icon: wrench-screwdriver (Heroicons outline) — optional phase -->
+				<svg
+					class="w-7 h-7 text-accent mb-4"
+					fill="none"
+					stroke="currentColor"
+					viewBox="0 0 24 24"
+					stroke-width="1.5"
+					aria-hidden="true"
+					><path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008Z"
+					/></svg
+				>
 				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
-					Phase 03
+					Build <span class="text-subtle font-normal normal-case tracking-normal">— optional</span>
 				</p>
-				<h3 class="font-sans font-medium text-xl text-ink mb-3">Build</h3>
+				<h3 class="font-sans font-medium text-xl text-ink mb-3">Hands-on implementation</h3>
 				<p class="font-serif text-sm text-muted leading-relaxed mb-4">
-					Optional. If you want hands-on implementation rather than a self-serve roadmap, I embed
-					for a fixed-scope engagement. I build the systems, train the staff who'll actually use
-					them, and handle the change-resistance that always comes with new tools. You keep what I
-					build.
+					If you want implementation rather than a self-serve roadmap, I embed for a fixed-scope
+					engagement. I build the systems, train the staff who'll actually use them, and handle the
+					change-resistance that always comes with new tools. You keep what I build.
 				</p>
 				<div class="mt-auto pt-4 border-t border-rule">
 					<p class="text-xs text-subtle">Priced separately. Zero obligation from the Assessment.</p>
 				</div>
 			</div>
 		</div>
-
-		<div class="mt-8">
-			<p class="text-sm text-subtle">
-				Two 45-minute calls across the process. Everything in between is on me.
-			</p>
-		</div>
 	</div>
 </Section>
 
 <!-- 03: What I won't automate — honesty gate -->
-<Section
-	background="white"
-	padding="md"
-	eyebrow="03"
-	title="What I won't tell you to automate"
-	centered={false}
->
+<Section background="white" padding="md" title="What I won't tell you to automate" centered={false}>
 	<div class="max-w-5xl">
 		<div class="mb-10 max-w-3xl" use:reveal={{ duration: 400 }}>
 			<p class="font-serif text-lg text-muted leading-relaxed">
@@ -742,7 +724,7 @@
 </Section>
 
 <!-- 04: The math -->
-<Section background="muted" padding="md" eyebrow="04" title="The math" centered={false}>
+<Section background="muted" padding="md" title="The math" centered={false}>
 	<div>
 		<div
 			class="grid md:grid-cols-2 gap-10 md:gap-16 items-center"
@@ -778,32 +760,16 @@
 			</div>
 		</div>
 
-		<!-- Promoted guarantee badge: the highest-trust copy on the page, display-level. -->
-		<div class="mt-14 max-w-3xl mx-auto" use:reveal={{ duration: 450, delay: 150 }}>
-			<div class="bg-accent text-paper rounded-lg p-6 md:p-7 flex items-start gap-4 shadow-sm">
-				<svg
-					class="w-7 h-7 text-paper flex-shrink-0 mt-0.5"
-					fill="none"
-					stroke="currentColor"
-					viewBox="0 0 24 24"
-					stroke-width="2"
-					aria-hidden="true"
-					><path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-					/></svg
-				>
-				<div>
-					<p
-						class="text-[0.6875rem] font-semibold tracking-[0.14em] uppercase text-paper/80 mb-1.5"
-					>
-						30-day guarantee
-					</p>
-					<p class="font-sans font-medium text-lg md:text-xl text-paper leading-snug">
-						Save 5+ hours/week within 30 days, or I refund the $999. No questions asked.
-					</p>
-				</div>
+		<!-- Guarantee — hairline callout, not a button. Matches #1-pattern vocabulary. -->
+		<div class="mt-12 max-w-3xl" use:reveal={{ duration: 450, delay: 150 }}>
+			<div class="rule-left-accent py-1">
+				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] uppercase text-accent mb-1">
+					30-day guarantee
+				</p>
+				<p class="font-serif text-lg text-ink leading-snug">
+					Save 5+ hours/week within 30 days, or I refund the $999.
+					<span class="text-subtle">No questions asked.</span>
+				</p>
 			</div>
 		</div>
 	</div>
@@ -858,13 +824,7 @@
 -->
 
 <!-- 05: Right fit / Not a fit -->
-<Section
-	background="white"
-	padding="md"
-	eyebrow="05"
-	title="Is this the right fit?"
-	centered={false}
->
+<Section background="white" padding="md" title="Is this the right fit?" centered={false}>
 	<div class="max-w-5xl">
 		<div
 			class="hairline-grid grid md:grid-cols-2"
@@ -942,13 +902,29 @@
 </Section>
 
 <!-- 06: Who's behind this -->
-<Section background="muted" padding="md" eyebrow="06" title="Who's behind this" centered={false}>
+<Section background="muted" padding="md" title="Who's behind this" centered={false}>
 	<div class="max-w-4xl">
 		<div
 			class="grid md:grid-cols-3 gap-10 items-start"
 			use:reveal={{ stagger: true, staggerDelay: 160, duration: 500 }}
 		>
-			<div class="md:col-span-2 space-y-4 font-serif text-lg text-muted leading-relaxed">
+			<div class="md:col-span-2 space-y-5 font-serif text-lg text-muted leading-relaxed">
+				<!-- Photo: drop a 400×400 portrait at /static/piers.jpg. The figure self-hides
+					 (onerror → display:none on its parent) until the file exists. -->
+				<figure class="float-left mr-6 mb-3 md:mr-7 md:mb-2 w-32 md:w-40 shrink-0">
+					<img
+						src="/piers.jpg"
+						alt="Piers Rollinson"
+						width="160"
+						height="160"
+						class="block w-full aspect-square object-cover rounded-sm border border-rule-strong grayscale-[15%]"
+						loading="lazy"
+						onerror={(e) => {
+							const fig = (e.currentTarget as HTMLElement).closest('figure');
+							if (fig) fig.style.display = 'none';
+						}}
+					/>
+				</figure>
 				<p>
 					I'm <strong class="font-sans font-semibold text-ink">Piers Rollinson</strong>. Fifteen
 					years at DoorDash, Square, and Mudflap building systems that move millions of orders,
@@ -993,7 +969,6 @@
 	id="common-questions"
 	background="white"
 	padding="md"
-	eyebrow="07"
 	title="Common questions"
 	centered={false}
 >
