@@ -365,49 +365,49 @@
 	</div>
 </Section>
 
-<!-- 03: What I won't tell you to automate — honesty gate, the defining section -->
+<!-- 03: What I won't automate — honesty gate -->
 <Section background="white" padding="md" eyebrow="03" title="What I won't tell you to automate">
-	<div class="max-w-4xl mx-auto" use:reveal>
-		<div class="mb-8">
-			<p class="text-lg text-charcoal/70 leading-relaxed">
+	<div class="max-w-5xl mx-auto" use:reveal>
+		<div class="mb-10 max-w-3xl">
+			<p class="font-serif text-lg text-ink/75 leading-relaxed">
 				Half the value of this Assessment is the workflows I tell you to leave alone. AI is the wrong tool in more places than most consultants will admit. Here's where I'll push back.
 			</p>
 		</div>
 
-		<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-			<div class="p-5 bg-stone rounded-xl border border-charcoal/8">
-				<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-2">Don't automate</p>
-				<h3 class="font-medium text-charcoal mb-2">Your sales motion</h3>
-				<p class="text-sm text-charcoal/70 leading-relaxed">
+		<div class="hairline-grid grid sm:grid-cols-2 lg:grid-cols-4">
+			<div class="cell">
+				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">Don't automate</p>
+				<h3 class="font-sans font-medium text-ink mb-2">Your sales motion</h3>
+				<p class="font-serif text-sm text-ink/75 leading-relaxed">
 					Automated outbound cold sequences destroy more trust than they generate. If anything, your sales motion needs more human attention, not less. I'll be the first to say so.
 				</p>
 			</div>
-			<div class="p-5 bg-stone rounded-xl border border-charcoal/8">
-				<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-2">Don't automate</p>
-				<h3 class="font-medium text-charcoal mb-2">Broken processes</h3>
-				<p class="text-sm text-charcoal/70 leading-relaxed">
+			<div class="cell">
+				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">Don't automate</p>
+				<h3 class="font-sans font-medium text-ink mb-2">Broken processes</h3>
+				<p class="font-serif text-sm text-ink/75 leading-relaxed">
 					If clients are unhappy or staff is burned out, AI on top only speeds up the problem. Fix the process first. I'll tell you so.
 				</p>
 			</div>
-			<div class="p-5 bg-stone rounded-xl border border-charcoal/8">
-				<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-2">Don't automate</p>
-				<h3 class="font-medium text-charcoal mb-2">Human-judgement work</h3>
-				<p class="text-sm text-charcoal/70 leading-relaxed">
+			<div class="cell">
+				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">Don't automate</p>
+				<h3 class="font-sans font-medium text-ink mb-2">Human-judgement work</h3>
+				<p class="font-serif text-sm text-ink/75 leading-relaxed">
 					Client calls, review that requires context, exception handling, anything where your reputation is on the line. These stay human. That's your edge.
 				</p>
 			</div>
-			<div class="p-5 bg-stone rounded-xl border border-charcoal/8">
-				<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-2">Don't automate</p>
-				<h3 class="font-medium text-charcoal mb-2">Low-volume tasks</h3>
-				<p class="text-sm text-charcoal/70 leading-relaxed">
+			<div class="cell">
+				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">Don't automate</p>
+				<h3 class="font-sans font-medium text-ink mb-2">Low-volume tasks</h3>
+				<p class="font-serif text-sm text-ink/75 leading-relaxed">
 					If the task happens twice a month, the setup cost of automating it is higher than the time you'd save. Keep it manual. I'll say so.
 				</p>
 			</div>
 		</div>
 
-		<div class="mt-8 p-5 bg-copper/[0.06] rounded-xl border border-copper/15">
-			<p class="text-sm text-charcoal/70 leading-relaxed">
-				<strong class="text-charcoal">If the honest answer is "don't use AI here," I'll say so on the call.</strong> If the honest answer is "hire the person you were going to hire," I'll say so. The action plan you walk away with reflects what I actually found, not what I'm paid to recommend.
+		<div class="mt-8 p-5 bg-accent/[0.06] rounded-lg max-w-4xl">
+			<p class="font-serif text-sm text-ink/80 leading-relaxed">
+				<strong class="font-sans font-semibold text-ink">If the honest answer is "don't use AI here," I'll say so on the call.</strong> If the honest answer is "hire the person you were going to hire," I'll say so. The action plan you walk away with reflects what I actually found, not what I'm paid to recommend.
 			</p>
 		</div>
 	</div>
