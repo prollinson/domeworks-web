@@ -447,59 +447,57 @@
 	</div>
 </Section>
 
-<!-- 05: Right fit / Not a fit — explicit disqualifier -->
+<!-- 05: Right fit / Not a fit -->
 <Section background="white" padding="md" eyebrow="05" title="Is this the right fit?">
 	<div class="max-w-5xl mx-auto" use:reveal>
-		<div class="grid md:grid-cols-2 gap-6">
-			<!-- Right fit -->
-			<div class="p-6 bg-stone rounded-xl border border-charcoal/8">
-				<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-4">Right fit if you</p>
-				<ul class="space-y-3 text-sm text-charcoal/75 leading-relaxed">
+		<div class="hairline-grid grid md:grid-cols-2">
+			<div class="cell">
+				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-4">Right fit if you</p>
+				<ul class="space-y-3 font-serif text-sm text-ink/80 leading-relaxed">
 					<li class="flex gap-3">
-						<span class="text-copper flex-shrink-0 mt-0.5">✓</span>
+						<span class="text-accent flex-shrink-0 mt-0.5 font-sans font-semibold">✓</span>
 						<span>Own or lead a services business doing $3M to $10M in annual revenue.</span>
 					</li>
 					<li class="flex gap-3">
-						<span class="text-copper flex-shrink-0 mt-0.5">✓</span>
+						<span class="text-accent flex-shrink-0 mt-0.5 font-sans font-semibold">✓</span>
 						<span>Have 10 to 50 people and a repeatable service delivered week after week.</span>
 					</li>
 					<li class="flex gap-3">
-						<span class="text-copper flex-shrink-0 mt-0.5">✓</span>
+						<span class="text-accent flex-shrink-0 mt-0.5 font-sans font-semibold">✓</span>
 						<span>Run on software your team mostly likes (QuickBooks, HubSpot, your job-management or practice-management system).</span>
 					</li>
 					<li class="flex gap-3">
-						<span class="text-copper flex-shrink-0 mt-0.5">✓</span>
+						<span class="text-accent flex-shrink-0 mt-0.5 font-sans font-semibold">✓</span>
 						<span>Lose hours to admin, leads to slow response, or revenue to both.</span>
 					</li>
 					<li class="flex gap-3">
-						<span class="text-copper flex-shrink-0 mt-0.5">✓</span>
+						<span class="text-accent flex-shrink-0 mt-0.5 font-sans font-semibold">✓</span>
 						<span>Want to know where AI shouldn't go, not just where it should.</span>
 					</li>
 				</ul>
 			</div>
 
-			<!-- Not a fit -->
-			<div class="p-6 bg-stone rounded-xl border border-charcoal/8">
-				<p class="text-xs font-semibold tracking-widest text-warm-gray uppercase mb-4">Not a fit if you</p>
-				<ul class="space-y-3 text-sm text-charcoal/75 leading-relaxed">
+			<div class="cell">
+				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-subtle uppercase mb-4">Not a fit if you</p>
+				<ul class="space-y-3 font-serif text-sm text-ink/80 leading-relaxed">
 					<li class="flex gap-3">
-						<span class="text-charcoal/40 flex-shrink-0 mt-0.5">✕</span>
+						<span class="text-ink/30 flex-shrink-0 mt-0.5 font-sans font-semibold">✕</span>
 						<span>Want a tool list without spending 45 minutes on how your business actually works.</span>
 					</li>
 					<li class="flex gap-3">
-						<span class="text-charcoal/40 flex-shrink-0 mt-0.5">✕</span>
+						<span class="text-ink/30 flex-shrink-0 mt-0.5 font-sans font-semibold">✕</span>
 						<span>Want software resold or managed. I don't do either.</span>
 					</li>
 					<li class="flex gap-3">
-						<span class="text-charcoal/40 flex-shrink-0 mt-0.5">✕</span>
+						<span class="text-ink/30 flex-shrink-0 mt-0.5 font-sans font-semibold">✕</span>
 						<span>Have a process broken at the client, vendor, or staffing level. AI won't fix a human problem.</span>
 					</li>
 					<li class="flex gap-3">
-						<span class="text-charcoal/40 flex-shrink-0 mt-0.5">✕</span>
+						<span class="text-ink/30 flex-shrink-0 mt-0.5 font-sans font-semibold">✕</span>
 						<span>Want a "transformation" or a six-figure roadmap. I do small, specific, measurable.</span>
 					</li>
 					<li class="flex gap-3">
-						<span class="text-charcoal/40 flex-shrink-0 mt-0.5">✕</span>
+						<span class="text-ink/30 flex-shrink-0 mt-0.5 font-sans font-semibold">✕</span>
 						<span>Have no core software or repeatable process yet. Start there, then come back.</span>
 					</li>
 				</ul>
