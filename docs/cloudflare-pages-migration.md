@@ -4,12 +4,12 @@ Branch: `seo-sitemap-llms` (not yet merged to `main`). Completed: SvelteKit adap
 
 ## What the code change does
 
-| Before | After |
-|---|---|
-| `@sveltejs/adapter-static` outputs plain HTML to `build/` | `@sveltejs/adapter-cloudflare` outputs to `.svelte-kit/cloudflare/` with `_worker.js` for dynamic endpoints |
-| Every page prerendered to HTML | Every page still prerendered (`src/routes/+layout.js` sets `prerender = true`), only `/api/quiz/+server.ts` runs dynamic |
-| Quiz submit opens user's mail client via `mailto:` | Quiz submit POSTs to `/api/quiz`; endpoint sends email via Cloudflare SEB binding; mailto still fires as graceful fallback on network error |
-| `_redirects` lived in `static/` (no-op on S3+CloudFront) | `_redirects` at repo root, picked up by Pages adapter, turned into real 301s at the edge |
+| Before                                                    | After                                                                                                                                       |
+| --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `@sveltejs/adapter-static` outputs plain HTML to `build/` | `@sveltejs/adapter-cloudflare` outputs to `.svelte-kit/cloudflare/` with `_worker.js` for dynamic endpoints                                 |
+| Every page prerendered to HTML                            | Every page still prerendered (`src/routes/+layout.js` sets `prerender = true`), only `/api/quiz/+server.ts` runs dynamic                    |
+| Quiz submit opens user's mail client via `mailto:`        | Quiz submit POSTs to `/api/quiz`; endpoint sends email via Cloudflare SEB binding; mailto still fires as graceful fallback on network error |
+| `_redirects` lived in `static/` (no-op on S3+CloudFront)  | `_redirects` at repo root, picked up by Pages adapter, turned into real 301s at the edge                                                    |
 
 ## Dashboard steps (Piers to do)
 

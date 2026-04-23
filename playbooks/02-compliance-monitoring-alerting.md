@@ -11,21 +11,21 @@ Automates ongoing monitoring of compliance deadlines, regulatory updates, and in
 
 ## Inputs
 
-| Input | Type | Source | Trigger |
-|-------|------|--------|---------|
-| Compliance calendar | Spreadsheet | Google Sheets | Annually / engagement start |
-| Regulatory update feeds | RSS / API | Regulatory body websites | Continuous |
-| Internal policy documents | Files | Google Drive / SharePoint | On update |
-| Completion confirmations | Form responses | Google Forms / web app | On submission |
+| Input                     | Type           | Source                    | Trigger                     |
+| ------------------------- | -------------- | ------------------------- | --------------------------- |
+| Compliance calendar       | Spreadsheet    | Google Sheets             | Annually / engagement start |
+| Regulatory update feeds   | RSS / API      | Regulatory body websites  | Continuous                  |
+| Internal policy documents | Files          | Google Drive / SharePoint | On update                   |
+| Completion confirmations  | Form responses | Google Forms / web app    | On submission               |
 
 ## Outputs
 
-| Output | Format | Destination | Frequency |
-|--------|--------|-------------|-----------|
-| Upcoming deadline alerts | Slack message + email | Responsible parties | Configurable (7/3/1 day before) |
-| Regulatory change digest | Email digest | Compliance team | Weekly |
-| Compliance status dashboard | Live dashboard | Google Sheets / web app | Real-time |
-| Overdue/risk report | PDF | Leadership / audit committee | Monthly |
+| Output                      | Format                | Destination                  | Frequency                       |
+| --------------------------- | --------------------- | ---------------------------- | ------------------------------- |
+| Upcoming deadline alerts    | Slack message + email | Responsible parties          | Configurable (7/3/1 day before) |
+| Regulatory change digest    | Email digest          | Compliance team              | Weekly                          |
+| Compliance status dashboard | Live dashboard        | Google Sheets / web app      | Real-time                       |
+| Overdue/risk report         | PDF                   | Leadership / audit committee | Monthly                         |
 
 ## Tools Used
 
@@ -62,24 +62,24 @@ Automates ongoing monitoring of compliance deadlines, regulatory updates, and in
 
 ## Hours Estimate
 
-| Phase | Manual (hrs/month) | Automated (hrs/month) | Savings |
-|-------|-------------------|----------------------|---------|
-| Calendar maintenance | 4 | 1 | 75% |
-| Deadline tracking & reminders | 8 | 0.5 | 94% |
-| Regulatory monitoring | 6 | 1 | 83% |
-| Status reporting | 5 | 0.5 | 90% |
-| Escalation management | 3 | 0.5 | 83% |
-| **Total** | **26** | **3.5** | **87%** |
+| Phase                         | Manual (hrs/month) | Automated (hrs/month) | Savings |
+| ----------------------------- | ------------------ | --------------------- | ------- |
+| Calendar maintenance          | 4                  | 1                     | 75%     |
+| Deadline tracking & reminders | 8                  | 0.5                   | 94%     |
+| Regulatory monitoring         | 6                  | 1                     | 83%     |
+| Status reporting              | 5                  | 0.5                   | 90%     |
+| Escalation management         | 3                  | 0.5                   | 83%     |
+| **Total**                     | **26**             | **3.5**               | **87%** |
 
 ## ROI Estimate
 
-| Metric | Value |
-|--------|-------|
-| Monthly labor cost (manual) | $2,600 (26 hrs @ $100/hr blended) |
-| Monthly labor cost (automated) | $350 (3.5 hrs @ $100/hr) |
-| Monthly savings | $2,250 |
-| Implementation cost | $6,000 - $10,000 |
-| Payback period | 3-4 months |
+| Metric                         | Value                             |
+| ------------------------------ | --------------------------------- |
+| Monthly labor cost (manual)    | $2,600 (26 hrs @ $100/hr blended) |
+| Monthly labor cost (automated) | $350 (3.5 hrs @ $100/hr)          |
+| Monthly savings                | $2,250                            |
+| Implementation cost            | $6,000 - $10,000                  |
+| Payback period                 | 3-4 months                        |
 
 ## Adaptation Notes
 

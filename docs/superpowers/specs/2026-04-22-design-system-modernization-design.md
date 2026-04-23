@@ -30,33 +30,33 @@ Update `src/tailwind.css` `@theme` block:
 
 ```css
 @theme {
-  /* --- Core palette --- */
-  --color-ink: #0a0a0a;              /* was #141414 */
-  --color-charcoal: #1a1a1a;         /* keep */
-  --color-paper: #ffffff;            /* NEW — pure white, replaces warm-white as primary surface */
-  --color-paper-alt: #fafafa;        /* NEW — neutral alternation, replaces stone */
-  --color-rule: #e5e5e5;             /* NEW — hairline color */
-  --color-rule-strong: #0a0a0a;      /* NEW — structural rule (section top/bottom) */
-  --color-muted: #525252;            /* NEW — body secondary */
-  --color-subtle: #737373;           /* NEW — labels, meta */
-  --color-faint: #a3a3a3;            /* NEW — on-dark body secondary */
+	/* --- Core palette --- */
+	--color-ink: #0a0a0a; /* was #141414 */
+	--color-charcoal: #1a1a1a; /* keep */
+	--color-paper: #ffffff; /* NEW — pure white, replaces warm-white as primary surface */
+	--color-paper-alt: #fafafa; /* NEW — neutral alternation, replaces stone */
+	--color-rule: #e5e5e5; /* NEW — hairline color */
+	--color-rule-strong: #0a0a0a; /* NEW — structural rule (section top/bottom) */
+	--color-muted: #525252; /* NEW — body secondary */
+	--color-subtle: #737373; /* NEW — labels, meta */
+	--color-faint: #a3a3a3; /* NEW — on-dark body secondary */
 
-  /* --- Accent: vermilion replaces copper --- */
-  --color-accent: #ea580c;           /* primary vermilion, WCAG AA on white */
-  --color-accent-hover: #c2410c;
-  --color-accent-light: #fb923c;     /* hero eyebrow on dark, secondary accents */
+	/* --- Accent: vermilion replaces copper --- */
+	--color-accent: #ea580c; /* primary vermilion, WCAG AA on white */
+	--color-accent-hover: #c2410c;
+	--color-accent-light: #fb923c; /* hero eyebrow on dark, secondary accents */
 
-  /* --- Retained (legacy aliases, deprecate progressively) --- */
-  --color-primary: #0d6b63;          /* teal — keep for "Speed-to-lead" callout, trust signals */
-  --color-warm-white: #fafaf7;       /* deprecate — migrate to --color-paper */
-  --color-stone: #f3f1ec;            /* deprecate — migrate to --color-paper-alt */
-  --color-copper: #b07d4f;           /* deprecate — migrate to --color-accent */
+	/* --- Retained (legacy aliases, deprecate progressively) --- */
+	--color-primary: #0d6b63; /* teal — keep for "Speed-to-lead" callout, trust signals */
+	--color-warm-white: #fafaf7; /* deprecate — migrate to --color-paper */
+	--color-stone: #f3f1ec; /* deprecate — migrate to --color-paper-alt */
+	--color-copper: #b07d4f; /* deprecate — migrate to --color-accent */
 
-  /* --- Typography --- */
-  --font-sans: 'General Sans', ui-sans-serif, system-ui, sans-serif;
-  --font-serif: 'Recia', Georgia, serif;
-  --font-body: var(--font-sans);     /* default */
-  --font-prose: var(--font-serif);   /* for long-form paragraphs, subheads */
+	/* --- Typography --- */
+	--font-sans: 'General Sans', ui-sans-serif, system-ui, sans-serif;
+	--font-serif: 'Recia', Georgia, serif;
+	--font-body: var(--font-sans); /* default */
+	--font-prose: var(--font-serif); /* for long-form paragraphs, subheads */
 }
 ```
 
@@ -106,26 +106,41 @@ New pattern: `<div class="hairline-grid">` wrapper with top+bottom structural ru
 
 ```svelte
 <div class="hairline-grid grid md:grid-cols-3">
-  <div class="cell">
-    <p class="eyebrow">What this is</p>
-    <div class="prose">...</div>
-  </div>
-  ...
+	<div class="cell">
+		<p class="eyebrow">What this is</p>
+		<div class="prose">...</div>
+	</div>
+	...
 </div>
 ```
 
 CSS:
+
 ```css
-.hairline-grid { border-top: 1px solid var(--color-rule-strong); border-bottom: 1px solid var(--color-rule); }
-.cell { padding: 1.5rem 1.25rem; border-right: 1px solid var(--color-rule); }
-.cell:last-child { border-right: none; }
+.hairline-grid {
+	border-top: 1px solid var(--color-rule-strong);
+	border-bottom: 1px solid var(--color-rule);
+}
+.cell {
+	padding: 1.5rem 1.25rem;
+	border-right: 1px solid var(--color-rule);
+}
+.cell:last-child {
+	border-right: none;
+}
 @media (max-width: 768px) {
-  .cell { border-right: none; border-bottom: 1px solid var(--color-rule); }
-  .cell:last-child { border-bottom: none; }
+	.cell {
+		border-right: none;
+		border-bottom: 1px solid var(--color-rule);
+	}
+	.cell:last-child {
+		border-bottom: none;
+	}
 }
 ```
 
 **Exceptions** — soft cards still used for:
+
 - Dark-on-dark cards inside the dark CTA footer section (subtle `bg-white/[0.04]`, 8px radius).
 - The "Speed-to-lead" callout (kept as a colored block, but use vermilion wash at 6% opacity instead of copper; 8px radius; no border, just the fill).
 
@@ -161,40 +176,71 @@ File: `src/routes/ai-tools-assessment/+page.svelte`
 ### Hero
 
 ```svelte
-<section class="relative bg-ink text-paper overflow-hidden -mt-16 md:-mt-20" aria-label="Hero" use:trackHeroExit>
-  <div class="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pt-36 md:pt-40 pb-16 md:pb-20 flex flex-col gap-14 min-h-[clamp(70svh,80svh,90svh)]">
-    <div class="flex items-baseline gap-4 text-[0.6875rem] font-semibold uppercase tracking-[0.14em]">
-      <span class="text-accent-light">AI Tools Assessment</span>
-      <span class="text-paper/55 font-normal tracking-[0.08em]">Services businesses · 10–50 people</span>
-    </div>
+<section
+	class="relative bg-ink text-paper overflow-hidden -mt-16 md:-mt-20"
+	aria-label="Hero"
+	use:trackHeroExit
+>
+	<div
+		class="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pt-36 md:pt-40 pb-16 md:pb-20 flex flex-col gap-14 min-h-[clamp(70svh,80svh,90svh)]"
+	>
+		<div
+			class="flex items-baseline gap-4 text-[0.6875rem] font-semibold uppercase tracking-[0.14em]"
+		>
+			<span class="text-accent-light">AI Tools Assessment</span>
+			<span class="text-paper/55 font-normal tracking-[0.08em]"
+				>Services businesses · 10–50 people</span
+			>
+		</div>
 
-    <div class="flex-1 flex flex-col justify-center max-w-4xl">
-      <h1 class="font-sans font-semibold text-[clamp(2.5rem,7vw,4.5rem)] leading-[1.02] tracking-[-0.035em]">
-        Stop bleeding hours, leads, revenue.
-      </h1>
-      <p class="mt-6 font-serif text-xl md:text-2xl leading-[1.55] text-paper/75 max-w-2xl">
-        A 45 minute call. An action plan <em class="text-accent-light italic">you can start this week</em>. What to install, what to skip.
-      </p>
-      <p class="mt-4 text-sm text-paper/65 max-w-2xl">
-        Ex-DoorDash, Square, Mudflap. I'll handle the AI — you handle your business.
-      </p>
-      <div class="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
-        <Button href={getAssessmentCallUrl()} size="lg">Book the assessment</Button>
-        <a href="/quiz/" class="text-sm text-paper/85 underline underline-offset-4 hover:text-accent-light transition-colors">
-          Not ready? Take the 2-min quiz first →
-        </a>
-      </div>
+		<div class="flex-1 flex flex-col justify-center max-w-4xl">
+			<h1
+				class="font-sans font-semibold text-[clamp(2.5rem,7vw,4.5rem)] leading-[1.02] tracking-[-0.035em]"
+			>
+				Stop bleeding hours, leads, revenue.
+			</h1>
+			<p class="mt-6 font-serif text-xl md:text-2xl leading-[1.55] text-paper/75 max-w-2xl">
+				A 45 minute call. An action plan <em class="text-accent-light italic"
+					>you can start this week</em
+				>. What to install, what to skip.
+			</p>
+			<p class="mt-4 text-sm text-paper/65 max-w-2xl">
+				Ex-DoorDash, Square, Mudflap. I'll handle the AI — you handle your business.
+			</p>
+			<div class="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
+				<Button href={getAssessmentCallUrl()} size="lg">Book the assessment</Button>
+				<a
+					href="/quiz/"
+					class="text-sm text-paper/85 underline underline-offset-4 hover:text-accent-light transition-colors"
+				>
+					Not ready? Take the 2-min quiz first →
+				</a>
+			</div>
 
-      <!-- Note: the dark hero overrides Button's default primary (vermilion fill remains), but hover state is tuned on dark — see Button component spec. -->
+			<!-- Note: the dark hero overrides Button's default primary (vermilion fill remains), but hover state is tuned on dark — see Button component spec. -->
+		</div>
 
-    </div>
-
-    <div class="pt-6 border-t border-paper/10 grid grid-cols-3 gap-6 md:gap-12">
-      <div><div class="text-2xl md:text-3xl font-medium tracking-[-0.02em]">5–7 hrs</div><div class="mt-1 text-[0.6875rem] uppercase tracking-[0.12em] text-paper/55 font-medium">Recovered / week</div></div>
-      <div><div class="text-2xl md:text-3xl font-medium tracking-[-0.02em]">45 min</div><div class="mt-1 text-[0.6875rem] uppercase tracking-[0.12em] text-paper/55 font-medium">Your time</div></div>
-      <div><div class="text-2xl md:text-3xl font-medium tracking-[-0.02em]">48 hrs</div><div class="mt-1 text-[0.6875rem] uppercase tracking-[0.12em] text-paper/55 font-medium">Plan delivered</div></div>
-    </div>
-  </div>
+		<div class="pt-6 border-t border-paper/10 grid grid-cols-3 gap-6 md:gap-12">
+			<div>
+				<div class="text-2xl md:text-3xl font-medium tracking-[-0.02em]">5–7 hrs</div>
+				<div class="mt-1 text-[0.6875rem] uppercase tracking-[0.12em] text-paper/55 font-medium">
+					Recovered / week
+				</div>
+			</div>
+			<div>
+				<div class="text-2xl md:text-3xl font-medium tracking-[-0.02em]">45 min</div>
+				<div class="mt-1 text-[0.6875rem] uppercase tracking-[0.12em] text-paper/55 font-medium">
+					Your time
+				</div>
+			</div>
+			<div>
+				<div class="text-2xl md:text-3xl font-medium tracking-[-0.02em]">48 hrs</div>
+				<div class="mt-1 text-[0.6875rem] uppercase tracking-[0.12em] text-paper/55 font-medium">
+					Plan delivered
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
 ```
 
@@ -257,6 +303,7 @@ Keep, restyle: `bg-ink/95 backdrop-blur border-t border-paper/10`. Accent pill b
 ## Motion
 
 Keep only:
+
 - Hero content fade-in once on load (single staggered group, 0.6s duration max, ease-out).
 - `reveal` IntersectionObserver fade-up (6px, 0.5s) on scroll entrance.
 - Button hover translate-y.
@@ -264,6 +311,7 @@ Keep only:
 - View transitions between routes (existing).
 
 Drop:
+
 - `hero-monogram` settle
 - `hero-accent-line-draw`
 - `hero-line-in` per-line stagger

@@ -5,12 +5,7 @@
 // Cloudflare Send Email binding (declared in wrangler.jsonc).
 // Requires Email Routing enabled on domeworks.tech with piers@domeworks.tech as a verified destination.
 interface SendEmailBinding {
-	send(message: {
-		from: string;
-		to: string;
-		subject: string;
-		text: string;
-	}): Promise<void>;
+	send(message: { from: string; to: string; subject: string; text: string }): Promise<void>;
 }
 
 declare namespace App {

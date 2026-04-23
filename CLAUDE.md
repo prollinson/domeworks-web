@@ -17,6 +17,7 @@ yarn test             # Run Playwright E2E tests (builds first)
 ## Architecture
 
 **Static SvelteKit blog** using:
+
 - **Svelte 5** with runes (`$props()`, `{@render children()}`)
 - **Tailwind CSS 4** via Vite plugin (`@tailwindcss/vite`)
 - **mdsvex** for Markdown content (`.md` files as routes)
@@ -25,12 +26,14 @@ yarn test             # Run Playwright E2E tests (builds first)
 ### Key Patterns
 
 **Svelte 5 syntax** - Uses runes, not legacy syntax:
+
 ```svelte
-let { children } = $props()
+let {children} = $props()
 {@render children()}
 ```
 
 **Tailwind 4** - CSS import style, not PostCSS config:
+
 ```css
 @import 'tailwindcss';
 ```

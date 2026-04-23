@@ -225,7 +225,12 @@
 </section>
 
 <!-- Two tracks picker — above-the-fold split between Offer A and Offer B -->
-<Section background="white" padding="md" eyebrow="Choose your track" title="Which one sounds like you?">
+<Section
+	background="white"
+	padding="md"
+	eyebrow="Choose your track"
+	title="Which one sounds like you?"
+>
 	<div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-6" use:reveal>
 		<!-- Track A: Owner-operator services -->
 		<a
@@ -233,12 +238,15 @@
 			class="group relative p-8 md:p-10 bg-stone rounded-2xl border border-charcoal/10 hover:border-copper/40 hover:shadow-lg transition-all duration-200 flex flex-col"
 			aria-label="Owner-operator services track — AI Tools Assessment"
 		>
-			<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-4">Track A · Owner-operator</p>
+			<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-4">
+				Track A · Owner-operator
+			</p>
 			<h3 class="font-serif text-2xl md:text-3xl text-charcoal mb-4 leading-tight">
 				You run a services business.
 			</h3>
 			<p class="text-charcoal/70 leading-relaxed mb-5">
-				$3M to $10M in revenue, 10 to 50 people. AI tools keep coming, admin keeps piling up, and you want to know what's actually worth your attention and what to leave alone.
+				$3M to $10M in revenue, 10 to 50 people. AI tools keep coming, admin keeps piling up, and
+				you want to know what's actually worth your attention and what to leave alone.
 			</p>
 			<p class="text-sm text-charcoal/55 mb-8">
 				Accounting, legal, medical and dental, trades, real estate, agencies.
@@ -250,7 +258,8 @@
 				</div>
 				<div class="flex items-center gap-2 text-xs text-charcoal/55">
 					<span>Or start with the</span>
-					<span class="text-copper/80 underline underline-offset-2">2-minute AI Readiness Quiz</span>
+					<span class="text-copper/80 underline underline-offset-2">2-minute AI Readiness Quiz</span
+					>
 				</div>
 			</div>
 		</a>
@@ -261,12 +270,16 @@
 			class="group relative p-8 md:p-10 bg-stone rounded-2xl border border-charcoal/10 hover:border-copper/40 hover:shadow-lg transition-all duration-200 flex flex-col"
 			aria-label="VP Engineering track — AI Scan and Fractional AI Leadership"
 		>
-			<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-4">Track B · VP Eng / CTO</p>
+			<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-4">
+				Track B · VP Eng / CTO
+			</p>
 			<h3 class="font-serif text-2xl md:text-3xl text-charcoal mb-4 leading-tight">
 				You lead engineering at a mid-market SaaS.
 			</h3>
 			<p class="text-charcoal/70 leading-relaxed mb-5">
-				50 to 500 people, Series B or C. Your engineers have AI tools. Individual productivity is up. Team-level gains are flat. You need the infrastructure between the tools, not another tool.
+				50 to 500 people, Series B or C. Your engineers have AI tools. Individual productivity is
+				up. Team-level gains are flat. You need the infrastructure between the tools, not another
+				tool.
 			</p>
 			<p class="text-sm text-charcoal/55 mb-8">
 				AI Scan, Context Build, Orchestration, Fractional AI Leadership.
@@ -286,7 +299,10 @@
 
 	<div class="max-w-4xl mx-auto mt-8 text-center">
 		<p class="text-sm text-charcoal/55">
-			Not sure which applies? The sections below go deeper on Track B. If you're owner-operator, the <a href="/ai-tools-assessment/" class="text-copper underline underline-offset-2">Assessment page</a> is the better read.
+			Not sure which applies? The sections below go deeper on Track B. If you're owner-operator, the <a
+				href="/ai-tools-assessment/"
+				class="text-copper underline underline-offset-2">Assessment page</a
+			> is the better read.
 		</p>
 	</div>
 </Section>
@@ -303,7 +319,9 @@
 						<span class="w-2 h-2 rounded-full bg-primary"></span>
 					</span>
 					<span
-						>You're a <strong class="text-charcoal">VP Engineering, CTO, or technical founder</strong>
+						>You're a <strong class="text-charcoal"
+							>VP Engineering, CTO, or technical founder</strong
+						>
 						— 50 to 500 engineers, Series B or C, AI tooling already rolled out</span
 					>
 				</li>
@@ -314,8 +332,8 @@
 						<span class="w-2 h-2 rounded-full bg-primary"></span>
 					</span>
 					<span
-						>Individual productivity is up. Team-level throughput is flat —
-						because the handoffs between people haven't changed</span
+						>Individual productivity is up. Team-level throughput is flat — because the handoffs
+						between people haven't changed</span
 					>
 				</li>
 				<li class="flex items-start gap-4">
@@ -356,14 +374,14 @@
 			<!-- Left column: prose -->
 			<div class="md:col-span-3 space-y-6">
 				<p class="text-lg text-charcoal/70 leading-relaxed">
-					The tools work fine individually. They write code, answer questions, summarize
-					documents. What breaks is everything between them.
+					The tools work fine individually. They write code, answer questions, summarize documents.
+					What breaks is everything between them.
 				</p>
 				<p class="text-lg text-charcoal/70 leading-relaxed">
 					Engineers re-explain the architecture to every AI prompt. Managers spend their days
 					aggregating context from three teams so a fourth can act on it. Status meetings exist
-					because information doesn't flow without human relay chains. That coordination layer —
-					the thing managers and meetings used to be — is what now has to be built.
+					because information doesn't flow without human relay chains. That coordination layer — the
+					thing managers and meetings used to be — is what now has to be built.
 				</p>
 			</div>
 			<!-- Right column: Block proof point -->
@@ -629,8 +647,8 @@
 			Ready to talk<span class="text-primary">?</span>
 		</h2>
 		<p class="text-lg text-charcoal/70 mb-8">
-			Tell me what your team has shipped with AI so far. I'll tell you where the coordination
-			layer is most likely to break first — and whether a Scan is worth your 48 hours.
+			Tell me what your team has shipped with AI so far. I'll tell you where the coordination layer
+			is most likely to break first — and whether a Scan is worth your 48 hours.
 		</p>
 		<Button href={getBookCallUrl()} size="lg">Book a call</Button>
 	</div>

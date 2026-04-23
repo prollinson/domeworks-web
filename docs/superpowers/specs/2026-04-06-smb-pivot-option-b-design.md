@@ -111,9 +111,11 @@ Do NOT mention AICPA on the page (save for personalized outreach). Do NOT mentio
 #### "Who this is for" section (01)
 
 Current first bullet:
+
 > You're a VP of Engineering, Head of Engineering, or CTO at a mid-market SaaS company (50–500 people) or a funded startup
 
 Updated to something like:
+
 > You're a technical leader or firm owner whose team has AI tools but still coordinates through meetings, status updates, and manual handoffs
 
 Keep the remaining three bullets — they're universal enough. Keep the closing quote.
@@ -121,9 +123,11 @@ Keep the remaining three bullets — they're universal enough. Keep the closing 
 #### Hero subtext (secondary paragraph)
 
 Current:
+
 > 10+ years of engineering leadership at DoorDash, Square, and Mudflap. The biggest bottleneck was never the engineering — it was the coordination. That layer can now be built as infrastructure.
 
 Updated:
+
 > 10+ years leading teams at DoorDash, Square, and Mudflap. The biggest bottleneck was never the work — it was the coordination. That layer can now be built as infrastructure.
 
 Two words changed: "engineering leadership" → "leading teams", "the engineering" → "the work".

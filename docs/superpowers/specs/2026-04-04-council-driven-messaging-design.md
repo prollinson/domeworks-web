@@ -36,12 +36,12 @@ This spec addresses 6 site changes identified by the council. It preserves the e
 
 Reorder the four main content sections:
 
-| Current Order | New Order |
-|---|---|
-| 01: "The problem isn't the tools" | 01: "Who this is for" (buyer self-selection) |
-| 02: "Who this is for" | 02: "The problem isn't the tools" (why it's happening) |
-| 03: "The AI Stack" (framework) | 03: "The AI Stack" (the architecture that fixes it) |
-| 04: "How it works" (services) | 04: "How it works" (services) |
+| Current Order                     | New Order                                              |
+| --------------------------------- | ------------------------------------------------------ |
+| 01: "The problem isn't the tools" | 01: "Who this is for" (buyer self-selection)           |
+| 02: "Who this is for"             | 02: "The problem isn't the tools" (why it's happening) |
+| 03: "The AI Stack" (framework)    | 03: "The AI Stack" (the architecture that fixes it)    |
+| 04: "How it works" (services)     | 04: "How it works" (services)                          |
 
 **Rationale:** Buyer self-selection first. A cold buyer scanning after the hero wants to know "am I in the right place?" before investing in the explanation. Each section earns the right to introduce the next concept: identity → problem → framework → solution.
 
@@ -94,6 +94,7 @@ The Orchestration Build page already mentions "documented systems, runbooks, kno
 **Files:** `src/routes/+page.svelte`, meta tags
 
 "Intelligence Infrastructure Engineering" as a label:
+
 - **Remove** from the hero eyebrow (covered in Change 1)
 - **Keep** in the page `<title>` and meta description for SEO value
 - **Do not use** as a headline or section header anywhere a cold buyer encounters it before the framework explanation
@@ -102,12 +103,12 @@ When the Intelligence Stack visual appears (now in homepage Section 03, after bu
 
 ## Pages Touched
 
-| Page | Changes |
-|---|---|
+| Page           | Changes                                                    |
+| -------------- | ---------------------------------------------------------- |
 | `/` (homepage) | Hero copy, section reorder, Block reframe, eyebrow removal |
-| `/scan/` | "What this isn't" → "What your Scan tells you" |
-| `/about/` | "Designed to end" proof mechanism |
-| `/fractional/` | "Designed to end" proof mechanism (if it appears) |
+| `/scan/`       | "What this isn't" → "What your Scan tells you"             |
+| `/about/`      | "Designed to end" proof mechanism                          |
+| `/fractional/` | "Designed to end" proof mechanism (if it appears)          |
 
 ## What Does NOT Change
 

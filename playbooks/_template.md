@@ -11,14 +11,14 @@
 
 ## Inputs
 
-| Input | Type | Source | Trigger |
-|-------|------|--------|---------|
+| Input                      | Type                  | Source                        | Trigger                     |
+| -------------------------- | --------------------- | ----------------------------- | --------------------------- |
 | [e.g. Financial documents] | [File / API / Manual] | [Google Drive / Email / etc.] | [Schedule / Event / Manual] |
 
 ## Outputs
 
-| Output | Format | Destination | Frequency |
-|--------|--------|-------------|-----------|
+| Output                   | Format                    | Destination                     | Frequency                    |
+| ------------------------ | ------------------------- | ------------------------------- | ---------------------------- |
 | [e.g. Compliance report] | [PDF / Dashboard / Email] | [Slack / Drive / Client portal] | [Daily / Weekly / On-demand] |
 
 ## Tools Used
@@ -33,20 +33,20 @@
 
 ## Hours Estimate
 
-| Phase | Manual (hrs/month) | Automated (hrs/month) | Savings |
-|-------|-------------------|----------------------|---------|
-| [Phase name] | X | Y | Z% |
-| **Total** | **X** | **Y** | **Z%** |
+| Phase        | Manual (hrs/month) | Automated (hrs/month) | Savings |
+| ------------ | ------------------ | --------------------- | ------- |
+| [Phase name] | X                  | Y                     | Z%      |
+| **Total**    | **X**              | **Y**                 | **Z%**  |
 
 ## ROI Estimate
 
-| Metric | Value |
-|--------|-------|
-| Monthly labor cost (manual) | $X |
-| Monthly labor cost (automated) | $Y |
-| Monthly savings | $Z |
-| Implementation cost | $X |
-| Payback period | X months |
+| Metric                         | Value    |
+| ------------------------------ | -------- |
+| Monthly labor cost (manual)    | $X       |
+| Monthly labor cost (automated) | $Y       |
+| Monthly savings                | $Z       |
+| Implementation cost            | $X       |
+| Payback period                 | X months |
 
 ## Adaptation Notes
 

@@ -12,22 +12,22 @@
 
 ## Change Summary
 
-| What | Current | New |
-|------|---------|-----|
-| Core positioning | "AI infrastructure engineering" — tools → team shipping | "Intelligence Infrastructure Engineering" — replacing coordination overhead with infrastructure |
-| Key framework | "connective tissue" / 6 focus areas | Intelligence Stack (4 layers: Surface, Orchestration, Context, Edge) |
-| Service: Assessment | `/assessment/` — $10-15K, 2-week engagement | `/context-build/` — $10-15K, Context Layer build (Level 1→2) |
-| Service: Build | Described on homepage, no dedicated page | `/orchestration-build/` — $2.5-3.5K/day, Orchestration Layer (Level 2→3) |
-| Service: Fractional | Not on site | Mentioned on homepage under "What I Build" |
-| Service: Workshop | Empty `/workshop/` route | Stays empty for now (content doc says `needs update`) |
-| Route: quick-build | Empty `/quick-build/` route | Remove (moved to Patina per 2026-04-01 decision) |
-| Navigation | AI Scan, Assessment, About, Contact | AI Scan, Context Build, About, Contact |
-| Layout schema | ProfessionalService, Las Vegas Valley, domeworks.tech | Update to intelligence infrastructure, US-based, domeworks.ai |
-| Footer tagline | "AI infrastructure engineering for teams that ship" | "Intelligence infrastructure that replaces coordination overhead" |
-| Email | piers@domeworks.tech / hello@domeworks.tech | piers@domeworks.ai |
-| Homepage hero | "Your team bought AI tools. Nobody built the systems." | "Your engineering team runs on meetings, status updates, and managers routing information between teams. That coordination layer can now be built as infrastructure." |
-| About page | Mentions DoorDash, Square | Add Mudflap; reframe to coordination overhead thesis |
-| Proof point | 95% AI pilots fail (Rand), 42% scrapped (S&P) | Block's "company world model" + existing stats |
+| What                | Current                                                 | New                                                                                                                                                                   |
+| ------------------- | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Core positioning    | "AI infrastructure engineering" — tools → team shipping | "Intelligence Infrastructure Engineering" — replacing coordination overhead with infrastructure                                                                       |
+| Key framework       | "connective tissue" / 6 focus areas                     | Intelligence Stack (4 layers: Surface, Orchestration, Context, Edge)                                                                                                  |
+| Service: Assessment | `/assessment/` — $10-15K, 2-week engagement             | `/context-build/` — $10-15K, Context Layer build (Level 1→2)                                                                                                          |
+| Service: Build      | Described on homepage, no dedicated page                | `/orchestration-build/` — $2.5-3.5K/day, Orchestration Layer (Level 2→3)                                                                                              |
+| Service: Fractional | Not on site                                             | Mentioned on homepage under "What I Build"                                                                                                                            |
+| Service: Workshop   | Empty `/workshop/` route                                | Stays empty for now (content doc says `needs update`)                                                                                                                 |
+| Route: quick-build  | Empty `/quick-build/` route                             | Remove (moved to Patina per 2026-04-01 decision)                                                                                                                      |
+| Navigation          | AI Scan, Assessment, About, Contact                     | AI Scan, Context Build, About, Contact                                                                                                                                |
+| Layout schema       | ProfessionalService, Las Vegas Valley, domeworks.tech   | Update to intelligence infrastructure, US-based, domeworks.ai                                                                                                         |
+| Footer tagline      | "AI infrastructure engineering for teams that ship"     | "Intelligence infrastructure that replaces coordination overhead"                                                                                                     |
+| Email               | piers@domeworks.tech / hello@domeworks.tech             | piers@domeworks.ai                                                                                                                                                    |
+| Homepage hero       | "Your team bought AI tools. Nobody built the systems."  | "Your engineering team runs on meetings, status updates, and managers routing information between teams. That coordination layer can now be built as infrastructure." |
+| About page          | Mentions DoorDash, Square                               | Add Mudflap; reframe to coordination overhead thesis                                                                                                                  |
+| Proof point         | 95% AI pilots fail (Rand), 42% scrapped (S&P)           | Block's "company world model" + existing stats                                                                                                                        |
 
 ---
 
@@ -35,20 +35,21 @@
 
 Each task references its content source. The implementing agent MUST read the source doc and use it as the authoritative copy. Do not invent copy — translate the source doc into the existing Svelte component patterns.
 
-| Page | Source Doc |
-|------|-----------|
-| Homepage | `~/piers-os/resources/domeworks/content/website/homepage.md` |
-| About | `~/piers-os/resources/domeworks/content/website/about.md` |
-| Contact | `~/piers-os/resources/domeworks/content/website/contact.md` |
-| Context Build | `~/piers-os/resources/domeworks/content/website/assessment.md` + `~/piers-os/resources/domeworks/business/pricing-strategy.md` (Context Build section) |
-| Orchestration Build | `~/piers-os/resources/domeworks/business/pricing-strategy.md` (Orchestration Build section) |
-| Scan | No new content doc — update framing to "Intelligence Maturity diagnosis" per homepage.md |
+| Page                | Source Doc                                                                                                                                             |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Homepage            | `~/piers-os/resources/domeworks/content/website/homepage.md`                                                                                           |
+| About               | `~/piers-os/resources/domeworks/content/website/about.md`                                                                                              |
+| Contact             | `~/piers-os/resources/domeworks/content/website/contact.md`                                                                                            |
+| Context Build       | `~/piers-os/resources/domeworks/content/website/assessment.md` + `~/piers-os/resources/domeworks/business/pricing-strategy.md` (Context Build section) |
+| Orchestration Build | `~/piers-os/resources/domeworks/business/pricing-strategy.md` (Orchestration Build section)                                                            |
+| Scan                | No new content doc — update framing to "Intelligence Maturity diagnosis" per homepage.md                                                               |
 
 ---
 
 ## File Structure
 
 ### Modified Files
+
 - `src/routes/+layout.svelte` — JSON-LD schema, email, description
 - `src/routes/+page.svelte` — Full homepage rewrite
 - `src/routes/scan/+page.svelte` — Reframe to Intelligence Maturity language
@@ -58,13 +59,16 @@ Each task references its content source. The implementing agent MUST read the so
 - `src/lib/components/layout/Footer.svelte` — Update tagline, description, email
 
 ### Created Files
+
 - `src/routes/context-build/+page.svelte` — New service page (replaces Assessment)
 
 ### Deleted Files
+
 - `src/routes/assessment/+page.svelte` — Replaced by context-build
 - `src/routes/quick-build/` — Remove empty directory (moved to Patina)
 
 ### Deferred (not in this plan)
+
 - `src/routes/orchestration-build/+page.svelte` — No content doc exists yet; homepage links to it but page can be created when copy is ready
 - `src/routes/workshop/+page.svelte` — Content doc marked `needs update`
 
@@ -75,6 +79,7 @@ Each task references its content source. The implementing agent MUST read the so
 ### Task 1: Update Layout Schema & Meta
 
 **Files:**
+
 - Modify: `src/routes/+layout.svelte`
 
 - [ ] **Step 1: Read the current layout file**
@@ -87,19 +92,25 @@ Replace the existing `jsonLd` object:
 
 ```javascript
 const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
-  name: 'DomeWorks',
-  description: 'Intelligence infrastructure engineering for engineering organizations. We build the Context and Orchestration layers that replace coordination overhead with AI-native systems.',
-  url: 'https://domeworks.ai',
-  areaServed: {
-    '@type': 'Country',
-    name: 'United States'
-  },
-  serviceType: ['Intelligence Infrastructure Engineering', 'AI Consulting', 'Context Layer Engineering', 'Orchestration Layer Engineering'],
-  priceRange: '$2,500–$15,000+',
-  email: 'piers@domeworks.ai'
-}
+	'@context': 'https://schema.org',
+	'@type': 'ProfessionalService',
+	name: 'DomeWorks',
+	description:
+		'Intelligence infrastructure engineering for engineering organizations. We build the Context and Orchestration layers that replace coordination overhead with AI-native systems.',
+	url: 'https://domeworks.ai',
+	areaServed: {
+		'@type': 'Country',
+		name: 'United States'
+	},
+	serviceType: [
+		'Intelligence Infrastructure Engineering',
+		'AI Consulting',
+		'Context Layer Engineering',
+		'Orchestration Layer Engineering'
+	],
+	priceRange: '$2,500–$15,000+',
+	email: 'piers@domeworks.ai'
+};
 ```
 
 - [ ] **Step 3: Verify build passes**
@@ -119,6 +130,7 @@ git commit -m "refactor: update layout schema to intelligence infrastructure pos
 ### Task 2: Update Header Navigation
 
 **Files:**
+
 - Modify: `src/lib/components/layout/Header.svelte`
 
 - [ ] **Step 1: Read the current Header**
@@ -131,11 +143,11 @@ Replace the `navLinks` const:
 
 ```typescript
 const navLinks = [
-  { href: '/scan/', label: 'AI Scan' },
-  { href: '/context-build/', label: 'Context Build' },
-  { href: '/about/', label: 'About' },
-  { href: '/contact/', label: 'Contact' }
-]
+	{ href: '/scan/', label: 'AI Scan' },
+	{ href: '/context-build/', label: 'Context Build' },
+	{ href: '/about/', label: 'About' },
+	{ href: '/contact/', label: 'Contact' }
+];
 ```
 
 - [ ] **Step 3: Verify build passes**
@@ -155,6 +167,7 @@ git commit -m "refactor: update nav from Assessment to Context Build"
 ### Task 3: Update Footer
 
 **Files:**
+
 - Modify: `src/lib/components/layout/Footer.svelte`
 
 - [ ] **Step 1: Read the current Footer**
@@ -164,6 +177,7 @@ Read `src/lib/components/layout/Footer.svelte` in full.
 - [ ] **Step 2: Update brand description and email**
 
 Find and replace these strings throughout the file:
+
 - `"AI infrastructure engineering for teams that ship"` → `"Intelligence infrastructure that replaces coordination overhead"`
 - `piers@domeworks.tech` → `piers@domeworks.ai`
 - `hello@domeworks.tech` → `piers@domeworks.ai`
@@ -188,6 +202,7 @@ git commit -m "refactor: update footer to intelligence infrastructure positionin
 ### Task 4: Rewrite Homepage
 
 **Files:**
+
 - Modify: `src/routes/+page.svelte`
 
 **Copy source:** `~/piers-os/resources/domeworks/content/website/homepage.md`
@@ -201,6 +216,7 @@ This is the biggest task. The entire page content changes. The implementing agen
 - [ ] **Step 1: Read the current homepage and the source content doc**
 
 Read both:
+
 - `src/routes/+page.svelte` (full file)
 - `~/piers-os/resources/domeworks/content/website/homepage.md`
 
@@ -209,6 +225,7 @@ Read both:
 Key structural changes from current → new:
 
 **Hero section:**
+
 - Old headline: "Your team bought AI tools. Nobody built the systems."
 - New headline: from source doc Hero section — the coordination overhead → infrastructure pitch
 - Old subheadline about tools/systems → New about 10+ years at DoorDash/Square/Mudflap, coordination as the bottleneck
@@ -216,10 +233,12 @@ Key structural changes from current → new:
 - Stat bar: keep structure, update content (e.g., "Intelligence Stack" instead of generic)
 
 **Section 01 (Problem):**
+
 - Old: "Why AI tools fail at the team level" — tools/adoption framing
 - New: From source doc "The Problem" — hierarchy, meetings, managers routing information, Block's company world model reference
 
 **Section 02 (What I Build — THE INTELLIGENCE STACK):**
+
 - This is NEW. Replace the old "How it works" 3-card layout.
 - The Intelligence Stack diagram (4 layers: Surface, Orchestration, Context, Edge)
 - Context Layer description
@@ -228,17 +247,21 @@ Key structural changes from current → new:
 - Fractional AI Leadership subsection
 
 **Section 03 (How It Works):**
+
 - Old: Scan / Assessment / Build cards
 - New: AI Scan / Context Build / Orchestration Build cards with new descriptions and pricing from source doc
 
 **Section 04 (Who This Is For):**
+
 - Similar structure but reframed around "coordination overhead" instead of "tools not working"
 - From source doc "Who This Is For" section
 
 **Section 05 (FAQs):**
+
 - Remove or update. The source doc doesn't include FAQs — remove the FAQ section and replace with the "Ready to talk?" CTA section from the source doc.
 
 **Meta/SEO:**
+
 - Update `<svelte:head>` title: `"DomeWorks — Intelligence Infrastructure Engineering"`
 - Update meta description to match new positioning
 - Update any JSON-LD on the page
@@ -252,6 +275,7 @@ Expected: Build succeeds.
 - [ ] **Step 4: Visual verification**
 
 Start dev server and check `https://domeworks.localhost:1355/` in browser. Verify:
+
 - Hero renders with new headline
 - Intelligence Stack section displays the 4-layer diagram
 - Service cards show Scan / Context Build / Orchestration Build
@@ -270,16 +294,19 @@ git commit -m "feat: rewrite homepage to Intelligence Stack positioning"
 ### Task 5: Create Context Build Page (replaces Assessment)
 
 **Files:**
+
 - Create: `src/routes/context-build/+page.svelte`
 - Delete: `src/routes/assessment/+page.svelte`
 
 **Copy sources:**
+
 - `~/piers-os/resources/domeworks/content/website/assessment.md` (base copy — mostly reusable)
 - `~/piers-os/resources/domeworks/business/pricing-strategy.md` (Context Build section for framing)
 
 - [ ] **Step 1: Read the current Assessment page and source docs**
 
 Read:
+
 - `src/routes/assessment/+page.svelte`
 - `~/piers-os/resources/domeworks/content/website/assessment.md`
 - `~/piers-os/resources/domeworks/business/pricing-strategy.md` (lines 130-165, Context Build section)
@@ -289,6 +316,7 @@ Read:
 Create `src/routes/context-build/+page.svelte` by adapting the Assessment page:
 
 Key changes:
+
 - Page title: "Context Build" not "Assessment"
 - Hero headline: Reframe from "Find out what's actually happening with AI" to Context Layer framing — "Build the Context Layer your AI tools are missing"
 - Hero subheadline: Intelligence Maturity Level 1→2 transition language
@@ -324,6 +352,7 @@ git commit -m "feat: replace Assessment with Context Build page"
 ### Task 6: Update Scan Page
 
 **Files:**
+
 - Modify: `src/routes/scan/+page.svelte`
 
 - [ ] **Step 1: Read the current Scan page**
@@ -357,6 +386,7 @@ git commit -m "refactor: update Scan page with Intelligence Maturity framing"
 ### Task 7: Update About Page
 
 **Files:**
+
 - Modify: `src/routes/about/+page.svelte`
 
 **Copy source:** `~/piers-os/resources/domeworks/content/website/about.md`
@@ -364,6 +394,7 @@ git commit -m "refactor: update Scan page with Intelligence Maturity framing"
 - [ ] **Step 1: Read the current About page and source doc**
 
 Read both:
+
 - `src/routes/about/+page.svelte`
 - `~/piers-os/resources/domeworks/content/website/about.md`
 
@@ -393,6 +424,7 @@ git commit -m "refactor: update About page with Mudflap and intelligence infrast
 ### Task 8: Update Contact Page
 
 **Files:**
+
 - Modify: `src/routes/contact/+page.svelte`
 
 **Copy source:** `~/piers-os/resources/domeworks/content/website/contact.md`
@@ -426,6 +458,7 @@ git commit -m "refactor: update Contact page email and service references"
 ### Task 9: Remove Quick Build Route
 
 **Files:**
+
 - Delete: `src/routes/quick-build/` (empty directory)
 
 - [ ] **Step 1: Remove the empty directory**
@@ -457,11 +490,13 @@ git commit -m "chore: remove quick-build route (moved to Patina)"
 ### Task 10: Global Search-and-Replace Sweep
 
 **Files:**
+
 - Any remaining files with old references
 
 - [ ] **Step 1: Search for stale references**
 
 Grep the entire `src/` directory for:
+
 - `domeworks.tech` (should be `domeworks.ai`)
 - `assessment` in href/link contexts (should be `context-build`)
 - `"Assessment"` as a service name label (should be `"Context Build"`)
@@ -480,6 +515,7 @@ Expected: Build succeeds.
 - [ ] **Step 4: Full visual check**
 
 Navigate through all pages on `https://domeworks.localhost:1355/`:
+
 - `/` — homepage with Intelligence Stack
 - `/scan/` — Intelligence Maturity framing
 - `/context-build/` — new service page

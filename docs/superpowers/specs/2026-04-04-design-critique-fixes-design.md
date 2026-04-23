@@ -22,10 +22,12 @@ Implement all findings from the Apple Design Director-style critique of the Dome
 **Problem:** `text-charcoal/50` and `text-charcoal/40` on light backgrounds fail WCAG AA (4.5:1 contrast ratio for normal text).
 
 **Fix:** Find all instances of `text-charcoal/50` and `text-charcoal/40` used on light backgrounds (`bg-warm-white`, `bg-stone`). Replace:
+
 - `text-charcoal/40` → `text-charcoal/60`
 - `text-charcoal/50` → `text-charcoal/60`
 
 **Affected files:**
+
 - `src/routes/+page.svelte` — Block proof point ("That's where DomeWorks comes in"), service card durations, pricing footnote
 - `src/routes/about/+page.svelte` — BCG citation
 - `src/routes/scan/+page.svelte` — pricing footnote
@@ -82,17 +84,23 @@ Use a two-column card layout with day groupings, styled consistently with the si
 
 ```svelte
 <ul class="space-y-4">
-  <li class="flex items-start gap-3">
-    <span class="flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center mt-0.5">
-      <span class="w-2 h-2 rounded-full bg-primary"></span>
-    </span>
-    <span>You're a <strong>VP of Engineering, Head of Engineering, or CTO</strong> at a mid-market SaaS company (50-500 people) or a funded startup</span>
-  </li>
-  <!-- ... more items -->
+	<li class="flex items-start gap-3">
+		<span
+			class="flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center mt-0.5"
+		>
+			<span class="w-2 h-2 rounded-full bg-primary"></span>
+		</span>
+		<span
+			>You're a <strong>VP of Engineering, Head of Engineering, or CTO</strong> at a mid-market SaaS company
+			(50-500 people) or a funded startup</span
+		>
+	</li>
+	<!-- ... more items -->
 </ul>
 ```
 
 Items:
+
 1. VP Eng / Head of Eng / CTO at mid-market SaaS (50-500 people) or funded startup
 2. Your engineers have AI tools but your organization still runs on human coordination
 3. You've probably thought about assigning a senior engineer to figure this out
@@ -123,9 +131,10 @@ Desktop nav stays unchanged — all 6 items remain visible.
 
 ```html
 <div class="max-w-2xl mx-auto text-center py-8">
-  <p class="text-sm text-charcoal/60">
-    Next step in the journey: <a href="/context-build/" class="text-primary hover:underline font-medium">Context Build →</a>
-  </p>
+	<p class="text-sm text-charcoal/60">
+		Next step in the journey:
+		<a href="/context-build/" class="text-primary hover:underline font-medium">Context Build →</a>
+	</p>
 </div>
 ```
 
@@ -162,21 +171,25 @@ Implement as three inline items with numbered circles and connecting lines, usin
 **Fix:** Add a FAQ section using `<details>` elements to each service page, after the pricing section and before the (now-removed) bottom CTA. The `details[open]` animation CSS already exists in `tailwind.css`.
 
 **Scan FAQs:**
+
 - "What access do you need?" — Admin credentials or exports from AI tools, plus a 15-min walkthrough.
 - "What if we're a remote team?" — Fully remote-friendly. The survey is async, the report is delivered digitally.
 - "Is there any obligation after the Scan?" — No. Many teams take the quick wins and run.
 
 **Context Build FAQs:**
+
 - "What access do you need?" — Stakeholder time (30-min interviews with 3-5 people), plus tool admin access.
 - "Do you sign NDAs?" — Yes, standard mutual NDA before any access is granted.
 - "What if we want to build internally after?" — That's fine. The deliverables are designed to be actionable without me.
 
 **Orchestration Build FAQs:**
+
 - "Do we need a Context Build first?" — Yes, or an equivalent assessment. Agent coordination without a context system is automating noise.
 - "How embedded are you?" — 2-3 days/week, in standups, pairing with engineers, shipping alongside your team.
 - "What does the handoff look like?" — Documented systems, runbooks, and knowledge transfer sessions. Your team owns everything.
 
 **Fractional FAQs:**
+
 - "How is this different from a contractor?" — I own the intelligence infrastructure as a system, not just execute tasks.
 - "What's the minimum commitment?" — 3 months recommended to see compounding effects. Month-to-month after that.
 - "Can this evolve into a full-time hire?" — If your org grows to need a full-time Head of AI, I'll help you hire one and transition.
@@ -206,12 +219,12 @@ The bar replaces the current `<p class="text-xs font-medium tracking-widest text
 
 #### Segment colors by page:
 
-| Page | Segment 1 (Scan) | Segment 2 (Context) | Segment 3 (Orchestration) | Segment 4 (Fractional) |
-|---|---|---|---|---|
-| Scan | `bg-primary` | `bg-primary/15` | `bg-primary/8` | `bg-primary/5` |
-| Context Build | `bg-primary/30` | `bg-primary` | `bg-primary/15` | `bg-primary/8` |
-| Orchestration | `bg-primary/20` | `bg-primary/30` | `bg-copper` | `bg-copper/15` |
-| Fractional | `bg-primary/15` | `bg-primary/20` | `bg-copper/30` | `bg-copper` |
+| Page          | Segment 1 (Scan) | Segment 2 (Context) | Segment 3 (Orchestration) | Segment 4 (Fractional) |
+| ------------- | ---------------- | ------------------- | ------------------------- | ---------------------- |
+| Scan          | `bg-primary`     | `bg-primary/15`     | `bg-primary/8`            | `bg-primary/5`         |
+| Context Build | `bg-primary/30`  | `bg-primary`        | `bg-primary/15`           | `bg-primary/8`         |
+| Orchestration | `bg-primary/20`  | `bg-primary/30`     | `bg-copper`               | `bg-copper/15`         |
+| Fractional    | `bg-primary/15`  | `bg-primary/20`     | `bg-copper/30`            | `bg-copper`            |
 
 #### Journey Nudge
 
@@ -219,20 +232,21 @@ A lightweight next-step link placed just above the footer on service pages:
 
 ```svelte
 {#if nextStep}
-  <div class="border-t border-charcoal/8 py-8">
-    <div class="max-w-6xl mx-auto px-6 lg:px-8 text-center">
-      <p class="text-sm text-charcoal/60">
-        Next in the journey:
-        <a href={nextStep.href} class="text-primary hover:underline font-medium">
-          {nextStep.label} →
-        </a>
-      </p>
-    </div>
-  </div>
+	<div class="border-t border-charcoal/8 py-8">
+		<div class="max-w-6xl mx-auto px-6 lg:px-8 text-center">
+			<p class="text-sm text-charcoal/60">
+				Next in the journey:
+				<a href={nextStep.href} class="text-primary hover:underline font-medium">
+					{nextStep.label} →
+				</a>
+			</p>
+		</div>
+	</div>
 {/if}
 ```
 
 Mapping:
+
 - Scan → "Context Build" (`/context-build/`)
 - Context Build → "Orchestration Build" (`/orchestration-build/`)
 - Orchestration Build → "Fractional AI Leadership" (`/fractional/`)
@@ -241,12 +255,15 @@ Mapping:
 ## Files Changed
 
 **New files:**
+
 - `src/lib/components/ui/JourneyBar.svelte` — journey progress bar component
 
 **Deleted files:**
+
 - `src/lib/components/ui/Scrollytelling.svelte` — orphaned component
 
 **Modified files:**
+
 - `src/tailwind.css` — add hero gradient/SVG styles
 - `src/routes/+page.svelte` — contrast fixes, "Learn more" on middle cards, "Who this is for" checklist
 - `src/routes/scan/+page.svelte` — journey bar, hero differentiation, FAQ, remove bottom CTA, contrast fixes

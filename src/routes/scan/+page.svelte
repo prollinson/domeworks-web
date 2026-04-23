@@ -17,14 +17,20 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="DomeWorks" />
 	<meta property="og:url" content="https://domeworks.tech/scan/" />
-	<meta property="og:title" content="AI Scan: 48-hour audit of your team's AI tooling | DomeWorks" />
+	<meta
+		property="og:title"
+		content="AI Scan: 48-hour audit of your team's AI tooling | DomeWorks"
+	/>
 	<meta
 		property="og:description"
 		content="A 48-hour audit of your team's AI tooling: every tool, every seat, every dollar — plus three quick wins and a readiness score. $2,500–$3,500 fixed price."
 	/>
 	<meta property="og:image" content="https://domeworks.tech/og-image.png" />
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="AI Scan: 48-hour audit of your team's AI tooling | DomeWorks" />
+	<meta
+		name="twitter:title"
+		content="AI Scan: 48-hour audit of your team's AI tooling | DomeWorks"
+	/>
 	<meta
 		name="twitter:description"
 		content="A 48-hour audit of your team's AI tooling: every tool, every seat, every dollar — plus three quick wins and a readiness score."
@@ -79,9 +85,9 @@
 				In 48 hours<span class="text-primary">.</span>
 			</h1>
 			<p class="mt-6 text-xl text-charcoal/70 leading-relaxed">
-				You're paying for more AI tooling than you realize. Some of it works. Some of it sits
-				idle. The Scan maps every tool, every seat, every dollar — and tells you whether your
-				team is actually moving from "bought tools" to "AI coordinates our work."
+				You're paying for more AI tooling than you realize. Some of it works. Some of it sits idle.
+				The Scan maps every tool, every seat, every dollar — and tells you whether your team is
+				actually moving from "bought tools" to "AI coordinates our work."
 			</p>
 			<div class="mt-8">
 				<Button href={getBookCallUrl()} size="lg">Book a call</Button>
@@ -129,8 +135,8 @@
 	<div class="max-w-2xl mx-auto" use:reveal>
 		<div class="p-8 bg-warm-white rounded-2xl border border-charcoal/10">
 			<p class="text-lg text-charcoal/70 leading-relaxed mb-4">
-				No shared context flowing into AI interactions. No coordination between the tools and
-				how the team actually ships. Individual engineers are faster; the team isn't.
+				No shared context flowing into AI interactions. No coordination between the tools and how
+				the team actually ships. Individual engineers are faster; the team isn't.
 			</p>
 			<p class="text-lg text-charcoal/70 leading-relaxed">
 				When that's what the Scan surfaces, I'll tell you exactly what a <a

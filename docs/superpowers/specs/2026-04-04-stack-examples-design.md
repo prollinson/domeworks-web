@@ -40,12 +40,12 @@ Below the existing tagline ("Builds the world model so AI doesn't start from zer
 
 Add a compact before/after comparison. Use a 2-column grid with subtle styling:
 
-| Before | After |
-|--------|-------|
-| Engineers re-explain architecture to every AI prompt | Context system feeds it automatically |
-| Managers relay context between teams in meetings | Agent coordination routes it in real time |
+| Before                                                | After                                                |
+| ----------------------------------------------------- | ---------------------------------------------------- |
+| Engineers re-explain architecture to every AI prompt  | Context system feeds it automatically                |
+| Managers relay context between teams in meetings      | Agent coordination routes it in real time            |
 | Status updates exist because information doesn't flow | Information flows through infrastructure, not people |
-| AI tools help individuals but don't coordinate work | Multi-agent workflows coordinate across the team |
+| AI tools help individuals but don't coordinate work   | Multi-agent workflows coordinate across the team     |
 
 **Style:** Use the existing card aesthetic — `bg-stone rounded-xl border border-charcoal/10 p-6`. Two columns: "Before" header in `text-charcoal/50` with regular rows, "After" header in `text-primary` with rows that feel like the improvement. The table should use `use:reveal` for scroll animation consistent with the rest of the section.
 
