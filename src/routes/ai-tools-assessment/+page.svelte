@@ -413,34 +413,33 @@
 	</div>
 </Section>
 
-<!-- 04: The math — full-width, larger treatment -->
+<!-- 04: The math -->
 <Section background="muted" padding="md" eyebrow="04" title="The math">
 	<div class="max-w-5xl mx-auto" use:reveal>
-		<div class="grid md:grid-cols-2 gap-8 items-center">
+		<div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
 			<div class="text-center md:text-left">
-				<p class="text-5xl md:text-6xl font-serif text-charcoal leading-tight">
-					5–7 hours<span class="text-copper">/</span><span class="text-charcoal/50">week</span>
+				<p class="font-sans font-semibold text-[clamp(3rem,6vw,5rem)] leading-[0.95] tracking-[-0.03em] text-ink">
+					5–7 hours<span class="text-accent">/</span><span class="text-subtle">week</span>
 				</p>
-				<p class="text-charcoal/70 mt-2 text-lg">recovered per person, on average</p>
+				<p class="font-serif text-ink/70 mt-3 text-lg">recovered per person, on average</p>
 			</div>
 			<div class="space-y-5">
-				<div class="p-8 bg-stone rounded-2xl border border-charcoal/10">
-					<p class="text-lg text-charcoal/70 leading-relaxed">
+				<div class="rule-left-accent">
+					<p class="font-serif text-lg text-ink/75 leading-relaxed">
 						For a team where staff time is worth $50–$200/hour loaded, that's
-						<strong class="text-charcoal">$250–$1,400 per person per week</strong> in recovered capacity, or the ability to take on more clients without adding headcount. Most teams land around <strong class="text-charcoal">$600–$800 per person per week</strong>.
+						<strong class="font-sans font-semibold text-ink">$250–$1,400 per person per week</strong> in recovered capacity, or the ability to take on more clients without adding headcount. Most teams land around <strong class="font-sans font-semibold text-ink">$600–$800 per person per week</strong>.
 					</p>
-					<p class="text-sm text-charcoal/60 mt-3">
+					<p class="font-serif text-sm text-ink/60 mt-3">
 						Your own hours count too — and those are usually the most expensive.
 					</p>
-					<div class="h-px bg-charcoal/10 my-5"></div>
-					<p class="text-sm text-charcoal/50">
+					<p class="font-serif text-sm text-ink/50 mt-4 pt-4 border-t border-rule">
 						The tools cost $30–$80/month in aggregate. Most teams recoup the $999 within the first week of implementation.
 					</p>
 				</div>
-				<div class="p-4 bg-primary/[0.04] rounded-lg border border-primary/15 flex items-start gap-3">
-					<svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-					<p class="text-sm text-charcoal/70">
-						<strong class="text-charcoal">Guarantee:</strong> implement the recommendations and save 5+ hours/week within 30 days, or full refund. No questions asked.
+				<div class="flex items-start gap-3 pt-4 border-t border-rule-strong">
+					<svg class="w-5 h-5 text-accent flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
+					<p class="font-serif text-sm text-ink/80 leading-relaxed">
+						<strong class="font-sans font-semibold text-ink">Guarantee:</strong> implement the recommendations and save 5+ hours/week within 30 days, or full refund. No questions asked.
 					</p>
 				</div>
 			</div>
