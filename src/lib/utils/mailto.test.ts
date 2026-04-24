@@ -7,7 +7,8 @@ const sample: QuizSubmission = {
 		industry: 'Mortgage broker / lending',
 		size: '10-25',
 		timeLeak: 'admin',
-		dreadedTask: 'chasing client documents for lender submissions, takes 6+ hours a week'
+		dreadedTask: 'chasing client documents for lender submissions, takes 6+ hours a week',
+		processHealth: 'broken'
 	},
 	adaptive: [
 		{
@@ -47,6 +48,7 @@ describe('generateQuizMailto', () => {
 		expect(body).toContain('10-25');
 		expect(body).toContain('admin');
 		expect(body).toContain('chasing client documents');
+		expect(body).toContain('Process health: broken');
 	});
 
 	it('includes each adaptive question, the options offered, and the answer', () => {

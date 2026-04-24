@@ -60,6 +60,7 @@ Industry: ${s.static.industry}
 Team size: ${s.static.size}
 Time leak area: ${s.static.timeLeak}
 Dreaded task: ${s.static.dreadedTask}
+Process health: ${s.static.processHealth}
 
 Adaptive follow-ups:
 ${adaptiveLines}

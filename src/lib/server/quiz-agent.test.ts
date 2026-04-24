@@ -22,7 +22,8 @@ const baseReq: NextRequest = {
 		industry: 'Mortgage broker / lending',
 		size: '10-25',
 		timeLeak: 'admin',
-		dreadedTask: 'chasing client documents for lender submissions, takes 6+ hours a week'
+		dreadedTask: 'chasing client documents for lender submissions, takes 6+ hours a week',
+		processHealth: 'healthy'
 	},
 	adaptiveSoFar: []
 };

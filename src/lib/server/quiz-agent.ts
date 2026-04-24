@@ -16,6 +16,8 @@ Information needs:
 - ownership: whether owner or staff does the task (only if team size ≥ 10)
 - prior-tools: AI tools the respondent already tried (useful if the dreaded task mentions AI-adjacent terms or the respondent seems sophisticated)
 
+Also note: the static block now carries \`processHealth\` — one of 'healthy', 'broken', or 'unsure'. If it is 'broken', your follow-ups should lean toward understanding the broken process (volume, ownership, prior-tools) rather than recommending tool-centric questions (stack) — because Piers's plan will lead with "fix the process first" in that case. If 'unsure', treat as healthy for question selection but note it. If 'healthy', proceed with the normal info-need ranking.
+
 Rules:
 1. Never ask a question whose info need is already in adaptiveSoFar.
 2. Generate vertical-specific chip options. For mortgage brokers: AFG, Connective, Loan Market, in-house, other. For accounting: Karbon, Canopy, QuickBooks, Drake, other. For trades: ServiceTitan, Jobber, Housecall Pro, other. For legal: Clio, MyCase, PracticePanther, other. For medical: Epic, Dentrix, Athena, other. For real estate: Follow Up Boss, kvCORE, CINC, other. For insurance: Applied Epic, HawkSoft, EZLynx, NowCerts, other. For marketing/creative agency: HubSpot, Monday, Asana, ClickUp, other. For consulting: Notion, Google Docs, PowerPoint, other. Always tailor.

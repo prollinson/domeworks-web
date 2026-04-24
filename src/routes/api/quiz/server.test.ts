@@ -19,7 +19,8 @@ const sample: QuizSubmission = {
 		industry: 'Accounting or bookkeeping',
 		size: '10-25',
 		timeLeak: 'admin',
-		dreadedTask: 'chasing tax documents from 80 clients every February'
+		dreadedTask: 'chasing tax documents from 80 clients every February',
+		processHealth: 'healthy'
 	},
 	adaptive: [
 		{
@@ -57,6 +58,7 @@ describe('POST /api/quiz', () => {
 		const msg = send.mock.calls[0][0];
 		expect(msg.to).toBe('piers@domeworks.tech');
 		expect(msg.text).toContain('Industry: Accounting or bookkeeping');
+		expect(msg.text).toContain('Process health: healthy');
 		expect(msg.text).toContain('Which PM software?');
 		expect(msg.text).toContain('→ Karbon');
 		expect(msg.text).toContain('Reply to: cpa@example.com');

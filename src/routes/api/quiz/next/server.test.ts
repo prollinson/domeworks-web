@@ -34,7 +34,8 @@ const validReq: NextRequest = {
 		industry: 'Accounting or bookkeeping',
 		size: '10-25',
 		timeLeak: 'admin',
-		dreadedTask: 'chasing tax documents from 80 clients every February'
+		dreadedTask: 'chasing tax documents from 80 clients every February',
+		processHealth: 'broken'
 	},
 	adaptiveSoFar: []
 };
