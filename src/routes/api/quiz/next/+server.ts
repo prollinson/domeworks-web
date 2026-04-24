@@ -25,7 +25,7 @@ export const POST: RequestHandler = async ({ request, platform }) => {
 	if (!Array.isArray(req.adaptiveSoFar) || !req.adaptiveSoFar.every(isValidAdaptive)) {
 		throw error(400, 'Invalid adaptiveSoFar');
 	}
-	if (req.adaptiveSoFar.length >= 3) {
+	if (req.adaptiveSoFar.length >= 2) {
 		throw error(400, 'Quiz has no further adaptive questions');
 	}
 

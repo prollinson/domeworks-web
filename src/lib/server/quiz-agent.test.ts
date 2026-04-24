@@ -21,9 +21,17 @@ const baseReq: NextRequest = {
 	static: {
 		industry: 'Mortgage broker / lending',
 		size: '10-25',
+		regulatedData: 'yes',
+		businessGoal: 'Add capacity without hiring',
+		businessGoalOther: '',
 		timeLeak: 'admin',
 		dreadedTask: 'chasing client documents for lender submissions, takes 6+ hours a week',
-		processHealth: 'healthy'
+		digitizationProbe: '',
+		processHealth: 'healthy',
+		currentAiUse: '',
+		governanceRules: 'informal',
+		governanceReview: 'always',
+		governanceComfort: 'no'
 	},
 	adaptiveSoFar: []
 };
@@ -129,7 +137,7 @@ describe('nextQuestion', () => {
 		).rejects.toThrow(/tool/i);
 	});
 
-	it('throws if infoNeed is not one of the six valid values', async () => {
+	it('throws if infoNeed is not one of the five valid values', async () => {
 		mockCreate.mockResolvedValueOnce({
 			stop_reason: 'tool_use',
 			content: [

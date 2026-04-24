@@ -33,9 +33,17 @@ const validReq: NextRequest = {
 	static: {
 		industry: 'Accounting or bookkeeping',
 		size: '10-25',
+		regulatedData: 'yes',
+		businessGoal: 'Reduce admin burden',
+		businessGoalOther: '',
 		timeLeak: 'admin',
 		dreadedTask: 'chasing tax documents from 80 clients every February',
-		processHealth: 'broken'
+		digitizationProbe: '',
+		processHealth: 'broken',
+		currentAiUse: '',
+		governanceRules: 'informal',
+		governanceReview: 'always',
+		governanceComfort: 'no'
 	},
 	adaptiveSoFar: []
 };
@@ -69,19 +77,12 @@ describe('POST /api/quiz/next', () => {
 		});
 	});
 
-	it('throws 400 if adaptiveSoFar length already >= 3', async () => {
+	it('throws 400 if adaptiveSoFar length already >= 2', async () => {
 		const full: NextRequest = {
 			...validReq,
 			adaptiveSoFar: [
 				{ id: 'q1', infoNeed: 'stack', question: 'a?', options: ['x', 'Other'], answer: 'x' },
-				{ id: 'q2', infoNeed: 'volume', question: 'b?', options: ['y', 'Other'], answer: 'y' },
-				{
-					id: 'q3',
-					infoNeed: 'sensitive-data',
-					question: 'c?',
-					options: ['z', 'Other'],
-					answer: 'z'
-				}
+				{ id: 'q2', infoNeed: 'volume', question: 'b?', options: ['y', 'Other'], answer: 'y' }
 			]
 		};
 		await expect(POST(makeEvent(full))).rejects.toMatchObject({ status: 400 });

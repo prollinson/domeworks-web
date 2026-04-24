@@ -16,7 +16,14 @@ const config = {
 	kit: {
 		// Cloudflare Pages. Pages prerender by default via src/routes/+layout.ts;
 		// dynamic endpoints (e.g. /api/quiz) run as Pages Functions on the Worker runtime.
-		adapter: adapter(),
+		// platformProxy exposes wrangler.jsonc bindings (D1, send_email, secrets) to
+		// `vite dev` so local dev matches prod without needing wrangler dev.
+		adapter: adapter({
+			platformProxy: {
+				configPath: 'wrangler.jsonc',
+				persist: true
+			}
+		}),
 		prerender: {
 			// The Piers portrait is rendered with an inline onerror that hides its
 			// <figure> when the asset isn't present — intentional for now. Don't

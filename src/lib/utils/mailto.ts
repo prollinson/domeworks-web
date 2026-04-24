@@ -52,15 +52,36 @@ export function generateQuizMailto(s: QuizSubmission): string {
 		.map((a) => `Q: ${a.question}\n   Options offered: ${a.options.join(' · ')}\n   → ${a.answer}`)
 		.join('\n');
 
+	const businessGoal =
+		s.static.businessGoal === 'Other' && s.static.businessGoalOther
+			? `Other: ${s.static.businessGoalOther}`
+			: s.static.businessGoal;
+
+	const governanceBlock = s.static.governanceRules
+		? `
+Governance:
+- Tool-use rules: ${s.static.governanceRules}
+- Human review: ${s.static.governanceReview}
+- Comfort with third-party AI: ${s.static.governanceComfort}`
+		: '';
+
+	const digitizationBlock = s.static.digitizationProbe
+		? `\nDigitization probe: ${s.static.digitizationProbe}`
+		: '';
+
+	const currentAiBlock = s.static.currentAiUse ? `\nCurrent AI use: ${s.static.currentAiUse}` : '';
+
 	const body = encodeURIComponent(`Hi Piers,
 
 Please send me the AI Action Plan based on these answers.
 
 Industry: ${s.static.industry}
 Team size: ${s.static.size}
+Regulated data: ${s.static.regulatedData}
+Business goal: ${businessGoal}
 Time leak area: ${s.static.timeLeak}
-Dreaded task: ${s.static.dreadedTask}
-Process health: ${s.static.processHealth}
+Dreaded task: ${s.static.dreadedTask}${digitizationBlock}
+Process health: ${s.static.processHealth}${currentAiBlock}${governanceBlock}
 
 Adaptive follow-ups:
 ${adaptiveLines}

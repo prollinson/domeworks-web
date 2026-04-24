@@ -5,7 +5,7 @@ export const QUIZ_FALLBACK: NextResponse[] = [
 		id: 'q1',
 		infoNeed: 'stack',
 		question: "What's the main software that task runs through today?",
-		helper: 'Pick the closest one — we can refine in the plan.',
+		helper: 'Pick the closest one, we can refine in the plan.',
 		options: [
 			'Email and spreadsheets',
 			'QuickBooks or similar accounting',
@@ -20,16 +20,7 @@ export const QUIZ_FALLBACK: NextResponse[] = [
 		infoNeed: 'volume',
 		question: 'Roughly how many hours per week does that task consume?',
 		helper: null,
-		options: ['Under 1', '1–3', '4–8', '8+', 'Other'],
-		allowOtherText: true
-	},
-	{
-		id: 'q3',
-		infoNeed: 'sensitive-data',
-		question:
-			'Does the task involve sensitive data — health records, privileged client info, or regulated financial data?',
-		helper: null,
-		options: ['Yes', 'No', 'Not sure', 'Other'],
+		options: ['Under 1', '1 to 3', '4 to 8', '8+', 'Other'],
 		allowOtherText: true
 	}
 ];

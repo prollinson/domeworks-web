@@ -1,40 +1,99 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import Section from '$lib/components/layout/Section.svelte';
 	import { reveal } from '$lib/actions/reveal';
 	import { generateQuizMailto, getAssessmentCallUrl } from '$lib/utils/mailto';
 	import { QUIZ_INDUSTRIES } from '$lib/data/quiz-industries';
 	import { getFallbackQuestion } from '$lib/data/quiz-fallback';
+	import { posthog } from '$lib/posthog';
 	import { untrack } from 'svelte';
 	import type {
 		AdaptiveAnswer,
+		GovernanceComfort,
+		GovernanceReview,
+		GovernanceRules,
 		NextRequest,
 		NextResponse,
 		QuizStatic,
-		QuizSubmission
+		QuizSubmission,
+		RegulatedData
 	} from '$lib/types/quiz';
+
+	const REGULATED_INDUSTRIES = new Set([
+		'Accounting or bookkeeping',
+		'Legal',
+		'Medical or dental',
+		'Mortgage broker / lending',
+		'Insurance or brokers'
+	]);
+
+	const BUSINESS_GOALS = [
+		'Grow revenue',
+		'Add capacity without hiring',
+		'Faster turnaround',
+		'Better client response',
+		'Reduce admin burden',
+		'Improve documentation or compliance',
+		'Smoother scheduling or intake',
+		'Better collections or cash flow',
+		'Staffing resilience',
+		'Margin or profitability',
+		'Other'
+	];
+
+	const DIGITIZATION_TRIGGER = /email|pdf|phone|paper|spreadsheet/i;
 
 	// --- Static answers ---
 	let industry = $state('');
 	let size = $state('');
+	let regulatedData = $state<RegulatedData | ''>('');
+	let businessGoal = $state('');
+	let businessGoalOther = $state('');
 	let timeLeak = $state('');
 	let dreadedTask = $state('');
+	let digitizationProbe = $state('');
 	let processHealth = $state<'healthy' | 'broken' | 'unsure' | ''>('');
+	let currentAiUse = $state('');
+	let governanceRules = $state<GovernanceRules | ''>('');
+	let governanceReview = $state<GovernanceReview | ''>('');
+	let governanceComfort = $state<GovernanceComfort | ''>('');
+
+	// --- Conditional branches ---
+	const governanceShown = $derived(
+		(regulatedData === 'yes' || regulatedData === 'sometimes') && REGULATED_INDUSTRIES.has(industry)
+	);
+	const digitizationShown = $derived(
+		dreadedTask.trim().length >= 20 && DIGITIZATION_TRIGGER.test(dreadedTask)
+	);
+
+	// --- Completion gates ---
+	const governanceComplete = $derived(
+		!governanceShown ||
+			(governanceRules.length > 0 && governanceReview.length > 0 && governanceComfort.length > 0)
+	);
+	const businessGoalComplete = $derived(
+		businessGoal.length > 0 && (businessGoal !== 'Other' || businessGoalOther.trim().length > 0)
+	);
 
 	const staticComplete = $derived(
 		industry.length > 0 &&
 			size.length > 0 &&
+			regulatedData.length > 0 &&
+			governanceComplete &&
+			businessGoalComplete &&
 			timeLeak.length > 0 &&
 			dreadedTask.trim().length >= 20 &&
 			processHealth.length > 0
 	);
 
 	// --- Adaptive state ---
+	const ADAPTIVE_TARGET = 2;
 	let adaptive = $state<AdaptiveAnswer[]>([]);
 	let pendingQuestion = $state<NextResponse | null>(null);
 	let loadingNext = $state(false);
 	let otherText = $state('');
 	let selectedOption = $state('');
-	// Monotonic version — bumped when static changes, so stale fetches can be discarded.
+	// Monotonic version bumped when static changes, so stale fetches can be discarded.
 	let staticVersion = $state(0);
 
 	// --- Submit state ---
@@ -43,19 +102,27 @@
 	let submitState = $state<'idle' | 'sending' | 'sent' | 'mailto-fallback'>('idle');
 
 	const canSubmit = $derived(
-		staticComplete && adaptive.length === 3 && /^\S+@\S+\.\S+$/.test(email)
+		staticComplete && adaptive.length === ADAPTIVE_TARGET && /^\S+@\S+\.\S+$/.test(email)
 	);
 
-	// --- Reset adaptive when any static field changes ---
+	// Reset adaptive when any static field changes.
 	$effect(() => {
-		// Depend on each static field so Svelte tracks edits.
-		industry;
-		size;
-		timeLeak;
-		dreadedTask;
-		processHealth;
-		// Use untrack so staticVersion++ doesn't add staticVersion as a reactive
-		// dependency of this effect (which would cause an infinite re-run loop).
+		// Touch each tracked field so Svelte records this effect's dependencies.
+		void [
+			industry,
+			size,
+			regulatedData,
+			businessGoal,
+			businessGoalOther,
+			timeLeak,
+			dreadedTask,
+			digitizationProbe,
+			processHealth,
+			currentAiUse,
+			governanceRules,
+			governanceReview,
+			governanceComfort
+		];
 		untrack(() => {
 			staticVersion++;
 		});
@@ -63,15 +130,152 @@
 		pendingQuestion = null;
 		selectedOption = '';
 		otherText = '';
-		// Clear any in-flight flag too — without this, an edit during a pending
-		// fetch leaves loadingNext stuck true and wedges the next blur trigger.
 		loadingNext = false;
 	});
 
+	// Clear governance answers when the branch no longer fires,
+	// so stale answers don't leak into the submission.
+	$effect(() => {
+		if (!governanceShown) {
+			untrack(() => {
+				governanceRules = '';
+				governanceReview = '';
+				governanceComfort = '';
+			});
+		}
+	});
+	$effect(() => {
+		if (!digitizationShown) {
+			untrack(() => {
+				digitizationProbe = '';
+			});
+		}
+	});
+	$effect(() => {
+		if (businessGoal !== 'Other') {
+			untrack(() => {
+				businessGoalOther = '';
+			});
+		}
+	});
+
+	// --- PostHog funnel events ---
+	// Intentionally non-reactive: mutations inside $effect should not re-trigger effects.
+	// eslint-disable-next-line svelte/prefer-svelte-reactivity
+	const firedStepEvents = new Set<string>();
+	let stepTotal = $derived(
+		1 /* industry */ +
+			1 /* size */ +
+			1 /* regulated-data */ +
+			(governanceShown ? 1 : 0) +
+			1 /* business-goal */ +
+			1 /* time-leak */ +
+			1 /* dreaded-task */ +
+			1 /* process-health */ +
+			1 /* current-ai-use */ +
+			ADAPTIVE_TARGET
+	);
+
+	function fireStep(stepId: string) {
+		if (firedStepEvents.has(stepId)) return;
+		firedStepEvents.add(stepId);
+		if (typeof window === 'undefined') return;
+		try {
+			posthog.capture('quiz_step_completed', {
+				step_id: stepId,
+				step_number: firedStepEvents.size,
+				step_total: stepTotal
+			});
+		} catch {
+			// PostHog blocked or unavailable; swallow so the UX doesn't notice.
+		}
+	}
+
+	// Track step completions reactively. Track once per (step_id, version) so that
+	// edits which clear state then re-complete it don't re-fire.
+	$effect(() => {
+		if (industry) fireStep('industry');
+	});
+	$effect(() => {
+		if (size) fireStep('size');
+	});
+	$effect(() => {
+		if (regulatedData) fireStep('regulated-data');
+	});
+	$effect(() => {
+		if (governanceShown && governanceComplete) fireStep('governance');
+	});
+	$effect(() => {
+		if (businessGoalComplete) fireStep('business-goal');
+	});
+	$effect(() => {
+		if (timeLeak) fireStep('time-leak');
+	});
+	$effect(() => {
+		if (dreadedTask.trim().length >= 20) fireStep('dreaded-task');
+	});
+	$effect(() => {
+		if (processHealth) fireStep('process-health');
+	});
+	$effect(() => {
+		// Current AI use is optional, so it fires once staticComplete is true
+		// (meaning the user has moved past the static block, blank or not).
+		if (staticComplete) fireStep('current-ai-use');
+	});
+	$effect(() => {
+		for (let i = 0; i < adaptive.length; i++) {
+			fireStep(`adaptive-${i + 1}`);
+		}
+	});
+
+	onMount(() => {
+		try {
+			posthog.capture('quiz_started', { path: '/smb/quiz' });
+		} catch {
+			// swallow
+		}
+
+		const onUnload = () => {
+			if (submitted) return;
+			try {
+				posthog.capture('quiz_abandoned', {
+					last_step_id: Array.from(firedStepEvents).pop() ?? 'none',
+					last_step_number: firedStepEvents.size
+				});
+			} catch {
+				// swallow
+			}
+		};
+		window.addEventListener('pagehide', onUnload);
+		window.addEventListener('beforeunload', onUnload);
+		return () => {
+			window.removeEventListener('pagehide', onUnload);
+			window.removeEventListener('beforeunload', onUnload);
+		};
+	});
+
 	// --- Fetch next adaptive question ---
+	function buildStatic(): QuizStatic {
+		return {
+			industry,
+			size,
+			regulatedData: regulatedData as RegulatedData,
+			businessGoal,
+			businessGoalOther: businessGoal === 'Other' ? businessGoalOther.trim() : '',
+			timeLeak,
+			dreadedTask: dreadedTask.trim(),
+			digitizationProbe: digitizationShown ? digitizationProbe.trim() : '',
+			processHealth: processHealth as 'healthy' | 'broken' | 'unsure',
+			currentAiUse: currentAiUse.trim(),
+			governanceRules: governanceShown ? governanceRules : '',
+			governanceReview: governanceShown ? governanceReview : '',
+			governanceComfort: governanceShown ? governanceComfort : ''
+		};
+	}
+
 	async function fetchNext() {
 		if (!staticComplete) return;
-		if (adaptive.length >= 3) return;
+		if (adaptive.length >= ADAPTIVE_TARGET) return;
 		if (pendingQuestion) return;
 		if (loadingNext) return;
 
@@ -79,13 +283,7 @@
 		const myVersion = staticVersion;
 
 		const body: NextRequest = {
-			static: {
-				industry,
-				size,
-				timeLeak,
-				dreadedTask: dreadedTask.trim(),
-				processHealth: processHealth as 'healthy' | 'broken' | 'unsure'
-			} satisfies QuizStatic,
+			static: buildStatic(),
 			adaptiveSoFar: adaptive
 		};
 
@@ -98,7 +296,7 @@
 			});
 			if (!res.ok) throw new Error(`HTTP ${res.status}`);
 			const data = (await res.json()) as NextResponse;
-			if (myVersion !== staticVersion) return; // stale
+			if (myVersion !== staticVersion) return;
 			pendingQuestion = data;
 		} catch (err) {
 			if (myVersion !== staticVersion) return;
@@ -109,15 +307,12 @@
 		}
 	}
 
-	// Fire the first adaptive fetch once all five static answers exist.
-	// queueMicrotask defers the call out of the effect flush pass.
 	$effect(() => {
 		if (staticComplete && adaptive.length === 0 && !pendingQuestion && !loadingNext) {
 			queueMicrotask(fetchNext);
 		}
 	});
 
-	// --- Answering an adaptive question ---
 	function answerPending() {
 		if (!pendingQuestion) return;
 		const answer =
@@ -140,22 +335,15 @@
 		selectedOption = '';
 		otherText = '';
 
-		if (adaptive.length < 3) fetchNext();
+		if (adaptive.length < ADAPTIVE_TARGET) fetchNext();
 	}
 
-	// --- Submit ---
 	async function handleSubmit(e: Event) {
 		e.preventDefault();
 		if (!canSubmit) return;
 
 		const submission: QuizSubmission = {
-			static: {
-				industry,
-				size,
-				timeLeak,
-				dreadedTask: dreadedTask.trim(),
-				processHealth: processHealth as 'healthy' | 'broken' | 'unsure'
-			},
+			static: buildStatic(),
 			adaptive,
 			email
 		};
@@ -171,6 +359,17 @@
 			});
 			if (!res.ok) throw new Error(`HTTP ${res.status}`);
 			submitState = 'sent';
+			try {
+				posthog.capture('quiz_submitted', {
+					industry: submission.static.industry,
+					team_size: submission.static.size,
+					regulated_data: submission.static.regulatedData,
+					time_leak: submission.static.timeLeak,
+					process_health: submission.static.processHealth
+				});
+			} catch {
+				// swallow
+			}
 		} catch {
 			submitState = 'mailto-fallback';
 			window.location.href = generateQuizMailto(submission);
@@ -179,17 +378,33 @@
 
 	function resend() {
 		const submission: QuizSubmission = {
-			static: {
-				industry,
-				size,
-				timeLeak,
-				dreadedTask: dreadedTask.trim(),
-				processHealth: processHealth as 'healthy' | 'broken' | 'unsure'
-			},
+			static: buildStatic(),
 			adaptive,
 			email
 		};
 		window.location.href = generateQuizMailto(submission);
+	}
+
+	// Dynamic step numbers for badges, since the governance step is conditional.
+	const stepNumbers = $derived.by(() => {
+		const order: string[] = [
+			'industry',
+			'size',
+			'regulated-data',
+			...(governanceShown ? ['governance'] : []),
+			'business-goal',
+			'time-leak',
+			'dreaded-task',
+			'process-health',
+			'current-ai-use'
+		];
+		const map: Record<string, number> = {};
+		order.forEach((id, i) => (map[id] = i + 1));
+		return map;
+	});
+
+	function label(n: number): string {
+		return String(n).padStart(2, '0');
 	}
 
 	// --- Derivations for post-submit preview ---
@@ -225,13 +440,15 @@
 		return 'in-core';
 	});
 
-	// Shared classes (preserved from the prior file).
 	const chipClass =
 		'block text-center p-3 bg-paper border border-rule rounded-lg text-sm font-sans text-muted peer-checked:border-accent peer-checked:bg-accent/10 peer-checked:text-ink hover:border-ink/30 transition';
 	const cardChipClass =
 		'p-4 bg-paper border border-rule rounded-lg peer-checked:border-accent peer-checked:bg-accent/10 hover:border-ink/30 transition';
 	const inputClass =
 		'w-full p-3 bg-paper border border-rule rounded-lg text-ink font-sans focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent';
+	const eyebrowClass =
+		'text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2';
+	const legendClass = 'block font-sans font-medium text-lg text-ink tracking-tight mb-3';
 </script>
 
 <svelte:head>
@@ -273,12 +490,12 @@
 		>
 			<span class="text-accent-light">AI Readiness Quiz</span>
 			<span class="h-3 w-px bg-paper/25" aria-hidden="true"></span>
-			<span class="text-paper/75 font-normal tracking-[0.08em]">Free · 2 minutes</span>
+			<span class="text-paper/75 font-normal tracking-[0.08em]">Free · 4 to 6 minutes</span>
 		</div>
 		<h1
 			class="font-sans font-semibold text-[clamp(2.5rem,7vw,4.5rem)] leading-[1.02] tracking-[-0.035em]"
 		>
-			2 minutes. <span class="text-paper/70">Find your biggest</span>
+			A few minutes. <span class="text-paper/70">Find your biggest</span>
 			<br class="hidden sm:block" />
 			<span class="text-accent-light">time leak.</span>
 		</h1>
@@ -299,17 +516,10 @@
 <Section background="white" padding="md">
 	{#if !submitted}
 		<form onsubmit={handleSubmit} class="max-w-2xl mx-auto space-y-10" use:reveal>
-			<!-- Q01 Industry -->
+			<!-- Industry -->
 			<div>
-				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
-					01
-				</p>
-				<label
-					for="industry"
-					class="block font-sans font-medium text-lg text-ink tracking-tight mb-3"
-				>
-					What does your business do?
-				</label>
+				<p class={eyebrowClass}>{label(stepNumbers['industry'])}</p>
+				<label for="industry" class={legendClass}>What does your business do?</label>
 				<select id="industry" bind:value={industry} required class={inputClass}>
 					<option value="">Select one</option>
 					{#each QUIZ_INDUSTRIES as opt (opt.value)}
@@ -318,34 +528,145 @@
 				</select>
 			</div>
 
-			<!-- Q02 Size -->
+			<!-- Size -->
 			<fieldset>
-				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
-					02
-				</p>
-				<legend class="block font-sans font-medium text-lg text-ink tracking-tight mb-3">
-					How many people are on your team?
-				</legend>
+				<p class={eyebrowClass}>{label(stepNumbers['size'])}</p>
+				<legend class={legendClass}>How many people are on your team?</legend>
 				<div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
-					{#each [['1-9', '1–9'], ['10-25', '10–25'], ['26-50', '26–50'], ['51-200', '51–200'], ['200+', '200+']] as [v, label]}
+					{#each [['1-9', '1 to 9'], ['10-25', '10 to 25'], ['26-50', '26 to 50'], ['51-200', '51 to 200'], ['200+', '200+']] as [v, labelText] (v)}
 						<label class="cursor-pointer">
 							<input type="radio" bind:group={size} value={v} class="peer sr-only" required />
-							<span class={chipClass}>{label}</span>
+							<span class={chipClass}>{labelText}</span>
 						</label>
 					{/each}
 				</div>
 			</fieldset>
 
-			<!-- Q03 Time leak -->
+			<!-- Regulated data gate -->
 			<fieldset>
-				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
-					03
-				</p>
-				<legend class="block font-sans font-medium text-lg text-ink tracking-tight mb-3">
-					Where does your time leak most?
+				<p class={eyebrowClass}>{label(stepNumbers['regulated-data'])}</p>
+				<legend class={legendClass}>
+					Does your work involve protected health information, privileged legal information,
+					customer financial information, or other records your industry treats as sensitive?
 				</legend>
 				<div class="space-y-2">
-					{#each [['admin', 'Admin', 'Invoicing, scheduling, email triage, document chasing.'], ['marketing', 'Marketing and lead response', 'Inbound lead follow-up, content cadence, quoting, proposals.'], ['delivery', 'Client delivery', 'Meeting prep and notes, recurring deliverables, reporting, handoffs.'], ['mixed', 'Not sure / mixed', "It's scattered. I want help seeing where to look first."]] as [v, title, body]}
+					{#each [['yes', 'Yes, definitely', 'Handling client or patient records is core to the work.'], ['sometimes', 'Sometimes or unsure', "Some files might qualify, I'd want to think it through."], ['no', 'No, not really', "The work doesn't touch that kind of data."]] as [v, title, body] (v)}
+						<label class="cursor-pointer block">
+							<input
+								type="radio"
+								bind:group={regulatedData}
+								value={v}
+								class="peer sr-only"
+								required
+							/>
+							<div class={cardChipClass}>
+								<p class="font-sans font-medium text-ink">{title}</p>
+								<p class="font-serif text-sm text-muted leading-relaxed mt-1">{body}</p>
+							</div>
+						</label>
+					{/each}
+				</div>
+			</fieldset>
+
+			<!-- Governance grouped step (conditional) -->
+			{#if governanceShown}
+				<fieldset class="space-y-6">
+					<p class={eyebrowClass}>{label(stepNumbers['governance'])} · Governance</p>
+					<legend class="sr-only">Governance follow-ups</legend>
+
+					<div>
+						<p class={legendClass}>
+							Do you already have rules about which AI tools staff can use, or is it informal?
+						</p>
+						<div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+							{#each [['formal', 'Formal rules'], ['informal', 'Informal'], ['none', 'None']] as [v, t] (v)}
+								<label class="cursor-pointer">
+									<input
+										type="radio"
+										bind:group={governanceRules}
+										value={v}
+										class="peer sr-only"
+										required
+									/>
+									<span class={chipClass}>{t}</span>
+								</label>
+							{/each}
+						</div>
+					</div>
+
+					<div>
+						<p class={legendClass}>
+							Before any client-facing document or record is changed, must a human review it?
+						</p>
+						<div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+							{#each [['always', 'Yes, always'], ['sometimes', 'Sometimes'], ['no', 'No']] as [v, t] (v)}
+								<label class="cursor-pointer">
+									<input
+										type="radio"
+										bind:group={governanceReview}
+										value={v}
+										class="peer sr-only"
+										required
+									/>
+									<span class={chipClass}>{t}</span>
+								</label>
+							{/each}
+						</div>
+					</div>
+
+					<div>
+						<p class={legendClass}>
+							Would you be comfortable with client data going through a third-party AI service
+							today?
+						</p>
+						<div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+							{#each [['yes', 'Yes'], ['no', 'No'], ['unsure', 'Unsure']] as [v, t] (v)}
+								<label class="cursor-pointer">
+									<input
+										type="radio"
+										bind:group={governanceComfort}
+										value={v}
+										class="peer sr-only"
+										required
+									/>
+									<span class={chipClass}>{t}</span>
+								</label>
+							{/each}
+						</div>
+					</div>
+				</fieldset>
+			{/if}
+
+			<!-- Business goal -->
+			<div>
+				<p class={eyebrowClass}>{label(stepNumbers['business-goal'])}</p>
+				<label for="businessGoal" class={legendClass}>
+					What's the top outcome for your business in the next 12 months?
+				</label>
+				<select id="businessGoal" bind:value={businessGoal} required class={inputClass}>
+					<option value="">Select one</option>
+					{#each BUSINESS_GOALS as g (g)}
+						<option value={g}>{g}</option>
+					{/each}
+				</select>
+				{#if businessGoal === 'Other'}
+					<input
+						type="text"
+						bind:value={businessGoalOther}
+						placeholder="Describe it briefly"
+						class="{inputClass} mt-3"
+						maxlength="200"
+						required
+					/>
+				{/if}
+			</div>
+
+			<!-- Time leak -->
+			<fieldset>
+				<p class={eyebrowClass}>{label(stepNumbers['time-leak'])}</p>
+				<legend class={legendClass}>Where does your time leak most?</legend>
+				<div class="space-y-2">
+					{#each [['admin', 'Admin', 'Invoicing, scheduling, email triage, document chasing.'], ['marketing', 'Marketing and lead response', 'Inbound lead follow-up, content cadence, quoting, proposals.'], ['delivery', 'Client delivery', 'Meeting prep and notes, recurring deliverables, reporting, handoffs.'], ['mixed', 'Not sure / mixed', "It's scattered. I want help seeing where to look first."]] as [v, title, body] (v)}
 						<label class="cursor-pointer block">
 							<input type="radio" bind:group={timeLeak} value={v} class="peer sr-only" required />
 							<div class={cardChipClass}>
@@ -357,16 +678,11 @@
 				</div>
 			</fieldset>
 
-			<!-- Q04 Dreaded task -->
+			<!-- Dreaded task + inline digitization probe -->
 			<div>
-				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
-					04
-				</p>
-				<label
-					for="dreadedTask"
-					class="block font-sans font-medium text-lg text-ink tracking-tight mb-3"
-				>
-					Which single task do you dread most?
+				<p class={eyebrowClass}>{label(stepNumbers['dreaded-task'])}</p>
+				<label for="dreadedTask" class={legendClass}>
+					Which single task do you dread most? How often does it happen?
 				</label>
 				<textarea
 					id="dreadedTask"
@@ -381,18 +697,32 @@
 						A little more detail helps me write a sharper plan.
 					</p>
 				{/if}
+
+				{#if digitizationShown}
+					<div class="mt-4 pl-4 border-l-2 border-accent/40">
+						<label for="digitizationProbe" class={legendClass}>
+							Where does this work start and end today?
+						</label>
+						<p class="font-serif text-sm text-muted leading-relaxed mb-3">
+							E.g. an email inbox, a paper form scanned to PDF, a phone call, a shared spreadsheet.
+						</p>
+						<textarea
+							id="digitizationProbe"
+							bind:value={digitizationProbe}
+							placeholder="Where it starts, where it ends up."
+							rows="2"
+							class={inputClass}
+						></textarea>
+					</div>
+				{/if}
 			</div>
 
-			<!-- Q05 Process health -->
+			<!-- Process health -->
 			<fieldset>
-				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
-					05
-				</p>
-				<legend class="block font-sans font-medium text-lg text-ink tracking-tight mb-3">
-					Which is closer to the truth about that task?
-				</legend>
+				<p class={eyebrowClass}>{label(stepNumbers['process-health'])}</p>
+				<legend class={legendClass}>Which is closer to the truth about that task?</legend>
 				<div class="space-y-2">
-					{#each [['healthy', 'The process works', 'The task itself just eats time. The workflow around it is fine.'], ['broken', 'The process is broken', "That's where the real problem is. The task being painful is a symptom."], ['unsure', 'Honestly, not sure', 'Maybe a bit of both. Help me think about it.']] as [v, title, body]}
+					{#each [['healthy', 'The process works', 'The task itself just eats time. The workflow around it is fine.'], ['broken', 'The process is broken', "That's where the real problem is. The task being painful is a symptom."], ['unsure', 'Honestly, not sure', 'Maybe a bit of both. Help me think about it.']] as [v, title, body] (v)}
 						<label class="cursor-pointer block">
 							<input
 								type="radio"
@@ -410,15 +740,28 @@
 				</div>
 			</fieldset>
 
-			<!-- Q06-Q08 Adaptive answered -->
+			<!-- Current AI use -->
+			<div>
+				<p class={eyebrowClass}>{label(stepNumbers['current-ai-use'])}</p>
+				<label for="currentAiUse" class={legendClass}>
+					Has anyone on the team used AI tools for drafting, summarizing, scheduling, or intake?
+					What happened?
+				</label>
+				<textarea
+					id="currentAiUse"
+					bind:value={currentAiUse}
+					placeholder="e.g. tried ChatGPT for client emails, stopped because it sounded generic"
+					rows="3"
+					class={inputClass}
+				></textarea>
+				<p class="mt-2 text-xs text-subtle">Optional, but useful context.</p>
+			</div>
+
+			<!-- Answered adaptive questions -->
 			{#each adaptive as a, i (a.id)}
 				<fieldset disabled>
-					<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
-						{String(i + 6).padStart(2, '0')}
-					</p>
-					<legend class="block font-sans font-medium text-lg text-ink tracking-tight mb-3">
-						{a.question}
-					</legend>
+					<p class={eyebrowClass}>Based on your answers · {i + 1} of {ADAPTIVE_TARGET}</p>
+					<legend class={legendClass}>{a.question}</legend>
 					<div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
 						{#each a.options as opt (opt)}
 							<label class="cursor-pointer">
@@ -440,10 +783,10 @@
 			{/each}
 
 			<!-- Pending adaptive question -->
-			{#if adaptive.length < 3 && (loadingNext || pendingQuestion)}
+			{#if adaptive.length < ADAPTIVE_TARGET && (loadingNext || pendingQuestion)}
 				<fieldset>
-					<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
-						{String(adaptive.length + 6).padStart(2, '0')} · Based on your answers
+					<p class={eyebrowClass}>
+						Based on your answers · {adaptive.length + 1} of {ADAPTIVE_TARGET}
 					</p>
 					{#if loadingNext && !pendingQuestion}
 						<div class="space-y-3" aria-busy="true">
@@ -455,9 +798,7 @@
 							</div>
 						</div>
 					{:else if pendingQuestion}
-						<legend class="block font-sans font-medium text-lg text-ink tracking-tight mb-3">
-							{pendingQuestion.question}
-						</legend>
+						<legend class={legendClass}>{pendingQuestion.question}</legend>
 						{#if pendingQuestion.helper}
 							<p class="font-serif text-sm text-muted leading-relaxed mb-3">
 								{pendingQuestion.helper}
@@ -500,18 +841,11 @@
 				</fieldset>
 			{/if}
 
-			<!-- Q09 Email (only after 3 adaptive answers) -->
-			{#if adaptive.length === 3}
+			<!-- Email (only after all adaptive answered) -->
+			{#if adaptive.length === ADAPTIVE_TARGET}
 				<div>
-					<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
-						09
-					</p>
-					<label
-						for="email"
-						class="block font-sans font-medium text-lg text-ink tracking-tight mb-3"
-					>
-						Where should I send your Action Plan?
-					</label>
+					<p class={eyebrowClass}>Final step</p>
+					<label for="email" class={legendClass}>Where should I send your Action Plan?</label>
 					<input
 						id="email"
 						type="email"
