@@ -1,0 +1,32 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "domeworks-web",
+	"account_id": "112473b82526a96475850a0ce356ab40",
+	"main": ".svelte-kit/cloudflare/_worker.js",
+	"compatibility_date": "2025-11-01",
+	"compatibility_flags": ["nodejs_compat"],
+	"assets": {
+		"binding": "ASSETS",
+		"directory": ".svelte-kit/cloudflare"
+	},
+	"observability": {
+		"enabled": true
+	},
+	"send_email": [
+		{
+			"name": "SEB",
+			"destination_address": "piers@domeworks.tech"
+		}
+	],
+	// ATTIO_API_KEY is a Cloudflare secret in production:
+	//   pnpm wrangler secret put ATTIO_API_KEY
+	// Locally it lives in .dev.vars (git-ignored) for `wrangler dev`.
+	"d1_databases": [
+		{
+			"binding": "QUIZ_SUBMISSIONS",
+			"database_name": "domeworks-quiz-submissions",
+			"database_id": "11e4664c-0af0-4618-807c-b994995b9657",
+			"migrations_dir": "migrations"
+		}
+	]
+}

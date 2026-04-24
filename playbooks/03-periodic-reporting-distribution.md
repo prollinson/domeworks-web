@@ -11,21 +11,21 @@ Automates the assembly, formatting, and distribution of recurring reports (finan
 
 ## Inputs
 
-| Input | Type | Source | Trigger |
-|-------|------|--------|---------|
-| Financial data | Spreadsheet / API | Accounting system (QuickBooks, Xero, etc.) | Schedule (monthly/quarterly) |
-| Engagement status data | Spreadsheet | Google Sheets (tracking sheets) | Schedule |
-| Narrative sections | Document | Google Docs (analyst-written) | Before report deadline |
-| Distribution list | CSV / Contacts | CRM or manual entry | Engagement setup |
+| Input                  | Type              | Source                                     | Trigger                      |
+| ---------------------- | ----------------- | ------------------------------------------ | ---------------------------- |
+| Financial data         | Spreadsheet / API | Accounting system (QuickBooks, Xero, etc.) | Schedule (monthly/quarterly) |
+| Engagement status data | Spreadsheet       | Google Sheets (tracking sheets)            | Schedule                     |
+| Narrative sections     | Document          | Google Docs (analyst-written)              | Before report deadline       |
+| Distribution list      | CSV / Contacts    | CRM or manual entry                        | Engagement setup             |
 
 ## Outputs
 
-| Output | Format | Destination | Frequency |
-|--------|--------|-------------|-----------|
-| Formatted report | PDF / Google Doc | Google Drive archive | Monthly / Quarterly |
-| Executive summary email | HTML email | Leadership / board | Monthly / Quarterly |
-| Data extract | CSV / XLSX | Internal analytics | On generation |
-| Delivery confirmation | Log entry | Tracking sheet | Per distribution |
+| Output                  | Format           | Destination          | Frequency           |
+| ----------------------- | ---------------- | -------------------- | ------------------- |
+| Formatted report        | PDF / Google Doc | Google Drive archive | Monthly / Quarterly |
+| Executive summary email | HTML email       | Leadership / board   | Monthly / Quarterly |
+| Data extract            | CSV / XLSX       | Internal analytics   | On generation       |
+| Delivery confirmation   | Log entry        | Tracking sheet       | Per distribution    |
 
 ## Tools Used
 
@@ -66,24 +66,24 @@ Automates the assembly, formatting, and distribution of recurring reports (finan
 
 ## Hours Estimate
 
-| Phase | Manual (hrs/month) | Automated (hrs/month) | Savings |
-|-------|-------------------|----------------------|---------|
-| Data aggregation | 6 | 0.5 | 92% |
-| Report assembly | 8 | 2 | 75% |
-| Review routing | 2 | 0.5 | 75% |
-| Formatting & finalization | 4 | 0.5 | 88% |
-| Distribution & tracking | 3 | 0.5 | 83% |
-| **Total** | **23** | **4** | **83%** |
+| Phase                     | Manual (hrs/month) | Automated (hrs/month) | Savings |
+| ------------------------- | ------------------ | --------------------- | ------- |
+| Data aggregation          | 6                  | 0.5                   | 92%     |
+| Report assembly           | 8                  | 2                     | 75%     |
+| Review routing            | 2                  | 0.5                   | 75%     |
+| Formatting & finalization | 4                  | 0.5                   | 88%     |
+| Distribution & tracking   | 3                  | 0.5                   | 83%     |
+| **Total**                 | **23**             | **4**                 | **83%** |
 
 ## ROI Estimate
 
-| Metric | Value |
-|--------|-------|
-| Monthly labor cost (manual) | $2,300 (23 hrs @ $100/hr blended) |
-| Monthly labor cost (automated) | $400 (4 hrs @ $100/hr) |
-| Monthly savings | $1,900 |
-| Implementation cost | $8,000 - $14,000 |
-| Payback period | 4-7 months |
+| Metric                         | Value                             |
+| ------------------------------ | --------------------------------- |
+| Monthly labor cost (manual)    | $2,300 (23 hrs @ $100/hr blended) |
+| Monthly labor cost (automated) | $400 (4 hrs @ $100/hr)            |
+| Monthly savings                | $1,900                            |
+| Implementation cost            | $8,000 - $14,000                  |
+| Payback period                 | 4-7 months                        |
 
 ## Adaptation Notes
 

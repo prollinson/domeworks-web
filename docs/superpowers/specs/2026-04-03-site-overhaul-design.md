@@ -1,4 +1,5 @@
 # DomeWorks Site Overhaul — Design Spec
+
 _2026-04-03_
 
 ## Overview
@@ -96,19 +97,20 @@ Hold the case study until real metrics are confirmed and client permission is ob
 
 Replace all instances of old terms across every page with canonical plain-English equivalents:
 
-| Old | New |
-|-----|-----|
-| Intelligence Stack | the AI stack (or "the stack" after first mention) |
-| Intelligence Maturity / Intelligence Maturity level | AI readiness score |
-| Context Layer | context system |
-| Orchestration Layer | agent coordination |
-| Coordination layer / coordination function | coordination overhead (keep) |
-| AI Scan | keep |
-| Fractional AI Leadership | keep (it's a page name now) |
+| Old                                                 | New                                               |
+| --------------------------------------------------- | ------------------------------------------------- |
+| Intelligence Stack                                  | the AI stack (or "the stack" after first mention) |
+| Intelligence Maturity / Intelligence Maturity level | AI readiness score                                |
+| Context Layer                                       | context system                                    |
+| Orchestration Layer                                 | agent coordination                                |
+| Coordination layer / coordination function          | coordination overhead (keep)                      |
+| AI Scan                                             | keep                                              |
+| Fractional AI Leadership                            | keep (it's a page name now)                       |
 
 Pages to sweep: `/`, `/scan/`, `/context-build/`, `/about/`, `/contact/`, and both new pages.
 
 The 4-layer stack diagram on the homepage relabels:
+
 - "Orchestration" → "Agent Coordination"
 - "Context" → "Context System"
 
@@ -122,13 +124,13 @@ File: `src/lib/components/ui/Scrollytelling.svelte`
 
 Replace all Tailwind default `slate-*` classes with design tokens:
 
-| Old class | New class |
-|-----------|-----------|
-| `text-slate-900` | `text-charcoal` |
-| `bg-slate-900` | `bg-ink` |
-| `text-slate-600` | `text-charcoal/60` |
-| `text-slate-400` | `text-charcoal/40` |
-| `bg-slate-800` | `bg-ink/90` |
+| Old class          | New class            |
+| ------------------ | -------------------- |
+| `text-slate-900`   | `text-charcoal`      |
+| `bg-slate-900`     | `bg-ink`             |
+| `text-slate-600`   | `text-charcoal/60`   |
+| `text-slate-400`   | `text-charcoal/40`   |
+| `bg-slate-800`     | `bg-ink/90`          |
 | `border-slate-700` | `border-charcoal/20` |
 
 Audit the full file — replace every `slate-*` occurrence. Do not change layout, animation, or structure.
@@ -140,6 +142,7 @@ Audit the full file — replace every `slate-*` occurrence. Do not change layout
 File: `src/routes/+page.svelte`
 
 Current order:
+
 ```
 01 The problem isn't the tools
 02 The Intelligence Stack
@@ -149,6 +152,7 @@ Current order:
 ```
 
 New order:
+
 ```
 01 The problem isn't the tools
 02 Who this is for       ← moved up
@@ -166,16 +170,22 @@ Update `eyebrow` prop values on each `<Section>` to match new numbering.
 In the "How it works" section (`eyebrow="04"`), add a 4th card for Fractional AI Leadership after the Orchestration Build card:
 
 ```svelte
-<a href="/fractional/" class="group p-8 bg-warm-white rounded-2xl border border-charcoal/10 hover:border-copper card-lift flex flex-col">
-  <span class="inline-block px-3 py-1 text-xs font-medium text-copper bg-copper/10 rounded-full mb-4 w-fit">
-    What comes after
-  </span>
-  <h3 class="text-xl font-medium text-charcoal mb-2">Fractional AI Leadership</h3>
-  <p class="text-2xl font-normal font-serif text-charcoal mb-4">Monthly retainer</p>
-  <p class="text-charcoal/60 text-sm flex-grow">
-    1–2 days/week. I maintain and evolve the context system and agent coordination, close feedback loops, and make sure the infrastructure compounds as your org changes.
-  </p>
-  <p class="mt-4 text-sm text-copper font-medium group-hover:underline">Learn more &rarr;</p>
+<a
+	href="/fractional/"
+	class="group p-8 bg-warm-white rounded-2xl border border-charcoal/10 hover:border-copper card-lift flex flex-col"
+>
+	<span
+		class="inline-block px-3 py-1 text-xs font-medium text-copper bg-copper/10 rounded-full mb-4 w-fit"
+	>
+		What comes after
+	</span>
+	<h3 class="text-xl font-medium text-charcoal mb-2">Fractional AI Leadership</h3>
+	<p class="text-2xl font-normal font-serif text-charcoal mb-4">Monthly retainer</p>
+	<p class="text-charcoal/60 text-sm flex-grow">
+		1–2 days/week. I maintain and evolve the context system and agent coordination, close feedback
+		loops, and make sure the infrastructure compounds as your org changes.
+	</p>
+	<p class="mt-4 text-sm text-copper font-medium group-hover:underline">Learn more &rarr;</p>
 </a>
 ```
 
@@ -190,6 +200,7 @@ Also remove the Fractional AI Leadership callout box from within the Intelligenc
 File: `src/lib/components/layout/Header.svelte`
 
 Add to desktop and mobile nav:
+
 - "Orchestration Build" → `/orchestration-build/`
 - "Fractional" → `/fractional/`
 

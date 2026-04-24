@@ -1,7 +1,7 @@
-import posthog from 'posthog-js'
+import posthog from 'posthog-js';
 
-export const POSTHOG_KEY = 'phc_cWV8o1edVKhWZpHZiyzEz7oiRDgzNAAQnMEW3M1hayC'
-export const POSTHOG_HOST = 'https://app.posthog.com'
+export const POSTHOG_KEY = 'phc_cWV8o1edVKhWZpHZiyzEz7oiRDgzNAAQnMEW3M1hayC';
+export const POSTHOG_HOST = 'https://app.posthog.com';
 
 if (typeof window !== 'undefined') {
 	posthog.init(POSTHOG_KEY, {
@@ -9,7 +9,7 @@ if (typeof window !== 'undefined') {
 		capture_pageview: true,
 		capture_pageleave: true,
 		persistence: 'localStorage'
-	})
+	});
 }
 
-export { posthog }
+export { posthog };

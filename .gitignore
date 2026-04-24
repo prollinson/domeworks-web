@@ -6,3 +6,8 @@ node_modules
 .env
 .env.*
 !.env.example
+.superpowers/
+.wrangler/
+council-report-*.html
+council-transcript-*.md
+.dev.vars
