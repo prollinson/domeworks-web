@@ -13,6 +13,8 @@ declare namespace App {
 	interface Platform {
 		env?: {
 			SEB?: SendEmailBinding;
+			ANTHROPIC_API_KEY?: string;
+			AI_GATEWAY_URL?: string;
 		};
 	}
 	// interface PrivateEnv {}
