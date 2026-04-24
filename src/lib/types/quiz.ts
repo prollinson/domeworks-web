@@ -23,6 +23,7 @@ export interface QuizStatic {
 
 export interface QuizSubmission {
 	static: QuizStatic;
+	/** Runtime invariant: exactly 3 entries. Enforced by `/api/quiz` validator. */
 	adaptive: AdaptiveAnswer[];
 	email: string;
 }
@@ -36,6 +37,7 @@ export interface NextResponse {
 	id: string;
 	question: string;
 	helper: string | null;
+	/** Convention: last element is always `"Other"` so the UI can render an "Other — type it" escape hatch. */
 	options: string[];
 	allowOtherText: true;
 	infoNeed: InfoNeed;
