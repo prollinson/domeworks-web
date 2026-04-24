@@ -10,3 +10,4 @@ node_modules
 .wrangler/
 council-report-*.html
 council-transcript-*.md
+.dev.vars

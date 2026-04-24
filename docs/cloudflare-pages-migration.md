@@ -74,6 +74,35 @@ If anything goes wrong after DNS cutover:
 - `pnpm-lock.yaml` vs `yarn.lock`: the old deploy workflow used yarn; the project uses pnpm. Resolved automatically once that workflow is deleted.
 - Monitor Cloudflare Pages free-tier limits (500 builds/month, 100K requests/day on Functions free tier). Not close to either at current traffic.
 
+## Adaptive quiz secrets
+
+The `/api/quiz/next` endpoint calls Anthropic's Claude through Cloudflare AI Gateway. Two wrangler secrets are required in production:
+
+- `ANTHROPIC_API_KEY` — Anthropic API key with access to the Haiku family.
+- `AI_GATEWAY_URL` — full base URL including the `/anthropic` suffix, e.g. `https://gateway.ai.cloudflare.com/v1/<account_id>/<gateway_slug>/anthropic`.
+
+### Setting in production (Cloudflare Pages)
+
+```bash
+wrangler pages secret put ANTHROPIC_API_KEY --project-name domeworks-web
+wrangler pages secret put AI_GATEWAY_URL --project-name domeworks-web
+```
+
+### Setting for local `wrangler pages dev`
+
+Create `.dev.vars` at the project root (gitignored):
+
+```
+ANTHROPIC_API_KEY=sk-...
+AI_GATEWAY_URL=https://gateway.ai.cloudflare.com/v1/<account_id>/<gateway_slug>/anthropic
+```
+
+Without these set, `/api/quiz/next` returns 503 and the client falls back to the hardcoded 3-question sequence — the quiz still completes and Piers still gets a valid submission.
+
+### Cost
+
+Per completed quiz: ~3 calls × ~$0.0005 = ~$0.0015. AI Gateway's per-gateway rate limit should be set to ~60 req/min/IP.
+
 ## Files touched on this branch
 
 - `svelte.config.js` — adapter swap
