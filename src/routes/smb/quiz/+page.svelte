@@ -1,42 +1,170 @@
 <script lang="ts">
 	import Section from '$lib/components/layout/Section.svelte';
 	import { reveal } from '$lib/actions/reveal';
-	import { generateQuizMailto, type QuizAnswers } from '$lib/utils/mailto';
-	import { getAssessmentCallUrl } from '$lib/utils/mailto';
+	import { generateQuizMailto, getAssessmentCallUrl } from '$lib/utils/mailto';
+	import { QUIZ_INDUSTRIES } from '$lib/data/quiz-industries';
+	import { getFallbackQuestion } from '$lib/data/quiz-fallback';
+	import type {
+		AdaptiveAnswer,
+		NextRequest,
+		NextResponse,
+		QuizStatic,
+		QuizSubmission
+	} from '$lib/types/quiz';
 
+	// --- Static answers ---
 	let industry = $state('');
 	let size = $state('');
-	let revenue = $state('');
-	let role = $state('');
 	let timeLeak = $state('');
 	let dreadedTask = $state('');
-	let aiUsage = $state('');
-	let email = $state('');
 
+	const staticComplete = $derived(
+		industry.length > 0 && size.length > 0 && timeLeak.length > 0 && dreadedTask.trim().length >= 20
+	);
+
+	// --- Adaptive state ---
+	let adaptive = $state<AdaptiveAnswer[]>([]);
+	let pendingQuestion = $state<NextResponse | null>(null);
+	let loadingNext = $state(false);
+	let otherText = $state('');
+	let selectedOption = $state('');
+	// Monotonic version — bumped when static changes, so stale fetches can be discarded.
+	let staticVersion = $state(0);
+
+	// --- Submit state ---
+	let email = $state('');
 	let submitted = $state(false);
 	let submitState = $state<'idle' | 'sending' | 'sent' | 'mailto-fallback'>('idle');
 
 	const canSubmit = $derived(
-		industry &&
-			size &&
-			revenue &&
-			role &&
-			timeLeak &&
-			dreadedTask.trim().length > 2 &&
-			aiUsage &&
-			/^\S+@\S+\.\S+$/.test(email)
+		staticComplete && adaptive.length === 3 && /^\S+@\S+\.\S+$/.test(email)
 	);
 
-	const icpVerdict = $derived.by(() => {
-		if (!size || !revenue) return '';
-		const small = size === '1-9' || revenue === 'under-1m';
-		const large =
-			size === '200+' || revenue === 'over-50m' || size === '51-200' || revenue === '10-50m';
-		if (small) return 'below-core';
-		if (large) return 'above-core';
-		return 'in-core';
+	// --- Reset adaptive when any static field changes ---
+	$effect(() => {
+		// Depend on each static field so Svelte tracks edits.
+		industry;
+		size;
+		timeLeak;
+		dreadedTask;
+		staticVersion++;
+		adaptive = [];
+		pendingQuestion = null;
+		selectedOption = '';
+		otherText = '';
 	});
 
+	// --- Fetch next adaptive question ---
+	async function fetchNext() {
+		if (!staticComplete) return;
+		if (adaptive.length >= 3) return;
+		if (pendingQuestion) return;
+		if (loadingNext) return;
+
+		loadingNext = true;
+		const myVersion = staticVersion;
+
+		const body: NextRequest = {
+			static: {
+				industry,
+				size,
+				timeLeak,
+				dreadedTask: dreadedTask.trim()
+			} satisfies QuizStatic,
+			adaptiveSoFar: adaptive
+		};
+
+		try {
+			const res = await fetch('/api/quiz/next', {
+				method: 'POST',
+				headers: { 'content-type': 'application/json' },
+				body: JSON.stringify(body)
+			});
+			if (!res.ok) throw new Error(`HTTP ${res.status}`);
+			const data = (await res.json()) as NextResponse;
+			if (myVersion !== staticVersion) return; // stale
+			pendingQuestion = data;
+		} catch {
+			if (myVersion !== staticVersion) return;
+			pendingQuestion = getFallbackQuestion(adaptive.length);
+		} finally {
+			if (myVersion === staticVersion) loadingNext = false;
+		}
+	}
+
+	// Blur handler on the dreaded-task textarea (debounced).
+	let blurTimer: ReturnType<typeof setTimeout> | null = null;
+	function handleDreadedBlur() {
+		if (blurTimer) clearTimeout(blurTimer);
+		blurTimer = setTimeout(() => {
+			if (staticComplete && adaptive.length === 0 && !pendingQuestion) fetchNext();
+		}, 400);
+	}
+
+	// --- Answering an adaptive question ---
+	function answerPending() {
+		if (!pendingQuestion) return;
+		const answer =
+			selectedOption === 'Other' && otherText.trim().length > 0
+				? `Other: ${otherText.trim()}`
+				: selectedOption;
+		if (!answer) return;
+
+		adaptive = [
+			...adaptive,
+			{
+				id: pendingQuestion.id,
+				infoNeed: pendingQuestion.infoNeed,
+				question: pendingQuestion.question,
+				options: pendingQuestion.options,
+				answer
+			}
+		];
+		pendingQuestion = null;
+		selectedOption = '';
+		otherText = '';
+
+		if (adaptive.length < 3) fetchNext();
+	}
+
+	// --- Submit ---
+	async function handleSubmit(e: Event) {
+		e.preventDefault();
+		if (!canSubmit) return;
+
+		const submission: QuizSubmission = {
+			static: { industry, size, timeLeak, dreadedTask: dreadedTask.trim() },
+			adaptive,
+			email
+		};
+
+		submitted = true;
+		submitState = 'sending';
+
+		try {
+			const res = await fetch('/api/quiz', {
+				method: 'POST',
+				headers: { 'content-type': 'application/json' },
+				body: JSON.stringify(submission)
+			});
+			if (!res.ok) throw new Error(`HTTP ${res.status}`);
+			submitState = 'sent';
+		} catch {
+			submitState = 'mailto-fallback';
+			window.location.href = generateQuizMailto(submission);
+		}
+	}
+
+	function resend() {
+		const submission: QuizSubmission = {
+			static: { industry, size, timeLeak, dreadedTask: dreadedTask.trim() },
+			adaptive,
+			email
+		};
+		window.location.href = generateQuizMailto(submission);
+	}
+
+	// --- Derivations for post-submit preview ---
 	const previewCategory = $derived.by(() => {
 		switch (timeLeak) {
 			case 'admin':
@@ -62,63 +190,14 @@
 		}
 	});
 
-	async function handleSubmit(e: Event) {
-		e.preventDefault();
-		if (!canSubmit) return;
-		const answers: QuizAnswers = {
-			industry,
-			size,
-			revenue,
-			role,
-			timeLeak,
-			dreadedTask,
-			aiUsage,
-			email
-		};
-		submitted = true;
-		submitState = 'sending';
+	const icpVerdict = $derived.by(() => {
+		if (!size) return '';
+		if (size === '1-9') return 'below-core';
+		if (size === '51-200' || size === '200+') return 'above-core';
+		return 'in-core';
+	});
 
-		try {
-			const res = await fetch('/api/quiz', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(answers)
-			});
-			if (!res.ok) throw new Error(`HTTP ${res.status}`);
-			submitState = 'sent';
-		} catch {
-			// Fall back to opening the user's mail client with the answers prefilled.
-			submitState = 'mailto-fallback';
-			window.location.href = generateQuizMailto(answers);
-		}
-	}
-
-	function resend() {
-		const answers: QuizAnswers = {
-			industry,
-			size,
-			revenue,
-			role,
-			timeLeak,
-			dreadedTask,
-			aiUsage,
-			email
-		};
-		window.location.href = generateQuizMailto(answers);
-	}
-
-	const questions = [
-		{ n: '01', label: 'What does your business do?' },
-		{ n: '02', label: 'How many people are on your team?' },
-		{ n: '03', label: 'Annual revenue range?' },
-		{ n: '04', label: 'Your role?' },
-		{ n: '05', label: 'Where does your time leak most?' },
-		{ n: '06', label: 'Which single task do you dread most?' },
-		{ n: '07', label: 'AI tool usage so far?' },
-		{ n: '08', label: 'Where should I send your Action Plan?' }
-	];
-
-	// Shared classes for radio/checkbox chip controls.
+	// Shared classes (preserved from the prior file).
 	const chipClass =
 		'block text-center p-3 bg-paper border border-rule rounded-lg text-sm font-sans text-muted peer-checked:border-accent peer-checked:bg-accent/10 peer-checked:text-ink hover:border-ink/30 transition';
 	const cardChipClass =
@@ -131,10 +210,9 @@
 	<title>AI Readiness Quiz | DomeWorks</title>
 	<meta
 		name="description"
-		content="2-minute quiz to pinpoint your biggest time leak across admin, marketing, and delivery. Free personalized Action Plan delivered to your inbox."
+		content="2-minute quiz to pinpoint your biggest time leak. Free personalised Action Plan delivered to your inbox."
 	/>
 	<link rel="canonical" href="https://domeworks.tech/smb/quiz/" />
-
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="DomeWorks" />
 	<meta property="og:url" content="https://domeworks.tech/smb/quiz/" />
@@ -153,7 +231,7 @@
 	<meta name="twitter:image" content="https://domeworks.tech/og-image.png" />
 </svelte:head>
 
-<!-- Hero: dark ink surface, sans semibold H1, editorial eyebrow row -->
+<!-- Hero -->
 <section class="relative bg-ink text-paper overflow-hidden" aria-label="AI Readiness Quiz">
 	<a
 		href="/"
@@ -161,7 +239,6 @@
 	>
 		DomeWorks<span class="text-accent-light">.</span>
 	</a>
-
 	<div class="relative w-full max-w-4xl mx-auto px-6 lg:px-8 pt-24 md:pt-28 pb-16 md:pb-20">
 		<div
 			class="flex flex-wrap items-center gap-x-4 gap-y-1 text-[0.6875rem] font-semibold uppercase tracking-[0.14em] mb-8"
@@ -170,7 +247,6 @@
 			<span class="h-3 w-px bg-paper/25" aria-hidden="true"></span>
 			<span class="text-paper/75 font-normal tracking-[0.08em]">Free · 2 minutes</span>
 		</div>
-
 		<h1
 			class="font-sans font-semibold text-[clamp(2.5rem,7vw,4.5rem)] leading-[1.02] tracking-[-0.035em]"
 		>
@@ -178,7 +254,6 @@
 			<br class="hidden sm:block" />
 			<span class="text-accent-light">time leak.</span>
 		</h1>
-
 		<p
 			class="mt-6 font-serif text-xl md:text-2xl leading-[1.55] text-paper/80 max-w-2xl font-normal"
 		>
@@ -186,7 +261,7 @@
 			time right now.
 		</p>
 		<p class="mt-4 text-sm text-paper/75 max-w-2xl">
-			I'll send a free personalized Action Plan to your inbox within 24 hours. Quick wins you can
+			I'll send a free personalised Action Plan to your inbox within 24 hours. Quick wins you can
 			set up in 30 to 60 minutes. Step-by-step. No technical background required.
 		</p>
 	</div>
@@ -196,40 +271,33 @@
 <Section background="white" padding="md">
 	{#if !submitted}
 		<form onsubmit={handleSubmit} class="max-w-2xl mx-auto space-y-10" use:reveal>
-			<!-- Question 1: Industry -->
+			<!-- Q01 Industry -->
 			<div>
-				<p
-					class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2"
-				>{questions[0].n}</p>
+				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
+					01
+				</p>
 				<label
 					for="industry"
 					class="block font-sans font-medium text-lg text-ink tracking-tight mb-3"
-					>{questions[0].label}</label
 				>
+					What does your business do?
+				</label>
 				<select id="industry" bind:value={industry} required class={inputClass}>
 					<option value="">Select one</option>
-					<option value="Accounting or bookkeeping">Accounting or bookkeeping</option>
-					<option value="Legal">Legal</option>
-					<option value="Medical or dental">Medical or dental</option>
-					<option value="Trades or field services"
-						>Trades or field services (HVAC, plumbing, landscaping, etc.)</option
-					>
-					<option value="Real estate">Real estate</option>
-					<option value="Marketing or creative agency">Marketing or creative agency</option>
-					<option value="Consulting">Consulting</option>
-					<option value="E-commerce">E-commerce</option>
-					<option value="Other professional services">Other professional services</option>
+					{#each QUIZ_INDUSTRIES as opt (opt.value)}
+						<option value={opt.value}>{opt.label}</option>
+					{/each}
 				</select>
 			</div>
 
-			<!-- Question 2: Size -->
+			<!-- Q02 Size -->
 			<fieldset>
-				<p
-					class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2"
-				>{questions[1].n}</p>
-				<legend class="block font-sans font-medium text-lg text-ink tracking-tight mb-3"
-					>{questions[1].label}</legend
-				>
+				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
+					02
+				</p>
+				<legend class="block font-sans font-medium text-lg text-ink tracking-tight mb-3">
+					How many people are on your team?
+				</legend>
 				<div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
 					{#each [['1-9', '1–9'], ['10-25', '10–25'], ['26-50', '26–50'], ['51-200', '51–200'], ['200+', '200+']] as [v, label]}
 						<label class="cursor-pointer">
@@ -240,50 +308,14 @@
 				</div>
 			</fieldset>
 
-			<!-- Question 3: Revenue -->
+			<!-- Q03 Time leak -->
 			<fieldset>
-				<p
-					class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2"
-				>{questions[2].n}</p>
-				<legend class="block font-sans font-medium text-lg text-ink tracking-tight mb-3"
-					>{questions[2].label}</legend
-				>
-				<div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
-					{#each [['under-1m', 'Under $1M'], ['1-3m', '$1–3M'], ['3-10m', '$3–10M'], ['10-50m', '$10–50M'], ['over-50m', '$50M+']] as [v, label]}
-						<label class="cursor-pointer">
-							<input type="radio" bind:group={revenue} value={v} class="peer sr-only" required />
-							<span class={chipClass}>{label}</span>
-						</label>
-					{/each}
-				</div>
-			</fieldset>
-
-			<!-- Question 4: Role -->
-			<fieldset>
-				<p
-					class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2"
-				>{questions[3].n}</p>
-				<legend class="block font-sans font-medium text-lg text-ink tracking-tight mb-3"
-					>{questions[3].label}</legend
-				>
-				<div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-					{#each ['Owner', 'Partner', 'Operations', 'Other'] as option}
-						<label class="cursor-pointer">
-							<input type="radio" bind:group={role} value={option} class="peer sr-only" required />
-							<span class={chipClass}>{option}</span>
-						</label>
-					{/each}
-				</div>
-			</fieldset>
-
-			<!-- Question 5: Time leak area -->
-			<fieldset>
-				<p
-					class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2"
-				>{questions[4].n}</p>
-				<legend class="block font-sans font-medium text-lg text-ink tracking-tight mb-3"
-					>{questions[4].label}</legend
-				>
+				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
+					03
+				</p>
+				<legend class="block font-sans font-medium text-lg text-ink tracking-tight mb-3">
+					Where does your time leak most?
+				</legend>
 				<div class="space-y-2">
 					{#each [['admin', 'Admin', 'Invoicing, scheduling, email triage, document chasing.'], ['marketing', 'Marketing and lead response', 'Inbound lead follow-up, content cadence, quoting, proposals.'], ['delivery', 'Client delivery', 'Meeting prep and notes, recurring deliverables, reporting, handoffs.'], ['mixed', 'Not sure / mixed', "It's scattered. I want help seeing where to look first."]] as [v, title, body]}
 						<label class="cursor-pointer block">
@@ -297,86 +329,166 @@
 				</div>
 			</fieldset>
 
-			<!-- Question 6: Dreaded task -->
+			<!-- Q04 Dreaded task -->
 			<div>
-				<p
-					class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2"
-				>{questions[5].n}</p>
+				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
+					04
+				</p>
 				<label
 					for="dreadedTask"
 					class="block font-sans font-medium text-lg text-ink tracking-tight mb-3"
-					>{questions[5].label}</label
 				>
+					Which single task do you dread most?
+				</label>
 				<textarea
 					id="dreadedTask"
 					bind:value={dreadedTask}
-					placeholder="The specific task on your weekly list that you procrastinate. One or two sentences."
+					onblur={handleDreadedBlur}
+					placeholder="One concrete task, with numbers if possible. E.g. 'chasing 15 client docs every tax season, ~6 hrs/week'."
 					rows="3"
 					required
 					class={inputClass}
 				></textarea>
+				{#if dreadedTask.trim().length > 0 && dreadedTask.trim().length < 20}
+					<p class="mt-2 text-xs text-subtle">
+						A little more detail helps me write a sharper plan.
+					</p>
+				{/if}
 			</div>
 
-			<!-- Question 7: AI usage -->
-			<fieldset>
-				<p
-					class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2"
-				>{questions[6].n}</p>
-				<legend class="block font-sans font-medium text-lg text-ink tracking-tight mb-3"
-					>{questions[6].label}</legend
-				>
-				<div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-					{#each [['none', 'Never used any'], ['light', 'Tried ChatGPT a few times'], ['regular', 'Regular user of one or more']] as [v, label]}
-						<label class="cursor-pointer">
-							<input type="radio" bind:group={aiUsage} value={v} class="peer sr-only" required />
-							<span class={chipClass}>{label}</span>
-						</label>
-					{/each}
+			<!-- Q05–Q07 Adaptive answered -->
+			{#each adaptive as a, i (a.id)}
+				<fieldset disabled>
+					<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
+						{String(i + 5).padStart(2, '0')}
+					</p>
+					<legend class="block font-sans font-medium text-lg text-ink tracking-tight mb-3">
+						{a.question}
+					</legend>
+					<div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+						{#each a.options as opt (opt)}
+							<label class="cursor-pointer">
+								<input
+									type="radio"
+									checked={a.answer === opt || (opt === 'Other' && a.answer.startsWith('Other:'))}
+									class="peer sr-only"
+								/>
+								<span class={chipClass}>{opt}</span>
+							</label>
+						{/each}
+					</div>
+					{#if a.answer.startsWith('Other: ')}
+						<p class="mt-2 font-serif text-sm text-muted">
+							You typed: {a.answer.replace('Other: ', '')}
+						</p>
+					{/if}
+				</fieldset>
+			{/each}
+
+			<!-- Pending adaptive question -->
+			{#if adaptive.length < 3 && (loadingNext || pendingQuestion)}
+				<fieldset>
+					<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
+						{String(adaptive.length + 5).padStart(2, '0')} · Based on your answers
+					</p>
+					{#if loadingNext && !pendingQuestion}
+						<div class="space-y-3" aria-busy="true">
+							<div class="h-6 w-3/4 bg-rule/60 rounded animate-pulse"></div>
+							<div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+								{#each [0, 1, 2] as i (i)}
+									<div class="h-12 bg-rule/40 rounded-lg animate-pulse"></div>
+								{/each}
+							</div>
+						</div>
+					{:else if pendingQuestion}
+						<legend class="block font-sans font-medium text-lg text-ink tracking-tight mb-3">
+							{pendingQuestion.question}
+						</legend>
+						{#if pendingQuestion.helper}
+							<p class="font-serif text-sm text-muted leading-relaxed mb-3">
+								{pendingQuestion.helper}
+							</p>
+						{/if}
+						<div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+							{#each pendingQuestion.options as opt (opt)}
+								<label class="cursor-pointer">
+									<input
+										type="radio"
+										bind:group={selectedOption}
+										value={opt}
+										class="peer sr-only"
+									/>
+									<span class={chipClass}>{opt}</span>
+								</label>
+							{/each}
+						</div>
+						{#if selectedOption === 'Other'}
+							<input
+								type="text"
+								bind:value={otherText}
+								placeholder="Type your answer"
+								class="{inputClass} mt-3"
+								maxlength="200"
+							/>
+						{/if}
+						<div class="mt-4">
+							<button
+								type="button"
+								onclick={answerPending}
+								disabled={!selectedOption ||
+									(selectedOption === 'Other' && otherText.trim().length === 0)}
+								class="inline-flex items-center justify-center font-sans font-medium transition-all duration-200 ease-out rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent/50 active:scale-[0.98] bg-ink text-paper hover:bg-ink/90 shadow-sm hover:shadow px-6 py-3 disabled:opacity-40 disabled:cursor-not-allowed"
+							>
+								Next →
+							</button>
+						</div>
+					{/if}
+				</fieldset>
+			{/if}
+
+			<!-- Q08 Email (only after 3 adaptive answers) -->
+			{#if adaptive.length === 3}
+				<div>
+					<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
+						08
+					</p>
+					<label
+						for="email"
+						class="block font-sans font-medium text-lg text-ink tracking-tight mb-3"
+					>
+						Where should I send your Action Plan?
+					</label>
+					<input
+						id="email"
+						type="email"
+						bind:value={email}
+						placeholder="you@yourcompany.com"
+						required
+						class={inputClass}
+					/>
+					<p class="mt-3 font-serif text-sm text-muted leading-relaxed">
+						I'll send your personalised Action Plan within 24 hours. No list. No spam. No upsell in
+						the plan. If the honest answer for any part of your situation is "don't use AI here,"
+						the plan will say so.
+					</p>
 				</div>
-			</fieldset>
 
-			<!-- Email -->
-			<div>
-				<p
-					class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2"
-				>{questions[7].n}</p>
-				<label
-					for="email"
-					class="block font-sans font-medium text-lg text-ink tracking-tight mb-3"
-					>{questions[7].label}</label
-				>
-				<input
-					id="email"
-					type="email"
-					bind:value={email}
-					placeholder="you@yourcompany.com"
-					required
-					class={inputClass}
-				/>
-				<p class="mt-3 font-serif text-sm text-muted leading-relaxed">
-					I'll send your personalized Action Plan within 24 hours. No list. No spam. No upsell in
-					the plan. If the honest answer for any part of your situation is "don't use AI here," the
-					plan will say so.
-				</p>
-			</div>
-
-			<!-- Submit -->
-			<div class="pt-2">
-				<button
-					type="submit"
-					disabled={!canSubmit}
-					class="inline-flex items-center justify-center font-sans font-medium transition-all duration-200 ease-out rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent/50 active:scale-[0.98] bg-accent text-paper hover:bg-accent-hover shadow-sm hover:shadow hover:-translate-y-px px-8 py-4 text-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-sm"
-				>
-					{canSubmit ? 'Send me my Action Plan' : 'Complete all questions to submit'}
-				</button>
-				<p class="mt-3 text-xs text-subtle">
-					Clicking send opens your email client with your answers filled in. Hit send in that window
-					to deliver the quiz to me.
-				</p>
-			</div>
+				<div class="pt-2">
+					<button
+						type="submit"
+						disabled={!canSubmit}
+						class="inline-flex items-center justify-center font-sans font-medium transition-all duration-200 ease-out rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent/50 active:scale-[0.98] bg-accent text-paper hover:bg-accent-hover shadow-sm hover:shadow hover:-translate-y-px px-8 py-4 text-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-sm"
+					>
+						{canSubmit ? 'Send me my Action Plan' : 'Enter your email to submit'}
+					</button>
+					<p class="mt-3 text-xs text-subtle">
+						If automatic submission fails, your email client opens with the answers pre-filled.
+					</p>
+				</div>
+			{/if}
 		</form>
 	{:else}
-		<!-- Post-submit state: status + preview + ICP verdict -->
+		<!-- Post-submit state -->
 		<div class="max-w-2xl mx-auto space-y-8" use:reveal>
 			{#if submitState === 'sending'}
 				<div class="rule-left-accent">
@@ -397,13 +509,12 @@
 						Thanks. Your Action Plan is on the way.
 					</h2>
 					<p class="font-serif text-muted leading-relaxed">
-						I got your answers and I'll email a personalized Action Plan to <strong
-							class="font-sans font-medium text-ink">{email}</strong
-						> within 24 hours. No list. No spam.
+						I got your answers and I'll email a personalised Action Plan to
+						<strong class="font-sans font-medium text-ink">{email}</strong>
+						within 24 hours. No list. No spam.
 					</p>
 				</div>
 			{:else}
-				<!-- mailto-fallback: browser POST failed, mail client opened instead -->
 				<div class="rule-left-accent">
 					<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
 						One more step
@@ -413,7 +524,7 @@
 					</h2>
 					<p class="font-serif text-muted leading-relaxed">
 						Automatic submission didn't work so your mail client opened with your answers
-						pre-filled. Hit send in that window and I'll email your personalized Action Plan within
+						pre-filled. Hit send in that window and I'll email your personalised Action Plan within
 						24 hours.
 					</p>
 					<button
@@ -426,7 +537,6 @@
 				</div>
 			{/if}
 
-			<!-- Live preview of what's coming -->
 			<div class="border-t border-rule pt-8">
 				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-subtle uppercase mb-2">
 					Preview · based on your answers
@@ -437,7 +547,6 @@
 				<p class="font-serif text-muted leading-relaxed">{previewCategory.body}</p>
 			</div>
 
-			<!-- ICP verdict -->
 			{#if icpVerdict === 'in-core'}
 				<div class="rule-left-accent-sm">
 					<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
@@ -480,9 +589,14 @@
 	{/if}
 </Section>
 
-<!-- What the Action Plan includes — hairline-grid matching the Assessment page -->
 {#if !submitted}
-	<Section background="muted" padding="md" eyebrow="What you get" title="The Action Plan" centered={false}>
+	<Section
+		background="muted"
+		padding="md"
+		eyebrow="What you get"
+		title="The Action Plan"
+		centered={false}
+	>
 		<div class="max-w-5xl">
 			<div
 				class="hairline-grid on-muted grid md:grid-cols-3"
@@ -493,7 +607,7 @@
 						01
 					</p>
 					<h3 class="font-sans font-medium text-lg text-ink mb-2 tracking-tight">
-						Three personalized quick wins
+						Three personalised quick wins
 					</h3>
 					<p class="font-serif text-sm text-muted leading-relaxed">
 						Ranked by time saved vs. setup effort. Each is specific to the leak you named, not a
