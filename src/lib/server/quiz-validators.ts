@@ -1,6 +1,8 @@
 import type { QuizStatic, AdaptiveAnswer, InfoNeed } from '$lib/types/quiz';
 import { INFO_NEEDS } from '$lib/types/quiz';
 
+export const PROCESS_HEALTH_VALUES = ['healthy', 'broken', 'unsure'] as const;
+
 export function isValidStatic(v: unknown): v is QuizStatic {
 	if (!v || typeof v !== 'object') return false;
 	const s = v as Record<string, unknown>;
@@ -12,7 +14,8 @@ export function isValidStatic(v: unknown): v is QuizStatic {
 		typeof s.timeLeak === 'string' &&
 		s.timeLeak.length > 0 &&
 		typeof s.dreadedTask === 'string' &&
-		s.dreadedTask.length >= 20
+		s.dreadedTask.length >= 20 &&
+		PROCESS_HEALTH_VALUES.includes(s.processHealth as (typeof PROCESS_HEALTH_VALUES)[number])
 	);
 }
 

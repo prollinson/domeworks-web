@@ -6,7 +6,8 @@ describe('isValidStatic', () => {
 		industry: 'Accounting or bookkeeping',
 		size: '10-25',
 		timeLeak: 'admin',
-		dreadedTask: 'chasing tax documents from 80 clients every February'
+		dreadedTask: 'chasing tax documents from 80 clients every February',
+		processHealth: 'healthy' as const
 	};
 
 	it('accepts a valid block', () => {
@@ -32,6 +33,21 @@ describe('isValidStatic', () => {
 	it('rejects dreadedTask exactly 19 chars and accepts 20+', () => {
 		expect(isValidStatic({ ...valid, dreadedTask: 'x'.repeat(19) })).toBe(false);
 		expect(isValidStatic({ ...valid, dreadedTask: 'x'.repeat(20) })).toBe(true);
+	});
+
+	it('rejects missing processHealth', () => {
+		const { processHealth, ...rest } = valid;
+		expect(isValidStatic(rest)).toBe(false);
+	});
+
+	it('rejects unknown processHealth value', () => {
+		expect(isValidStatic({ ...valid, processHealth: 'great' })).toBe(false);
+	});
+
+	it('accepts each of the three valid processHealth values', () => {
+		expect(isValidStatic({ ...valid, processHealth: 'healthy' })).toBe(true);
+		expect(isValidStatic({ ...valid, processHealth: 'broken' })).toBe(true);
+		expect(isValidStatic({ ...valid, processHealth: 'unsure' })).toBe(true);
 	});
 });
 

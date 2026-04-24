@@ -27,7 +27,8 @@ describe('quiz types', () => {
 				industry: 'Accounting or bookkeeping',
 				size: '10-25',
 				timeLeak: 'admin',
-				dreadedTask: 'chasing tax documents from 80 clients every February'
+				dreadedTask: 'chasing tax documents from 80 clients every February',
+				processHealth: 'healthy'
 			},
 			adaptive: [
 				{ id: 'q1', infoNeed: 'stack', question: 'a?', options: ['x', 'Other'], answer: 'x' },

@@ -28,6 +28,7 @@ export interface QuizStatic {
 	size: string;
 	timeLeak: string;
 	dreadedTask: string;
+	processHealth: 'healthy' | 'broken' | 'unsure';
 }
 
 export interface QuizSubmission {
