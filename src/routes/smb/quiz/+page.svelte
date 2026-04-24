@@ -4,6 +4,7 @@
 	import { generateQuizMailto, getAssessmentCallUrl } from '$lib/utils/mailto';
 	import { QUIZ_INDUSTRIES } from '$lib/data/quiz-industries';
 	import { getFallbackQuestion } from '$lib/data/quiz-fallback';
+	import { untrack } from 'svelte';
 	import type {
 		AdaptiveAnswer,
 		NextRequest,
@@ -47,7 +48,11 @@
 		size;
 		timeLeak;
 		dreadedTask;
-		staticVersion++;
+		// Use untrack so staticVersion++ doesn't add staticVersion as a reactive
+		// dependency of this effect (which would cause an infinite re-run loop).
+		untrack(() => {
+			staticVersion++;
+		});
 		adaptive = [];
 		pendingQuestion = null;
 		selectedOption = '';
