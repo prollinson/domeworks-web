@@ -18,9 +18,14 @@
 	let size = $state('');
 	let timeLeak = $state('');
 	let dreadedTask = $state('');
+	let processHealth = $state<'healthy' | 'broken' | 'unsure' | ''>('');
 
 	const staticComplete = $derived(
-		industry.length > 0 && size.length > 0 && timeLeak.length > 0 && dreadedTask.trim().length >= 20
+		industry.length > 0 &&
+			size.length > 0 &&
+			timeLeak.length > 0 &&
+			dreadedTask.trim().length >= 20 &&
+			processHealth.length > 0
 	);
 
 	// --- Adaptive state ---
@@ -48,6 +53,7 @@
 		size;
 		timeLeak;
 		dreadedTask;
+		processHealth;
 		// Use untrack so staticVersion++ doesn't add staticVersion as a reactive
 		// dependency of this effect (which would cause an infinite re-run loop).
 		untrack(() => {
@@ -77,7 +83,8 @@
 				industry,
 				size,
 				timeLeak,
-				dreadedTask: dreadedTask.trim()
+				dreadedTask: dreadedTask.trim(),
+				processHealth: processHealth as 'healthy' | 'broken' | 'unsure'
 			} satisfies QuizStatic,
 			adaptiveSoFar: adaptive
 		};
@@ -102,14 +109,13 @@
 		}
 	}
 
-	// Blur handler on the dreaded-task textarea (debounced).
-	let blurTimer: ReturnType<typeof setTimeout> | null = null;
-	function handleDreadedBlur() {
-		if (blurTimer) clearTimeout(blurTimer);
-		blurTimer = setTimeout(() => {
-			if (staticComplete && adaptive.length === 0 && !pendingQuestion) fetchNext();
-		}, 400);
-	}
+	// Fire the first adaptive fetch once all five static answers exist.
+	// queueMicrotask defers the call out of the effect flush pass.
+	$effect(() => {
+		if (staticComplete && adaptive.length === 0 && !pendingQuestion && !loadingNext) {
+			queueMicrotask(fetchNext);
+		}
+	});
 
 	// --- Answering an adaptive question ---
 	function answerPending() {
@@ -143,7 +149,13 @@
 		if (!canSubmit) return;
 
 		const submission: QuizSubmission = {
-			static: { industry, size, timeLeak, dreadedTask: dreadedTask.trim() },
+			static: {
+				industry,
+				size,
+				timeLeak,
+				dreadedTask: dreadedTask.trim(),
+				processHealth: processHealth as 'healthy' | 'broken' | 'unsure'
+			},
 			adaptive,
 			email
 		};
@@ -167,7 +179,13 @@
 
 	function resend() {
 		const submission: QuizSubmission = {
-			static: { industry, size, timeLeak, dreadedTask: dreadedTask.trim() },
+			static: {
+				industry,
+				size,
+				timeLeak,
+				dreadedTask: dreadedTask.trim(),
+				processHealth: processHealth as 'healthy' | 'broken' | 'unsure'
+			},
 			adaptive,
 			email
 		};
@@ -353,7 +371,6 @@
 				<textarea
 					id="dreadedTask"
 					bind:value={dreadedTask}
-					onblur={handleDreadedBlur}
 					placeholder="One concrete task, with numbers if possible. E.g. 'chasing 15 client docs every tax season, ~6 hrs/week'."
 					rows="3"
 					required
@@ -366,11 +383,38 @@
 				{/if}
 			</div>
 
-			<!-- Q05–Q07 Adaptive answered -->
+			<!-- Q05 Process health -->
+			<fieldset>
+				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
+					05
+				</p>
+				<legend class="block font-sans font-medium text-lg text-ink tracking-tight mb-3">
+					Which is closer to the truth about that task?
+				</legend>
+				<div class="space-y-2">
+					{#each [['healthy', 'The process works', 'The task itself just eats time. The workflow around it is fine.'], ['broken', 'The process is broken', "That's where the real problem is. The task being painful is a symptom."], ['unsure', 'Honestly, not sure', 'Maybe a bit of both. Help me think about it.']] as [v, title, body]}
+						<label class="cursor-pointer block">
+							<input
+								type="radio"
+								bind:group={processHealth}
+								value={v}
+								class="peer sr-only"
+								required
+							/>
+							<div class={cardChipClass}>
+								<p class="font-sans font-medium text-ink">{title}</p>
+								<p class="font-serif text-sm text-muted leading-relaxed mt-1">{body}</p>
+							</div>
+						</label>
+					{/each}
+				</div>
+			</fieldset>
+
+			<!-- Q06-Q08 Adaptive answered -->
 			{#each adaptive as a, i (a.id)}
 				<fieldset disabled>
 					<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
-						{String(i + 5).padStart(2, '0')}
+						{String(i + 6).padStart(2, '0')}
 					</p>
 					<legend class="block font-sans font-medium text-lg text-ink tracking-tight mb-3">
 						{a.question}
@@ -399,7 +443,7 @@
 			{#if adaptive.length < 3 && (loadingNext || pendingQuestion)}
 				<fieldset>
 					<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
-						{String(adaptive.length + 5).padStart(2, '0')} · Based on your answers
+						{String(adaptive.length + 6).padStart(2, '0')} · Based on your answers
 					</p>
 					{#if loadingNext && !pendingQuestion}
 						<div class="space-y-3" aria-busy="true">
@@ -456,11 +500,11 @@
 				</fieldset>
 			{/if}
 
-			<!-- Q08 Email (only after 3 adaptive answers) -->
+			<!-- Q09 Email (only after 3 adaptive answers) -->
 			{#if adaptive.length === 3}
 				<div>
 					<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
-						08
+						09
 					</p>
 					<label
 						for="email"

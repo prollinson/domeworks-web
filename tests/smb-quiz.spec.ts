@@ -60,6 +60,8 @@ test.describe('/smb/quiz — adaptive flow', () => {
 		);
 		await textarea.blur();
 
+		await page.getByText('The task itself just eats time').click();
+
 		// Wait for the first adaptive question.
 		await expect(page.getByText('Which practice-management software do you use?')).toBeVisible({
 			timeout: 4000
@@ -98,6 +100,8 @@ test.describe('/smb/quiz — adaptive flow', () => {
 			'drafting demand letters from scratch every time, 4-5 hours a week typically'
 		);
 		await textarea.blur();
+
+		await page.getByText('The task itself just eats time').click();
 
 		// First fallback question is the "stack" question.
 		await expect(
