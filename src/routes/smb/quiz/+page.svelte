@@ -52,6 +52,9 @@
 		pendingQuestion = null;
 		selectedOption = '';
 		otherText = '';
+		// Clear any in-flight flag too — without this, an edit during a pending
+		// fetch leaves loadingNext stuck true and wedges the next blur trigger.
+		loadingNext = false;
 	});
 
 	// --- Fetch next adaptive question ---
@@ -370,7 +373,7 @@
 							<label class="cursor-pointer">
 								<input
 									type="radio"
-									checked={a.answer === opt || (opt === 'Other' && a.answer.startsWith('Other:'))}
+									checked={a.answer === opt || (opt === 'Other' && a.answer.startsWith('Other: '))}
 									class="peer sr-only"
 								/>
 								<span class={chipClass}>{opt}</span>
