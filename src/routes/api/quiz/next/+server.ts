@@ -1,38 +1,10 @@
 import { json, error } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import type { NextRequest, QuizStatic, AdaptiveAnswer, InfoNeed } from '$lib/types/quiz';
-import { nextQuestion, INFO_NEEDS } from '$lib/server/quiz-agent';
+import type { NextRequest } from '$lib/types/quiz';
+import { nextQuestion } from '$lib/server/quiz-agent';
+import { isValidStatic, isValidAdaptive } from '$lib/server/quiz-validators';
 
 export const prerender = false;
-
-function isValidStatic(v: unknown): v is QuizStatic {
-	if (!v || typeof v !== 'object') return false;
-	const s = v as Record<string, unknown>;
-	return (
-		typeof s.industry === 'string' &&
-		s.industry.length > 0 &&
-		typeof s.size === 'string' &&
-		s.size.length > 0 &&
-		typeof s.timeLeak === 'string' &&
-		s.timeLeak.length > 0 &&
-		typeof s.dreadedTask === 'string' &&
-		s.dreadedTask.length >= 20
-	);
-}
-
-function isValidAdaptive(v: unknown): v is AdaptiveAnswer {
-	if (!v || typeof v !== 'object') return false;
-	const a = v as Record<string, unknown>;
-	return (
-		typeof a.id === 'string' &&
-		typeof a.question === 'string' &&
-		typeof a.answer === 'string' &&
-		typeof a.infoNeed === 'string' &&
-		INFO_NEEDS.includes(a.infoNeed as InfoNeed) &&
-		Array.isArray(a.options) &&
-		a.options.every((o) => typeof o === 'string')
-	);
-}
 
 export const POST: RequestHandler = async ({ request, platform }) => {
 	let payload: unknown;

@@ -85,4 +85,9 @@ describe('POST /api/quiz', () => {
 	it('throws 503 when SEB binding is missing', async () => {
 		await expect(POST(makeEvent(sample))).rejects.toMatchObject({ status: 503 });
 	});
+
+	it('throws 502 when SEB send rejects', async () => {
+		const send = vi.fn().mockRejectedValue(new Error('connection refused'));
+		await expect(POST(makeEvent(sample, { send }))).rejects.toMatchObject({ status: 502 });
+	});
 });
