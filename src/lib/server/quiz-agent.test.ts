@@ -3,10 +3,14 @@ import type { NextRequest } from '$lib/types/quiz';
 
 // Mock the SDK before importing the module under test.
 const mockCreate = vi.fn();
+const constructorCalls: Array<{ apiKey: string; baseURL: string }> = [];
 vi.mock('@anthropic-ai/sdk', () => {
 	return {
 		default: class {
 			messages = { create: mockCreate };
+			constructor(opts: { apiKey: string; baseURL: string }) {
+				constructorCalls.push(opts);
+			}
 		}
 	};
 });
@@ -25,6 +29,7 @@ const baseReq: NextRequest = {
 
 beforeEach(() => {
 	mockCreate.mockReset();
+	constructorCalls.length = 0;
 });
 
 describe('nextQuestion', () => {
@@ -175,5 +180,81 @@ describe('nextQuestion', () => {
 				tools: expect.arrayContaining([expect.objectContaining({ name: 'emit_question' })])
 			})
 		);
+	});
+
+	it('passes the gateway URL to the SDK as baseURL', async () => {
+		mockCreate.mockResolvedValueOnce({
+			stop_reason: 'tool_use',
+			content: [
+				{
+					type: 'tool_use',
+					name: 'emit_question',
+					input: {
+						question: 'a?',
+						helper: null,
+						options: ['x', 'Other'],
+						infoNeed: 'stack'
+					}
+				}
+			]
+		});
+
+		await nextQuestion(baseReq, {
+			apiKey: 'sk-test-abc',
+			gatewayUrl: 'https://gateway.ai.cloudflare.com/v1/acc/gw/anthropic'
+		});
+
+		expect(constructorCalls).toHaveLength(1);
+		expect(constructorCalls[0].apiKey).toBe('sk-test-abc');
+		expect(constructorCalls[0].baseURL).toBe(
+			'https://gateway.ai.cloudflare.com/v1/acc/gw/anthropic'
+		);
+	});
+
+	it("moves 'Other' to the end if the model puts it first", async () => {
+		mockCreate.mockResolvedValueOnce({
+			stop_reason: 'tool_use',
+			content: [
+				{
+					type: 'tool_use',
+					name: 'emit_question',
+					input: {
+						question: 'Which platforms?',
+						helper: null,
+						options: ['Other', 'AFG', 'Connective'],
+						infoNeed: 'stack'
+					}
+				}
+			]
+		});
+
+		const res = await nextQuestion(baseReq, {
+			apiKey: 'sk-test',
+			gatewayUrl: 'https://gateway.example/anthropic'
+		});
+
+		expect(res.options).toEqual(['AFG', 'Connective', 'Other']);
+	});
+
+	it('throws if the model returns an empty options array', async () => {
+		mockCreate.mockResolvedValueOnce({
+			stop_reason: 'tool_use',
+			content: [
+				{
+					type: 'tool_use',
+					name: 'emit_question',
+					input: {
+						question: 'Which?',
+						helper: null,
+						options: [],
+						infoNeed: 'stack'
+					}
+				}
+			]
+		});
+
+		await expect(
+			nextQuestion(baseReq, { apiKey: 'sk-test', gatewayUrl: 'https://gateway.example/anthropic' })
+		).rejects.toThrow(/options/i);
 	});
 });

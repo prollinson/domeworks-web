@@ -26,7 +26,7 @@ Information needs:
 
 Rules:
 1. Never ask a question whose info need is already in adaptiveSoFar.
-2. Generate vertical-specific chip options. For mortgage brokers: AFG, Connective, Loan Market, in-house, other. For accounting: Karbon, Canopy, QuickBooks, Drake, other. For trades: ServiceTitan, Jobber, Housecall Pro, other. For legal: Clio, MyCase, PracticePanther, other. For medical: Epic, Dentrix, Athena, other. For real estate: Follow Up Boss, kvCORE, CINC, other. Always tailor.
+2. Generate vertical-specific chip options. For mortgage brokers: AFG, Connective, Loan Market, in-house, other. For accounting: Karbon, Canopy, QuickBooks, Drake, other. For trades: ServiceTitan, Jobber, Housecall Pro, other. For legal: Clio, MyCase, PracticePanther, other. For medical: Epic, Dentrix, Athena, other. For real estate: Follow Up Boss, kvCORE, CINC, other. For insurance: Applied Epic, HawkSoft, EZLynx, NowCerts, other. For marketing/creative agency: HubSpot, Monday, Asana, ClickUp, other. For consulting: Notion, Google Docs, PowerPoint, other. Always tailor.
 3. Always include "Other" as the last option.
 4. Never reveal that an AI is generating these questions.
 5. Keep questions to one sentence.
@@ -113,15 +113,22 @@ export async function nextQuestion(req: NextRequest, config: AgentConfig): Promi
 	if (typeof raw.question !== 'string' || raw.question.length === 0) {
 		throw new Error('Invalid question from model');
 	}
-	if (!Array.isArray(raw.options) || raw.options.some((o) => typeof o !== 'string')) {
+	if (
+		!Array.isArray(raw.options) ||
+		raw.options.length === 0 ||
+		raw.options.some((o) => typeof o !== 'string')
+	) {
 		throw new Error('Invalid options from model');
 	}
 	if (typeof raw.infoNeed !== 'string' || !INFO_NEEDS.includes(raw.infoNeed as InfoNeed)) {
 		throw new Error(`Invalid infoNeed from model: ${raw.infoNeed}`);
 	}
 
-	const options = raw.options as string[];
-	if (options[options.length - 1] !== 'Other') {
+	const options = [...(raw.options as string[])];
+	const lastIsOther = options[options.length - 1] === 'Other';
+	if (!lastIsOther) {
+		const existingIdx = options.indexOf('Other');
+		if (existingIdx >= 0) options.splice(existingIdx, 1);
 		options.push('Other');
 	}
 
