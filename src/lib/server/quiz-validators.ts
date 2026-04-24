@@ -1,5 +1,5 @@
 import type { QuizStatic, AdaptiveAnswer, InfoNeed } from '$lib/types/quiz';
-import { INFO_NEEDS } from './quiz-agent';
+import { INFO_NEEDS } from '$lib/types/quiz';
 
 export function isValidStatic(v: unknown): v is QuizStatic {
 	if (!v || typeof v !== 'object') return false;

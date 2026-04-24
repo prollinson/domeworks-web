@@ -86,14 +86,16 @@
 			const res = await fetch('/api/quiz/next', {
 				method: 'POST',
 				headers: { 'content-type': 'application/json' },
-				body: JSON.stringify(body)
+				body: JSON.stringify(body),
+				signal: AbortSignal.timeout(8000)
 			});
 			if (!res.ok) throw new Error(`HTTP ${res.status}`);
 			const data = (await res.json()) as NextResponse;
 			if (myVersion !== staticVersion) return; // stale
 			pendingQuestion = data;
-		} catch {
+		} catch (err) {
 			if (myVersion !== staticVersion) return;
+			console.warn('[adaptive-quiz] /api/quiz/next failed, using fallback:', err);
 			pendingQuestion = getFallbackQuestion(adaptive.length);
 		} finally {
 			if (myVersion === staticVersion) loadingNext = false;

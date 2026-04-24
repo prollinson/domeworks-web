@@ -6,6 +6,15 @@ export type InfoNeed =
 	| 'ownership'
 	| 'prior-tools';
 
+export const INFO_NEEDS: InfoNeed[] = [
+	'stack',
+	'volume',
+	'speed-to-lead',
+	'sensitive-data',
+	'ownership',
+	'prior-tools'
+];
+
 export interface AdaptiveAnswer {
 	id: string;
 	infoNeed: InfoNeed;

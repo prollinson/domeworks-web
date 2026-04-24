@@ -1,14 +1,6 @@
 import Anthropic from '@anthropic-ai/sdk';
 import type { NextRequest, NextResponse, InfoNeed } from '$lib/types/quiz';
-
-export const INFO_NEEDS: InfoNeed[] = [
-	'stack',
-	'volume',
-	'speed-to-lead',
-	'sensitive-data',
-	'ownership',
-	'prior-tools'
-];
+import { INFO_NEEDS } from '$lib/types/quiz';
 
 const SYSTEM_PROMPT = `You generate one question at a time for an AI readiness quiz built by Piers Rollinson at DomeWorks. The quiz captures signal so Piers can hand-write a personalised Action Plan for a services-business owner. You are NOT writing the plan.
 
