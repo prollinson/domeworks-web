@@ -2,9 +2,13 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import type { NextRequest, NextResponse } from '$lib/types/quiz';
 
 const { mockNextQuestion } = vi.hoisted(() => ({ mockNextQuestion: vi.fn() }));
-vi.mock('$lib/server/quiz-agent', () => ({
-	nextQuestion: mockNextQuestion
-}));
+vi.mock('$lib/server/quiz-agent', async (importOriginal) => {
+	const actual = await importOriginal<typeof import('$lib/server/quiz-agent')>();
+	return {
+		...actual,
+		nextQuestion: mockNextQuestion
+	};
+});
 
 import { POST } from './+server';
 

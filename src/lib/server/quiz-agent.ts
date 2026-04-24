@@ -1,7 +1,7 @@
 import Anthropic from '@anthropic-ai/sdk';
 import type { NextRequest, NextResponse, InfoNeed } from '$lib/types/quiz';
 
-const INFO_NEEDS: InfoNeed[] = [
+export const INFO_NEEDS: InfoNeed[] = [
 	'stack',
 	'volume',
 	'speed-to-lead',

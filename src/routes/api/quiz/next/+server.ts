@@ -1,18 +1,9 @@
 import { json, error } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import type { NextRequest, QuizStatic, AdaptiveAnswer, InfoNeed } from '$lib/types/quiz';
-import { nextQuestion } from '$lib/server/quiz-agent';
+import { nextQuestion, INFO_NEEDS } from '$lib/server/quiz-agent';
 
 export const prerender = false;
-
-const INFO_NEEDS: InfoNeed[] = [
-	'stack',
-	'volume',
-	'speed-to-lead',
-	'sensitive-data',
-	'ownership',
-	'prior-tools'
-];
 
 function isValidStatic(v: unknown): v is QuizStatic {
 	if (!v || typeof v !== 'object') return false;
