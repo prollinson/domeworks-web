@@ -437,7 +437,7 @@
 				<div class="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
 					<Button href={ctaUrl} size="lg">Book the assessment</Button>
 					<a
-						href="/quiz/"
+						href="/smb/quiz/"
 						class="text-sm text-paper/85 underline underline-offset-4 hover:text-accent-light transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-light focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
 					>
 						Not ready? Take the 2-min quiz first →
