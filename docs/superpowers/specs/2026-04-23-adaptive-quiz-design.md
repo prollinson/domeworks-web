@@ -24,12 +24,13 @@ Replace those limitations with a **hybrid** flow: four static seed questions fol
 
 ## 3. Information architecture
 
-**Four static seeds (tap-through, identical styling to today):**
+**Five static seeds (tap-through, identical styling to today):**
 
 1. Industry — dropdown, extended with `insurance` and `mortgage` (both already have vertical patterns in `AssessmentPage.svelte` but are missing from the current quiz dropdown)
 2. Team size — chip row
 3. Where time leaks most — chip row, keeping the "mixed" option but treating it as a cue for the agent to probe harder
 4. The dreaded task — textarea, validation tightened to `≥ 20 chars`; placeholder rewritten to demand one concrete task + numbers where possible
+5. Process health — card-chip row (`healthy` / `broken` / `unsure`), slotted after the dreaded task. Captures whether the dreaded task is inside a broken process. This is the signal that drives Piers's "fix the process first" warning in the Action Plan.
 
 **Dropped from today's quiz:**
 
@@ -54,7 +55,7 @@ The agent ranks these for the specific respondent and returns the top three, one
 
 **Final step:** email, then submit (unchanged flow).
 
-**Net interaction count:** 4 static + 3 adaptive + 1 email = **8 moments**, same "2 minutes" feel as today.
+**Net interaction count:** 5 static + 3 adaptive + 1 email = **9 moments**, still under 3 minutes.
 
 ## 4. Agent contract
 
