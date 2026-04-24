@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Button from '$lib/components/ui/Button.svelte';
 	import Section from '$lib/components/layout/Section.svelte';
 	import { reveal } from '$lib/actions/reveal';
 	import { generateQuizMailto, type QuizAnswers } from '$lib/utils/mailto';
@@ -107,6 +106,25 @@
 		};
 		window.location.href = generateQuizMailto(answers);
 	}
+
+	const questions = [
+		{ n: '01', label: 'What does your business do?' },
+		{ n: '02', label: 'How many people are on your team?' },
+		{ n: '03', label: 'Annual revenue range?' },
+		{ n: '04', label: 'Your role?' },
+		{ n: '05', label: 'Where does your time leak most?' },
+		{ n: '06', label: 'Which single task do you dread most?' },
+		{ n: '07', label: 'AI tool usage so far?' },
+		{ n: '08', label: 'Where should I send your Action Plan?' }
+	];
+
+	// Shared classes for radio/checkbox chip controls.
+	const chipClass =
+		'block text-center p-3 bg-paper border border-rule rounded-lg text-sm font-sans text-muted peer-checked:border-accent peer-checked:bg-accent/10 peer-checked:text-ink hover:border-ink/30 transition';
+	const cardChipClass =
+		'p-4 bg-paper border border-rule rounded-lg peer-checked:border-accent peer-checked:bg-accent/10 hover:border-ink/30 transition';
+	const inputClass =
+		'w-full p-3 bg-paper border border-rule rounded-lg text-ink font-sans focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent';
 </script>
 
 <svelte:head>
@@ -115,11 +133,11 @@
 		name="description"
 		content="2-minute quiz to pinpoint your biggest time leak across admin, marketing, and delivery. Free personalized Action Plan delivered to your inbox."
 	/>
-	<link rel="canonical" href="https://domeworks.tech/quiz/" />
+	<link rel="canonical" href="https://domeworks.tech/smb/quiz/" />
 
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="DomeWorks" />
-	<meta property="og:url" content="https://domeworks.tech/quiz/" />
+	<meta property="og:url" content="https://domeworks.tech/smb/quiz/" />
 	<meta property="og:title" content="AI Readiness Quiz | DomeWorks" />
 	<meta
 		property="og:description"
@@ -135,29 +153,41 @@
 	<meta name="twitter:image" content="https://domeworks.tech/og-image.png" />
 </svelte:head>
 
-<!-- Hero -->
-<section class="relative bg-ink overflow-hidden -mt-16 md:-mt-20" aria-label="AI Readiness Quiz">
-	<div class="absolute inset-0 hero-grid" aria-hidden="true" role="presentation"></div>
-	<div class="absolute inset-0 hero-glow" aria-hidden="true" role="presentation"></div>
-	<div class="absolute inset-0 texture-grain" aria-hidden="true" role="presentation"></div>
+<!-- Hero: dark ink surface, sans semibold H1, editorial eyebrow row -->
+<section class="relative bg-ink text-paper overflow-hidden" aria-label="AI Readiness Quiz">
+	<a
+		href="/"
+		class="absolute top-6 left-6 lg:top-8 lg:left-8 z-10 text-sm font-sans font-semibold tracking-tight text-paper/80 hover:text-paper transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-light focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+	>
+		DomeWorks<span class="text-accent-light">.</span>
+	</a>
 
-	<div class="relative w-full max-w-4xl mx-auto px-6 lg:px-8 pt-36 md:pt-40 pb-16 md:pb-20">
-		<div class="hero-eyebrow-row mb-6">
-			<span class="hero-eyebrow-text">AI Readiness Quiz</span>
-			<span class="hero-eyebrow-index">Free · 2 minutes</span>
+	<div class="relative w-full max-w-4xl mx-auto px-6 lg:px-8 pt-24 md:pt-28 pb-16 md:pb-20">
+		<div
+			class="flex flex-wrap items-center gap-x-4 gap-y-1 text-[0.6875rem] font-semibold uppercase tracking-[0.14em] mb-8"
+		>
+			<span class="text-accent-light">AI Readiness Quiz</span>
+			<span class="h-3 w-px bg-paper/25" aria-hidden="true"></span>
+			<span class="text-paper/75 font-normal tracking-[0.08em]">Free · 2 minutes</span>
 		</div>
 
 		<h1
-			class="font-serif font-normal text-warm-white text-4xl md:text-5xl lg:text-6xl leading-tight mb-5"
+			class="font-sans font-semibold text-[clamp(2.5rem,7vw,4.5rem)] leading-[1.02] tracking-[-0.035em]"
 		>
-			2 minutes. <span class="text-warm-white/70">Find your biggest</span>
+			2 minutes. <span class="text-paper/70">Find your biggest</span>
 			<br class="hidden sm:block" />
-			<em class="text-copper not-italic">time leak</em><span class="text-copper">.</span>
+			<span class="text-accent-light">time leak.</span>
 		</h1>
-		<p class="text-warm-white/80 text-lg leading-relaxed max-w-2xl">
+
+		<p
+			class="mt-6 font-serif text-xl md:text-2xl leading-[1.55] text-paper/80 max-w-2xl font-normal"
+		>
 			A short set of questions to map where admin, marketing, and delivery are costing you the most
-			time right now. I'll send a free personalized Action Plan to your inbox within 24 hours. Quick
-			wins you can set up in 30 to 60 minutes. Step-by-step. No technical background required.
+			time right now.
+		</p>
+		<p class="mt-4 text-sm text-paper/75 max-w-2xl">
+			I'll send a free personalized Action Plan to your inbox within 24 hours. Quick wins you can
+			set up in 30 to 60 minutes. Step-by-step. No technical background required.
 		</p>
 	</div>
 </section>
@@ -165,20 +195,18 @@
 <!-- The quiz -->
 <Section background="white" padding="md">
 	{#if !submitted}
-		<form onsubmit={handleSubmit} class="max-w-2xl mx-auto space-y-8" use:reveal>
+		<form onsubmit={handleSubmit} class="max-w-2xl mx-auto space-y-10" use:reveal>
 			<!-- Question 1: Industry -->
 			<div>
+				<p
+					class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2"
+				>{questions[0].n}</p>
 				<label
 					for="industry"
-					class="block text-sm font-semibold tracking-widest text-copper uppercase mb-3"
-					>01 &nbsp; What does your business do?</label
+					class="block font-sans font-medium text-lg text-ink tracking-tight mb-3"
+					>{questions[0].label}</label
 				>
-				<select
-					id="industry"
-					bind:value={industry}
-					required
-					class="w-full p-3 bg-warm-white border border-charcoal/15 rounded-lg text-charcoal focus:outline-none focus:ring-2 focus:ring-copper"
-				>
+				<select id="industry" bind:value={industry} required class={inputClass}>
 					<option value="">Select one</option>
 					<option value="Accounting or bookkeeping">Accounting or bookkeeping</option>
 					<option value="Legal">Legal</option>
@@ -196,17 +224,17 @@
 
 			<!-- Question 2: Size -->
 			<fieldset>
-				<legend class="block text-sm font-semibold tracking-widest text-copper uppercase mb-3"
-					>02 &nbsp; How many people are on your team?</legend
+				<p
+					class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2"
+				>{questions[1].n}</p>
+				<legend class="block font-sans font-medium text-lg text-ink tracking-tight mb-3"
+					>{questions[1].label}</legend
 				>
 				<div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
 					{#each [['1-9', '1–9'], ['10-25', '10–25'], ['26-50', '26–50'], ['51-200', '51–200'], ['200+', '200+']] as [v, label]}
 						<label class="cursor-pointer">
 							<input type="radio" bind:group={size} value={v} class="peer sr-only" required />
-							<span
-								class="block text-center p-3 bg-warm-white border border-charcoal/15 rounded-lg text-sm text-charcoal/80 peer-checked:border-copper peer-checked:bg-copper/10 peer-checked:text-charcoal hover:border-charcoal/30 transition"
-								>{label}</span
-							>
+							<span class={chipClass}>{label}</span>
 						</label>
 					{/each}
 				</div>
@@ -214,17 +242,17 @@
 
 			<!-- Question 3: Revenue -->
 			<fieldset>
-				<legend class="block text-sm font-semibold tracking-widest text-copper uppercase mb-3"
-					>03 &nbsp; Annual revenue range?</legend
+				<p
+					class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2"
+				>{questions[2].n}</p>
+				<legend class="block font-sans font-medium text-lg text-ink tracking-tight mb-3"
+					>{questions[2].label}</legend
 				>
 				<div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
 					{#each [['under-1m', 'Under $1M'], ['1-3m', '$1–3M'], ['3-10m', '$3–10M'], ['10-50m', '$10–50M'], ['over-50m', '$50M+']] as [v, label]}
 						<label class="cursor-pointer">
 							<input type="radio" bind:group={revenue} value={v} class="peer sr-only" required />
-							<span
-								class="block text-center p-3 bg-warm-white border border-charcoal/15 rounded-lg text-sm text-charcoal/80 peer-checked:border-copper peer-checked:bg-copper/10 peer-checked:text-charcoal hover:border-charcoal/30 transition"
-								>{label}</span
-							>
+							<span class={chipClass}>{label}</span>
 						</label>
 					{/each}
 				</div>
@@ -232,17 +260,17 @@
 
 			<!-- Question 4: Role -->
 			<fieldset>
-				<legend class="block text-sm font-semibold tracking-widest text-copper uppercase mb-3"
-					>04 &nbsp; Your role?</legend
+				<p
+					class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2"
+				>{questions[3].n}</p>
+				<legend class="block font-sans font-medium text-lg text-ink tracking-tight mb-3"
+					>{questions[3].label}</legend
 				>
 				<div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
 					{#each ['Owner', 'Partner', 'Operations', 'Other'] as option}
 						<label class="cursor-pointer">
 							<input type="radio" bind:group={role} value={option} class="peer sr-only" required />
-							<span
-								class="block text-center p-3 bg-warm-white border border-charcoal/15 rounded-lg text-sm text-charcoal/80 peer-checked:border-copper peer-checked:bg-copper/10 peer-checked:text-charcoal hover:border-charcoal/30 transition"
-								>{option}</span
-							>
+							<span class={chipClass}>{option}</span>
 						</label>
 					{/each}
 				</div>
@@ -250,18 +278,19 @@
 
 			<!-- Question 5: Time leak area -->
 			<fieldset>
-				<legend class="block text-sm font-semibold tracking-widest text-copper uppercase mb-3"
-					>05 &nbsp; Where does your time leak most?</legend
+				<p
+					class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2"
+				>{questions[4].n}</p>
+				<legend class="block font-sans font-medium text-lg text-ink tracking-tight mb-3"
+					>{questions[4].label}</legend
 				>
 				<div class="space-y-2">
 					{#each [['admin', 'Admin', 'Invoicing, scheduling, email triage, document chasing.'], ['marketing', 'Marketing and lead response', 'Inbound lead follow-up, content cadence, quoting, proposals.'], ['delivery', 'Client delivery', 'Meeting prep and notes, recurring deliverables, reporting, handoffs.'], ['mixed', 'Not sure / mixed', "It's scattered. I want help seeing where to look first."]] as [v, title, body]}
 						<label class="cursor-pointer block">
 							<input type="radio" bind:group={timeLeak} value={v} class="peer sr-only" required />
-							<div
-								class="p-4 bg-warm-white border border-charcoal/15 rounded-lg peer-checked:border-copper peer-checked:bg-copper/10 hover:border-charcoal/30 transition"
-							>
-								<p class="font-medium text-charcoal">{title}</p>
-								<p class="text-sm text-charcoal/65 mt-1">{body}</p>
+							<div class={cardChipClass}>
+								<p class="font-sans font-medium text-ink">{title}</p>
+								<p class="font-serif text-sm text-muted leading-relaxed mt-1">{body}</p>
 							</div>
 						</label>
 					{/each}
@@ -270,10 +299,13 @@
 
 			<!-- Question 6: Dreaded task -->
 			<div>
+				<p
+					class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2"
+				>{questions[5].n}</p>
 				<label
 					for="dreadedTask"
-					class="block text-sm font-semibold tracking-widest text-copper uppercase mb-3"
-					>06 &nbsp; Which single task do you dread most?</label
+					class="block font-sans font-medium text-lg text-ink tracking-tight mb-3"
+					>{questions[5].label}</label
 				>
 				<textarea
 					id="dreadedTask"
@@ -281,23 +313,23 @@
 					placeholder="The specific task on your weekly list that you procrastinate. One or two sentences."
 					rows="3"
 					required
-					class="w-full p-3 bg-warm-white border border-charcoal/15 rounded-lg text-charcoal focus:outline-none focus:ring-2 focus:ring-copper"
+					class={inputClass}
 				></textarea>
 			</div>
 
 			<!-- Question 7: AI usage -->
 			<fieldset>
-				<legend class="block text-sm font-semibold tracking-widest text-copper uppercase mb-3"
-					>07 &nbsp; AI tool usage so far?</legend
+				<p
+					class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2"
+				>{questions[6].n}</p>
+				<legend class="block font-sans font-medium text-lg text-ink tracking-tight mb-3"
+					>{questions[6].label}</legend
 				>
 				<div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
 					{#each [['none', 'Never used any'], ['light', 'Tried ChatGPT a few times'], ['regular', 'Regular user of one or more']] as [v, label]}
 						<label class="cursor-pointer">
 							<input type="radio" bind:group={aiUsage} value={v} class="peer sr-only" required />
-							<span
-								class="block text-center p-3 bg-warm-white border border-charcoal/15 rounded-lg text-sm text-charcoal/80 peer-checked:border-copper peer-checked:bg-copper/10 peer-checked:text-charcoal hover:border-charcoal/30 transition"
-								>{label}</span
-							>
+							<span class={chipClass}>{label}</span>
 						</label>
 					{/each}
 				</div>
@@ -305,10 +337,13 @@
 
 			<!-- Email -->
 			<div>
+				<p
+					class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2"
+				>{questions[7].n}</p>
 				<label
 					for="email"
-					class="block text-sm font-semibold tracking-widest text-copper uppercase mb-3"
-					>08 &nbsp; Where should I send your Action Plan?</label
+					class="block font-sans font-medium text-lg text-ink tracking-tight mb-3"
+					>{questions[7].label}</label
 				>
 				<input
 					id="email"
@@ -316,9 +351,9 @@
 					bind:value={email}
 					placeholder="you@yourcompany.com"
 					required
-					class="w-full p-3 bg-warm-white border border-charcoal/15 rounded-lg text-charcoal focus:outline-none focus:ring-2 focus:ring-copper"
+					class={inputClass}
 				/>
-				<p class="mt-2 text-xs text-charcoal/55">
+				<p class="mt-3 font-serif text-sm text-muted leading-relaxed">
 					I'll send your personalized Action Plan within 24 hours. No list. No spam. No upsell in
 					the plan. If the honest answer for any part of your situation is "don't use AI here," the
 					plan will say so.
@@ -326,100 +361,117 @@
 			</div>
 
 			<!-- Submit -->
-			<div class="pt-4">
+			<div class="pt-2">
 				<button
 					type="submit"
 					disabled={!canSubmit}
-					class="inline-flex items-center justify-center font-medium transition-all duration-200 ease-out rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-[0.98] bg-primary text-white hover:bg-primary-hover focus:ring-primary shadow-sm hover:shadow-[0_4px_14px_-2px_rgba(13,107,99,0.35)] px-8 py-4 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+					class="inline-flex items-center justify-center font-sans font-medium transition-all duration-200 ease-out rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent/50 active:scale-[0.98] bg-accent text-paper hover:bg-accent-hover shadow-sm hover:shadow hover:-translate-y-px px-8 py-4 text-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-sm"
 				>
 					{canSubmit ? 'Send me my Action Plan' : 'Complete all questions to submit'}
 				</button>
-				<p class="mt-3 text-xs text-charcoal/55">
+				<p class="mt-3 text-xs text-subtle">
 					Clicking send opens your email client with your answers filled in. Hit send in that window
 					to deliver the quiz to me.
 				</p>
 			</div>
 		</form>
 	{:else}
-		<!-- Post-submit state: preview + instructions -->
-		<div class="max-w-2xl mx-auto space-y-6" use:reveal>
+		<!-- Post-submit state: status + preview + ICP verdict -->
+		<div class="max-w-2xl mx-auto space-y-8" use:reveal>
 			{#if submitState === 'sending'}
-				<div class="p-6 bg-stone rounded-xl border border-charcoal/10">
-					<p class="text-xs font-semibold tracking-widest text-warm-gray uppercase mb-3">Sending</p>
-					<h2 class="font-serif text-2xl text-charcoal mb-3">Submitting your answers.</h2>
-					<p class="text-charcoal/75 leading-relaxed">One moment.</p>
+				<div class="rule-left-accent">
+					<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-subtle uppercase mb-2">
+						Sending
+					</p>
+					<h2 class="font-sans font-medium text-2xl text-ink tracking-tight mb-2">
+						Submitting your answers.
+					</h2>
+					<p class="font-serif text-muted leading-relaxed">One moment.</p>
 				</div>
 			{:else if submitState === 'sent'}
-				<div class="p-6 bg-copper/[0.08] rounded-xl border border-copper/25">
-					<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-3">Received</p>
-					<h2 class="font-serif text-2xl text-charcoal mb-3">
+				<div class="rule-left-accent">
+					<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
+						Received
+					</p>
+					<h2 class="font-sans font-medium text-2xl text-ink tracking-tight mb-2">
 						Thanks. Your Action Plan is on the way.
 					</h2>
-					<p class="text-charcoal/75 leading-relaxed">
+					<p class="font-serif text-muted leading-relaxed">
 						I got your answers and I'll email a personalized Action Plan to <strong
-							class="text-charcoal">{email}</strong
+							class="font-sans font-medium text-ink">{email}</strong
 						> within 24 hours. No list. No spam.
 					</p>
 				</div>
 			{:else}
 				<!-- mailto-fallback: browser POST failed, mail client opened instead -->
-				<div class="p-6 bg-copper/[0.08] rounded-xl border border-copper/25">
-					<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-3">
+				<div class="rule-left-accent">
+					<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
 						One more step
 					</p>
-					<h2 class="font-serif text-2xl text-charcoal mb-3">
+					<h2 class="font-sans font-medium text-2xl text-ink tracking-tight mb-2">
 						Check the email window that just opened.
 					</h2>
-					<p class="text-charcoal/75 leading-relaxed">
+					<p class="font-serif text-muted leading-relaxed">
 						Automatic submission didn't work so your mail client opened with your answers
 						pre-filled. Hit send in that window and I'll email your personalized Action Plan within
 						24 hours.
 					</p>
-					<button type="button" onclick={resend} class="mt-4 text-sm text-copper underline">
+					<button
+						type="button"
+						onclick={resend}
+						class="mt-4 text-sm font-sans text-ink underline underline-offset-4 decoration-accent hover:text-accent transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
+					>
 						Didn't see an email window? Click here to try again.
 					</button>
 				</div>
 			{/if}
 
 			<!-- Live preview of what's coming -->
-			<div class="p-6 bg-stone rounded-xl border border-charcoal/10">
-				<p class="text-xs font-semibold tracking-widest text-warm-gray uppercase mb-2">
+			<div class="border-t border-rule pt-8">
+				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-subtle uppercase mb-2">
 					Preview · based on your answers
 				</p>
-				<h3 class="font-medium text-charcoal mb-2">Your category: {previewCategory.title}</h3>
-				<p class="text-sm text-charcoal/75 leading-relaxed">{previewCategory.body}</p>
+				<h3 class="font-sans font-medium text-lg text-ink tracking-tight mb-2">
+					Your category: {previewCategory.title}
+				</h3>
+				<p class="font-serif text-muted leading-relaxed">{previewCategory.body}</p>
 			</div>
 
 			<!-- ICP verdict -->
 			{#if icpVerdict === 'in-core'}
-				<div class="p-6 bg-warm-white rounded-xl border border-charcoal/10">
-					<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-2">Good fit</p>
-					<p class="text-charcoal/75 leading-relaxed">
+				<div class="rule-left-accent-sm">
+					<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
+						Good fit
+					</p>
+					<p class="font-serif text-muted leading-relaxed">
 						You're squarely in the size I work with most. If the Action Plan lands and you want to
-						go further, the full <a href="/smb/" class="text-copper underline"
+						go further, the full <a
+							href="/smb/"
+							class="text-ink underline underline-offset-4 decoration-accent hover:text-accent transition-colors"
 							>AI Tools Assessment</a
 						> is the natural next step.
 					</p>
 				</div>
 			{:else if icpVerdict === 'below-core'}
-				<div class="p-6 bg-warm-white rounded-xl border border-charcoal/10">
-					<p class="text-xs font-semibold tracking-widest text-warm-gray uppercase mb-2">
+				<div class="rule-left-accent-sm">
+					<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-subtle uppercase mb-2">
 						Heads up
 					</p>
-					<p class="text-charcoal/75 leading-relaxed">
+					<p class="font-serif text-muted leading-relaxed">
 						Your size is a touch below the teams I work with on paid engagements, but the Action
 						Plan will still give you concrete quick wins. No pitch, no follow-up pressure.
 					</p>
 				</div>
 			{:else if icpVerdict === 'above-core'}
-				<div class="p-6 bg-warm-white rounded-xl border border-charcoal/10">
-					<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-2">
+				<div class="rule-left-accent-sm">
+					<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
 						Different track
 					</p>
-					<p class="text-charcoal/75 leading-relaxed">
+					<p class="font-serif text-muted leading-relaxed">
 						You're above my owner-operator Assessment track. The <a
 							href="/scan/"
-							class="text-copper underline">AI Scan</a
+							class="text-ink underline underline-offset-4 decoration-accent hover:text-accent transition-colors"
+							>AI Scan</a
 						> is probably a better fit at your scale. I'll mention that in the Action Plan too.
 					</p>
 				</div>
@@ -428,43 +480,62 @@
 	{/if}
 </Section>
 
-<!-- What the Action Plan includes -->
+<!-- What the Action Plan includes — hairline-grid matching the Assessment page -->
 {#if !submitted}
-	<Section background="muted" padding="md" eyebrow="What you get" title="The Action Plan">
-		<div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-5" use:reveal>
-			<div class="p-5 bg-warm-white rounded-xl border border-charcoal/10">
-				<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-2">01</p>
-				<h3 class="font-medium text-charcoal mb-2">Three personalized quick wins</h3>
-				<p class="text-sm text-charcoal/70 leading-relaxed">
-					Ranked by time saved vs. setup effort. Each is specific to the leak you named, not a
-					generic top-10 list.
-				</p>
+	<Section background="muted" padding="md" eyebrow="What you get" title="The Action Plan" centered={false}>
+		<div class="max-w-5xl">
+			<div
+				class="hairline-grid on-muted grid md:grid-cols-3"
+				use:reveal={{ stagger: true, staggerDelay: 80, duration: 420 }}
+			>
+				<div class="cell">
+					<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
+						01
+					</p>
+					<h3 class="font-sans font-medium text-lg text-ink mb-2 tracking-tight">
+						Three personalized quick wins
+					</h3>
+					<p class="font-serif text-sm text-muted leading-relaxed">
+						Ranked by time saved vs. setup effort. Each is specific to the leak you named, not a
+						generic top-10 list.
+					</p>
+				</div>
+				<div class="cell">
+					<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
+						02
+					</p>
+					<h3 class="font-sans font-medium text-lg text-ink mb-2 tracking-tight">
+						Step-by-step instructions
+					</h3>
+					<p class="font-serif text-sm text-muted leading-relaxed">
+						Each win comes with setup instructions a non-technical person can follow in 30 to 60
+						minutes. No developer required.
+					</p>
+				</div>
+				<div class="cell">
+					<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
+						03
+					</p>
+					<h3 class="font-sans font-medium text-lg text-ink mb-2 tracking-tight">
+						What to leave alone
+					</h3>
+					<p class="font-serif text-sm text-muted leading-relaxed">
+						If part of your answer points at a workflow where AI is the wrong tool, the plan names
+						it and says so plainly. No pretending.
+					</p>
+				</div>
 			</div>
-			<div class="p-5 bg-warm-white rounded-xl border border-charcoal/10">
-				<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-2">02</p>
-				<h3 class="font-medium text-charcoal mb-2">Step-by-step instructions</h3>
-				<p class="text-sm text-charcoal/70 leading-relaxed">
-					Each win comes with setup instructions a non-technical person can follow in 30 to 60
-					minutes. No developer required.
-				</p>
-			</div>
-			<div class="p-5 bg-warm-white rounded-xl border border-charcoal/10">
-				<p class="text-xs font-semibold tracking-widest text-copper uppercase mb-2">03</p>
-				<h3 class="font-medium text-charcoal mb-2">What to leave alone</h3>
-				<p class="text-sm text-charcoal/70 leading-relaxed">
-					If part of your answer points at a workflow where AI is the wrong tool, the plan names it
-					and says so plainly. No pretending.
-				</p>
-			</div>
-		</div>
 
-		<div class="max-w-4xl mx-auto mt-10 text-center">
-			<p class="text-sm text-charcoal/60">
-				Already know you want the full diagnostic? <a
-					href={getAssessmentCallUrl()}
-					class="text-copper underline">Book the AI Tools Assessment discovery call</a
-				> instead.
-			</p>
+			<div class="mt-12 max-w-3xl">
+				<p class="font-serif text-muted leading-relaxed">
+					Already know you want the full diagnostic?
+					<a
+						href={getAssessmentCallUrl()}
+						class="text-ink underline underline-offset-4 decoration-accent hover:text-accent transition-colors"
+						>Book the AI Tools Assessment discovery call</a
+					> instead.
+				</p>
+			</div>
 		</div>
 	</Section>
 {/if}
