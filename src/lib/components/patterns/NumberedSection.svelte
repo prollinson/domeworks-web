@@ -21,14 +21,6 @@
 	} = $props();
 </script>
 
-<Section
-	{id}
-	{background}
-	{padding}
-	eyebrow={index}
-	{title}
-	{description}
-	centered={false}
->
+<Section {id} {background} {padding} eyebrow={index} {title} {description} centered={false}>
 	{@render children()}
 </Section>

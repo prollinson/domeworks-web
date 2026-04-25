@@ -59,7 +59,8 @@
 			class="mt-4 font-sans font-semibold text-paper leading-[1.02] tracking-[-0.035em]"
 			style="font-size: clamp(2.5rem, 7vw, 4.5rem);"
 		>
-			Find out what's actually happening with AI on your team<span class="text-accent-light">.</span>
+			Find out what's actually happening with AI on your team<span class="text-accent-light">.</span
+			>
 			Then fix it<span class="text-accent-light">.</span>
 		</h1>
 		<p class="mt-6 font-serif text-lg text-paper/80 leading-[1.65] max-w-2xl">
@@ -165,8 +166,8 @@
 		<div class="mt-6">
 			<Callout variant="accent">
 				<p class="text-sm text-ink">
-					<strong>Founding client rate:</strong> $7,000–$10,000 for the first 3-5 clients, in exchange for
-					a case study and testimonial. Mention it on the call.
+					<strong>Founding client rate:</strong> $7,000–$10,000 for the first 3-5 clients, in exchange
+					for a case study and testimonial. Mention it on the call.
 				</p>
 			</Callout>
 		</div>

@@ -174,9 +174,7 @@
 <!-- CTA -->
 <Section background="muted" padding="lg">
 	<div class="max-w-2xl mx-auto text-center" use:reveal>
-		<h2 class="font-serif text-3xl font-normal text-ink mb-4">
-			Want to talk about your team?
-		</h2>
+		<h2 class="font-serif text-3xl font-normal text-ink mb-4">Want to talk about your team?</h2>
 		<p class="font-serif text-lg text-muted mb-8">
 			30 minutes, no obligation. I'll tell you whether this is something I can help with.
 		</p>

@@ -62,11 +62,13 @@
 			class="mt-4 font-sans font-semibold text-paper leading-[1.02] tracking-[-0.035em]"
 			style="font-size: clamp(2.5rem, 7vw, 4.5rem);"
 		>
-			Intelligence infrastructure compounds when someone owns it<span class="text-accent-light">.</span>
+			Intelligence infrastructure compounds when someone owns it<span class="text-accent-light"
+				>.</span
+			>
 		</h1>
 		<p class="mt-6 font-serif text-lg text-paper/80 leading-[1.65] max-w-2xl">
-			An ongoing retainer where I act as your part-time Head of AI, 1–2 days a week. I maintain
-			and evolve the context system and agent coordination, close feedback loops, and adapt the
+			An ongoing retainer where I act as your part-time Head of AI, 1–2 days a week. I maintain and
+			evolve the context system and agent coordination, close feedback loops, and adapt the
 			infrastructure as your org changes.
 		</p>
 		<div class="mt-8">
@@ -91,7 +93,10 @@
 		<Callout variant="rule-left-sm">
 			<p class="font-serif text-sm text-muted leading-[1.55]">
 				This is not a starter engagement. The system needs to exist before it can be owned. If
-				you're earlier in the journey, start with the <a href="/leaders/scan/" class="text-accent hover:underline">AI Scan</a>
+				you're earlier in the journey, start with the <a
+					href="/leaders/scan/"
+					class="text-accent hover:underline">AI Scan</a
+				>
 				or <a href="/leaders/context-build/" class="text-accent hover:underline">Context Build</a>.
 			</p>
 		</Callout>
@@ -140,12 +145,22 @@
 	<div class="max-w-2xl mx-auto" use:reveal>
 		<Callout variant="rule-left">
 			<p class="font-serif text-lg text-muted leading-[1.65] mb-6">
-				Teams that have completed a <a href="/leaders/context-build/" class="text-accent hover:underline">Context Build</a>
-				or <a href="/leaders/orchestration-build/" class="text-accent hover:underline">Orchestration Build</a> — or have equivalent infrastructure in place — and want the system to keep getting smarter as the org changes.
+				Teams that have completed a <a
+					href="/leaders/context-build/"
+					class="text-accent hover:underline">Context Build</a
+				>
+				or
+				<a href="/leaders/orchestration-build/" class="text-accent hover:underline"
+					>Orchestration Build</a
+				> — or have equivalent infrastructure in place — and want the system to keep getting smarter as
+				the org changes.
 			</p>
 			<p class="font-serif text-lg text-muted leading-[1.65]">
 				If you're still figuring out your AI tooling or haven't built a context system yet, this
-				isn't the right entry point. Start with the <a href="/leaders/scan/" class="text-accent hover:underline">AI Scan</a>.
+				isn't the right entry point. Start with the <a
+					href="/leaders/scan/"
+					class="text-accent hover:underline">AI Scan</a
+				>.
 			</p>
 		</Callout>
 	</div>

@@ -61,12 +61,14 @@
 			class="mt-4 font-sans font-semibold text-paper leading-[1.02] tracking-[-0.035em]"
 			style="font-size: clamp(2.5rem, 7vw, 4.5rem);"
 		>
-			Your team goes from AI helping individuals to AI coordinating your work<span class="text-accent-light">.</span>
+			Your team goes from AI helping individuals to AI coordinating your work<span
+				class="text-accent-light">.</span
+			>
 		</h1>
 		<p class="mt-6 font-serif text-lg text-paper/80 leading-[1.65] max-w-2xl">
 			The layer on top of the context system: multi-agent workflows, quality gates, and output
-			routing that replace the human coordination overhead. Scope and milestones flow directly
-			from the Context Build assessment.
+			routing that replace the human coordination overhead. Scope and milestones flow directly from
+			the Context Build assessment.
 		</p>
 		<div class="mt-8">
 			<Button href={getBookCallUrl()} size="lg">Book a call</Button>
@@ -119,9 +121,10 @@
 	<div class="max-w-2xl mx-auto" use:reveal>
 		<Callout variant="rule-left">
 			<p class="font-serif text-lg text-muted leading-[1.65] mb-4">
-				A completed <a href="/leaders/context-build/" class="text-accent hover:underline">Context Build</a> (or
-				equivalent assessment) is required. The context system is what agent coordination runs on. Without
-				it, you're automating noise.
+				A completed <a href="/leaders/context-build/" class="text-accent hover:underline"
+					>Context Build</a
+				> (or equivalent assessment) is required. The context system is what agent coordination runs on.
+				Without it, you're automating noise.
 			</p>
 			<p class="font-serif text-lg text-muted leading-[1.65]">
 				Most Orchestration Builds follow directly from a Context Build — the assessment gives us the
@@ -239,8 +242,9 @@
 <div class="border-t border-rule py-8">
 	<div class="max-w-6xl mx-auto px-6 lg:px-8 text-center">
 		<p class="text-sm text-subtle">
-			Next in the journey: <a href="/leaders/fractional/" class="text-accent hover:underline font-medium"
-				>Fractional AI Leadership &rarr;</a
+			Next in the journey: <a
+				href="/leaders/fractional/"
+				class="text-accent hover:underline font-medium">Fractional AI Leadership &rarr;</a
 			>
 		</p>
 	</div>

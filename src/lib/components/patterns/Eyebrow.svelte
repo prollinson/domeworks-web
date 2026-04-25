@@ -19,7 +19,9 @@
 		'accent-light': 'text-accent-light'
 	};
 
-	const base = $derived(`text-[0.6875rem] font-semibold tracking-[0.14em] uppercase ${toneClass[tone]}`);
+	const base = $derived(
+		`text-[0.6875rem] font-semibold tracking-[0.14em] uppercase ${toneClass[tone]}`
+	);
 </script>
 
 {#if as === 'span'}

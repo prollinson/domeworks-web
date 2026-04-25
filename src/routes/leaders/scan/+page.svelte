@@ -235,7 +235,8 @@
 			</summary>
 			<p class="mt-4 font-serif text-muted leading-relaxed">
 				No. Many teams take the quick wins and run. The Scan stands on its own — if you want to go
-				further, the <a href="/leaders/context-build/" class="text-accent hover:underline">Context Build</a
+				further, the <a href="/leaders/context-build/" class="text-accent hover:underline"
+					>Context Build</a
 				> is the next step, but there's no obligation.
 			</p>
 		</details>

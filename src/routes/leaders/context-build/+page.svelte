@@ -363,8 +363,8 @@
 		</div>
 		<div class="mt-6 p-4 bg-accent/5 border border-accent/10 rounded-xl">
 			<p class="font-serif text-sm text-muted">
-				<strong class="text-ink">Founding client rate:</strong> $7,000–$10,000 for the first 3-5 clients, in exchange for
-				a case study and testimonial. Mention it on the call.
+				<strong class="text-ink">Founding client rate:</strong> $7,000–$10,000 for the first 3-5 clients,
+				in exchange for a case study and testimonial. Mention it on the call.
 			</p>
 		</div>
 		<p class="text-center text-subtle text-sm mt-4">

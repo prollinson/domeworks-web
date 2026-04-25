@@ -16,8 +16,8 @@
 		<div class="max-w-6xl mx-auto px-6 lg:px-8 py-24 md:py-32 lg:py-40">
 			<div class="max-w-4xl">
 				<h2 class="footer-headline font-serif font-normal text-paper mb-8">
-					Let's figure out<br class="hidden sm:block" /> what's missing<span class="text-accent-light"
-						>.</span
+					Let's figure out<br class="hidden sm:block" /> what's missing<span
+						class="text-accent-light">.</span
 					>
 				</h2>
 				<p class="text-lg md:text-xl text-paper/70 max-w-xl mb-10">

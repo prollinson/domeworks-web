@@ -68,22 +68,40 @@
 					Prefer email? Tell me about your team and I'll get back within 24 hours.
 				</p>
 				<div>
-					<Button href={generateGeneralMailto()} variant="secondary" size="lg">Send an email</Button>
+					<Button href={generateGeneralMailto()} variant="secondary" size="lg">Send an email</Button
+					>
 				</div>
 			</div>
 		</HairlineGrid>
 
-		<div class="mt-12 max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-3 text-sm text-muted">
-			<div class="flex sm:flex-col items-center sm:items-start gap-3 sm:gap-1.5 text-center sm:text-left">
-				<span class="flex-shrink-0 w-7 h-7 rounded-full bg-accent/10 flex items-center justify-center text-xs font-medium text-accent">1</span>
+		<div
+			class="mt-12 max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-3 text-sm text-muted"
+		>
+			<div
+				class="flex sm:flex-col items-center sm:items-start gap-3 sm:gap-1.5 text-center sm:text-left"
+			>
+				<span
+					class="flex-shrink-0 w-7 h-7 rounded-full bg-accent/10 flex items-center justify-center text-xs font-medium text-accent"
+					>1</span
+				>
 				<span>You tell me about your team</span>
 			</div>
-			<div class="flex sm:flex-col items-center sm:items-start gap-3 sm:gap-1.5 text-center sm:text-left">
-				<span class="flex-shrink-0 w-7 h-7 rounded-full bg-accent/10 flex items-center justify-center text-xs font-medium text-accent">2</span>
+			<div
+				class="flex sm:flex-col items-center sm:items-start gap-3 sm:gap-1.5 text-center sm:text-left"
+			>
+				<span
+					class="flex-shrink-0 w-7 h-7 rounded-full bg-accent/10 flex items-center justify-center text-xs font-medium text-accent"
+					>2</span
+				>
 				<span>I share 2–3 observations</span>
 			</div>
-			<div class="flex sm:flex-col items-center sm:items-start gap-3 sm:gap-1.5 text-center sm:text-left">
-				<span class="flex-shrink-0 w-7 h-7 rounded-full bg-accent/10 flex items-center justify-center text-xs font-medium text-accent">3</span>
+			<div
+				class="flex sm:flex-col items-center sm:items-start gap-3 sm:gap-1.5 text-center sm:text-left"
+			>
+				<span
+					class="flex-shrink-0 w-7 h-7 rounded-full bg-accent/10 flex items-center justify-center text-xs font-medium text-accent"
+					>3</span
+				>
 				<span>We figure out if there's a fit</span>
 			</div>
 		</div>
@@ -92,12 +110,15 @@
 			<Callout variant="rule-left">
 				<h2 class="text-lg font-medium text-ink mb-4">What to expect</h2>
 				<p class="font-serif text-muted leading-[1.65]">
-					On the call, I'll ask about your team size, what AI tools you're using, and where things are
-					stuck. I'll share 2–3 observations about where you might have leverage. If there's a fit,
-					I'll recommend where to start — usually an <a href="/leaders/scan/" class="text-accent hover:underline">AI Scan</a>
+					On the call, I'll ask about your team size, what AI tools you're using, and where things
+					are stuck. I'll share 2–3 observations about where you might have leverage. If there's a
+					fit, I'll recommend where to start — usually an <a
+						href="/leaders/scan/"
+						class="text-accent hover:underline">AI Scan</a
+					>
 					($2,500) if you need a clear picture first, or a
-					<a href="/leaders/context-build/" class="text-accent hover:underline">Context Build</a> ($10,000+) if
-					the gaps are already clear. If there isn't a fit, I'll tell you that too.
+					<a href="/leaders/context-build/" class="text-accent hover:underline">Context Build</a> ($10,000+)
+					if the gaps are already clear. If there isn't a fit, I'll tell you that too.
 				</p>
 			</Callout>
 		</div>
