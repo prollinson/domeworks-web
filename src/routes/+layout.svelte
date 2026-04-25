@@ -3,6 +3,7 @@
 	import { page } from '$app/stores';
 	import Header from '$lib/components/layout/Header.svelte';
 	import Footer from '$lib/components/layout/Footer.svelte';
+	import { buildJsonLdScript } from '$lib/utils/json-ld';
 	import '../tailwind.css';
 	import { posthog } from '$lib/posthog';
 
@@ -43,6 +44,8 @@
 		email: 'piers@domeworks.tech'
 	};
 
+	const jsonLdScript = buildJsonLdScript(jsonLd);
+
 	// Enable View Transitions API for smooth page navigation
 	onNavigate((navigation) => {
 		if (!document.startViewTransition) return;
@@ -67,7 +70,8 @@
 </script>
 
 <svelte:head>
-	{@html `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`}
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+	{@html jsonLdScript}
 </svelte:head>
 
 {#if !isLanding}

@@ -1,47 +1,15 @@
 <script lang="ts">
 	import Button from '$lib/components/ui/Button.svelte';
 	import Section from '$lib/components/layout/Section.svelte';
+	import SEO from '$lib/components/SEO.svelte';
 	import NumberedSection from '$lib/components/patterns/NumberedSection.svelte';
 	import Eyebrow from '$lib/components/patterns/Eyebrow.svelte';
 	import HairlineGrid from '$lib/components/patterns/HairlineGrid.svelte';
 	import Callout from '$lib/components/patterns/Callout.svelte';
-	import JourneyBar from '$lib/components/ui/JourneyBar.svelte';
 	import { reveal } from '$lib/actions/reveal';
 	import { getBookCallUrl } from '$lib/utils/mailto';
-</script>
 
-<svelte:head>
-	<title>Context Build: Build Your Organization's Context System | DomeWorks</title>
-	<meta
-		name="description"
-		content="A two-week engagement that diagnoses your AI readiness and designs the context system your AI tools need to work at the team level. $10,000-$15,000."
-	/>
-	<link rel="canonical" href="https://domeworks.tech/leaders/context-build/" />
-
-	<meta property="og:type" content="website" />
-	<meta property="og:site_name" content="DomeWorks" />
-	<meta property="og:url" content="https://domeworks.tech/leaders/context-build/" />
-	<meta
-		property="og:title"
-		content="Context Build: Build Your Organization's Context System | DomeWorks"
-	/>
-	<meta
-		property="og:description"
-		content="A two-week engagement that diagnoses your AI readiness and designs the context system your AI tools need to work at the team level."
-	/>
-	<meta property="og:image" content="https://domeworks.tech/og-image.png" />
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta
-		name="twitter:title"
-		content="Context Build: Build Your Organization's Context System | DomeWorks"
-	/>
-	<meta
-		name="twitter:description"
-		content="Diagnose your AI readiness and design the context system your AI tools need to work at the team level."
-	/>
-	<meta name="twitter:image" content="https://domeworks.tech/og-image.png" />
-
-	{@html `<script type="application/ld+json">${JSON.stringify({
+	const contextBuildSchema = {
 		'@context': 'https://schema.org',
 		'@type': 'Service',
 		name: 'Context Build: AI Readiness Assessment & Context System Design',
@@ -55,13 +23,18 @@
 			highPrice: '15000',
 			priceCurrency: 'USD'
 		}
-	})}</script>`}
-</svelte:head>
+	};
+</script>
+
+<SEO
+	title="Context Build: Build Your Organization's Context System | DomeWorks"
+	description="A two-week engagement that diagnoses your AI readiness and designs the context system your AI tools need to work at the team level. $10,000-$15,000."
+	schema={contextBuildSchema}
+/>
 
 <!-- Hero -->
-<Section background="dark" padding="xl">
+<Section background="dark" padding="xl" hero>
 	<div class="max-w-3xl">
-		<div class="mb-6"><JourneyBar current="context-build" /></div>
 		<Eyebrow label="Context Build" tone="accent-light" />
 		<h1
 			class="mt-4 font-sans font-semibold text-paper leading-[1.02] tracking-[-0.035em]"
@@ -83,7 +56,7 @@
 <!-- Four Things Happen -->
 <NumberedSection index="01" background="muted" title="Four things happen">
 	<div class="max-w-2xl mx-auto space-y-8" use:reveal>
-		{#each [{ step: '1', title: 'Stakeholder interviews', desc: "I talk to your engineering leads, product managers, and ops people. Not a survey, but real conversations about how they're using AI, where they're hitting walls, and what would actually help. This is where the real blockers (and the real opportunities) surface." }, { step: '2', title: 'Tool and spend audit', desc: "I map every AI tool, every seat, every subscription. Who's using what, how often, and whether it's doing anything useful. You're probably paying for more AI tooling than you realize." }, { step: '3', title: 'Context system diagnosis', desc: "I evaluate what's in place, and what's missing, between your AI tools and how your team actually ships. Shared context, standard workflows, CI/CD integration, developer tooling. Most teams have none of this. That's why adoption stalls at the individual level." }, { step: '4', title: 'Blocker identification', desc: 'Adoption stalls for specific reasons, often structural, not motivational. I find out which blockers are in your way (missing systems, cultural resistance, knowledge silos, tooling gaps) and how severe they are.' }] as item}
+		{#each [{ step: '1', title: 'Stakeholder interviews', desc: "I talk to your engineering leads, product managers, and ops people. Not a survey, but real conversations about how they're using AI, where they're hitting walls, and what would actually help. This is where the real blockers (and the real opportunities) surface." }, { step: '2', title: 'Tool and spend audit', desc: "I map every AI tool, every seat, every subscription. Who's using what, how often, and whether it's doing anything useful. You're probably paying for more AI tooling than you realize." }, { step: '3', title: 'Context system diagnosis', desc: "I evaluate what's in place, and what's missing, between your AI tools and how your team actually ships. Shared context, standard workflows, CI/CD integration, developer tooling. Most teams have none of this. That's why adoption stalls at the individual level." }, { step: '4', title: 'Blocker identification', desc: 'Adoption stalls for specific reasons, often structural, not motivational. I find out which blockers are in your way (missing systems, cultural resistance, knowledge silos, tooling gaps) and how severe they are.' }] as item (item.step)}
 			<div class="flex items-start gap-6">
 				<span
 					class="flex-shrink-0 w-10 h-10 rounded-lg bg-accent text-paper flex items-center justify-center text-sm font-medium"
@@ -279,7 +252,7 @@
 				</p>
 				<!-- Opportunity items -->
 				<div class="flex flex-col gap-4">
-					{#each [{ name: 'Shared context files', effort: '1 week', width: '92%', color: 'bg-accent', dot: 'bg-accent' }, { name: 'PR review agent', effort: '2 weeks', width: '75%', color: 'bg-accent', dot: 'bg-accent' }, { name: 'Onboarding automation', effort: '3 weeks', width: '55%', color: 'bg-subtle', dot: 'bg-subtle' }, { name: 'Meeting summaries', effort: '4 weeks', width: '30%', color: 'bg-rule', dot: 'bg-rule' }] as item}
+					{#each [{ name: 'Shared context files', effort: '1 week', width: '92%', color: 'bg-accent', dot: 'bg-accent' }, { name: 'PR review agent', effort: '2 weeks', width: '75%', color: 'bg-accent', dot: 'bg-accent' }, { name: 'Onboarding automation', effort: '3 weeks', width: '55%', color: 'bg-subtle', dot: 'bg-subtle' }, { name: 'Meeting summaries', effort: '4 weeks', width: '30%', color: 'bg-rule', dot: 'bg-rule' }] as item (item.name)}
 						<div>
 							<div class="flex items-center gap-2 mb-1.5">
 								<span class="w-1.5 h-1.5 rounded-full {item.dot} shrink-0"></span>

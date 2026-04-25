@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import Section from '$lib/components/layout/Section.svelte';
+	import SEO from '$lib/components/SEO.svelte';
 	import QuizResultView from '$lib/components/smb/QuizResultView.svelte';
 	import { reveal } from '$lib/actions/reveal';
 	import { generateQuizMailto, getAssessmentCallUrl } from '$lib/utils/mailto';
@@ -422,34 +423,17 @@
 	const legendClass = 'block font-sans font-medium text-lg text-ink tracking-tight mb-3';
 </script>
 
-<svelte:head>
-	<title>AI Readiness Quiz | DomeWorks</title>
-	<meta
-		name="description"
-		content="2-minute quiz to pinpoint your biggest time leak. Free personalised Action Plan delivered to your inbox."
-	/>
-	<link rel="canonical" href="https://domeworks.tech/smb/quiz/" />
-	<meta property="og:type" content="website" />
-	<meta property="og:site_name" content="DomeWorks" />
-	<meta property="og:url" content="https://domeworks.tech/smb/quiz/" />
-	<meta property="og:title" content="AI Readiness Quiz | DomeWorks" />
-	<meta
-		property="og:description"
-		content="2 minutes. Pinpoint your biggest time leak. Get a free Action Plan in your inbox."
-	/>
-	<meta property="og:image" content="https://domeworks.tech/og-image.png" />
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="AI Readiness Quiz | DomeWorks" />
-	<meta
-		name="twitter:description"
-		content="2 minutes. Pinpoint your biggest time leak. Get a free Action Plan in your inbox."
-	/>
-	<meta name="twitter:image" content="https://domeworks.tech/og-image.png" />
-</svelte:head>
+<SEO
+	title="AI Readiness Quiz | DomeWorks"
+	description="2-minute quiz to pinpoint your biggest time leak. Free personalised Action Plan delivered to your inbox."
+/>
 
 <!-- Hero -->
-<section class="relative bg-ink text-paper overflow-hidden" aria-label="AI Readiness Quiz">
-	<div class="relative w-full max-w-4xl mx-auto px-6 lg:px-8 pt-24 md:pt-28 pb-16 md:pb-20">
+<section
+	class="relative bg-ink text-paper overflow-hidden -mt-16 md:-mt-20"
+	aria-label="AI Readiness Quiz"
+>
+	<div class="relative w-full max-w-6xl mx-auto px-6 lg:px-8 pt-40 md:pt-48 pb-16 md:pb-20">
 		<div
 			class="flex flex-wrap items-center gap-x-4 gap-y-1 text-[0.6875rem] font-semibold uppercase tracking-[0.14em] mb-8"
 		>

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Button from '$lib/components/ui/Button.svelte';
 	import Section from '$lib/components/layout/Section.svelte';
+	import SEO from '$lib/components/SEO.svelte';
 	import NumberedSection from '$lib/components/patterns/NumberedSection.svelte';
 	import HairlineGrid from '$lib/components/patterns/HairlineGrid.svelte';
 	import Eyebrow from '$lib/components/patterns/Eyebrow.svelte';
@@ -38,32 +39,10 @@
 	}
 </script>
 
-<svelte:head>
-	<title>For Leaders | DomeWorks</title>
-	<meta
-		name="description"
-		content="Your engineers have AI tools. Individual productivity is up, team-level throughput is flat. DomeWorks builds the context system and agent coordination that replace coordination overhead — so AI compounds across the team, not just per person."
-	/>
-	<link rel="canonical" href="https://domeworks.tech/leaders/" />
-
-	<meta property="og:type" content="website" />
-	<meta property="og:site_name" content="DomeWorks" />
-	<meta property="og:url" content="https://domeworks.tech/leaders/" />
-	<meta property="og:title" content="For Leaders | DomeWorks" />
-	<meta
-		property="og:description"
-		content="The infrastructure between AI tools — context systems and agent coordination — that replaces coordination overhead for engineering and ops teams of 50–500."
-	/>
-	<meta property="og:image" content="https://domeworks.tech/og-image.png" />
-
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="For Leaders | DomeWorks" />
-	<meta
-		name="twitter:description"
-		content="The infrastructure between AI tools — context systems and agent coordination — that replaces coordination overhead for teams of 50–500."
-	/>
-	<meta name="twitter:image" content="https://domeworks.tech/og-image.png" />
-</svelte:head>
+<SEO
+	title="For Leaders | DomeWorks"
+	description="Your engineers have AI tools. Individual productivity is up, team-level throughput is flat. DomeWorks builds the context system and agent coordination that replace coordination overhead — so AI compounds across the team, not just per person."
+/>
 
 <!-- Skip to content -->
 <a
@@ -76,7 +55,7 @@
 <!-- Hero Section -->
 <section class="relative hero-section bg-ink overflow-hidden -mt-16 md:-mt-20" aria-label="Hero">
 	<div
-		class="relative w-full max-w-7xl mx-auto px-6 lg:px-8 hero-content-pad flex flex-col justify-between min-h-[inherit]"
+		class="relative w-full max-w-6xl mx-auto px-6 lg:px-8 hero-content-pad flex flex-col justify-between min-h-[inherit]"
 	>
 		<!-- Top zone: eyebrow -->
 		<div class="hero-eyebrow-row">
@@ -85,7 +64,7 @@
 
 		<!-- Middle zone: Headline, editorial scale, staggered lines -->
 		<div class="hero-middle">
-			<h1 class="hero-headline font-serif font-normal text-paper">
+			<h1 class="hero-headline font-sans font-semibold text-paper">
 				<span class="hero-line hero-line-1">Your team bought</span>
 				<span class="hero-line hero-line-2">AI tools<span class="text-accent-light">.</span></span>
 				<span class="hero-line hero-line-3"><em class="hero-headline-em">Nobody built</em></span>
@@ -185,9 +164,9 @@
 						<span class="w-2 h-2 rounded-full bg-accent"></span>
 					</span>
 					<span
-						>You're a <strong class="text-ink">VP, director, or senior leader</strong> — running a
-						team of 50 to 500 inside a larger org, engineering or otherwise, with AI tooling already
-						rolled out</span
+						>You're a <strong class="text-ink">VP, director, or senior leader</strong> — running a team
+						of 50 to 500 inside a larger org, engineering or otherwise, with AI tooling already rolled
+						out</span
 					>
 				</li>
 				<li class="flex items-start gap-4">
@@ -300,7 +279,9 @@
 				<!-- Surface layer -->
 				<div class="rounded-t-2xl bg-paper-alt border border-rule px-8 py-6 md:px-10 md:py-7">
 					<div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
-						<span class="text-sm font-semibold tracking-[0.15em] text-subtle uppercase">Surface</span>
+						<span class="text-sm font-semibold tracking-[0.15em] text-subtle uppercase"
+							>Surface</span
+						>
 						<span class="text-subtle text-sm md:text-base">Where humans decide and act</span>
 					</div>
 				</div>
@@ -324,7 +305,9 @@
 							Replaces the coordination work that hierarchy exists to perform.
 						</p>
 						<ul class="mt-3 space-y-1 text-white/60 text-sm">
-							<li>Route PR reviews to the right engineer based on code ownership and availability</li>
+							<li>
+								Route PR reviews to the right engineer based on code ownership and availability
+							</li>
 							<li>Triage incoming bugs without a morning standup</li>
 							<li>Distribute sprint context across teams so nobody re-explains the architecture</li>
 						</ul>
@@ -359,7 +342,8 @@
 								been decided
 							</li>
 							<li>
-								Give new engineers' AI tools the same context a senior engineer carries in their head
+								Give new engineers' AI tools the same context a senior engineer carries in their
+								head
 							</li>
 						</ul>
 					</div>
@@ -416,23 +400,26 @@
 <PullQuote
 	attribution="The coordination layer — the thing managers and meetings used to be — is what now has to be built."
 >
-	Individual productivity is up. Team-level throughput is flat — because the handoffs between
-	people haven't changed.
+	Individual productivity is up. Team-level throughput is flat — because the handoffs between people
+	haven't changed.
 </PullQuote>
 
 <!-- How It Works -->
 <NumberedSection index="04" id="how-it-works" background="muted" padding="lg" title="How it works">
 	<div class="max-w-7xl mx-auto">
 		<HairlineGrid cols={4} stagger staggerDelay={150}>
-			<a href="/leaders/scan/" class="cell group flex flex-col hover:bg-paper-alt transition-colors">
+			<a
+				href="/leaders/scan/"
+				class="cell group flex flex-col hover:bg-paper-alt transition-colors"
+			>
 				<div class="rule-left-accent">
 					<Eyebrow label="Start here" tone="accent" />
 					<h3 class="mt-3 text-xl font-medium text-ink mb-2">AI Scan</h3>
 					<p class="text-2xl font-serif text-ink mb-4">$2,500–$3,500</p>
 					<p class="font-serif text-sm text-muted leading-[1.55]">
-						In 48 hours, I diagnose where you are on the path from "bought tools" to "AI
-						coordinates our work." You get a clear picture of what's missing and quick wins your
-						team can act on this week.
+						In 48 hours, I diagnose where you are on the path from "bought tools" to "AI coordinates
+						our work." You get a clear picture of what's missing and quick wins your team can act on
+						this week.
 					</p>
 				</div>
 				<p class="mt-4 text-sm text-accent font-medium group-hover:underline">Learn more →</p>

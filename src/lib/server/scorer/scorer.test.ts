@@ -115,9 +115,7 @@ describe('runScorer: dry-run fixtures', () => {
 		const handCost = quickWins.reduce((s, o) => s + o.monthly_cost, 0);
 		expect(out.financial_impact.weekly_hours_returned).toBeCloseTo(handSum, 1);
 		expect(out.financial_impact.total_monthly_tool_cost).toBe(handCost);
-		expect(out.financial_impact.monthly_net_roi).toBe(
-			Math.round(handSum * 100 * 4.33 - handCost)
-		);
+		expect(out.financial_impact.monthly_net_roi).toBe(Math.round(handSum * 100 * 4.33 - handCost));
 
 		// 4-day plan ordering: lowest setup_time first.
 		for (let i = 1; i < out.four_day_plan.length; i++) {
@@ -144,7 +142,6 @@ describe('runScorer: dry-run fixtures', () => {
 		}
 
 		// Print for hand review by Piers.
-		// eslint-disable-next-line no-console
 		console.log('\n--- FIXTURE 1 (Quick Plan) ---\n' + JSON.stringify(out, null, 2));
 	});
 
@@ -187,7 +184,6 @@ describe('runScorer: dry-run fixtures', () => {
 		// No em-dashes.
 		expect(out.stage1_report_markdown.includes('—')).toBe(false);
 
-		// eslint-disable-next-line no-console
 		console.log('\n--- FIXTURE 2 (Assessment) ---\n' + JSON.stringify(out, null, 2));
 	});
 
@@ -219,9 +215,7 @@ describe('runScorer: dry-run fixtures', () => {
 						evidence_turns: [2]
 					}
 				],
-				workaround_list: [
-					{ description: 'I keep a shadow spreadsheet', evidence_turn: 3 }
-				],
+				workaround_list: [{ description: 'I keep a shadow spreadsheet', evidence_turn: 3 }],
 				exception_patterns: [
 					{
 						pattern: 'Retainer clients bypass intake',
@@ -285,12 +279,8 @@ describe('runScorer: dry-run fixtures', () => {
 						evidence_turns: [3, 7]
 					}
 				],
-				workaround_list: [
-					{ description: 'I keep a shadow spreadsheet', evidence_turn: 3 }
-				],
-				exception_patterns: [
-					{ pattern: 'Retainer clients bypass intake', evidence_turns: [5] }
-				],
+				workaround_list: [{ description: 'I keep a shadow spreadsheet', evidence_turn: 3 }],
+				exception_patterns: [{ pattern: 'Retainer clients bypass intake', evidence_turns: [5] }],
 				candidate_opportunities: [
 					{
 						title: `Speed up ${VERBATIM_PAIN_FRAGMENT.toLowerCase()}`,

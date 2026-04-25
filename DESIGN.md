@@ -10,29 +10,29 @@ description: >-
 
 colors:
   # Neutrals — the page is built from these. Accent is used sparingly.
-  ink: "#0A0A0A"              # Primary text, strong top rules, dark backgrounds.
-  charcoal: "#1A1A1A"         # Reserved for depth variants on dark surfaces.
-  paper: "#FFFFFF"            # Primary background.
-  paper-alt: "#FAFAFA"        # Muted section background — alternates with paper.
-  rule: "#E5E5E5"             # Default hairline.
-  rule-strong: "#0A0A0A"      # Structural top rule above card grids.
-  muted: "#525252"             # Secondary body text.
-  subtle: "#6B6B6B"            # Tertiary text, demoted eyebrows.
-  faint: "#A3A3A3"             # Rarely used; meta labels on paper.
+  ink: '#0A0A0A' # Primary text, strong top rules, dark backgrounds.
+  charcoal: '#1A1A1A' # Reserved for depth variants on dark surfaces.
+  paper: '#FFFFFF' # Primary background.
+  paper-alt: '#FAFAFA' # Muted section background — alternates with paper.
+  rule: '#E5E5E5' # Default hairline.
+  rule-strong: '#0A0A0A' # Structural top rule above card grids.
+  muted: '#525252' # Secondary body text.
+  subtle: '#6B6B6B' # Tertiary text, demoted eyebrows.
+  faint: '#A3A3A3' # Rarely used; meta labels on paper.
 
   # Accent — vermilion. A single hue carries all emphasis on the page.
-  accent: "#C2410C"            # On paper: CTAs, rules, selected states, copper emphasis.
-  accent-hover: "#9A3412"      # Hover state of accent on paper.
-  accent-light: "#FB923C"      # On ink: hero eyebrows, inline emphasis, dark-surface accents.
+  accent: '#C2410C' # On paper: CTAs, rules, selected states, copper emphasis.
+  accent-hover: '#9A3412' # Hover state of accent on paper.
+  accent-light: '#FB923C' # On ink: hero eyebrows, inline emphasis, dark-surface accents.
 
   # Functional aliases used by components.
-  primary: "{colors.accent}"
-  on-primary: "{colors.paper}"
-  surface: "{colors.paper}"
-  surface-muted: "{colors.paper-alt}"
-  surface-dark: "{colors.ink}"
-  on-surface: "{colors.ink}"
-  on-surface-dark: "{colors.paper}"
+  primary: '{colors.accent}'
+  on-primary: '{colors.paper}'
+  surface: '{colors.paper}'
+  surface-muted: '{colors.paper-alt}'
+  surface-dark: '{colors.ink}'
+  on-surface: '{colors.ink}'
+  on-surface-dark: '{colors.paper}'
 
 typography:
   # Two families do everything:
@@ -41,242 +41,242 @@ typography:
 
   # Display — hero headline. Fluid clamp() so it breathes across viewports.
   hero-h1:
-    fontFamily: "General Sans, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "clamp(2.5rem, 7vw, 4.5rem)"
+    fontFamily: 'General Sans, ui-sans-serif, system-ui, sans-serif'
+    fontSize: 'clamp(2.5rem, 7vw, 4.5rem)'
     fontWeight: 600
     lineHeight: 1.02
-    letterSpacing: "-0.035em"
+    letterSpacing: '-0.035em'
 
   # Section titles (H2). Rendered by Section.svelte with text-wrap: balance.
   section-title:
-    fontFamily: "General Sans, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "clamp(1.875rem, 1.5rem + 1.5vw, 2.5rem)"
+    fontFamily: 'General Sans, ui-sans-serif, system-ui, sans-serif'
+    fontSize: 'clamp(1.875rem, 1.5rem + 1.5vw, 2.5rem)'
     fontWeight: 500
     lineHeight: 1.2
-    letterSpacing: "-0.02em"
+    letterSpacing: '-0.02em'
 
   # Editorial pull-quote / thesis breaks (the shape-break section between §04 and §05).
   pull-quote:
-    fontFamily: "Recia, Georgia, serif"
-    fontSize: "clamp(1.625rem, 3.6vw, 2.625rem)"
+    fontFamily: 'Recia, Georgia, serif'
+    fontSize: 'clamp(1.625rem, 3.6vw, 2.625rem)'
     fontWeight: 400
     lineHeight: 1.18
-    letterSpacing: "-0.015em"
+    letterSpacing: '-0.015em'
 
   # Big-number display — the "5–7 hours/week" math block.
   display-stat:
-    fontFamily: "General Sans, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "clamp(3rem, 6vw, 5rem)"
+    fontFamily: 'General Sans, ui-sans-serif, system-ui, sans-serif'
+    fontSize: 'clamp(3rem, 6vw, 5rem)'
     fontWeight: 600
     lineHeight: 0.95
-    letterSpacing: "-0.03em"
+    letterSpacing: '-0.03em'
 
   # Body — serif, editorial. The long-form default.
   body-serif-lg:
-    fontFamily: "Recia, Georgia, serif"
-    fontSize: "1.125rem"
+    fontFamily: 'Recia, Georgia, serif'
+    fontSize: '1.125rem'
     fontWeight: 400
     lineHeight: 1.65
   body-serif:
-    fontFamily: "Recia, Georgia, serif"
-    fontSize: "1rem"
+    fontFamily: 'Recia, Georgia, serif'
+    fontSize: '1rem'
     fontWeight: 400
     lineHeight: 1.55
   body-serif-sm:
-    fontFamily: "Recia, Georgia, serif"
-    fontSize: "0.875rem"
+    fontFamily: 'Recia, Georgia, serif'
+    fontSize: '0.875rem'
     fontWeight: 400
     lineHeight: 1.55
 
   # UI body — sans. Used in controls, meta rows, FAQ summaries, CTAs.
   body-sans:
-    fontFamily: "General Sans, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "1rem"
+    fontFamily: 'General Sans, ui-sans-serif, system-ui, sans-serif'
+    fontSize: '1rem'
     fontWeight: 400
     lineHeight: 1.5
   body-sans-sm:
-    fontFamily: "General Sans, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "0.875rem"
+    fontFamily: 'General Sans, ui-sans-serif, system-ui, sans-serif'
+    fontSize: '0.875rem'
     fontWeight: 400
     lineHeight: 1.5
 
   # Eyebrow — the signature micro-typographic device. Two variants.
   eyebrow-strong:
-    fontFamily: "General Sans, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "0.6875rem"   # 11px
+    fontFamily: 'General Sans, ui-sans-serif, system-ui, sans-serif'
+    fontSize: '0.6875rem' # 11px
     fontWeight: 600
     lineHeight: 1.2
-    letterSpacing: "0.14em"
+    letterSpacing: '0.14em'
   eyebrow-quiet:
-    fontFamily: "General Sans, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "0.6875rem"
+    fontFamily: 'General Sans, ui-sans-serif, system-ui, sans-serif'
+    fontSize: '0.6875rem'
     fontWeight: 600
     lineHeight: 1.2
-    letterSpacing: "0.14em"
+    letterSpacing: '0.14em'
 
 rounded:
-  none: "0px"
-  sm: "2px"      # focus-visible rings; small pill marks
-  md: "6px"      # dropdown panels, tag-like chips
-  lg: "8px"      # buttons, callout boxes, portrait frames
-  pill: "9999px" # reserved; not used on Assessment page
+  none: '0px'
+  sm: '2px' # focus-visible rings; small pill marks
+  md: '6px' # dropdown panels, tag-like chips
+  lg: '8px' # buttons, callout boxes, portrait frames
+  pill: '9999px' # reserved; not used on Assessment page
 
 spacing:
   # Scale: the page composes against a small vertical rhythm that spans
   # section gutters, section padding, and card interiors.
-  xs: "4px"
-  sm: "8px"
-  md: "16px"
-  lg: "24px"      # standard page gutter (px-6)
-  xl: "32px"      # lg page gutter (lg:px-8)
-  "2xl": "40px"   # card/grid vertical gap
-  "3xl": "64px"   # column gap between content and aside
-  "4xl": "80px"   # section bottom padding (md at md+)
-  "5xl": "112px"  # hero bottom padding / xl section padding at md+
+  xs: '4px'
+  sm: '8px'
+  md: '16px'
+  lg: '24px' # standard page gutter (px-6)
+  xl: '32px' # lg page gutter (lg:px-8)
+  '2xl': '40px' # card/grid vertical gap
+  '3xl': '64px' # column gap between content and aside
+  '4xl': '80px' # section bottom padding (md at md+)
+  '5xl': '112px' # hero bottom padding / xl section padding at md+
 
   # Section padding presets (consumed by Section.svelte).
-  section-sm: "40px"      # py-10
-  section-sm-md: "56px"   # md:py-14
-  section-md: "56px"      # py-14
-  section-md-md: "72px"   # md:py-18
-  section-lg: "64px"      # py-16
-  section-lg-md: "80px"   # md:py-20
-  section-xl: "80px"      # py-20
-  section-xl-md: "112px"  # md:py-28
+  section-sm: '40px' # py-10
+  section-sm-md: '56px' # md:py-14
+  section-md: '56px' # py-14
+  section-md-md: '72px' # md:py-18
+  section-lg: '64px' # py-16
+  section-lg-md: '80px' # md:py-20
+  section-xl: '80px' # py-20
+  section-xl-md: '112px' # md:py-28
 
   # Content widths. Kept as named tiers; concrete values in px.
-  content-sm: "768px"     # max-w-3xl — copy blocks
-  content-md: "896px"     # max-w-4xl — pull quotes
-  content-lg: "1024px"    # max-w-5xl — card grids
-  content-xl: "1280px"    # max-w-7xl — hero frame
+  content-sm: '768px' # max-w-3xl — copy blocks
+  content-md: '896px' # max-w-4xl — pull quotes
+  content-lg: '1024px' # max-w-5xl — card grids
+  content-xl: '1280px' # max-w-7xl — hero frame
 
 components:
   # --- Buttons -----------------------------------------------------------
 
   button-primary:
-    backgroundColor: "{colors.accent}"
-    textColor: "{colors.paper}"
-    typography: "{typography.body-sans}"
-    rounded: "{rounded.lg}"
-    padding: "12px"       # vertical; horizontal 24px — see prose
-    height: "48px"
+    backgroundColor: '{colors.accent}'
+    textColor: '{colors.paper}'
+    typography: '{typography.body-sans}'
+    rounded: '{rounded.lg}'
+    padding: '12px' # vertical; horizontal 24px — see prose
+    height: '48px'
   button-primary-hover:
-    backgroundColor: "{colors.accent-hover}"
-    textColor: "{colors.paper}"
+    backgroundColor: '{colors.accent-hover}'
+    textColor: '{colors.paper}'
   button-primary-active:
-    backgroundColor: "{colors.accent-hover}"
-    textColor: "{colors.paper}"
+    backgroundColor: '{colors.accent-hover}'
+    textColor: '{colors.paper}'
 
   button-secondary:
-    backgroundColor: "transparent"
-    textColor: "{colors.ink}"
-    typography: "{typography.body-sans}"
-    rounded: "{rounded.lg}"
-    padding: "12px"
-    height: "48px"
+    backgroundColor: 'transparent'
+    textColor: '{colors.ink}'
+    typography: '{typography.body-sans}'
+    rounded: '{rounded.lg}'
+    padding: '12px'
+    height: '48px'
   button-secondary-hover:
-    backgroundColor: "{colors.paper-alt}"
-    textColor: "{colors.ink}"
+    backgroundColor: '{colors.paper-alt}'
+    textColor: '{colors.ink}'
 
   button-ghost:
-    backgroundColor: "transparent"
-    textColor: "{colors.muted}"
-    typography: "{typography.body-sans}"
-    rounded: "{rounded.lg}"
-    padding: "12px"
-    height: "48px"
+    backgroundColor: 'transparent'
+    textColor: '{colors.muted}'
+    typography: '{typography.body-sans}'
+    rounded: '{rounded.lg}'
+    padding: '12px'
+    height: '48px'
   button-ghost-hover:
-    backgroundColor: "{colors.paper-alt}"
-    textColor: "{colors.accent}"
+    backgroundColor: '{colors.paper-alt}'
+    textColor: '{colors.accent}'
 
   button-sm:
-    padding: "8px"
-    height: "36px"
+    padding: '8px'
+    height: '36px'
   button-lg:
-    padding: "16px"
-    height: "56px"
+    padding: '16px'
+    height: '56px'
 
   # --- Section surfaces --------------------------------------------------
 
   section-paper:
-    backgroundColor: "{colors.paper}"
-    textColor: "{colors.ink}"
+    backgroundColor: '{colors.paper}'
+    textColor: '{colors.ink}'
   section-muted:
-    backgroundColor: "{colors.paper-alt}"
-    textColor: "{colors.ink}"
+    backgroundColor: '{colors.paper-alt}'
+    textColor: '{colors.ink}'
   section-dark:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.paper}"
+    backgroundColor: '{colors.ink}'
+    textColor: '{colors.paper}'
 
   # --- Editorial card grid (hairline-grid) ------------------------------
 
   card-cell:
-    backgroundColor: "{colors.paper}"
-    textColor: "{colors.ink}"
-    padding: "24px"
+    backgroundColor: '{colors.paper}'
+    textColor: '{colors.ink}'
+    padding: '24px'
   card-cell-on-muted:
-    backgroundColor: "{colors.paper-alt}"
-    textColor: "{colors.ink}"
-    padding: "24px"
+    backgroundColor: '{colors.paper-alt}'
+    textColor: '{colors.ink}'
+    padding: '24px'
 
   # --- Eyebrow chips -----------------------------------------------------
 
   eyebrow-accent:
-    textColor: "{colors.accent}"
-    typography: "{typography.eyebrow-strong}"
+    textColor: '{colors.accent}'
+    typography: '{typography.eyebrow-strong}'
   eyebrow-accent-light:
-    textColor: "{colors.accent-light}"
-    typography: "{typography.eyebrow-strong}"
+    textColor: '{colors.accent-light}'
+    typography: '{typography.eyebrow-strong}'
   eyebrow-subtle:
-    textColor: "{colors.subtle}"
-    typography: "{typography.eyebrow-quiet}"
+    textColor: '{colors.subtle}'
+    typography: '{typography.eyebrow-quiet}'
 
   # --- Callouts / highlights --------------------------------------------
 
   callout-accent:
     # The locked "Speed-to-lead" block above §01 cards.
-    backgroundColor: "{colors.accent}"   # used at 6–18% alpha in use; see prose
-    textColor: "{colors.ink}"
-    rounded: "{rounded.lg}"
-    padding: "24px"
+    backgroundColor: '{colors.accent}' # used at 6–18% alpha in use; see prose
+    textColor: '{colors.ink}'
+    rounded: '{rounded.lg}'
+    padding: '24px'
   callout-accent-strong:
-    backgroundColor: "{colors.accent}"   # 18% alpha when vertical leadsWithSpeed
-    textColor: "{colors.ink}"
-    rounded: "{rounded.lg}"
-    padding: "24px"
+    backgroundColor: '{colors.accent}' # 18% alpha when vertical leadsWithSpeed
+    textColor: '{colors.ink}'
+    rounded: '{rounded.lg}'
+    padding: '24px'
   rule-left-accent:
-    backgroundColor: "transparent"
-    textColor: "{colors.ink}"
-    padding: "20px"   # applied as padding-left only in practice
+    backgroundColor: 'transparent'
+    textColor: '{colors.ink}'
+    padding: '20px' # applied as padding-left only in practice
 
   # --- Dropdown (vertical selector, §01) --------------------------------
 
   dropdown-trigger:
-    backgroundColor: "transparent"
-    textColor: "{colors.ink}"
-    typography: "{typography.section-title}"   # inline w/ section title scale
-    rounded: "{rounded.sm}"
+    backgroundColor: 'transparent'
+    textColor: '{colors.ink}'
+    typography: '{typography.section-title}' # inline w/ section title scale
+    rounded: '{rounded.sm}'
   dropdown-panel:
-    backgroundColor: "{colors.paper}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.md}"
-    padding: "8px"
+    backgroundColor: '{colors.paper}'
+    textColor: '{colors.ink}'
+    rounded: '{rounded.md}'
+    padding: '8px'
   dropdown-option-active:
-    backgroundColor: "{colors.accent}"   # 10% alpha in use
-    textColor: "{colors.accent}"
+    backgroundColor: '{colors.accent}' # 10% alpha in use
+    textColor: '{colors.accent}'
 
   # --- FAQ details -------------------------------------------------------
 
   faq-summary:
-    backgroundColor: "transparent"
-    textColor: "{colors.ink}"
-    typography: "{typography.body-sans}"
+    backgroundColor: 'transparent'
+    textColor: '{colors.ink}'
+    typography: '{typography.body-sans}'
 
   # --- Sticky mobile CTA bar --------------------------------------------
 
   sticky-cta-mobile:
-    backgroundColor: "{colors.ink}"     # 95% alpha + backdrop-blur
-    textColor: "{colors.paper}"
+    backgroundColor: '{colors.ink}' # 95% alpha + backdrop-blur
+    textColor: '{colors.paper}'
 ---
 
 ## Overview
@@ -303,21 +303,21 @@ full-bleed `ink` (dark) hero and final-CTA sections. That rhythm is the spine.
 
 ### Neutrals — where 95% of the surface lives
 
-| Token | Hex | Where |
-|:--|:--|:--|
-| `{colors.ink}` | `#0A0A0A` | Body text on paper; dark section backgrounds; `rule-strong` top rules |
-| `{colors.paper}` | `#FFFFFF` | Default background |
-| `{colors.paper-alt}` | `#FAFAFA` | Alternating "muted" section background |
-| `{colors.muted}` | `#525252` | Secondary copy — serif body paragraphs |
-| `{colors.subtle}` | `#6B6B6B` | Tertiary text, demoted eyebrows, "not a fit" column |
-| `{colors.rule}` | `#E5E5E5` | Hairlines between cards and meta rows |
+| Token                | Hex       | Where                                                                 |
+| :------------------- | :-------- | :-------------------------------------------------------------------- |
+| `{colors.ink}`       | `#0A0A0A` | Body text on paper; dark section backgrounds; `rule-strong` top rules |
+| `{colors.paper}`     | `#FFFFFF` | Default background                                                    |
+| `{colors.paper-alt}` | `#FAFAFA` | Alternating "muted" section background                                |
+| `{colors.muted}`     | `#525252` | Secondary copy — serif body paragraphs                                |
+| `{colors.subtle}`    | `#6B6B6B` | Tertiary text, demoted eyebrows, "not a fit" column                   |
+| `{colors.rule}`      | `#E5E5E5` | Hairlines between cards and meta rows                                 |
 
 ### Accent — vermilion, used sparingly
 
-| Token | Hex | Where |
-|:--|:--|:--|
-| `{colors.accent}` | `#C2410C` | CTAs, selected states, left-accent rules, **on paper only** |
-| `{colors.accent-hover}` | `#9A3412` | Hover/pressed state of primary CTA |
+| Token                   | Hex       | Where                                                                                |
+| :---------------------- | :-------- | :----------------------------------------------------------------------------------- |
+| `{colors.accent}`       | `#C2410C` | CTAs, selected states, left-accent rules, **on paper only**                          |
+| `{colors.accent-hover}` | `#9A3412` | Hover/pressed state of primary CTA                                                   |
 | `{colors.accent-light}` | `#FB923C` | Eyebrows and inline emphasis **on ink** — `{colors.accent}` doesn't hit WCAG on dark |
 
 **Rule of thumb:** Accent appears at most twice in any one viewport — once in an
@@ -340,16 +340,16 @@ Two families do everything:
 
 ### Hierarchy
 
-| Role | Token | Notes |
-|:--|:--|:--|
-| Hero headline | `{typography.hero-h1}` | `clamp(2.5rem, 7vw, 4.5rem)`, -0.035em, semibold. One per page. |
-| Section title | `{typography.section-title}` | `clamp(1.875rem, 2.5rem)`, medium. Rendered by `Section.svelte` with `text-wrap: balance`. |
-| Pull-quote | `{typography.pull-quote}` | Serif. Used once per page as a shape-break between §04 and §05. |
-| Card title | 18–20px / 1.2 / medium, sans | Inside `.hairline-grid > .cell`. |
-| Body (editorial) | `{typography.body-serif-lg}` | Default for long-form paragraphs. |
-| Body (UI / meta) | `{typography.body-sans-sm}` | Dropdown options, FAQ summaries, meta rows. |
-| Eyebrow | `{typography.eyebrow-strong}` | 11px, 0.14em tracking, uppercase, semibold. Always paired with a color token. |
-| Display stat | `{typography.display-stat}` | Reserved for the math block ("5–7 hours/week"). One per page. |
+| Role             | Token                         | Notes                                                                                      |
+| :--------------- | :---------------------------- | :----------------------------------------------------------------------------------------- |
+| Hero headline    | `{typography.hero-h1}`        | `clamp(2.5rem, 7vw, 4.5rem)`, -0.035em, semibold. One per page.                            |
+| Section title    | `{typography.section-title}`  | `clamp(1.875rem, 2.5rem)`, medium. Rendered by `Section.svelte` with `text-wrap: balance`. |
+| Pull-quote       | `{typography.pull-quote}`     | Serif. Used once per page as a shape-break between §04 and §05.                            |
+| Card title       | 18–20px / 1.2 / medium, sans  | Inside `.hairline-grid > .cell`.                                                           |
+| Body (editorial) | `{typography.body-serif-lg}`  | Default for long-form paragraphs.                                                          |
+| Body (UI / meta) | `{typography.body-sans-sm}`   | Dropdown options, FAQ summaries, meta rows.                                                |
+| Eyebrow          | `{typography.eyebrow-strong}` | 11px, 0.14em tracking, uppercase, semibold. Always paired with a color token.              |
+| Display stat     | `{typography.display-stat}`   | Reserved for the math block ("5–7 hours/week"). One per page.                              |
 
 ### Serif vs. sans — when to choose
 
@@ -405,8 +405,8 @@ the 60% scroll mark and resets pace before the qualifying fit section.
 
 From `Section.svelte`:
 
-| Size | Mobile | ≥768px |
-|:--|:--|:--|
+| Size | Mobile  | ≥768px  |
+| :--- | :------ | :------ |
 | `sm` | `py-10` | `py-14` |
 | `md` | `py-14` | `py-18` |
 | `lg` | `py-16` | `py-20` |
@@ -466,11 +466,11 @@ lift. Stagger between siblings: 70–180ms.
 
 Tailwind's default corner scale, used sparingly:
 
-| Token | Value | Where |
-|:--|:--|:--|
-| `{rounded.sm}` | 2px | Focus rings, small chips |
-| `{rounded.md}` | 6px | Dropdown panel, portrait frame |
-| `{rounded.lg}` | 8px | Buttons, callout boxes |
+| Token          | Value | Where                          |
+| :------------- | :---- | :----------------------------- |
+| `{rounded.sm}` | 2px   | Focus rings, small chips       |
+| `{rounded.md}` | 6px   | Dropdown panel, portrait frame |
+| `{rounded.lg}` | 8px   | Buttons, callout boxes         |
 
 **Do not** use `rounded-2xl` or larger. Hero aside, card cells, and the
 hairline grid are all **square-cornered** — roundness is a cue for "this is

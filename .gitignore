@@ -11,3 +11,5 @@ node_modules
 council-report-*.html
 council-transcript-*.md
 .dev.vars
+test-results/
+playwright-report/

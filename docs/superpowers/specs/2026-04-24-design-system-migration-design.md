@@ -47,15 +47,15 @@ under a new `/leaders/*` URL root.
 
 Taken during brainstorming; each locked by user confirmation.
 
-| Decision | Choice | Rationale |
-|---|---|---|
-| Migration depth | Level B site-wide + Level C homepage | B = palette + patterns + rhythm. C = full editorial restyle, homepage only. |
-| Header/Footer | Migrate to new palette; keep `isLanding` exclusion on `/smb*` | Preserves the deliberate standalone feel of the SMB pitch while fixing the legacy look elsewhere. |
-| Legacy `/assessment` | Migrate, don't redirect | Tier-2 enterprise landing, not superseded by `/smb`. |
-| Track differentiation | Shared tokens, looser rhythm | Enterprise pages keep the existing `§01–§05` methodology structure they already have; skip SMB-only devices (pull-quote break, display-stat, inline dropdown, sticky mobile CTA, strict paper/paper-alt alternation). |
-| Component extraction | Small pattern library | Six components, thin extractions from `AssessmentPage.svelte`. No new heroes or asides. |
-| Enterprise URL root | `/leaders/*` | Audience-by-buyer-role. Parallels `/smb/*`. Works for engineering VPs, accounting-institute COOs, agency operators — not industry-bound. |
-| Hub page | `/leaders/` *is* the tier-2 assessment | Same model as `/smb/` where the landing is the pitch. |
+| Decision              | Choice                                                        | Rationale                                                                                                                                                                                                             |
+| --------------------- | ------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Migration depth       | Level B site-wide + Level C homepage                          | B = palette + patterns + rhythm. C = full editorial restyle, homepage only.                                                                                                                                           |
+| Header/Footer         | Migrate to new palette; keep `isLanding` exclusion on `/smb*` | Preserves the deliberate standalone feel of the SMB pitch while fixing the legacy look elsewhere.                                                                                                                     |
+| Legacy `/assessment`  | Migrate, don't redirect                                       | Tier-2 enterprise landing, not superseded by `/smb`.                                                                                                                                                                  |
+| Track differentiation | Shared tokens, looser rhythm                                  | Enterprise pages keep the existing `§01–§05` methodology structure they already have; skip SMB-only devices (pull-quote break, display-stat, inline dropdown, sticky mobile CTA, strict paper/paper-alt alternation). |
+| Component extraction  | Small pattern library                                         | Six components, thin extractions from `AssessmentPage.svelte`. No new heroes or asides.                                                                                                                               |
+| Enterprise URL root   | `/leaders/*`                                                  | Audience-by-buyer-role. Parallels `/smb/*`. Works for engineering VPs, accounting-institute COOs, agency operators — not industry-bound.                                                                              |
+| Hub page              | `/leaders/` _is_ the tier-2 assessment                        | Same model as `/smb/` where the landing is the pitch.                                                                                                                                                                 |
 
 ## Architecture
 
@@ -73,7 +73,7 @@ Three parallel tracks, all required before any page is "done":
 - `--color-warm-gray`
 - `--color-warm-gray-light`
 - `--color-copper`
-- `--color-charcoal` — *conditional on no remaining usages after migration*
+- `--color-charcoal` — _conditional on no remaining usages after migration_
 
 **Retain:** `ink`, `paper`, `paper-alt`, `rule`, `rule-strong`, `muted`,
 `subtle`, `faint`, `accent`, `accent-hover`, `accent-light`, `font-sans`,
@@ -178,12 +178,13 @@ paragraph. SMB-track + homepage only.
 
 ```ts
 props: {
-  variant: 'accent' | 'accent-strong' | 'rule-left' | 'rule-left-sm';
-  children: Snippet;
+	variant: 'accent' | 'accent-strong' | 'rule-left' | 'rule-left-sm';
+	children: Snippet;
 }
 ```
 
 Variants:
+
 - `accent` — `bg-accent/6 rounded-lg p-6`
 - `accent-strong` — `bg-accent/18 rounded-lg p-6`
 - `rule-left` — `.rule-left-accent` (2px left border)
@@ -194,6 +195,7 @@ Variants:
 #### `Header.svelte`
 
 Rewrite against new palette:
+
 - `bg-warm-white/80` → `bg-paper/80` (scrolled state)
 - `border-charcoal/5` → `border-rule`
 - `text-charcoal` → `text-ink`
@@ -208,6 +210,7 @@ Structure (services dropdown, mobile accordion) preserved.
 #### `Footer.svelte`
 
 Rewrite against new palette; remove decorative layers:
+
 - **Remove** `<div class="absolute inset-0 ambient-warm opacity-50"></div>`
 - **Remove** `<div class="absolute inset-0 texture-grain"></div>`
 - `text-primary` (teal period) → `text-accent`
@@ -279,14 +282,15 @@ deferred to Phase 5 as a nice-to-have.
 ### Enterprise track — `/leaders/*` (Level B)
 
 Each page:
+
 1. Move file from `src/routes/<old>/+page.svelte` →
    `src/routes/leaders/<new>/+page.svelte`.
 2. Replace hero chrome (currently
    `<section class="bg-warm-white py-20 md:py-28 relative overflow-hidden">`
    with custom eyebrow/headline) with a `<Section background="dark"
-   padding="xl">` containing: an accent-light `Eyebrow`, the page headline
+padding="xl">` containing: an accent-light `Eyebrow`, the page headline
    (one `<h1>`), a short serif lead paragraph, and a primary CTA. Enterprise
-   heroes intentionally do *not* reuse SMB's three-mode responsive grid,
+   heroes intentionally do _not_ reuse SMB's three-mode responsive grid,
    right-rail aside, or meta `<dl>` — those are SMB-specific devices.
 3. Swap `<Section eyebrow="01">` → `<NumberedSection index="01">`.
 4. Convert card grids to `HairlineGrid` components.
@@ -315,7 +319,7 @@ Page order (small → large): `/leaders/fractional` (285 lines) →
 ### `/contact` — Level B
 
 - Hero (currently `bg-warm-white`) → `<Section background="dark"
-  padding="xl">` per the enterprise-hero shape.
+padding="xl">` per the enterprise-hero shape.
 - "Book a call" / "Send an email" two-up cards → `HairlineGrid cols={2}`.
 - "What to expect" block → `Callout variant="rule-left"`.
 
@@ -330,6 +334,7 @@ Keep the spine (hero → two-tracks picker → §01 Who this is for → §02 Pro
 → §03 AI Stack → §04 How it works → CTA), retune every layer:
 
 **Hero:**
+
 - Remove decorative layers: `ambient-warm` copper/teal glow, `grid-overlay`,
   `texture-grain`, vertical copper rule.
 - Keep the editorial stat bar; recolor `hero-eyebrow-text` (`#c99a6b`) to
@@ -337,21 +342,24 @@ Keep the spine (hero → two-tracks picker → §01 Who this is for → §02 Pro
 - Drop the monogram-as-column decoration (DESIGN.md forbids decorative SVG).
 
 **Two-tracks picker:**
+
 - Convert to `HairlineGrid cols={2}` with left-accent rules on each cell
   (`Callout variant="rule-left"`).
 - Track A kicker reads "Owner-operators"; Track B kicker updated to
   "Leaders running teams" (was "VP Eng / CTO") — flag for copy confirmation.
 - Each track ends in a primary CTA to `/smb/` or `/leaders/` + quiet text
   link to the tier-sibling.
-- Two primary buttons side-by-side is acceptable *because* they serve
+- Two primary buttons side-by-side is acceptable _because_ they serve
   non-overlapping audiences — the DESIGN.md "one primary CTA per viewport"
   rule is for competing CTAs within one pitch.
 
 **§01–§04 sections:**
+
 - `<Section eyebrow="01">` → `<NumberedSection index="01">`.
 - Card grids → `HairlineGrid`.
 
 **AI Stack visualization (§03):**
+
 - Keep as the homepage's signature.
 - Recolor layer highlights: Agent Coordination and Context System layers
   currently use `primary` (teal) and `copper` — swap to `accent` and
@@ -395,12 +403,14 @@ logical push — either in a single PR or on a feature branch, so the build
 never stays red on main.
 
 Phase 3 sub-steps:
+
 - Move five `+page.svelte` files to `/leaders/*`.
 - Add redirects to `_redirects`.
 - Update Header, Footer, homepage internal links.
 - Update `static/sitemap.xml` and `static/llms.txt`.
 
 Phase 4 sub-steps — per-page, bisectable commits:
+
 1. `/leaders/fractional/`
 2. `/leaders/scan/`
 3. `/leaders/orchestration-build/`
@@ -415,6 +425,7 @@ manual visual review at `https://domeworks.localhost:1355`.
 ### Phase 5 — Homepage C-treatment
 
 Single-page, multi-commit. Commit sequence:
+
 - (a) Palette swap, keep structure.
 - (b) Remove decorative layers.
 - (c) Restructure two-tracks picker → `HairlineGrid` + left-accent cells.
@@ -434,6 +445,7 @@ Single-page, multi-commit. Commit sequence:
 ## Testing
 
 **Automated per phase:**
+
 - `yarn check` — Svelte/TS. Run after every commit.
 - `yarn lint` — Prettier + ESLint. Run before commit.
 - `yarn test` — Playwright. Likely breakages: selectors referencing legacy
@@ -442,6 +454,7 @@ Single-page, multi-commit. Commit sequence:
 - `yarn build` — confirms prerender succeeds for every route.
 
 **Manual per phase:**
+
 - Phase 1: visual diff `/smb` before/after — must be identical.
 - Phase 4/5: each migrated page scrolled at 360 / 640 / 768 / 1024 / 1280px;
   `prefers-reduced-motion` verified; accent-color appears ≤2× per viewport;
@@ -449,23 +462,24 @@ Single-page, multi-commit. Commit sequence:
 
 ## Risks
 
-| Risk | Mitigation |
-|---|---|
-| SEO regression from URL moves | 301 redirects in `_redirects`; submit updated `sitemap.xml` to Google Search Console after Phase 3/4 ships. 2–4 week crawl lag is expected. |
-| Hidden token usages break build on Phase 1 | Expected; forcing function. Phase 4 resolves all. If a Phase 1 ship gate matters, keep Phase 1 on a feature branch until Phase 4 completes. |
-| Playwright selectors tied to legacy class names | Budget test-repair time per migrated page. |
-| Two-tracks picker copy (`VP Eng / CTO` → `Leaders running teams`) isn't confirmed | Flagged for implementation decision, not design decision. Separate copy confirmation before homepage ships. |
-| `AssessmentPage.svelte` unintended visual change during Phase 1 | Visual-diff screenshot gate. Any change fails the phase. |
+| Risk                                                                              | Mitigation                                                                                                                                  |
+| --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| SEO regression from URL moves                                                     | 301 redirects in `_redirects`; submit updated `sitemap.xml` to Google Search Console after Phase 3/4 ships. 2–4 week crawl lag is expected. |
+| Hidden token usages break build on Phase 1                                        | Expected; forcing function. Phase 4 resolves all. If a Phase 1 ship gate matters, keep Phase 1 on a feature branch until Phase 4 completes. |
+| Playwright selectors tied to legacy class names                                   | Budget test-repair time per migrated page.                                                                                                  |
+| Two-tracks picker copy (`VP Eng / CTO` → `Leaders running teams`) isn't confirmed | Flagged for implementation decision, not design decision. Separate copy confirmation before homepage ships.                                 |
+| `AssessmentPage.svelte` unintended visual change during Phase 1                   | Visual-diff screenshot gate. Any change fails the phase.                                                                                    |
 
 ## Open Questions
 
 None blocking. Resolved during brainstorming:
+
 - Migration depth ✓ B site-wide + C homepage
 - Header/Footer treatment ✓ Migrate, keep isLanding exclusion
 - Legacy page fate ✓ /assessment migrates, stubs alone
 - Track differentiation ✓ Shared tokens, looser rhythm (numbered spine retained where already present)
 - Component extraction ✓ Six-component library
-- Enterprise URL root ✓ /leaders/*
+- Enterprise URL root ✓ /leaders/\*
 - Hub page ✓ /leaders/ = assessment
 
 ## References

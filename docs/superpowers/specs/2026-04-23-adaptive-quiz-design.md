@@ -42,14 +42,14 @@ Replace those limitations with a **hybrid** flow: four static seed questions fol
 
 The agent picks three from a menu of six information needs:
 
-| Need | When it matters most |
-| --- | --- |
-| `stack` | Always high-value; drives every specific recommendation |
-| `volume` | Always high-value; unlocks the math |
-| `speed-to-lead` | Industry or time-leak implies inbound dependence (trades, real-estate, agency, insurance, or `marketing` time-leak) |
-| `sensitive-data` | Industry is legal, medical, accounting, mortgage, insurance |
-| `ownership` | Team size ≥ 10 (otherwise owner is obviously doing it) |
-| `prior-tools` | `dreadedTask` mentions AI-adjacent terms or respondent seems sophisticated |
+| Need             | When it matters most                                                                                                |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `stack`          | Always high-value; drives every specific recommendation                                                             |
+| `volume`         | Always high-value; unlocks the math                                                                                 |
+| `speed-to-lead`  | Industry or time-leak implies inbound dependence (trades, real-estate, agency, insurance, or `marketing` time-leak) |
+| `sensitive-data` | Industry is legal, medical, accounting, mortgage, insurance                                                         |
+| `ownership`      | Team size ≥ 10 (otherwise owner is obviously doing it)                                                              |
+| `prior-tools`    | `dreadedTask` mentions AI-adjacent terms or respondent seems sophisticated                                          |
 
 The agent ranks these for the specific respondent and returns the top three, one per turn.
 
@@ -67,19 +67,19 @@ The agent ranks these for the specific respondent and returns the top three, one
 
 ```ts
 interface NextRequest {
-  static: {
-    industry: string;
-    size: string;
-    timeLeak: string;
-    dreadedTask: string;
-  };
-  adaptiveSoFar: Array<{
-    id: string;            // "q1" | "q2"
-    infoNeed: InfoNeed;
-    question: string;
-    options: string[];
-    answer: string;        // chosen chip label or "Other: <typed>"
-  }>;
+	static: {
+		industry: string;
+		size: string;
+		timeLeak: string;
+		dreadedTask: string;
+	};
+	adaptiveSoFar: Array<{
+		id: string; // "q1" | "q2"
+		infoNeed: InfoNeed;
+		question: string;
+		options: string[];
+		answer: string; // chosen chip label or "Other: <typed>"
+	}>;
 }
 ```
 
@@ -87,21 +87,21 @@ interface NextRequest {
 
 ```ts
 interface NextResponse {
-  id: string;                          // "q1" | "q2" | "q3"
-  question: string;                    // one sentence, DomeWorks voice
-  helper: string | null;               // optional ≤140-char clarifier
-  options: string[];                   // 3–5 chips + "Other" as last entry
-  allowOtherText: true;
-  infoNeed: InfoNeed;
+	id: string; // "q1" | "q2" | "q3"
+	question: string; // one sentence, DomeWorks voice
+	helper: string | null; // optional ≤140-char clarifier
+	options: string[]; // 3–5 chips + "Other" as last entry
+	allowOtherText: true;
+	infoNeed: InfoNeed;
 }
 
 type InfoNeed =
-  | 'stack'
-  | 'volume'
-  | 'speed-to-lead'
-  | 'sensitive-data'
-  | 'ownership'
-  | 'prior-tools';
+	| 'stack'
+	| 'volume'
+	| 'speed-to-lead'
+	| 'sensitive-data'
+	| 'ownership'
+	| 'prior-tools';
 ```
 
 Stop condition is **client-side fixed at 3**: after the user answers the third adaptive question the client doesn't POST again — it just reveals the email field. The server never needs to signal "done." Keeps the contract boring.

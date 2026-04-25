@@ -118,8 +118,7 @@ export const campaigns: Record<string, Campaign> = {
 		heroHeadline: '5–7 hours back each week — from intake, drafting, and document chasing.',
 		heroSubhead:
 			'A 45-minute call. A written plan in 48 hours on where AI recovers hours in your firm — <strong class="text-accent-light font-medium font-serif">and where it shouldn\'t go near your workpapers</strong>.',
-		heroKicker:
-			'Ex-DoorDash, Square, Mudflap. AICPA relationship — I know your world.',
+		heroKicker: 'Ex-DoorDash, Square, Mudflap. AICPA relationship — I know your world.',
 		title: 'AI Tools Assessment for Henderson & Las Vegas CPA Firms | DomeWorks',
 		description:
 			"Where AI recovers hours in a CPA firm — and where it shouldn't touch your workpapers. 45-min call, written plan in 48 hours. Henderson local, AICPA relationship."
@@ -147,7 +146,8 @@ export const campaigns: Record<string, Campaign> = {
 		noIndex: false,
 		heroEyebrow: 'For Henderson & Las Vegas insurance agencies',
 		heroMeta: 'Independent agencies · 2–25 people',
-		heroHeadline: 'Quote faster. Follow up without burning Saturday. Keep the clients you already have.',
+		heroHeadline:
+			'Quote faster. Follow up without burning Saturday. Keep the clients you already have.',
 		heroSubhead:
 			'A 45-minute call. A written plan in 48 hours on the 3–7 tools that actually move quote time <strong class="text-accent-light font-medium font-serif">and keep renewals from slipping</strong>.',
 		heroKicker:
@@ -173,20 +173,37 @@ export const campaigns: Record<string, Campaign> = {
 			'Fewer no-shows, faster intake, more reviews — without the raffle. 45-min call, written plan in 48 hours. For Henderson dental practices.'
 	},
 
+	'dental-group': {
+		slug: 'dental-group',
+		vertical: 'medical',
+		noIndex: false,
+		heroEyebrow: 'For Las Vegas multi-location dental groups',
+		heroMeta: 'DSOs & emerging groups · 3–30 locations',
+		heroHeadline: 'One playbook across every location. Without a corporate trainer at each site.',
+		heroSubhead:
+			'A 45-minute call. A written plan in 48 hours on where AI replaces the ops overhead between locations — <strong class="text-accent-light font-medium font-serif">and where centralizing actually slows the chair down</strong>.',
+		heroKicker:
+			'Ex-DoorDash, Square, Mudflap. Same thinking that scaled 10,000+ merchant locations; applied to your group.',
+		title: 'AI Tools Assessment for Multi-Location Dental Groups | DomeWorks',
+		description:
+			'Where AI replaces ops overhead between dental locations — and where centralizing slows down patient care. 45-min call, written plan in 48 hours. For Las Vegas DSOs and emerging groups.'
+	},
+
 	'real-estate': {
 		slug: 'real-estate',
 		vertical: 'real-estate',
 		noIndex: false,
 		heroEyebrow: 'For real estate agents and teams',
 		heroMeta: 'Agents, teams, brokerages · 1–30 people',
-		heroHeadline: 'The first agent to reply usually closes. Be that agent — without living on your phone.',
+		heroHeadline:
+			'The first agent to reply usually closes. Be that agent — without living on your phone.',
 		heroSubhead:
-			"A 45-minute call. A written plan in 48 hours on where AI earns its keep in a real-estate team — <strong class=\"text-accent-light font-medium font-serif\">and where it burns client trust</strong>.",
+			'A 45-minute call. A written plan in 48 hours on where AI earns its keep in a real-estate team — <strong class="text-accent-light font-medium font-serif">and where it burns client trust</strong>.',
 		heroKicker:
 			'Ex-DoorDash, Square, Mudflap. Same thinking that lands ten million orders at DoorDash; applied to your pipeline.',
 		title: 'AI Tools Assessment for Real Estate Teams | DomeWorks',
 		description:
-			"Where AI earns its keep in a real-estate team — and where it burns client trust. 45-min call, written plan in 48 hours."
+			'Where AI earns its keep in a real-estate team — and where it burns client trust. 45-min call, written plan in 48 hours.'
 	},
 
 	'mortgage-broker': {

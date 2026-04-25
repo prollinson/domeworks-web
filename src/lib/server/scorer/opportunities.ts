@@ -91,8 +91,7 @@ export function selectOpportunities(
 
 	// Pass 2 + 2.5: guardrail filter + synthesized tier overrides.
 	const ranked: RankedTool[] = pass1.map((tool) => {
-		const guardrailFlag =
-			screen.guardrail_tier === 'strict' && tool.governance_risk === 'standard';
+		const guardrailFlag = screen.guardrail_tier === 'strict' && tool.governance_risk === 'standard';
 		const overrideTier = findOverride(tool, synthesizedTierOverrides);
 		const overrideBlocksQuickWin = overrideTier !== null && overrideTier !== 'quick-win';
 		return {

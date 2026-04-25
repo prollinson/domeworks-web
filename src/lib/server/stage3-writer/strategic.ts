@@ -14,7 +14,5 @@ export function renderStrategicNarrative(items: TieredCandidate[]): string {
 	if (items.length === 0) {
 		return '_None queued from Stage 2 prioritizer._';
 	}
-	return items
-		.map((t) => sanitizeVoice(`**${t.title}.** ${t.rationale}`))
-		.join('\n\n');
+	return items.map((t) => sanitizeVoice(`**${t.title}.** ${t.rationale}`)).join('\n\n');
 }

@@ -1,12 +1,5 @@
 import { describe, it, expect, expectTypeOf } from 'vitest';
-import type {
-	InfoNeed,
-	AdaptiveAnswer,
-	QuizStatic,
-	QuizSubmission,
-	NextRequest,
-	NextResponse
-} from './quiz';
+import type { InfoNeed, QuizSubmission, NextResponse } from './quiz';
 
 describe('quiz types', () => {
 	it('InfoNeed is the closed union the spec calls out', () => {

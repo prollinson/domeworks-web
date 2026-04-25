@@ -69,9 +69,7 @@ const TIER_DISTANCE: Record<Tier, number> = {
 	research: 3
 };
 
-export function buildPrioritizerCandidates(
-	synth: SynthesizerOutput
-): PrioritizerCandidate[] {
+export function buildPrioritizerCandidates(synth: SynthesizerOutput): PrioritizerCandidate[] {
 	return synth.candidate_opportunities.map((c) => {
 		const pa = synth.pain_areas_ranked.find((p) =>
 			p.evidence_turns.some((t) => c.evidence_turns.includes(t))
@@ -85,24 +83,17 @@ export function buildPrioritizerCandidates(
 			governance_risk_note: c.governance_risk_note,
 			suggested_quadrant: c.suggested_quadrant,
 			impact_signals: { hours_saved_per_week: hours },
-			risk_signals: c.governance_risk_note
-				? { pii_phi_touch: true }
-				: undefined
+			risk_signals: c.governance_risk_note ? { pii_phi_touch: true } : undefined
 		};
 	});
 }
 
-export function buildPrioritizerContext(
-	s: QuizStatic,
-	screen: ScreenOutput
-): PrioritizerContext {
+export function buildPrioritizerContext(s: QuizStatic, screen: ScreenOutput): PrioritizerContext {
 	return {
 		industry: s.industry,
 		team_size: s.size,
 		strategic_fit_top_goal:
-			s.businessGoal === 'Other' && s.businessGoalOther
-				? s.businessGoalOther
-				: s.businessGoal,
+			s.businessGoal === 'Other' && s.businessGoalOther ? s.businessGoalOther : s.businessGoal,
 		guardrail_tier: screen.guardrail_tier,
 		confidence_floor: 'Medium'
 	};
@@ -115,9 +106,7 @@ export function buildPrioritizerContext(
  * most-demoted tier wins (research > strategic > foundational > quick-win)
  * so the scorer never inflates a Stage 2 caution into a Quick Win.
  */
-function buildOverrides(
-	prioritizer: PrioritizerOutput
-): SynthesizedTierOverrides {
+function buildOverrides(prioritizer: PrioritizerOutput): SynthesizedTierOverrides {
 	const map = new Map<PainArea, Tier>();
 	for (const t of prioritizer.tiered) {
 		const areas = painAreasFromThemes([t.title]);
@@ -144,9 +133,7 @@ export async function runScorer(input: RunScorerInput): Promise<ScorerOutput> {
 
 	const scorecard = buildScorecard(input.s, screen);
 	const nextStep = recommendedNextStep(scorecard, input.s);
-	const shape = input.synthesized
-		? 'assessment-plus-guardrails'
-		: reportShape(input.s, screen);
+	const shape = input.synthesized ? 'assessment-plus-guardrails' : reportShape(input.s, screen);
 
 	const stage1PainAreas = derivePainAreas(input.s);
 	const stage2PainAreas = input.synthesized

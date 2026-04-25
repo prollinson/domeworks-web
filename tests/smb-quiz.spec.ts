@@ -51,7 +51,7 @@ test.describe('/smb/quiz — adaptive flow', () => {
 		await page.goto('/smb/quiz/');
 
 		await page.selectOption('#industry', 'Accounting or bookkeeping');
-		await page.getByRole('radio', { name: '10–25' }).check({ force: true });
+		await page.getByRole('radio', { name: '10 to 25' }).check({ force: true });
 		await page.getByText('Invoicing, scheduling, email triage').click();
 
 		const textarea = page.locator('#dreadedTask');
@@ -93,7 +93,7 @@ test.describe('/smb/quiz — adaptive flow', () => {
 
 		await page.goto('/smb/quiz/');
 		await page.selectOption('#industry', 'Legal');
-		await page.getByRole('radio', { name: '10–25' }).check({ force: true });
+		await page.getByRole('radio', { name: '10 to 25' }).check({ force: true });
 		await page.getByText('Invoicing, scheduling, email triage').click();
 		const textarea = page.locator('#dreadedTask');
 		await textarea.fill(

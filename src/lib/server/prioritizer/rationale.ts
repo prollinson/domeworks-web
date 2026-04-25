@@ -22,11 +22,7 @@ import {
 	SONNET_MODEL,
 	type LlmConfig
 } from '$lib/server/llm-gateway';
-import type {
-	PrioritizerContext,
-	ScoredCandidate,
-	Tier
-} from '$lib/types/prioritizer';
+import type { PrioritizerContext, ScoredCandidate, Tier } from '$lib/types/prioritizer';
 
 const VOICE_RULES = `Voice rules. No em-dashes anywhere. First-person "I" or "my" when DomeWorks speaks. No "we" or "our". Plain English. No marketing language. No exclamation marks.`;
 
@@ -104,9 +100,10 @@ interface PromptBundle {
 
 function buildPrompt(scored: ScoredCandidate, context: PrioritizerContext): PromptBundle {
 	const { candidate, tier, impact, feasibility, confidence, risk } = scored;
-	const lengthRule = tier === 'foundational'
-		? 'one sentence, 15 to 25 words'
-		: 'one short paragraph, 50 to 80 words';
+	const lengthRule =
+		tier === 'foundational'
+			? 'one sentence, 15 to 25 words'
+			: 'one short paragraph, 50 to 80 words';
 
 	const tierLabel = tierLabelOf(tier);
 	const govNote = candidate.governance_risk_note

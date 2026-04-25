@@ -20,10 +20,7 @@
  * warning fires. Validation never blocks the render.
  */
 import { runPrioritizer } from '$lib/server/prioritizer';
-import {
-	buildPrioritizerCandidates,
-	buildPrioritizerContext
-} from '$lib/server/scorer';
+import { buildPrioritizerCandidates, buildPrioritizerContext } from '$lib/server/scorer';
 import type { TieredCandidate } from '$lib/types/prioritizer';
 import { renderFoundationalRegister } from './foundational';
 import { renderStrategicNarrative } from './strategic';

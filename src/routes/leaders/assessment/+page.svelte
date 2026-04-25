@@ -1,40 +1,15 @@
 <script lang="ts">
 	import Button from '$lib/components/ui/Button.svelte';
 	import Section from '$lib/components/layout/Section.svelte';
+	import SEO from '$lib/components/SEO.svelte';
 	import NumberedSection from '$lib/components/patterns/NumberedSection.svelte';
 	import Eyebrow from '$lib/components/patterns/Eyebrow.svelte';
 	import HairlineGrid from '$lib/components/patterns/HairlineGrid.svelte';
 	import Callout from '$lib/components/patterns/Callout.svelte';
 	import { reveal } from '$lib/actions/reveal';
 	import { getBookCallUrl } from '$lib/utils/mailto';
-</script>
 
-<svelte:head>
-	<title>AI Assessment for Leaders | DomeWorks</title>
-	<meta
-		name="description"
-		content="A two-week deep dive into your team's AI adoption. Stakeholder interviews, infrastructure analysis, and a prioritized build plan. $10,000-$15,000."
-	/>
-	<link rel="canonical" href="https://domeworks.tech/leaders/assessment/" />
-
-	<meta property="og:type" content="website" />
-	<meta property="og:site_name" content="DomeWorks" />
-	<meta property="og:url" content="https://domeworks.tech/leaders/assessment/" />
-	<meta property="og:title" content="AI Assessment for Leaders | DomeWorks" />
-	<meta
-		property="og:description"
-		content="A two-week deep dive into your team's AI adoption. Stakeholder interviews, infrastructure analysis, and a prioritized build plan."
-	/>
-	<meta property="og:image" content="https://domeworks.tech/og-image.png" />
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="AI Assessment for Leaders | DomeWorks" />
-	<meta
-		name="twitter:description"
-		content="A two-week deep dive into your team's AI adoption. Stakeholder interviews and a prioritized build plan."
-	/>
-	<meta name="twitter:image" content="https://domeworks.tech/og-image.png" />
-
-	{@html `<script type="application/ld+json">${JSON.stringify({
+	const assessmentSchema = {
 		'@context': 'https://schema.org',
 		'@type': 'Service',
 		name: 'AI Infrastructure Assessment',
@@ -48,18 +23,25 @@
 			highPrice: '15000',
 			priceCurrency: 'USD'
 		}
-	})}</script>`}
-</svelte:head>
+	};
+</script>
+
+<SEO
+	title="AI Assessment for Leaders | DomeWorks"
+	description="A two-week deep dive into your team's AI adoption. Stakeholder interviews, infrastructure analysis, and a prioritized build plan. $10,000-$15,000."
+	schema={assessmentSchema}
+/>
 
 <!-- Hero -->
-<Section background="dark" padding="xl">
+<Section background="dark" padding="xl" hero>
 	<div class="max-w-3xl">
 		<Eyebrow label="Leaders Assessment" tone="accent-light" />
 		<h1
 			class="mt-4 font-sans font-semibold text-paper leading-[1.02] tracking-[-0.035em]"
 			style="font-size: clamp(2.5rem, 7vw, 4.5rem);"
 		>
-			Find out what's actually happening with AI on your team<span class="text-accent-light">.</span>
+			Find out what's actually happening with AI on your team<span class="text-accent-light">.</span
+			>
 			Then fix it<span class="text-accent-light">.</span>
 		</h1>
 		<p class="mt-6 font-serif text-lg text-paper/80 leading-[1.65] max-w-2xl">
@@ -75,7 +57,7 @@
 <!-- Four Things Happen -->
 <NumberedSection index="01" title="Four things happen">
 	<div class="max-w-2xl mx-auto space-y-8" use:reveal>
-		{#each [{ step: '1', title: 'Stakeholder interviews', desc: "I talk to your engineering leads, product managers, and ops people. Not a survey — real conversations about how they're using AI, where they're hitting walls, and what would actually help. This is where the real blockers — and the real opportunities — surface." }, { step: '2', title: 'Tool and spend audit', desc: "I map every AI tool, every seat, every subscription. Who's using what, how often, and whether it's doing anything useful." }, { step: '3', title: 'Workflow assessment', desc: "I evaluate what's in place — and what's missing — between your AI tools and how your team actually ships. Shared context, standard workflows, CI/CD integration, developer tooling." }, { step: '4', title: 'Blocker identification', desc: 'Adoption stalls for specific reasons — often structural, not motivational. I find out which blockers are in your way — missing systems, cultural resistance, knowledge silos, tooling gaps — and how severe they are.' }] as item}
+		{#each [{ step: '1', title: 'Stakeholder interviews', desc: "I talk to your engineering leads, product managers, and ops people. Not a survey — real conversations about how they're using AI, where they're hitting walls, and what would actually help. This is where the real blockers — and the real opportunities — surface." }, { step: '2', title: 'Tool and spend audit', desc: "I map every AI tool, every seat, every subscription. Who's using what, how often, and whether it's doing anything useful." }, { step: '3', title: 'Workflow assessment', desc: "I evaluate what's in place — and what's missing — between your AI tools and how your team actually ships. Shared context, standard workflows, CI/CD integration, developer tooling." }, { step: '4', title: 'Blocker identification', desc: 'Adoption stalls for specific reasons — often structural, not motivational. I find out which blockers are in your way — missing systems, cultural resistance, knowledge silos, tooling gaps — and how severe they are.' }] as item (item.step)}
 			<div class="flex items-start gap-6">
 				<span
 					class="flex-shrink-0 w-10 h-10 rounded-lg bg-accent text-paper flex items-center justify-center text-sm font-medium"

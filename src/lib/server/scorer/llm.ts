@@ -209,7 +209,9 @@ function buildStage2Block(synth: SynthesizerOutput): string {
 	if (top.length === 0) return '';
 	const lines: string[] = [];
 	top.forEach((pa, i) => {
-		lines.push(`${i + 1}. pain_signal="${pa.theme}", severity=${pa.severity}, frequency=${pa.frequency}`);
+		lines.push(
+			`${i + 1}. pain_signal="${pa.theme}", severity=${pa.severity}, frequency=${pa.frequency}`
+		);
 		const matching = synth.workaround_list.find((w) => pa.evidence_turns.includes(w.evidence_turn));
 		if (matching) {
 			lines.push(`   workaround_in_flight: "${matching.description}"`);

@@ -16,10 +16,7 @@ import { buildSipocSummary } from './sipoc';
 import { deriveCandidates } from './candidates';
 import { renderHandoffBrief } from './handoff';
 import { runSynthesizer } from './index';
-import type {
-	SynthesizerInput,
-	TurnExtraction,
-} from '$lib/types/synthesizer';
+import type { SynthesizerInput, TurnExtraction } from '$lib/types/synthesizer';
 
 function extraction(overrides: Partial<TurnExtraction> = {}): TurnExtraction {
 	return {
@@ -32,7 +29,7 @@ function extraction(overrides: Partial<TurnExtraction> = {}): TurnExtraction {
 		out_of_scope: false,
 		emotional_friction: false,
 		novel_workflow: false,
-		...overrides,
+		...overrides
 	};
 }
 
@@ -51,18 +48,18 @@ function baseInput(overrides: Partial<SynthesizerInput> = {}): SynthesizerInput 
 				sensitiveSlips: 0,
 				offTopicAttempts: 0,
 				emotionalFlag: false,
-				novelWorkflowFlag: false,
+				novelWorkflowFlag: false
 			},
-			extractions: [],
+			extractions: []
 		},
-		...overrides,
+		...overrides
 	};
 }
 
 describe('normalizeTheme', () => {
 	it('trims to at most five words and title-cases the first', () => {
 		expect(normalizeTheme('rewriting the intake form from scratch')).toBe(
-			'Rewriting the intake form from',
+			'Rewriting the intake form from'
 		);
 	});
 	it('handles empty input', () => {
@@ -77,14 +74,14 @@ describe('rankPainAreas', () => {
 				extraction({
 					dimension: 'problem',
 					pain_signal: 'intake form rework',
-					frequency_signal: 'daily',
+					frequency_signal: 'daily'
 				}),
 				extraction({
 					dimension: 'implication',
 					pain_signal: 'intake form rework',
-					frequency_signal: 'every day',
-				}),
-			],
+					frequency_signal: 'every day'
+				})
+			]
 		});
 		expect(out).toHaveLength(1);
 		expect(out[0].severity).toBe('High');
@@ -96,9 +93,9 @@ describe('rankPainAreas', () => {
 			extractions: [
 				extraction({
 					dimension: 'problem',
-					pain_signal: 'follow-up emails',
-				}),
-			],
+					pain_signal: 'follow-up emails'
+				})
+			]
 		});
 		expect(out[0].severity).toBe('Low');
 	});
@@ -108,8 +105,8 @@ describe('rankPainAreas', () => {
 			extractions: [
 				extraction({ dimension: 'problem', pain_signal: 'Alpha theme' }),
 				extraction({ dimension: 'problem', pain_signal: 'Beta theme' }),
-				extraction({ dimension: 'problem', pain_signal: 'Beta theme' }),
-			],
+				extraction({ dimension: 'problem', pain_signal: 'Beta theme' })
+			]
 		});
 		expect(out[0].theme).toBe('Beta theme');
 	});
@@ -121,11 +118,11 @@ describe('extractWorkarounds', () => {
 			extraction(),
 			extraction({ workaround_mention: 'We copy-paste into spreadsheet' }),
 			extraction(),
-			extraction({ workaround_mention: 'I keep a shadow calendar' }),
+			extraction({ workaround_mention: 'I keep a shadow calendar' })
 		]);
 		expect(list).toEqual([
 			{ description: 'We copy-paste into spreadsheet', evidence_turn: 1 },
-			{ description: 'I keep a shadow calendar', evidence_turn: 3 },
+			{ description: 'I keep a shadow calendar', evidence_turn: 3 }
 		]);
 	});
 });
@@ -136,17 +133,17 @@ describe('extractExceptionPatterns', () => {
 			extraction({
 				dimension: 'novel',
 				pain_signal: 'project scoping',
-				novel_workflow: true,
+				novel_workflow: true
 			}),
 			extraction({
 				dimension: 'novel',
 				pain_signal: 'project scoping',
-				novel_workflow: true,
+				novel_workflow: true
 			}),
 			extraction({
 				dimension: 'novel',
-				novel_workflow: true,
-			}),
+				novel_workflow: true
+			})
 		]);
 		expect(out).toHaveLength(2);
 		const themed = out.find((e) => e.pattern.startsWith('Project scoping'));
@@ -164,9 +161,9 @@ describe('buildSipocSummary', () => {
 			extractions: [
 				extraction({ system_mention: 'client intake form' }),
 				extraction({ system_mention: 'PDF statements' }),
-				extraction({ system_mention: 'monthly report' }),
+				extraction({ system_mention: 'monthly report' })
 			],
-			painThemes: ['Month-end close', 'Client follow-up'],
+			painThemes: ['Month-end close', 'Client follow-up']
 		});
 		expect(out.suppliers).toEqual(['client intake form']);
 		expect(out.inputs).toEqual(['PDF statements']);
@@ -181,7 +178,7 @@ describe('buildSipocSummary', () => {
 			industry: 'legal',
 			callerEmail: null,
 			extractions: [extraction()],
-			painThemes: [],
+			painThemes: []
 		});
 		expect(out.suppliers).toEqual(['(not captured)']);
 		expect(out.customers).toEqual(['(not captured)']);
@@ -196,10 +193,10 @@ describe('deriveCandidates', () => {
 					theme: 'Intake rework',
 					severity: 'High',
 					frequency: 'daily',
-					evidence_turns: [0, 1],
-				},
+					evidence_turns: [0, 1]
+				}
 			],
-			workarounds: [{ description: 'copy-paste', evidence_turn: 0 }],
+			workarounds: [{ description: 'copy-paste', evidence_turn: 0 }]
 		});
 		expect(cands[0].suggested_quadrant).toBe('quick-win');
 		expect(cands[0].title.toLowerCase()).toContain('intake rework');
@@ -212,8 +209,8 @@ describe('deriveCandidates', () => {
 					theme: 'Client records handling',
 					severity: 'Medium',
 					frequency: 'weekly',
-					evidence_turns: [2],
-				},
+					evidence_turns: [2]
+				}
 			],
 			workarounds: [],
 			stage1: {
@@ -223,8 +220,8 @@ describe('deriveCandidates', () => {
 				processHealth: 'Unsure',
 				currentAiUse: null,
 				regulatedDataFlag: 'yes',
-				guardrailTier: 'strict',
-			},
+				guardrailTier: 'strict'
+			}
 		});
 		expect(cands[0].governance_risk_note).not.toBeNull();
 		expect(cands[0].governance_risk_note).toContain('Strict guardrail');
@@ -236,7 +233,7 @@ describe('renderHandoffBrief', () => {
 		const brief = renderHandoffBrief({
 			input: baseInput(),
 			painAreas: [],
-			workarounds: [],
+			workarounds: []
 		});
 		expect(brief).toContain('Stage 2 captured no structured extractions');
 		expect(brief).not.toMatch(/—/);
@@ -247,9 +244,9 @@ describe('renderHandoffBrief', () => {
 			input: baseInput({ turnCount: 20 }),
 			painAreas: [
 				{ theme: 'Alpha', severity: 'High', frequency: 'daily', evidence_turns: [0] },
-				{ theme: 'Beta', severity: 'Medium', frequency: 'weekly', evidence_turns: [1] },
+				{ theme: 'Beta', severity: 'Medium', frequency: 'weekly', evidence_turns: [1] }
 			],
-			workarounds: [{ description: 'test', evidence_turn: 0 }],
+			workarounds: [{ description: 'test', evidence_turn: 0 }]
 		});
 		expect(brief).toContain('alpha');
 		expect(brief).toContain('beta');
@@ -274,29 +271,29 @@ describe('runSynthesizer', () => {
 						sensitiveSlips: 0,
 						offTopicAttempts: 0,
 						emotionalFlag: false,
-						novelWorkflowFlag: false,
+						novelWorkflowFlag: false
 					},
 					extractions: [
 						extraction({
 							dimension: 'problem',
 							pain_signal: 'intake form rework',
 							frequency_signal: 'every day',
-							system_mention: 'PDF intake form',
+							system_mention: 'PDF intake form'
 						}),
 						extraction({
 							dimension: 'implication',
 							pain_signal: 'intake form rework',
 							frequency_signal: 'daily',
-							workaround_mention: 'we copy details into a spreadsheet',
+							workaround_mention: 'we copy details into a spreadsheet'
 						}),
 						extraction({
 							dimension: 'novel',
 							pain_signal: 'project scoping',
-							novel_workflow: true,
-						}),
-					],
-				},
-			}),
+							novel_workflow: true
+						})
+					]
+				}
+			})
 		);
 		expect(out.llm_status).toBe('ok');
 		expect(out.pain_areas_ranked.length).toBeGreaterThan(0);
@@ -315,16 +312,16 @@ describe('runSynthesizer', () => {
 						sensitiveSlips: 1,
 						offTopicAttempts: 0,
 						emotionalFlag: false,
-						novelWorkflowFlag: false,
+						novelWorkflowFlag: false
 					},
 					extractions: [
 						extraction({
 							dimension: 'problem',
-							pain_signal: 'test',
-						}),
-					],
-				},
-			}),
+							pain_signal: 'test'
+						})
+					]
+				}
+			})
 		);
 		expect(out.needs_human_review).toBe(true);
 	});
@@ -338,16 +335,16 @@ describe('runSynthesizer', () => {
 						sensitiveSlips: 0,
 						offTopicAttempts: 0,
 						emotionalFlag: false,
-						novelWorkflowFlag: false,
+						novelWorkflowFlag: false
 					},
 					extractions: [
 						extraction({
 							dimension: 'problem',
-							pain_signal: 'test',
-						}),
-					],
-				},
-			}),
+							pain_signal: 'test'
+						})
+					]
+				}
+			})
 		);
 		expect(out.needs_human_review).toBe(true);
 	});

@@ -8,19 +8,9 @@
  */
 
 import { describe, it, expect } from 'vitest';
-import {
-	computeTier,
-	scoreImpact,
-	scoreFeasibility,
-	scoreConfidence,
-	scoreRisk
-} from './tiering';
+import { computeTier, scoreImpact, scoreFeasibility, scoreConfidence, scoreRisk } from './tiering';
 import { runPrioritizer, deterministicRationale } from './index';
-import type {
-	PrioritizerCandidate,
-	PrioritizerContext,
-	Tier
-} from '$lib/types/prioritizer';
+import type { PrioritizerCandidate, PrioritizerContext, Tier } from '$lib/types/prioritizer';
 
 function ctx(overrides: Partial<PrioritizerContext> = {}): PrioritizerContext {
 	return {
@@ -104,13 +94,14 @@ describe('scoreConfidence', () => {
 		).toBe('High');
 	});
 	it('Low when no evidence and no rationale', () => {
-		expect(
-			scoreConfidence(candidate({ evidence_turns: [], rationale: '' }), ctx())
-		).toBe('Low');
+		expect(scoreConfidence(candidate({ evidence_turns: [], rationale: '' }), ctx())).toBe('Low');
 	});
 	it('Floor when no evidence but rationale present (Stage 1 origin)', () => {
 		expect(
-			scoreConfidence(candidate({ evidence_turns: [], rationale: 'Stage 1 dreaded task hint' }), ctx())
+			scoreConfidence(
+				candidate({ evidence_turns: [], rationale: 'Stage 1 dreaded task hint' }),
+				ctx()
+			)
 		).toBe('Medium');
 	});
 });
@@ -125,9 +116,9 @@ describe('scoreRisk', () => {
 		).toBe('High');
 	});
 	it('Medium when strict tier without pii_phi_touch', () => {
-		expect(
-			scoreRisk(candidate({ risk_signals: { governance_tier: 'strict' } }), ctx())
-		).toBe('Medium');
+		expect(scoreRisk(candidate({ risk_signals: { governance_tier: 'strict' } }), ctx())).toBe(
+			'Medium'
+		);
 	});
 	it('Medium when standard or unknown tier', () => {
 		expect(scoreRisk(candidate(), ctx({ guardrail_tier: 'standard' }))).toBe('Medium');
@@ -148,37 +139,155 @@ describe('computeTier matrix (every row of the SKILL.md table)', () => {
 		expected: Tier;
 	}> = [
 		// Row 1: High impact + High feasibility + High|Medium confidence + Low|Medium risk -> quick-win.
-		{ label: 'H/H/H/L', hours: 5, feasibility: 'high', confidence: 'high', risk: 'low', expected: 'quick-win' },
-		{ label: 'H/H/H/M', hours: 5, feasibility: 'high', confidence: 'high', risk: 'medium', expected: 'quick-win' },
-		{ label: 'H/H/M/L', hours: 5, feasibility: 'high', confidence: 'medium', risk: 'low', expected: 'quick-win' },
-		{ label: 'H/H/M/M', hours: 5, feasibility: 'high', confidence: 'medium', risk: 'medium', expected: 'quick-win' },
+		{
+			label: 'H/H/H/L',
+			hours: 5,
+			feasibility: 'high',
+			confidence: 'high',
+			risk: 'low',
+			expected: 'quick-win'
+		},
+		{
+			label: 'H/H/H/M',
+			hours: 5,
+			feasibility: 'high',
+			confidence: 'high',
+			risk: 'medium',
+			expected: 'quick-win'
+		},
+		{
+			label: 'H/H/M/L',
+			hours: 5,
+			feasibility: 'high',
+			confidence: 'medium',
+			risk: 'low',
+			expected: 'quick-win'
+		},
+		{
+			label: 'H/H/M/M',
+			hours: 5,
+			feasibility: 'high',
+			confidence: 'medium',
+			risk: 'medium',
+			expected: 'quick-win'
+		},
 		// Row 2: High impact + High feasibility + High|Medium confidence + High risk -> foundational.
-		{ label: 'H/H/H/Hrisk', hours: 5, feasibility: 'high', confidence: 'high', risk: 'high', expected: 'foundational' },
-		{ label: 'H/H/M/Hrisk', hours: 5, feasibility: 'high', confidence: 'medium', risk: 'high', expected: 'foundational' },
+		{
+			label: 'H/H/H/Hrisk',
+			hours: 5,
+			feasibility: 'high',
+			confidence: 'high',
+			risk: 'high',
+			expected: 'foundational'
+		},
+		{
+			label: 'H/H/M/Hrisk',
+			hours: 5,
+			feasibility: 'high',
+			confidence: 'medium',
+			risk: 'high',
+			expected: 'foundational'
+		},
 		// Row 3: High impact + Medium feasibility + any confidence + any risk -> foundational.
-		{ label: 'H/M/H/L', hours: 5, feasibility: 'medium', confidence: 'high', risk: 'low', expected: 'foundational' },
-		{ label: 'H/M/L/H', hours: 5, feasibility: 'medium', confidence: 'low', risk: 'high', expected: 'foundational' },
+		{
+			label: 'H/M/H/L',
+			hours: 5,
+			feasibility: 'medium',
+			confidence: 'high',
+			risk: 'low',
+			expected: 'foundational'
+		},
+		{
+			label: 'H/M/L/H',
+			hours: 5,
+			feasibility: 'medium',
+			confidence: 'low',
+			risk: 'high',
+			expected: 'foundational'
+		},
 		// Gap rules: High impact + Low feasibility -> foundational; High impact + Low confidence -> foundational.
-		{ label: 'H/Lfeas', hours: 5, feasibility: 'low', confidence: 'high', risk: 'low', expected: 'foundational' },
-		{ label: 'H/H/Lconf', hours: 5, feasibility: 'high', confidence: 'low', risk: 'low', expected: 'foundational' },
+		{
+			label: 'H/Lfeas',
+			hours: 5,
+			feasibility: 'low',
+			confidence: 'high',
+			risk: 'low',
+			expected: 'foundational'
+		},
+		{
+			label: 'H/H/Lconf',
+			hours: 5,
+			feasibility: 'high',
+			confidence: 'low',
+			risk: 'low',
+			expected: 'foundational'
+		},
 		// Row 4: Medium impact + High feasibility + High confidence + Low|Medium risk -> foundational.
-		{ label: 'M/H/H/L', hours: 2, feasibility: 'high', confidence: 'high', risk: 'low', expected: 'foundational' },
-		{ label: 'M/H/H/M', hours: 2, feasibility: 'high', confidence: 'high', risk: 'medium', expected: 'foundational' },
+		{
+			label: 'M/H/H/L',
+			hours: 2,
+			feasibility: 'high',
+			confidence: 'high',
+			risk: 'low',
+			expected: 'foundational'
+		},
+		{
+			label: 'M/H/H/M',
+			hours: 2,
+			feasibility: 'high',
+			confidence: 'high',
+			risk: 'medium',
+			expected: 'foundational'
+		},
 		// Row 5: Medium impact otherwise -> strategic.
-		{ label: 'M/M/M/L', hours: 2, feasibility: 'medium', confidence: 'medium', risk: 'low', expected: 'strategic' },
-		{ label: 'M/H/M/L', hours: 2, feasibility: 'high', confidence: 'medium', risk: 'low', expected: 'strategic' },
-		{ label: 'M/H/H/H', hours: 2, feasibility: 'high', confidence: 'high', risk: 'high', expected: 'strategic' },
+		{
+			label: 'M/M/M/L',
+			hours: 2,
+			feasibility: 'medium',
+			confidence: 'medium',
+			risk: 'low',
+			expected: 'strategic'
+		},
+		{
+			label: 'M/H/M/L',
+			hours: 2,
+			feasibility: 'high',
+			confidence: 'medium',
+			risk: 'low',
+			expected: 'strategic'
+		},
+		{
+			label: 'M/H/H/H',
+			hours: 2,
+			feasibility: 'high',
+			confidence: 'high',
+			risk: 'high',
+			expected: 'strategic'
+		},
 		// Rows 6-7: Low impact -> research (regardless of other dimensions).
-		{ label: 'L/H/H/L', hours: 0.5, feasibility: 'high', confidence: 'high', risk: 'low', expected: 'research' },
-		{ label: 'L/L/L/H', hours: 0.5, feasibility: 'low', confidence: 'low', risk: 'high', expected: 'research' }
+		{
+			label: 'L/H/H/L',
+			hours: 0.5,
+			feasibility: 'high',
+			confidence: 'high',
+			risk: 'low',
+			expected: 'research'
+		},
+		{
+			label: 'L/L/L/H',
+			hours: 0.5,
+			feasibility: 'low',
+			confidence: 'low',
+			risk: 'high',
+			expected: 'research'
+		}
 	];
 
 	for (const c of cases) {
 		it(`${c.label} -> ${c.expected}`, () => {
 			const cand = candidate({
 				impact_signals: { hours_saved_per_week: c.hours },
-				evidence_turns:
-					c.confidence === 'high' ? [1, 2, 3] : c.confidence === 'medium' ? [1] : [],
+				evidence_turns: c.confidence === 'high' ? [1, 2, 3] : c.confidence === 'medium' ? [1] : [],
 				rationale: c.confidence === 'low' ? '' : 'seed',
 				feasibility_signals:
 					c.feasibility === 'high'
@@ -282,9 +391,7 @@ describe('runPrioritizer', () => {
 			],
 			context: ctx({ guardrail_tier: 'strict' })
 		});
-		expect(out.tiered[0].governance_risk_note).toBe(
-			'HIPAA review required before vendor onboard.'
-		);
+		expect(out.tiered[0].governance_risk_note).toBe('HIPAA review required before vendor onboard.');
 	});
 
 	it('Research-or-shelve uses deterministic rationale even when llm config is provided', async () => {

@@ -16,11 +16,11 @@ DomeWorks had a "premium consultancy" look (Newsreader serif + copper + architec
 
 ## Where to read first
 
-| File | What it is |
-|---|---|
+| File                                                                      | What it is                                                                            |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | `docs/superpowers/specs/2026-04-22-design-system-modernization-design.md` | Full design spec — tokens, components, per-section page direction, migration strategy |
-| `docs/superpowers/plans/2026-04-22-design-system-modernization.md` | Implementation plan — 16 tasks with exact code blocks |
-| This file | Where we left off + what's next |
+| `docs/superpowers/plans/2026-04-22-design-system-modernization.md`        | Implementation plan — 16 tasks with exact code blocks                                 |
+| This file                                                                 | Where we left off + what's next                                                       |
 
 The 20 commits from this session are prefixed `spec:`, `plan:`, `wip:`, or `design:`. Run:
 
@@ -51,19 +51,19 @@ to see the full arc from spec commit onward.
 
 `src/routes/ai-tools-assessment/+page.svelte` rewritten section by section:
 
-| Section | Treatment |
-|---|---|
-| Hero | Flat dark, no monogram/glow/grid/grain. General Sans semibold headline, Recia serif subhead with `text-accent-light not-italic font-medium` emphasis. 3-col hairline-top stat strip. |
-| Orientation "short version" | 3-col `.hairline-grid` with Recia body + accent eyebrows |
-| 01 Where time goes | Accent-fill pills for business-type selector, hairline grid for problem cards, accent-wash callout for speed-to-lead |
-| 02 Talk/Plan/Build | 3-col hairline grid, accent-colored tagline |
-| 03 Don't automate | 4-col hairline grid, accent-wash closer |
-| 04 Math | Big stat (General Sans semibold), `.rule-left-accent` quote block, Heroicons check-circle for guarantee |
-| 05 Right fit / Not a fit | 2-col hairline grid, accent ✓ / subtle ✕ |
-| 06 Who's behind this | Recia 3-paragraph prose + left-accent-rule meta boxes |
-| 07 FAQ | Migrated 8 `<details>` blocks to `{#each}` inline array, hairline-separator list, Recia answers |
-| Dark CTA footer | Flat black (no grid, no glow), sans h2, keeps 8px-radius soft cards on dark as exception (hairlines disappear on black) |
-| Sticky mobile CTA | Restyled with paper tokens |
+| Section                     | Treatment                                                                                                                                                                            |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Hero                        | Flat dark, no monogram/glow/grid/grain. General Sans semibold headline, Recia serif subhead with `text-accent-light not-italic font-medium` emphasis. 3-col hairline-top stat strip. |
+| Orientation "short version" | 3-col `.hairline-grid` with Recia body + accent eyebrows                                                                                                                             |
+| 01 Where time goes          | Accent-fill pills for business-type selector, hairline grid for problem cards, accent-wash callout for speed-to-lead                                                                 |
+| 02 Talk/Plan/Build          | 3-col hairline grid, accent-colored tagline                                                                                                                                          |
+| 03 Don't automate           | 4-col hairline grid, accent-wash closer                                                                                                                                              |
+| 04 Math                     | Big stat (General Sans semibold), `.rule-left-accent` quote block, Heroicons check-circle for guarantee                                                                              |
+| 05 Right fit / Not a fit    | 2-col hairline grid, accent ✓ / subtle ✕                                                                                                                                             |
+| 06 Who's behind this        | Recia 3-paragraph prose + left-accent-rule meta boxes                                                                                                                                |
+| 07 FAQ                      | Migrated 8 `<details>` blocks to `{#each}` inline array, hairline-separator list, Recia answers                                                                                      |
+| Dark CTA footer             | Flat black (no grid, no glow), sans h2, keeps 8px-radius soft cards on dark as exception (hairlines disappear on black)                                                              |
+| Sticky mobile CTA           | Restyled with paper tokens                                                                                                                                                           |
 
 ---
 
@@ -89,21 +89,22 @@ Final review confirmed all quality gates pass (`yarn check`, `yarn build`) but e
 
 **Legacy token counts per page** (from Task 16 audit):
 
-| Page | Legacy tokens | Deleted class refs | Priority |
-|---|---|---|---|
-| `src/routes/+page.svelte` (homepage) | 70 | 10+ (full old hero: grid, glow, rules, monogram, accent-line, lines, headline-em) | **P0 — entry page** |
-| `src/routes/quiz/+page.svelte` | 64 | 3 (grid, glow, texture-grain) | P1 — lead magnet |
-| `src/routes/fractional/+page.svelte` | 41 | 0 | P2 |
-| `src/routes/context-build/+page.svelte` | 38 | 2 (texture-grain) | P2 |
-| `src/routes/orchestration-build/+page.svelte` | 35 | 0 | P2 |
-| `src/routes/scan/+page.svelte` | 33 | 0 | P2 |
-| `src/routes/assessment/+page.svelte` | 30 | 0 | P3 |
-| `src/routes/about/+page.svelte` | 25 | 0 | P3 |
-| `src/routes/contact/+page.svelte` | 13 | 0 | P4 |
-| `src/routes/ai-audit/+page.svelte` | 4 | 0 | P4 |
-| `src/lib/components/layout/Footer.svelte` | — | 2 (ambient-warm, texture-grain) | P0 — every page |
+| Page                                          | Legacy tokens | Deleted class refs                                                                | Priority            |
+| --------------------------------------------- | ------------- | --------------------------------------------------------------------------------- | ------------------- |
+| `src/routes/+page.svelte` (homepage)          | 70            | 10+ (full old hero: grid, glow, rules, monogram, accent-line, lines, headline-em) | **P0 — entry page** |
+| `src/routes/quiz/+page.svelte`                | 64            | 3 (grid, glow, texture-grain)                                                     | P1 — lead magnet    |
+| `src/routes/fractional/+page.svelte`          | 41            | 0                                                                                 | P2                  |
+| `src/routes/context-build/+page.svelte`       | 38            | 2 (texture-grain)                                                                 | P2                  |
+| `src/routes/orchestration-build/+page.svelte` | 35            | 0                                                                                 | P2                  |
+| `src/routes/scan/+page.svelte`                | 33            | 0                                                                                 | P2                  |
+| `src/routes/assessment/+page.svelte`          | 30            | 0                                                                                 | P3                  |
+| `src/routes/about/+page.svelte`               | 25            | 0                                                                                 | P3                  |
+| `src/routes/contact/+page.svelte`             | 13            | 0                                                                                 | P4                  |
+| `src/routes/ai-audit/+page.svelte`            | 4             | 0                                                                                 | P4                  |
+| `src/lib/components/layout/Footer.svelte`     | —             | 2 (ambient-warm, texture-grain)                                                   | P0 — every page     |
 
 **After all P0 pages are modernized, delete the remaining dormant hero CSS from `tailwind.css`:**
+
 - `.hero-section`, `.hero-content-pad`, `.hero-eyebrow-row/text/index`, `.hero-middle`, `.hero-headline`, `.hero-aside`, `.hero-aside-rule`, `.hero-body-text`, `.hero-stat-*`, `.hero-cta-secondary*`, `@keyframes hero-fade-up`, `.stack-build` (if unused).
 - Also delete legacy color aliases: `--color-warm-white`, `--color-stone`, `--color-copper`, `--color-warm-gray`, `--color-warm-gray-light`, `--color-primary*`.
 
@@ -152,6 +153,7 @@ Then either `/commit-push-pr` or merge locally.
 ### If Piers flags a visual issue
 
 Debug pattern for CSS / Tailwind / Svelte 5 sites:
+
 - Check the token resolution first (`grep -n "color-accent" src/tailwind.css`)
 - Check Tailwind 4 `@theme` auto-generates utilities from `--color-{name}` — so if `--color-accent` exists, `bg-accent` / `text-accent` / `border-accent` all work automatically
 - Dev server runs at `https://domeworks.localhost:1355` via portless

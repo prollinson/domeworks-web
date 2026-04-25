@@ -307,9 +307,7 @@
 		campaign.lockVertical ?? (campaign.vertical != null && campaign.vertical !== 'generic')
 	);
 	const currentPattern = $derived(patterns[selectedType]);
-	const patternEntries = $derived(
-		Object.entries(patterns) as Array<[Vertical, Pattern]>
-	);
+	const patternEntries = $derived(Object.entries(patterns) as Array<[Vertical, Pattern]>);
 
 	let faqAllOpen = $state(false);
 
@@ -391,15 +389,20 @@
 			'A 45-minute call. An action plan <strong class="text-accent-light font-medium font-serif">you can start this week</strong>. What to install, what to skip.'
 	);
 	const heroKicker = $derived(
-		campaign.heroKicker ?? "Ex-DoorDash, Square, Mudflap. I'll handle the AI — you handle your business."
+		campaign.heroKicker ??
+			"Ex-DoorDash, Square, Mudflap. I'll handle the AI — you handle your business."
 	);
 </script>
 
 <!-- Hero: merged with Orientation. Promise + meta live in the right aside on lg+;
 	 stack under the CTAs on smaller breakpoints. Stat strip removed. -->
-<section class="relative bg-ink text-paper overflow-hidden" aria-label="Hero" use:trackHeroExit>
+<section
+	class="relative bg-ink text-paper overflow-hidden -mt-16 md:-mt-20"
+	aria-label="Hero"
+	use:trackHeroExit
+>
 	<div
-		class="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pt-24 md:pt-28 pb-16 md:pb-20 flex flex-col gap-10 md:gap-12 min-h-[clamp(80svh,88svh,100svh)]"
+		class="relative w-full max-w-6xl mx-auto px-6 lg:px-8 pt-40 md:pt-48 pb-16 md:pb-20 flex flex-col gap-10 md:gap-12 min-h-[clamp(80svh,88svh,100svh)]"
 	>
 		<div
 			class="flex flex-wrap items-center gap-x-4 gap-y-1 text-[0.6875rem] font-semibold uppercase tracking-[0.14em]"
@@ -422,6 +425,9 @@
 				<p
 					class="mt-6 font-serif text-xl md:text-2xl leading-[1.55] text-paper/80 max-w-2xl font-normal"
 				>
+					<!-- heroSubhead is hardcoded in $lib/data/smb-campaigns.ts and contains
+					     curated <strong>/<em> markup for emphasis. Never user input. -->
+					<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 					{@html heroSubhead}
 				</p>
 				<p class="mt-4 text-sm text-paper/75 max-w-2xl">
@@ -553,7 +559,8 @@
 				<div class="max-w-3xl mx-auto flex flex-wrap items-baseline gap-x-3 gap-y-2">
 					<span
 						id="biz-type-label"
-						class="hidden sm:inline font-serif text-base md:text-lg text-muted">Show me leaks for</span
+						class="hidden sm:inline font-serif text-base md:text-lg text-muted"
+						>Show me leaks for</span
 					>
 					<div class="relative inline-block">
 						<button
@@ -630,9 +637,9 @@
 		{/if}
 
 		<div class="max-w-3xl mb-6" use:reveal={{ duration: 400 }}>
-			<p
-				class="font-serif text-muted leading-relaxed {lockVertical ? 'text-lg' : 'text-sm'}"
-			>{currentPattern.lead}</p>
+			<p class="font-serif text-muted leading-relaxed {lockVertical ? 'text-lg' : 'text-sm'}">
+				{currentPattern.lead}
+			</p>
 		</div>
 
 		<!-- Speed-to-lead callout: locked above cards. Intensity increases when the
@@ -1084,7 +1091,7 @@
 				</button>
 			</div>
 			<div class="border-t border-rule-strong">
-				{#each [{ q: "What if I've already tried AI and it didn't stick?", a: 'Most owners have dabbled with ChatGPT or tried a tool their accountant mentioned, and not much changed. The difference here is specificity — a written plan tied to specific workflows in your business, not a generic "try AI" suggestion.' }, { q: 'What if the honest answer is "don\'t use AI for that"?', a: 'That\'s half the value. The action plan explicitly flags workflows where AI is the wrong tool — broken processes, human-judgement work, low-volume tasks. I\'ll also tell you if the honest answer is "hire the person you were going to hire anyway."' }, { q: 'What does this cost?', a: "$999 flat. Includes the 45-minute call, written action plan, and review call. If you don't find it valuable, I refund — no conditions. No upsell during the Assessment." }, { q: 'What do I need to prepare?', a: "Nothing. You don't need to know AI — that's my job. Just show up ready to talk about how your business actually works day to day." }, { q: 'Who will I be on the call with?', a: 'Me. Every call, every action plan, every build. No junior consultants, no handoffs.' }, { q: 'Do you sell software?', a: 'No. The action plan recommends existing tools — ChatGPT, Claude, Dext, Karbon — whatever fits. No reselling, no affiliate deals. Recommendations are genuinely neutral.' }, { q: 'How long until I get the action plan?', a: 'Within 48 hours of the discovery call. Review call follows shortly. Total calendar time from first call to final plan: about one week.' }, { q: 'What happens after the Assessment?', a: 'Up to you. Many owners implement on their own — the action plan is designed for that. If you want hands-on help, we can talk about the Build phase. Fixed-scope engagements typically run $3K–$15K. Zero pressure either way.' }] as faq, i (faq.q)}
+				{#each [{ q: "What if I've already tried AI and it didn't stick?", a: 'Most owners have dabbled with ChatGPT or tried a tool their accountant mentioned, and not much changed. The difference here is specificity — a written plan tied to specific workflows in your business, not a generic "try AI" suggestion.' }, { q: 'What if the honest answer is "don\'t use AI for that"?', a: 'That\'s half the value. The action plan explicitly flags workflows where AI is the wrong tool — broken processes, human-judgement work, low-volume tasks. I\'ll also tell you if the honest answer is "hire the person you were going to hire anyway."' }, { q: 'What does this cost?', a: "$999 flat. Includes the 45-minute call, written action plan, and review call. If you don't find it valuable, I refund — no conditions. No upsell during the Assessment." }, { q: 'What do I need to prepare?', a: "Nothing. You don't need to know AI — that's my job. Just show up ready to talk about how your business actually works day to day." }, { q: 'Who will I be on the call with?', a: 'Me. Every call, every action plan, every build. No junior consultants, no handoffs.' }, { q: 'Do you sell software?', a: 'No. The action plan recommends existing tools — ChatGPT, Claude, Dext, Karbon — whatever fits. No reselling, no affiliate deals. Recommendations are genuinely neutral.' }, { q: 'How long until I get the action plan?', a: 'Within 48 hours of the discovery call. Review call follows shortly. Total calendar time from first call to final plan: about one week.' }, { q: 'What happens after the Assessment?', a: 'Up to you. Many owners implement on their own — the action plan is designed for that. If you want hands-on help, we can talk about the Build phase. Fixed-scope engagements typically run $3K–$15K. Zero pressure either way.' }] as faq (faq.q)}
 					<details class="group border-b border-rule py-5" open={faqAllOpen}>
 						<summary
 							class="flex items-center justify-between cursor-pointer list-none font-sans font-medium text-ink rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-paper"

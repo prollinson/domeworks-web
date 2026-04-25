@@ -36,7 +36,10 @@ interface Accum {
  */
 export function normalizeTheme(signal: string): string {
 	const cleaned = signal.replace(/[^\p{L}\p{N}\s-]/gu, '').trim();
-	const tokens = cleaned.split(/\s+/).filter((t) => t.length > 0).slice(0, 5);
+	const tokens = cleaned
+		.split(/\s+/)
+		.filter((t) => t.length > 0)
+		.slice(0, 5);
 	if (tokens.length === 0) return 'Unlabeled pain';
 	return tokens
 		.map((t, i) => (i === 0 ? t[0].toUpperCase() + t.slice(1).toLowerCase() : t.toLowerCase()))
@@ -64,7 +67,7 @@ export function rankPainAreas(input: PainAreaRankInput): PainAreaRanked[] {
 				frequency: e.frequency_signal ?? '',
 				evidence_turns: [index],
 				hasImplication: e.dimension === 'implication',
-				totalMentions: 1,
+				totalMentions: 1
 			});
 		}
 	});
@@ -84,7 +87,7 @@ export function rankPainAreas(input: PainAreaRankInput): PainAreaRanked[] {
 			theme: acc.theme,
 			severity: severityFrom(acc),
 			frequency: acc.frequency || '(unknown)',
-			evidence_turns: acc.evidence_turns,
+			evidence_turns: acc.evidence_turns
 		});
 	}
 
@@ -92,7 +95,7 @@ export function rankPainAreas(input: PainAreaRankInput): PainAreaRanked[] {
 	const severityWeight: Record<PainAreaRanked['severity'], number> = {
 		High: 2,
 		Medium: 1,
-		Low: 0,
+		Low: 0
 	};
 	ranked.sort((a, b) => {
 		const s = severityWeight[b.severity] - severityWeight[a.severity];
