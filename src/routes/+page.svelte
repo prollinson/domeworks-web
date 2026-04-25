@@ -103,31 +103,6 @@
 
 <!-- Hero Section -->
 <section class="relative hero-section bg-ink overflow-hidden -mt-16 md:-mt-20" aria-label="Hero">
-	<!-- Architectural grid background -->
-	<div class="absolute inset-0 hero-grid" aria-hidden="true" role="presentation"></div>
-	<!-- Warm ambient glow -->
-	<div class="absolute inset-0 hero-glow" aria-hidden="true" role="presentation"></div>
-	<!-- Grain texture -->
-	<div class="absolute inset-0 texture-grain" aria-hidden="true" role="presentation"></div>
-	<!-- Horizontal architectural rules -->
-	<div
-		class="absolute inset-0 pointer-events-none hero-rules"
-		aria-hidden="true"
-		role="presentation"
-	></div>
-
-	<!-- Monogram as architectural column, anchored to right edge, structurally integrated -->
-	<div
-		class="absolute inset-0 pointer-events-none hero-monogram-container"
-		aria-hidden="true"
-		role="presentation"
-	>
-		<span class="hero-monogram font-serif select-none">D</span>
-	</div>
-
-	<!-- Vertical accent line -->
-	<div class="absolute hero-accent-line" aria-hidden="true" role="presentation"></div>
-
 	<div
 		class="relative w-full max-w-7xl mx-auto px-6 lg:px-8 hero-content-pad flex flex-col justify-between min-h-[inherit]"
 	>

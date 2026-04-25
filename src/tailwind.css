@@ -22,12 +22,6 @@
 	--font-serif: 'Recia', Georgia, serif;
 }
 
-/* Craft signal: subtle container grid lines */
-.grid-overlay {
-	background-image: linear-gradient(to right, rgb(0 0 0 / 0.03) 1px, transparent 1px);
-	background-size: 4rem 100%;
-}
-
 /* ===== HERO SECTION ===== */
 
 /* Hero section: full viewport, fluid min-height */
