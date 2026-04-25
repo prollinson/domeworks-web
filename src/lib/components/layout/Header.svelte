@@ -19,30 +19,36 @@
 		return currentPath.startsWith(href);
 	}
 
-	const navItems: NavItem[] = [
-		{
-			href: '/leaders/',
-			label: 'For leaders',
-			children: [
-				{ href: '/leaders/', label: 'Overview' },
-				{ href: '/leaders/scan/', label: 'AI Scan' },
-				{ href: '/leaders/assessment/', label: 'Assessment' },
-				{ href: '/leaders/context-build/', label: 'Context Build' },
-				{ href: '/leaders/orchestration-build/', label: 'Orchestration Build' },
-				{ href: '/leaders/fractional/', label: 'Fractional' }
-			]
-		},
-		{
-			href: '/smb/',
-			label: 'For SMBs',
-			children: [
-				{ href: '/smb/', label: 'Overview' },
-				{ href: '/smb/quiz/', label: '2-Minute Quiz' }
-			]
-		},
+	const leadersChildren: NavChild[] = [
+		{ href: '/leaders/', label: 'Overview' },
+		{ href: '/leaders/scan/', label: 'AI Scan' },
+		{ href: '/leaders/assessment/', label: 'Assessment' },
+		{ href: '/leaders/context-build/', label: 'Context Build' },
+		{ href: '/leaders/orchestration-build/', label: 'Orchestration Build' },
+		{ href: '/leaders/fractional/', label: 'Fractional' }
+	];
+
+	const smbChildren: NavChild[] = [
+		{ href: '/smb/', label: 'Overview' },
+		{ href: '/smb/quiz/', label: '2-Minute Quiz' }
+	];
+
+	const fullNav: NavItem[] = [
+		{ href: '/leaders/', label: 'For leaders', children: leadersChildren },
+		{ href: '/smb/', label: 'For SMBs', children: smbChildren },
 		{ href: '/about/', label: 'About' },
 		{ href: '/contact/', label: 'Contact' }
 	];
+
+	/* Section-aware nav: when the visitor is inside /leaders/* or /smb/*, show only
+	   the in-section pages so the header reads as a local index. The DomeWorks logo
+	   is the escape hatch back to /, where the full cross-site nav lives. */
+	let navItems = $derived.by<NavItem[]>(() => {
+		const path = $page.url.pathname;
+		if (path.startsWith('/leaders/')) return leadersChildren;
+		if (path.startsWith('/smb/')) return smbChildren;
+		return fullNav;
+	});
 
 	let openDropdown = $state<string | null>(null);
 
@@ -184,14 +190,14 @@
 						<a
 							href={item.href}
 							class="px-4 py-2 text-sm font-medium rounded-lg transition-all
-              {isActive(item.href)
+              {$page.url.pathname === item.href
 								? heroMode
 									? 'text-paper bg-paper/10'
 									: 'text-accent bg-accent/6'
 								: heroMode
 									? 'text-paper/70 hover:text-paper hover:bg-paper/5'
 									: 'text-ink/70 hover:text-ink hover:bg-paper-alt'}"
-							aria-current={isActive(item.href) ? 'page' : undefined}
+							aria-current={$page.url.pathname === item.href ? 'page' : undefined}
 						>
 							{item.label}
 						</a>
@@ -298,10 +304,10 @@
 							<a
 								href={item.href}
 								class="px-4 py-3 text-base font-medium rounded-lg transition-all
-                  {isActive(item.href)
+                  {$page.url.pathname === item.href
 									? 'text-accent bg-accent/6'
 									: 'text-ink/70 hover:text-ink hover:bg-paper-alt'}"
-								aria-current={isActive(item.href) ? 'page' : undefined}
+								aria-current={$page.url.pathname === item.href ? 'page' : undefined}
 								onclick={() => (menuOpen = false)}
 							>
 								{item.label}

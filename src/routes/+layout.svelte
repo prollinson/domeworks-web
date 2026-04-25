@@ -8,11 +8,19 @@
 
 	let { children } = $props();
 
-	const isLanding = $derived(
-		$page.url.pathname.startsWith('/smb') ||
-			$page.url.pathname.startsWith('/ai-tools-assessment') ||
-			$page.url.pathname.startsWith('/ai-audit')
-	);
+	/* Chromeless landing pages: campaign landings under /smb/[slug]/ and the
+	   noindex redirect stubs at /ai-tools-assessment and /ai-audit. The /smb/
+	   hub and /smb/quiz/ now get the standard header (with its section-aware
+	   nav) so visitors can navigate within the SMB section. */
+	const isLanding = $derived.by(() => {
+		const path = $page.url.pathname.replace(/\/$/, '');
+		if (path === '/smb' || path === '/smb/quiz') return false;
+		return (
+			path.startsWith('/smb/') ||
+			path.startsWith('/ai-tools-assessment') ||
+			path.startsWith('/ai-audit')
+		);
+	});
 
 	const jsonLd = {
 		'@context': 'https://schema.org',
