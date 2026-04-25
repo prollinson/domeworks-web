@@ -398,13 +398,6 @@
 <!-- Hero: merged with Orientation. Promise + meta live in the right aside on lg+;
 	 stack under the CTAs on smaller breakpoints. Stat strip removed. -->
 <section class="relative bg-ink text-paper overflow-hidden" aria-label="Hero" use:trackHeroExit>
-	<a
-		href="/"
-		class="absolute top-6 left-6 lg:top-8 lg:left-8 z-10 text-sm font-sans font-semibold tracking-tight text-paper/80 hover:text-paper transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-light focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
-	>
-		DomeWorks<span class="text-accent-light">.</span>
-	</a>
-
 	<div
 		class="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pt-24 md:pt-28 pb-16 md:pb-20 flex flex-col gap-10 md:gap-12 min-h-[clamp(80svh,88svh,100svh)]"
 	>

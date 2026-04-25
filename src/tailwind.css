@@ -23,9 +23,10 @@
 
 /* ===== HERO SECTION ===== */
 
-/* Hero section: full viewport, fluid min-height */
+/* Hero section: full viewport on standard displays, capped on tall ones so the
+   editorial layout doesn't stretch into dead air at 1200+ viewport heights. */
 .hero-section {
-	min-height: clamp(85svh, 92svh, 100svh);
+	min-height: min(92svh, 880px);
 }
 
 /* Hero content padding: fluid vertical layout, accounts for negative margin pulling hero behind fixed header */
@@ -69,7 +70,7 @@
 		display: grid;
 		grid-template-columns: 1.2fr 1fr;
 		gap: 2.5rem;
-		align-items: end;
+		align-items: center;
 	}
 }
 
@@ -388,8 +389,8 @@ header {
 
 /* ===== Structural Footer ===== */
 .footer-headline {
-	font-size: clamp(2.5rem, 8vw, 8rem);
-	line-height: 0.95;
+	font-size: clamp(2.25rem, 6vw, 5rem);
+	line-height: 1;
 	letter-spacing: -0.03em;
 	text-wrap: balance;
 }

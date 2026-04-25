@@ -1,4 +1,6 @@
 import type { QuizSubmission } from '$lib/types/quiz';
+import type { ScreenOutput } from '$lib/regulated-data-screen';
+import type { PrioritizerOutput, Tier } from '$lib/types/prioritizer';
 
 const ATTIO_BASE = 'https://api.attio.com/v2';
 const FETCH_TIMEOUT_MS = 5000;
@@ -42,9 +44,9 @@ function classify(status: number): 'client' | 'server' {
 	return status >= 500 ? 'server' : 'client';
 }
 
-function buildNoteContent(submissionId: string, s: QuizSubmission): string {
+function buildNoteContent(submissionId: string, s: QuizSubmission, screen?: ScreenOutput): string {
 	const adaptive = s.adaptive
-		.map((a) => `- ${a.infoNeed}: ${a.question}\n  → ${a.answer}`)
+		.map((a) => `- ${a.infoNeed}: ${a.question}\n  -> ${a.answer}`)
 		.join('\n');
 
 	const governance = s.static.governanceRules
@@ -55,6 +57,21 @@ function buildNoteContent(submissionId: string, s: QuizSubmission): string {
 		s.static.businessGoal === 'Other' && s.static.businessGoalOther
 			? `Other: ${s.static.businessGoalOther}`
 			: s.static.businessGoal;
+
+	const screenBlock = screen
+		? [
+				'',
+				'Regulated-data screen:',
+				`  guardrail tier: ${screen.guardrail_tier}`,
+				`  human review policy: ${screen.human_review_policy}`,
+				screen.required_mitigations.length
+					? `  mitigations:\n${screen.required_mitigations.map((m) => `    - ${m}`).join('\n')}`
+					: '  mitigations: none',
+				screen.sector_citations.length
+					? `  citations: ${screen.sector_citations.map((c) => c.source).join(', ')}`
+					: '  citations: none'
+			].join('\n')
+		: '';
 
 	return [
 		`Submission id: ${submissionId}`,
@@ -71,7 +88,8 @@ function buildNoteContent(submissionId: string, s: QuizSubmission): string {
 		'',
 		governance,
 		'Adaptive answers:',
-		adaptive
+		adaptive,
+		screenBlock
 	]
 		.filter((l) => l !== '')
 		.join('\n');
@@ -84,7 +102,8 @@ function dealName(s: QuizSubmission): string {
 async function tryOnce(
 	config: AttioConfig,
 	submissionId: string,
-	submission: QuizSubmission
+	submission: QuizSubmission,
+	screen?: ScreenOutput
 ): Promise<AttioResult> {
 	// 1. Upsert Person by email. Dedupes contacts when the same person submits twice.
 	const personRes = await attioFetch(
@@ -159,7 +178,7 @@ async function tryOnce(
 				parent_record_id: dealId,
 				title: `SMB Audit Quiz submission ${submissionId}`,
 				format: 'plaintext',
-				content: buildNoteContent(submissionId, submission)
+				content: buildNoteContent(submissionId, submission, screen)
 			}
 		})
 	});
@@ -203,13 +222,14 @@ async function tryOnce(
 export async function upsertQuizSubmission(
 	config: AttioConfig,
 	submissionId: string,
-	submission: QuizSubmission
+	submission: QuizSubmission,
+	screen?: ScreenOutput
 ): Promise<AttioResult> {
 	let lastError: AttioResult | null = null;
 
 	for (let attempt = 0; attempt < 2; attempt++) {
 		try {
-			const res = await tryOnce(config, submissionId, submission);
+			const res = await tryOnce(config, submissionId, submission, screen);
 			if (res.ok) return res;
 			lastError = res;
 		} catch (err) {
@@ -226,4 +246,106 @@ export async function upsertQuizSubmission(
 	}
 
 	return lastError ?? { ok: false, errorClass: 'network', message: 'unknown failure' };
+}
+
+/**
+ * Stage 2 augmentation. Writes four custom attributes onto the prospect's
+ * Person record so the SMB Audit Pipeline list shows the post-discovery
+ * picture, not just Stage 1.
+ *
+ * Custom attributes (must exist in the Attio workspace before first call):
+ *   - stage2_handoff_brief        text, multiline
+ *   - stage2_pain_themes          text, single-line ("theme A, theme B, theme C")
+ *   - stage2_prioritizer_summary  text, single-line ("2 quick-win, 1 foundational, 1 strategic, 1 research")
+ *   - stage2_completed_at         timestamp (ISO 8601 string)
+ *
+ * Failure boundary: two same-class failures log and return. The D1 row
+ * already carries the canonical state; Attio is the broadcast surface.
+ */
+export interface AttioStage2Args {
+	email: string;
+	handoffBrief: string;
+	painThemes: string[];
+	prioritizerSummary: string;
+	completedAtIso: string;
+}
+
+export async function updateStage2Record(
+	config: AttioConfig,
+	args: AttioStage2Args
+): Promise<AttioResult> {
+	let lastError: AttioResult | null = null;
+
+	for (let attempt = 0; attempt < 2; attempt++) {
+		try {
+			const res = await tryStage2Update(config, args);
+			if (res.ok) return res;
+			lastError = res;
+		} catch (err) {
+			if (err instanceof DOMException && err.name === 'TimeoutError') {
+				lastError = { ok: false, errorClass: 'timeout', message: 'request timed out' };
+			} else {
+				lastError = {
+					ok: false,
+					errorClass: 'network',
+					message: err instanceof Error ? err.message : 'unknown network error'
+				};
+			}
+		}
+	}
+
+	return lastError ?? { ok: false, errorClass: 'network', message: 'unknown failure' };
+}
+
+async function tryStage2Update(
+	config: AttioConfig,
+	args: AttioStage2Args
+): Promise<AttioResult> {
+	const res = await attioFetch(
+		config,
+		'/objects/people/records?matching_attribute=email_addresses',
+		{
+			method: 'PUT',
+			body: JSON.stringify({
+				data: {
+					values: {
+						email_addresses: [{ email_address: args.email }],
+						stage2_handoff_brief: args.handoffBrief,
+						stage2_pain_themes: args.painThemes.join(', '),
+						stage2_prioritizer_summary: args.prioritizerSummary,
+						stage2_completed_at: args.completedAtIso
+					}
+				}
+			})
+		}
+	);
+	if (!res.ok) {
+		return {
+			ok: false,
+			errorClass: classify(res.status),
+			step: 'people-upsert',
+			message: `${res.status}`
+		};
+	}
+	return { ok: true };
+}
+
+/**
+ * Build the one-line tier-count string written into stage2_prioritizer_summary.
+ * Empty input renders as "no tiered candidates" so the field is never blank.
+ */
+export function summarizePrioritizerTiers(prioritizer: PrioritizerOutput): string {
+	if (prioritizer.tiered.length === 0) return 'no tiered candidates';
+	const counts: Record<Tier, number> = {
+		'quick-win': 0,
+		foundational: 0,
+		strategic: 0,
+		research: 0
+	};
+	for (const t of prioritizer.tiered) counts[t.tier]++;
+	const order: Tier[] = ['quick-win', 'foundational', 'strategic', 'research'];
+	return order
+		.filter((t) => counts[t] > 0)
+		.map((t) => `${counts[t]} ${t}`)
+		.join(', ');
 }

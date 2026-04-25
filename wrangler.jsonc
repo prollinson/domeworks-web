@@ -28,5 +28,13 @@
 			"database_id": "11e4664c-0af0-4618-807c-b994995b9657",
 			"migrations_dir": "migrations"
 		}
+	],
+	// R2 bucket holds rendered Stage 1 report markdown so I can paste into Gamma.
+	// Bucket must exist before deploy: `pnpm wrangler r2 bucket create domeworks-smb-audit-reports`
+	"r2_buckets": [
+		{
+			"binding": "REPORTS_BUCKET",
+			"bucket_name": "domeworks-smb-audit-reports"
+		}
 	]
 }

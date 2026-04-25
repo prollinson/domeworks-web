@@ -1,11 +1,21 @@
 <script lang="ts">
 	import { getBookCallUrl } from '$lib/utils/mailto';
 
-	const navLinks = [
+	const leadersLinks = [
+		{ href: '/leaders/', label: 'Overview' },
 		{ href: '/leaders/scan/', label: 'AI Scan' },
+		{ href: '/leaders/assessment/', label: 'Assessment' },
 		{ href: '/leaders/context-build/', label: 'Context Build' },
 		{ href: '/leaders/orchestration-build/', label: 'Orchestration Build' },
-		{ href: '/leaders/fractional/', label: 'Fractional' },
+		{ href: '/leaders/fractional/', label: 'Fractional' }
+	];
+
+	const smbLinks = [
+		{ href: '/smb/', label: 'Overview' },
+		{ href: '/smb/quiz/', label: '2-Minute Quiz' }
+	];
+
+	const siteLinks = [
 		{ href: '/about/', label: 'About' },
 		{ href: '/contact/', label: 'Contact' }
 	];
@@ -15,7 +25,7 @@
 	<div class="relative border-b border-paper/10">
 		<div class="max-w-6xl mx-auto px-6 lg:px-8 py-24 md:py-32 lg:py-40">
 			<div class="max-w-4xl">
-				<h2 class="footer-headline font-serif font-normal text-paper mb-8">
+				<h2 class="footer-headline font-sans font-semibold text-paper mb-8">
 					Let's figure out<br class="hidden sm:block" /> what's missing<span
 						class="text-accent-light">.</span
 					>
@@ -46,7 +56,9 @@
 		<div class="max-w-6xl mx-auto px-6 lg:px-8 py-16 md:py-20">
 			<div class="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-12">
 				<div class="col-span-2 md:col-span-1">
-					<a href="/" class="text-xl font-medium tracking-tight">DomeWorks</a>
+					<a href="/" class="text-xl font-medium tracking-tight"
+						>DomeWorks<span class="text-accent-light">.</span></a
+					>
 					<p class="mt-4 text-sm text-paper/60">
 						AI infrastructure that replaces coordination overhead
 					</p>
@@ -54,10 +66,10 @@
 
 				<div>
 					<p class="text-xs font-semibold uppercase tracking-[0.14em] text-paper/60 mb-5">
-						Services
+						For leaders
 					</p>
 					<ul class="space-y-3">
-						{#each navLinks as link}
+						{#each leadersLinks as link}
 							<li>
 								<a
 									href={link.href}
@@ -72,19 +84,38 @@
 
 				<div>
 					<p class="text-xs font-semibold uppercase tracking-[0.14em] text-paper/60 mb-5">
-						Background
+						For SMBs
 					</p>
 					<ul class="space-y-3">
-						<li><span class="text-sm text-paper/70">Ex-DoorDash</span></li>
-						<li><span class="text-sm text-paper/70">Ex-Square</span></li>
-						<li><span class="text-sm text-paper/70">10+ years eng leadership</span></li>
+						{#each smbLinks as link}
+							<li>
+								<a
+									href={link.href}
+									class="text-sm text-paper/70 hover:text-paper transition-colors"
+								>
+									{link.label}
+								</a>
+							</li>
+						{/each}
 					</ul>
 				</div>
 
 				<div>
 					<p class="text-xs font-semibold uppercase tracking-[0.14em] text-paper/60 mb-5">
-						Contact
+						Site
 					</p>
+					<ul class="space-y-3 mb-6">
+						{#each siteLinks as link}
+							<li>
+								<a
+									href={link.href}
+									class="text-sm text-paper/70 hover:text-paper transition-colors"
+								>
+									{link.label}
+								</a>
+							</li>
+						{/each}
+					</ul>
 					<p class="text-sm text-paper/70">piers@domeworks.tech</p>
 					<p class="mt-2 text-sm text-paper/70">Remote / US-based</p>
 				</div>
