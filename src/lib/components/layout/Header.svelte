@@ -65,9 +65,7 @@
 
 <header
 	class="fixed top-0 left-0 right-0 z-50 transition-all duration-300
-    {scrolled
-		? 'bg-paper/80 backdrop-blur-md shadow-sm border-b border-rule'
-		: 'bg-transparent'}"
+    {scrolled ? 'bg-paper/80 backdrop-blur-md shadow-sm border-b border-rule' : 'bg-transparent'}"
 >
 	<nav class="max-w-6xl mx-auto px-6 lg:px-8">
 		<div class="flex items-center justify-between h-16 md:h-20">
@@ -196,8 +194,8 @@
 							href={link.href}
 							class="px-4 py-3 text-base font-medium rounded-lg transition-all
                 {isActive(link.href)
-							? 'text-accent bg-accent/6'
-							: 'text-ink/70 hover:text-ink hover:bg-paper-alt'}"
+								? 'text-accent bg-accent/6'
+								: 'text-ink/70 hover:text-ink hover:bg-paper-alt'}"
 							aria-current={isActive(link.href) ? 'page' : undefined}
 							onclick={() => (menuOpen = false)}
 						>

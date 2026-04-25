@@ -117,7 +117,7 @@
 	}
 }
 
-/* Editorial aside: body text block with copper rule accent */
+/* Editorial aside: body text block with accent rule */
 .hero-aside {
 	max-width: 28rem;
 	margin-top: 2rem;
@@ -135,7 +135,7 @@
 .hero-aside-rule {
 	width: 2.5rem;
 	height: 2px;
-	background: var(--color-copper);
+	background: var(--color-accent-light);
 	opacity: 0.7;
 	margin-bottom: 1.25rem;
 }
@@ -244,7 +244,7 @@
 }
 
 .hero-cta-secondary:hover {
-	color: var(--color-copper);
+	color: var(--color-accent-light);
 }
 
 .hero-cta-secondary-arrow {
@@ -269,8 +269,8 @@
 }
 
 .hero-cta-secondary:hover .hero-cta-secondary-arrow {
-	border-color: var(--color-copper);
-	background-color: rgba(176, 125, 79, 0.1);
+	border-color: var(--color-accent-light);
+	background-color: rgba(251, 146, 60, 0.1);
 	transform: translateY(3px);
 }
 
