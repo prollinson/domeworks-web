@@ -1,22 +1,23 @@
 # DomeWorks
 
-> DomeWorks builds intelligence infrastructure for engineering teams — replacing coordination overhead (meetings, status updates, information routing) with AI systems that do that work automatically.
+> DomeWorks builds intelligence infrastructure for engineering teams and leader-owned organizations — replacing coordination overhead (meetings, status updates, information routing) with AI systems that do that work automatically.
 
 Founded by Piers Rollinson, an engineering leader with 10+ years at DoorDash, Square, and Mudflap. DomeWorks offers a structured engagement path from diagnostic through build to ongoing ownership.
 
-## Services
+## For Leaders (enterprise track)
 
-- [AI Scan](https://domeworks.tech/scan/): A 48-hour audit of your team's AI tool spend, adoption patterns, and wasted seats. Fixed price $2,500–$3,500. Deliverable: clear picture of what your AI investment is actually doing and where the waste is.
-- [Context Build](https://domeworks.tech/context-build/): A two-week engagement diagnosing AI readiness and designing the context system your AI tools need to work at the team level. $10,000–$15,000. Deliverable: stakeholder interviews, tool and spend audit, context system design, workflow mapping, and a prioritized opportunity map.
-- [Orchestration Build](https://domeworks.tech/orchestration-build/): Milestone-based build of the agent coordination layer — multi-agent workflows, quality gates, and output routing that replace human coordination overhead. Scoped from the Context Build assessment.
-- [Fractional AI Leadership](https://domeworks.tech/fractional/): Ongoing monthly retainer, 1–2 days per week. Part-time Head of AI role — maintaining and evolving the context system and agent coordination as the organization changes.
+- [AI Scan](https://domeworks.tech/leaders/scan/): A 48-hour audit of your team's AI tool spend, adoption patterns, and wasted seats. Fixed price $2,500–$3,500. Deliverable: clear picture of what your AI investment is actually doing and where the waste is.
+- [Context Build](https://domeworks.tech/leaders/context-build/): A two-week engagement diagnosing AI readiness and designing the context system your AI tools need to work at the team level. $10,000–$15,000. Deliverable: stakeholder interviews, tool and spend audit, context system design, workflow mapping, and a prioritized opportunity map.
+- [Orchestration Build](https://domeworks.tech/leaders/orchestration-build/): Milestone-based build of the agent coordination layer — multi-agent workflows, quality gates, and output routing that replace human coordination overhead. Scoped from the Context Build assessment.
+- [Fractional AI Leadership](https://domeworks.tech/leaders/fractional/): Ongoing monthly retainer, 1–2 days per week. Part-time Head of AI role — maintaining and evolving the context system and agent coordination as the organization changes.
+- [Leaders Assessment](https://domeworks.tech/leaders/): Structured diagnostic for leaders running in-house teams. Two-week engagement: stakeholder interviews, infrastructure analysis, and a prioritized build plan.
 
-## SMB Offering
+## For SMB / Owner-Operators
 
-- [AI Audit for Professional Services](https://domeworks.tech/ai-audit/): A structured assessment of where AI tools can recover 5–7 hours per week for professional services firms in Henderson/Las Vegas, NV. Free for the first 5 firms (normally $999). Includes a discovery call, AI analysis, and a written report with prioritized opportunities.
+- [AI Readiness Quiz](https://domeworks.tech/smb/quiz/): Free 2-minute quiz that pinpoints your biggest time leak across admin, marketing, and delivery. Delivers a personalized Action Plan by email within 24 hours with three quick wins and step-by-step setup instructions (30–60 min each, no technical background required). Also names workflows where AI is the wrong tool.
+- [AI Tools Assessment for Professional Services](https://domeworks.tech/smb/): A structured diagnostic of where AI tools fit in your services business and where they shouldn't go. For owner-operated services businesses doing $3–10M in revenue with 10–50 people. Three-phase method: Assess, Prescribe, Build. Deliverable includes a discovery call, a written report in 48 hours with prioritized opportunities, an explicit list of workflows not to automate, and a review call.
 
 ## Company
 
 - [About](https://domeworks.tech/about/): Piers Rollinson — founder background, engineering leadership experience at DoorDash, Square, and Mudflap, and the reasoning behind DomeWorks.
 - [Contact](https://domeworks.tech/contact/): Get in touch or book a call.
-- [Assessment](https://domeworks.tech/assessment/): Self-assessment tool to evaluate your team's AI infrastructure readiness.

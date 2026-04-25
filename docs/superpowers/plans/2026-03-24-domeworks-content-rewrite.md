@@ -7,6 +7,7 @@
 **Architecture:** Content lives in `resources/domeworks/content/website/` as markdown files — one per page. Each file contains the full page copy with section headers matching the spec's IA. Voice is first-person Piers. All copy derived from existing source docs (brand identity, business plan, persona, launch strategy).
 
 **Source docs (read these before writing any content):**
+
 - Spec: `/Users/piers/projects/domeworks-web/docs/superpowers/specs/2026-03-24-domeworks-content-rewrite-design.md`
 - Brand identity + voice: `/Users/piers/piers-os/resources/domeworks/brand/brand-identity.md`
 - Buyer persona: `/Users/piers/piers-os/resources/domeworks/product/persona.md`
@@ -14,6 +15,7 @@
 - Launch strategy: `/Users/piers/piers-os/resources/domeworks/growth/launch-strategy.md`
 
 **Voice rules (from spec + brand identity):**
+
 - First person ("I", not "we" or "DomeWorks"). **Warning:** brand-identity.md uses "we" in its examples — ignore that. The spec overrides to "I" for solo practitioner positioning.
 - 65% casual, 70% confident, 75% matter-of-fact
 - Contractions. Short sentences. No jargon, no exclamation marks, no "passionate about"
@@ -22,6 +24,7 @@
 **Out of scope:** Visual design, components, layout, blog, case studies, SEO/meta tags, analytics. Write content only. Page removal from the SvelteKit site is deferred to the design/implementation pass.
 
 **Task ordering:** Tasks 1-4 are independent (can run in parallel). Task 5 depends on Tasks 1-4 completing first.
+
 - The buyer is a VP Eng — respect their intelligence
 
 ---
@@ -43,6 +46,7 @@ All files created in `/Users/piers/piers-os/resources/domeworks/content/website/
 ### Task 1: Homepage Content
 
 **Files:**
+
 - Create: `resources/domeworks/content/website/homepage.md`
 
 **Reference:** Spec § "1. Homepage (`/`)" + brand identity §1.1 Brand Story + business plan §2 The Problem + persona Jordan's pain points
@@ -50,6 +54,7 @@ All files created in `/Users/piers/piers-os/resources/domeworks/content/website/
 - [ ] **Step 1: Read source docs**
 
 Read all 5 source docs listed above. Pay special attention to:
+
 - Brand identity §1.1 Brand Story — the problem/transformation/resolution narrative
 - Brand identity §1.3 Voice and Tone Matrix — yes/no copy examples
 - Business plan §2 The Problem — symptoms list
@@ -81,6 +86,7 @@ git commit -m "Add homepage content for DomeWorks website rewrite"
 ### Task 2: Assessment Page Content
 
 **Files:**
+
 - Create: `resources/domeworks/content/website/assessment.md`
 
 **Reference:** Spec § "2. Assessment (`/assessment/`)" + business plan §3 Phase 1: Assessment
@@ -109,6 +115,7 @@ git commit -m "Add assessment page content for DomeWorks website rewrite"
 ### Task 3: About Page Content
 
 **Files:**
+
 - Create: `resources/domeworks/content/website/about.md`
 
 **Reference:** Spec § "3. About (`/about/`)" + brand identity §1.1 Brand Story + §1.2 Brand Personality (Veteran Guide archetype)
@@ -136,6 +143,7 @@ git commit -m "Add about page content for DomeWorks website rewrite"
 ### Task 4: Contact Page Content
 
 **Files:**
+
 - Create: `resources/domeworks/content/website/contact.md`
 
 **Reference:** Spec § "4. Contact (`/contact/`)"
@@ -162,6 +170,7 @@ git commit -m "Add contact page content for DomeWorks website rewrite"
 ### Task 5: Update Resource Index
 
 **Files:**
+
 - Modify: `resources/domeworks/index.md`
 
 - [ ] **Step 1: Update the content section in index.md**

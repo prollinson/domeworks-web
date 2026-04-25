@@ -11,21 +11,21 @@ Automates the collection, organization, and verification of supporting documents
 
 ## Inputs
 
-| Input | Type | Source | Trigger |
-|-------|------|--------|---------|
-| Document request list | Spreadsheet | Google Sheets | Engagement kickoff |
-| Supporting documents | Files (PDF, XLSX, DOCX) | Email / Google Drive shared folder | Ongoing / client upload |
-| Client contact list | CSV | CRM or manual entry | Engagement kickoff |
-| Prior period workpapers | Files | Internal document store | Engagement kickoff |
+| Input                   | Type                    | Source                             | Trigger                 |
+| ----------------------- | ----------------------- | ---------------------------------- | ----------------------- |
+| Document request list   | Spreadsheet             | Google Sheets                      | Engagement kickoff      |
+| Supporting documents    | Files (PDF, XLSX, DOCX) | Email / Google Drive shared folder | Ongoing / client upload |
+| Client contact list     | CSV                     | CRM or manual entry                | Engagement kickoff      |
+| Prior period workpapers | Files                   | Internal document store            | Engagement kickoff      |
 
 ## Outputs
 
-| Output | Format | Destination | Frequency |
-|--------|--------|-------------|-----------|
-| Collection status dashboard | Live dashboard | Google Sheets / web app | Real-time |
-| Outstanding items reminder | Email | Client contacts | Configurable (daily/weekly) |
-| Completeness report | PDF | Engagement lead | On-demand / milestone |
-| Verified document package | Organized folder | Google Drive | On completion |
+| Output                      | Format           | Destination             | Frequency                   |
+| --------------------------- | ---------------- | ----------------------- | --------------------------- |
+| Collection status dashboard | Live dashboard   | Google Sheets / web app | Real-time                   |
+| Outstanding items reminder  | Email            | Client contacts         | Configurable (daily/weekly) |
+| Completeness report         | PDF              | Engagement lead         | On-demand / milestone       |
+| Verified document package   | Organized folder | Google Drive            | On completion               |
 
 ## Tools Used
 
@@ -66,24 +66,24 @@ Automates the collection, organization, and verification of supporting documents
 
 ## Hours Estimate
 
-| Phase | Manual (hrs/month) | Automated (hrs/month) | Savings |
-|-------|-------------------|----------------------|---------|
-| Request distribution | 4 | 0.5 | 88% |
-| Upload monitoring & matching | 10 | 1 | 90% |
-| Reminder follow-ups | 6 | 0.5 | 92% |
-| Status reporting | 4 | 0.5 | 88% |
-| Document organization | 6 | 1 | 83% |
-| **Total** | **30** | **3.5** | **88%** |
+| Phase                        | Manual (hrs/month) | Automated (hrs/month) | Savings |
+| ---------------------------- | ------------------ | --------------------- | ------- |
+| Request distribution         | 4                  | 0.5                   | 88%     |
+| Upload monitoring & matching | 10                 | 1                     | 90%     |
+| Reminder follow-ups          | 6                  | 0.5                   | 92%     |
+| Status reporting             | 4                  | 0.5                   | 88%     |
+| Document organization        | 6                  | 1                     | 83%     |
+| **Total**                    | **30**             | **3.5**               | **88%** |
 
 ## ROI Estimate
 
-| Metric | Value |
-|--------|-------|
-| Monthly labor cost (manual) | $3,000 (30 hrs @ $100/hr blended) |
-| Monthly labor cost (automated) | $350 (3.5 hrs @ $100/hr) |
-| Monthly savings | $2,650 |
-| Implementation cost | $8,000 - $12,000 |
-| Payback period | 3-5 months |
+| Metric                         | Value                             |
+| ------------------------------ | --------------------------------- |
+| Monthly labor cost (manual)    | $3,000 (30 hrs @ $100/hr blended) |
+| Monthly labor cost (automated) | $350 (3.5 hrs @ $100/hr)          |
+| Monthly savings                | $2,650                            |
+| Implementation cost            | $8,000 - $12,000                  |
+| Payback period                 | 3-5 months                        |
 
 ## Adaptation Notes
 

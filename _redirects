@@ -1,0 +1,24 @@
+# Cloudflare Pages / Netlify redirects
+# Preserve SEO and inbound links
+
+# Legacy SMB aliases
+/ai-audit/      /smb/           301
+/ai-audit       /smb/           301
+/ai-tools-assessment/   /smb/   301
+/ai-tools-assessment    /smb/   301
+
+# Quiz moved under /smb/ on 2026-04-23
+/quiz/          /smb/quiz/      301
+/quiz           /smb/quiz/      301
+
+# Enterprise track moved under /leaders/ on 2026-04-24
+/assessment/            /leaders/                           301
+/assessment             /leaders/                           301
+/scan/                  /leaders/scan/                      301
+/scan                   /leaders/scan/                      301
+/context-build/         /leaders/context-build/             301
+/context-build          /leaders/context-build/             301
+/orchestration-build/   /leaders/orchestration-build/       301
+/orchestration-build    /leaders/orchestration-build/       301
+/fractional/            /leaders/fractional/                301
+/fractional             /leaders/fractional/                301

@@ -1,33 +1,33 @@
 [
-  {
-    "label": "Dev Server (portless)",
-    "command": "portless run --name domeworks npm run dev",
-    "use_new_terminal": true,
-    "reveal": "always"
-  },
-  {
-    "label": "Build",
-    "command": "npm run build",
-    "reveal": "always"
-  },
-  {
-    "label": "Type Check",
-    "command": "npm run check",
-    "reveal": "always"
-  },
-  {
-    "label": "Lint",
-    "command": "npm run lint",
-    "reveal": "always"
-  },
-  {
-    "label": "Format",
-    "command": "npm run format",
-    "reveal": "always"
-  },
-  {
-    "label": "Test (Playwright)",
-    "command": "npm run test",
-    "reveal": "always"
-  }
+	{
+		"label": "Dev Server (portless)",
+		"command": "portless run --name domeworks npm run dev",
+		"use_new_terminal": true,
+		"reveal": "always"
+	},
+	{
+		"label": "Build",
+		"command": "npm run build",
+		"reveal": "always"
+	},
+	{
+		"label": "Type Check",
+		"command": "npm run check",
+		"reveal": "always"
+	},
+	{
+		"label": "Lint",
+		"command": "npm run lint",
+		"reveal": "always"
+	},
+	{
+		"label": "Format",
+		"command": "npm run format",
+		"reveal": "always"
+	},
+	{
+		"label": "Test (Playwright)",
+		"command": "npm run test",
+		"reveal": "always"
+	}
 ]

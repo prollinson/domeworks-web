@@ -9,12 +9,14 @@ Content and information architecture only. No design work — that follows separ
 ## Context
 
 **Source docs (piers-os/resources/domeworks/):**
+
 - `brand/brand-identity.md` — Voice, tone, personality, brand story
 - `product/persona.md` — Primary buyer: Jordan (VP Eng, 50-500 person company)
 - `business/business-plan.md` — Service lines, pricing, engagement model
 - `growth/launch-strategy.md` — Site purpose: credibility check, not conversion engine
 
 **Current site state:**
+
 - 8 pages: Home, Services, Enterprise, Process, Examples, Security, About, Contact
 - Positioned as Las Vegas SMB automation shop
 - Two-lane split (Local Business vs Enterprise)
@@ -23,16 +25,16 @@ Content and information architecture only. No design work — that follows separ
 
 ## Design Decisions
 
-| Decision | Choice | Rationale |
-|----------|--------|-----------|
-| Page count | 4 (Home, Assessment, About, Contact) | Launch strategy and brand identity say 3 pages (Home, Assessment, About). We add Contact as a 4th because "book a call" needs a destination page with scheduling embed. |
-| Target audience | Single buyer: VP Eng / Head of Eng at mid-market SaaS | Business plan primary persona. Drop SMB/enterprise split. |
-| Voice | First person (Piers) | Solo practitioner credibility. "I embed within your team" not "DomeWorks embeds." **Note:** Brand identity doc uses "we" in examples — this spec deliberately overrides to "I" because DomeWorks is a solo practice at launch. Implementer should use "I" throughout, not cross-reference brand identity for pronoun guidance. |
-| Tone | 65% casual, 70% confident, 75% matter-of-fact | From brand identity voice matrix. |
-| Service lines | Both: Strategy + Implementation, Fractional AI Leadership | Business plan defines both. Assessment is the entry point. Source docs reference "3 services" — the assessment is the third (entry-point product), presented separately on its own page rather than alongside the two service lines on homepage. |
-| Pricing | Visible on Assessment page ($5-8K). Service line pricing discussed in calls. | Assessment price qualifies leads. Full engagement pricing is scope-dependent. |
-| CTA target | All "Book a call" CTAs link to `/contact/` | Contact page hosts the scheduling embed (Calendly or cal.com — TBD). Single destination for all CTAs across the site. |
-| Design | Not in scope | Content/IA only. Design follows separately. Implementer writes content into new minimal page structures — existing components (scrollytelling, reveal animations, etc.) will be removed in the design pass. |
+| Decision        | Choice                                                                       | Rationale                                                                                                                                                                                                                                                                                                                      |
+| --------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Page count      | 4 (Home, Assessment, About, Contact)                                         | Launch strategy and brand identity say 3 pages (Home, Assessment, About). We add Contact as a 4th because "book a call" needs a destination page with scheduling embed.                                                                                                                                                        |
+| Target audience | Single buyer: VP Eng / Head of Eng at mid-market SaaS                        | Business plan primary persona. Drop SMB/enterprise split.                                                                                                                                                                                                                                                                      |
+| Voice           | First person (Piers)                                                         | Solo practitioner credibility. "I embed within your team" not "DomeWorks embeds." **Note:** Brand identity doc uses "we" in examples — this spec deliberately overrides to "I" because DomeWorks is a solo practice at launch. Implementer should use "I" throughout, not cross-reference brand identity for pronoun guidance. |
+| Tone            | 65% casual, 70% confident, 75% matter-of-fact                                | From brand identity voice matrix.                                                                                                                                                                                                                                                                                              |
+| Service lines   | Both: Strategy + Implementation, Fractional AI Leadership                    | Business plan defines both. Assessment is the entry point. Source docs reference "3 services" — the assessment is the third (entry-point product), presented separately on its own page rather than alongside the two service lines on homepage.                                                                               |
+| Pricing         | Visible on Assessment page ($5-8K). Service line pricing discussed in calls. | Assessment price qualifies leads. Full engagement pricing is scope-dependent.                                                                                                                                                                                                                                                  |
+| CTA target      | All "Book a call" CTAs link to `/contact/`                                   | Contact page hosts the scheduling embed (Calendly or cal.com — TBD). Single destination for all CTAs across the site.                                                                                                                                                                                                          |
+| Design          | Not in scope                                                                 | Content/IA only. Design follows separately. Implementer writes content into new minimal page structures — existing components (scrollytelling, reveal animations, etc.) will be removed in the design pass.                                                                                                                    |
 
 ## Pages
 
@@ -43,51 +45,62 @@ Content and information architecture only. No design work — that follows separ
 **Sections in order:**
 
 #### Hero
+
 - One-line positioning: what DomeWorks does
 - One-line proof: Piers's background (DoorDash, Square, 10+ years eng leadership)
 - CTA: Book a call
 
 Voice example (from brand identity):
+
 > "I help engineering teams operationalize AI."
 
 Not:
+
 > "Unlocking the transformative potential of artificial intelligence for enterprise teams."
 
 #### The Problem
+
 3-4 sentences describing the AI adoption gap. Drawn directly from the brand story and business plan problem statement:
+
 - Companies are paying for AI tools (Copilot, Claude, ChatGPT)
 - A few engineers use them; most don't
 - No integration into actual workflows (sprint cycles, code reviews, deployments)
 - The CEO keeps asking "what's our AI strategy?" and the VP Eng doesn't have a good answer
 
 Speak to Jordan's pain points from persona doc:
+
 - "We're spending $15K/month on AI tools but I can't quantify what we're getting"
 - "My best engineers use AI constantly but the rest of the team barely touches it"
 
 #### What I Do
+
 Two service lines from the business plan. Brief descriptions, not full specs.
 
 **Strategy + Implementation:**
+
 - 4-12 week embedded engagement
 - Assess AI maturity, build roadmap, implement first phase
 - Embed within the team — standups, pairing, planning sessions
 - Engagement designed to end: capability transfer, not dependency
 
 **Fractional AI Leadership:**
+
 - Ongoing part-time role (1-2 days/week)
 - Strategic direction + continuity
 - For teams that need sustained AI leadership but can't justify a full-time hire yet
 
 #### How It Works
+
 The 3-phase flow from the business plan. One sentence each.
 
-1. **Assessment** — Interview stakeholders, audit AI usage and spend, map workflows, identify highest-leverage integration points. *(Links to `/assessment/` for details.)*
+1. **Assessment** — Interview stakeholders, audit AI usage and spend, map workflows, identify highest-leverage integration points. _(Links to `/assessment/` for details.)_
 2. **Roadmap** — Design an AI integration plan specific to the team's workflows, culture, and tools. Define quick wins and strategic bets with success metrics.
 3. **Implementation** — Embed within the team to build it. Set up tooling, train team members, run retros, iterate.
 
-*Note: The assessment is described briefly here and in detail on the Assessment page. Homepage keeps it to one sentence; Assessment page expands with deliverables, process, and pricing.*
+_Note: The assessment is described briefly here and in detail on the Assessment page. Homepage keeps it to one sentence; Assessment page expands with deliverables, process, and pricing._
 
 #### Who This Is For
+
 Short qualifier paragraph. Filters out wrong-fit visitors.
 
 - VP Engineering, Head of Engineering, or CTO
@@ -96,6 +109,7 @@ Short qualifier paragraph. Filters out wrong-fit visitors.
 - Needs implementation, not another strategy deck
 
 #### CTA
+
 Book a call. Repeat the primary CTA.
 
 ---
@@ -107,25 +121,32 @@ Book a call. Repeat the primary CTA.
 **Sections in order:**
 
 #### What It Is
+
 The Phase 1 assessment from the business plan (Week 1-2):
+
 - Interview key stakeholders (engineering leads, product, ops)
 - Audit current AI tool usage, spend, and adoption patterns
 - Map existing workflows to identify highest-leverage AI integration points
 - Identify blockers: cultural, technical, process, knowledge gaps
 
 #### What You Get
+
 Deliverables:
+
 - **AI Maturity Assessment** — Where the team stands today: what's working, what's not, where the gaps are
 - **Prioritized Opportunity Map** — Ranked list of AI integration opportunities with estimated effort and impact
 - **Quick Wins** — 2-3 things the team can do immediately, before any further engagement
 
 #### What Happens Next
+
 Assessment feeds into the roadmap and implementation phases. No obligation, but designed to lead there.
 
 #### Investment
+
 $5-8K depending on team size and scope. Direct, no haggling language. From persona doc: "Will start with a paid assessment ($5-8K) to evaluate fit before a larger engagement."
 
 #### CTA
+
 Book a call to discuss whether an assessment makes sense for your team.
 
 ---
@@ -137,28 +158,36 @@ Book a call to discuss whether an assessment makes sense for your team.
 **Sections in order:**
 
 #### Who I Am
+
 Piers's background in first person:
+
 - 10+ years engineering leadership
 - DoorDash, Square, and other recognizable companies
 - The pattern: saw AI adoption fail the same way across multiple companies
 - Built DomeWorks to fix this specific problem
 
 From brand identity (Veteran Guide archetype):
+
 > "Not a guru. Not a thought leader. A practitioner who has walked this specific terrain and knows where the footholds are and where the loose rock is."
 
 #### Why DomeWorks Exists
+
 The core insight from the brand story:
+
 - AI adoption is a team capability problem, not a technology procurement problem
 - The gap between "we have AI tools" and "AI is part of how we work" doesn't close by buying another tool
 - It closes when someone who has done this before sits down with the team and rewires the process
 
 #### How I Work
+
 From brand identity and business plan:
+
 - **Embedded, not advisory** — I attend standups, pair with engineers, sit in on planning. Not a consultant who shows up quarterly with a deck.
 - **Designed to end** — The goal isn't dependency. The goal is a team that's better at their jobs than they were 8 weeks ago.
 - **Artifacts over opinions** — Every engagement produces working workflows, not recommendation documents.
 
 #### CTA
+
 Book a call.
 
 ---
@@ -170,13 +199,17 @@ Book a call.
 **Sections:**
 
 #### Book a Call
+
 Primary CTA. Calendly or cal.com embed. 30-minute discovery call.
 
 #### Or Email
+
 For people who prefer async. Single email address, no pre-filled templates or lane splitting.
 
 #### What to Expect
+
 Brief note setting expectations for the call:
+
 - 30-minute conversation
 - I'll ask about your team, your current AI usage, and where you're stuck
 - No pitch deck, no pressure
@@ -187,13 +220,13 @@ Brief note setting expectations for the call:
 
 These pages exist in the current site and will be deleted:
 
-| Page | Reason |
-|------|--------|
-| `/services/` | Replaced by service line descriptions on homepage + assessment page |
-| `/enterprise/` | Single audience — no enterprise lane |
-| `/process/` | "How It Works" section on homepage covers this |
-| `/examples/` | Automation examples (invoice processing, social media calendars) don't match the new positioning |
-| `/security/` | Enterprise governance content doesn't match the new buyer. Security/NDA details handled in conversation. |
+| Page           | Reason                                                                                                   |
+| -------------- | -------------------------------------------------------------------------------------------------------- |
+| `/services/`   | Replaced by service line descriptions on homepage + assessment page                                      |
+| `/enterprise/` | Single audience — no enterprise lane                                                                     |
+| `/process/`    | "How It Works" section on homepage covers this                                                           |
+| `/examples/`   | Automation examples (invoice processing, social media calendars) don't match the new positioning         |
+| `/security/`   | Enterprise governance content doesn't match the new buyer. Security/NDA details handled in conversation. |
 
 ## Voice Guidelines
 
@@ -211,14 +244,14 @@ From brand identity voice matrix. Apply to all copy:
 
 All copy should be derived from these source docs, not invented:
 
-| Content | Source |
-|---------|--------|
-| Problem statement | `brand/brand-identity.md` §1.1 Brand Story |
-| Service descriptions | `business/business-plan.md` §3 Service Offering |
-| Assessment details | `business/business-plan.md` §3 Phase 1 |
-| Buyer pain points | `product/persona.md` Jordan's pain points |
-| Voice and tone | `brand/brand-identity.md` §1.3 Voice and Tone Matrix |
-| Pricing signals | `product/persona.md` "How Jordan buys" |
+| Content                | Source                                                 |
+| ---------------------- | ------------------------------------------------------ |
+| Problem statement      | `brand/brand-identity.md` §1.1 Brand Story             |
+| Service descriptions   | `business/business-plan.md` §3 Service Offering        |
+| Assessment details     | `business/business-plan.md` §3 Phase 1                 |
+| Buyer pain points      | `product/persona.md` Jordan's pain points              |
+| Voice and tone         | `brand/brand-identity.md` §1.3 Voice and Tone Matrix   |
+| Pricing signals        | `product/persona.md` "How Jordan buys"                 |
 | Background/credibility | `brand/brand-identity.md` §1.2 Veteran Guide archetype |
 
 ## Out of Scope
