@@ -16,7 +16,7 @@
 
 <div class="max-w-3xl mx-auto">
 	{#if lede}
-		<p class="text-[0.6875rem] font-semibold tracking-[0.14em] uppercase text-subtle mb-4">
+		<p class="text-[0.6875rem] font-semibold tracking-[0.14em] uppercase text-accent mb-4">
 			{lede}
 		</p>
 	{/if}

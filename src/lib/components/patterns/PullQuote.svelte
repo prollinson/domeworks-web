@@ -19,7 +19,7 @@
 			{@render children()}
 		</blockquote>
 		{#if attribution}
-			<p class="mt-6 text-[0.6875rem] font-semibold tracking-[0.14em] uppercase text-subtle">
+			<p class="mt-7 text-[0.6875rem] font-semibold tracking-[0.18em] uppercase text-subtle">
 				{attribution}
 			</p>
 		{/if}
