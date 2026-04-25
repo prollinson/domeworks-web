@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Button from '$lib/components/ui/Button.svelte';
 	import Section from '$lib/components/layout/Section.svelte';
-	import TitledSection from '$lib/components/patterns/TitledSection.svelte';
 	import HairlineGrid from '$lib/components/patterns/HairlineGrid.svelte';
 	import Eyebrow from '$lib/components/patterns/Eyebrow.svelte';
 	import Callout from '$lib/components/patterns/Callout.svelte';
