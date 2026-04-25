@@ -9,11 +9,7 @@
  * and the turn count.
  */
 
-import type {
-	PainAreaRanked,
-	SynthesizerInput,
-	WorkaroundEntry
-} from '$lib/types/synthesizer';
+import type { PainAreaRanked, SynthesizerInput, WorkaroundEntry } from '$lib/types/synthesizer';
 
 export interface HandoffPromptInput {
 	input: SynthesizerInput;

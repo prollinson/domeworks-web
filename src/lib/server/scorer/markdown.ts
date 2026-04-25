@@ -182,12 +182,16 @@ function guardrailsBlock(screen: ScreenOutput): string {
 
 function stage2FindingsBlock(synth: SynthesizerOutput): string {
 	const out: string[] = [];
-	out.push(`**Channel.** Stage 2 ran via ${synth.llm_status === 'ok' ? 'the post-call synthesizer' : 'raw transcript (synthesis unavailable)'}.`);
+	out.push(
+		`**Channel.** Stage 2 ran via ${synth.llm_status === 'ok' ? 'the post-call synthesizer' : 'raw transcript (synthesis unavailable)'}.`
+	);
 	if (synth.pain_areas_ranked.length > 0) {
 		out.push('');
 		out.push('**Pain areas ranked.**');
 		for (const p of synth.pain_areas_ranked.slice(0, 5)) {
-			out.push(`- **${p.theme}** (${p.severity}, ${p.frequency}): ${p.evidence_turns.length} evidence turn${p.evidence_turns.length === 1 ? '' : 's'}`);
+			out.push(
+				`- **${p.theme}** (${p.severity}, ${p.frequency}): ${p.evidence_turns.length} evidence turn${p.evidence_turns.length === 1 ? '' : 's'}`
+			);
 		}
 	}
 	if (synth.workaround_list.length > 0) {
@@ -206,7 +210,9 @@ function stage2FindingsBlock(synth: SynthesizerOutput): string {
 	}
 	if (synth.needs_human_review) {
 		out.push('');
-		out.push('**Human review flagged.** Counters tripped or workflow is novel; I will walk the transcript before sending this report.');
+		out.push(
+			'**Human review flagged.** Counters tripped or workflow is novel; I will walk the transcript before sending this report.'
+		);
 	}
 	out.push('');
 	out.push('**Handoff brief.**');

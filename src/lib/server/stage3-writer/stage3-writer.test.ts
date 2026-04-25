@@ -24,19 +24,14 @@ import { renderStage3Markdown } from './index';
 import { runPreSendChecks } from './validation';
 import { firstClause } from './foundational';
 
-const FOUNDATIONAL_SUMMARY = 'Foundational rationale leads with a clear success metric for this firm.';
+const FOUNDATIONAL_SUMMARY =
+	'Foundational rationale leads with a clear success metric for this firm.';
 const STRATEGIC_PARA =
 	'Strategic narrative explains the planning session that needs to happen before the rollout. I would suggest naming a sponsor and a 30-day decision gate before any vendor contact.';
 
 vi.mock('@anthropic-ai/sdk', () => {
 	const create = vi.fn(
-		async ({
-			model,
-			messages
-		}: {
-			model: string;
-			messages: { content: string }[];
-		}) => {
+		async ({ model, messages }: { model: string; messages: { content: string }[] }) => {
 			const userMsg = messages[0]?.content ?? '';
 			// Prioritizer rationale prompts include the literal "Tier:" line; route by tier label.
 			if (userMsg.includes('Tier: Foundational')) {
@@ -160,9 +155,7 @@ function multiTierSynthesized(): SynthesizerOutput {
 			}
 		],
 		workaround_list: [{ description: 'I keep a shadow spreadsheet', evidence_turn: 3 }],
-		exception_patterns: [
-			{ pattern: 'Retainer clients bypass intake', evidence_turns: [5] }
-		],
+		exception_patterns: [{ pattern: 'Retainer clients bypass intake', evidence_turns: [5] }],
 		candidate_opportunities: [
 			// Forces quick-win tier (high severity, evidence, no risk).
 			{
@@ -259,11 +252,7 @@ describe('renderStage3Markdown', () => {
 
 	it('Fixture (b) Stage 2 + LLM-mocked: Strategic paragraph + Foundational row drawn from mock', async () => {
 		const synth = multiTierSynthesized();
-		const scorer = await scorerOutputFor(
-			FIXTURE_QUICK_PLAN_STATIC,
-			synth,
-			'mock-key'
-		);
+		const scorer = await scorerOutputFor(FIXTURE_QUICK_PLAN_STATIC, synth, 'mock-key');
 		const screen = screenRegulatedData({
 			industry: FIXTURE_QUICK_PLAN_STATIC.industry,
 			sensitive_data_flag: FIXTURE_QUICK_PLAN_STATIC.regulatedData,

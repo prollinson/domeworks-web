@@ -38,9 +38,7 @@ export function runPreSendChecks(input: Stage3Input): string[] {
 	const out = input.scorerOutput;
 	const quickWins = out.opportunities.filter((o) => o.quadrant === 'quick-win');
 
-	const unnamed = quickWins.filter(
-		(o) => !o.title || o.title.startsWith(GENERIC_TITLE_PREFIX)
-	);
+	const unnamed = quickWins.filter((o) => !o.title || o.title.startsWith(GENERIC_TITLE_PREFIX));
 	if (unnamed.length > 0) {
 		warnings.push(
 			`quick_win_unnamed_workflow: ${unnamed.length} Quick Win card${unnamed.length === 1 ? '' : 's'} fall back to the generic "Time leak addressed by ..." title; rename before send.`

@@ -70,11 +70,19 @@
 
 	/* The transparent-over-dark-hero treatment requires the page to pull its
 	   dark hero up behind the fixed header (the `-mt-16 md:-mt-20` + `bg-ink`
-	   pattern on / and /leaders/). On any other page the area behind the
-	   header is the body's default light surface, so the header needs to be
-	   opaque. Add new pages here only after they adopt that pull-up pattern. */
-	const PULLED_HERO_PATHS = new Set(['/', '/leaders/', '/leaders']);
-	let hasPulledHero = $derived(PULLED_HERO_PATHS.has($page.url.pathname));
+	   pattern). Every dark-hero page in the site adopts that pattern via
+	   `<Section background="dark" hero>` (or the equivalent manual pull-up in
+	   AssessmentPage / quiz). When you add a new top-level route, list it here
+	   only if its first section bleeds under the header. */
+	function hasPulledHeroForPath(path: string): boolean {
+		const p = path.replace(/\/$/, '') || '/';
+		if (p === '/') return true;
+		if (p === '/leaders' || p.startsWith('/leaders/')) return true;
+		if (p === '/about' || p === '/contact') return true;
+		if (p === '/smb' || p === '/smb/quiz') return true;
+		return false;
+	}
+	let hasPulledHero = $derived(hasPulledHeroForPath($page.url.pathname));
 	let heroMode = $derived(hasPulledHero && !scrolled && !menuOpen);
 
 	let reducedMotion = $state(false);
@@ -128,13 +136,12 @@
 			</a>
 
 			<div class="hidden lg:flex items-center gap-1">
-				{#each navItems as item}
+				{#each navItems as item (item.href)}
 					{#if item.children}
 						<div class="relative" data-nav-dropdown>
 							<button
 								type="button"
-								onclick={() =>
-									(openDropdown = openDropdown === item.href ? null : item.href)}
+								onclick={() => (openDropdown = openDropdown === item.href ? null : item.href)}
 								aria-haspopup="true"
 								aria-expanded={openDropdown === item.href}
 								class="flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-lg transition-all
@@ -148,8 +155,7 @@
 							>
 								{item.label}
 								<svg
-									class="w-3.5 h-3.5 transition-transform duration-200 {openDropdown ===
-									item.href
+									class="w-3.5 h-3.5 transition-transform duration-200 {openDropdown === item.href
 										? 'rotate-180'
 										: ''}"
 									fill="none"
@@ -170,12 +176,11 @@
 									class="absolute left-0 top-full mt-2 min-w-[14rem] bg-paper border border-rule rounded-lg shadow-lg overflow-hidden"
 								>
 									<div class="py-1.5">
-										{#each item.children as child}
+										{#each item.children as child (child.href)}
 											<a
 												href={child.href}
 												onclick={() => (openDropdown = null)}
-												aria-current={isActive(child.href) && $page.url.pathname ===
-													child.href
+												aria-current={isActive(child.href) && $page.url.pathname === child.href
 													? 'page'
 													: undefined}
 												class="block px-4 py-2 text-sm font-medium transition-colors
@@ -253,7 +258,7 @@
 				class="lg:hidden pb-6 border-t border-rule mt-2 pt-4"
 			>
 				<div class="flex flex-col gap-1">
-					{#each navItems as item}
+					{#each navItems as item (item.href)}
 						{#if item.children}
 							<button
 								type="button"
@@ -286,7 +291,7 @@
 									transition:slide={{ duration: reducedMotion ? 0 : 200, easing: cubicOut }}
 									class="ml-4 flex flex-col gap-1"
 								>
-									{#each item.children as child}
+									{#each item.children as child (child.href)}
 										<a
 											href={child.href}
 											aria-current={$page.url.pathname === child.href ? 'page' : undefined}

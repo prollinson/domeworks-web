@@ -20,11 +20,7 @@ import {
 	SONNET_MODEL,
 	type LlmConfig
 } from '$lib/server/llm-gateway';
-import type {
-	PainAreaRanked,
-	SynthesizerInput,
-	WorkaroundEntry
-} from '$lib/types/synthesizer';
+import type { PainAreaRanked, SynthesizerInput, WorkaroundEntry } from '$lib/types/synthesizer';
 import { buildHandoffPrompt } from './handoff-prompt';
 
 export interface HandoffInput {

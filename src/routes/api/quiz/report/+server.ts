@@ -309,7 +309,10 @@ export const POST: RequestHandler = async ({ request, platform }) => {
 			stage3Markdown = stage3.markdown;
 			stage3Warnings = stage3.warnings;
 		} catch (e) {
-			console.warn('[quiz/report] renderStage3Markdown failed, falling back to scorer markdown:', e);
+			console.warn(
+				'[quiz/report] renderStage3Markdown failed, falling back to scorer markdown:',
+				e
+			);
 		}
 
 		// Attio Stage 2 fan-out. Best-effort; D1 + the response carry the canonical state.

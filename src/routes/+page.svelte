@@ -1,42 +1,13 @@
 <script lang="ts">
 	import Button from '$lib/components/ui/Button.svelte';
 	import Section from '$lib/components/layout/Section.svelte';
+	import SEO from '$lib/components/SEO.svelte';
 	import HairlineGrid from '$lib/components/patterns/HairlineGrid.svelte';
 	import Eyebrow from '$lib/components/patterns/Eyebrow.svelte';
 	import { reveal } from '$lib/actions/reveal';
 	import { getBookCallUrl } from '$lib/utils/mailto';
-</script>
 
-<svelte:head>
-	<title>DomeWorks | Intelligence Infrastructure Engineering</title>
-	<meta
-		name="description"
-		content="DomeWorks builds the systems around AI tools. Two starting points: an assessment for owner-operators picking what to use, and infrastructure for leaders running teams of 50–500."
-	/>
-	<link rel="canonical" href="https://domeworks.tech/" />
-
-	<!-- Open Graph -->
-	<meta property="og:type" content="website" />
-	<meta property="og:site_name" content="DomeWorks" />
-	<meta property="og:url" content="https://domeworks.tech/" />
-	<meta property="og:title" content="DomeWorks | Intelligence Infrastructure Engineering" />
-	<meta
-		property="og:description"
-		content="DomeWorks builds the systems around AI tools. Two starting points — one for owner-operators, one for leaders running teams."
-	/>
-	<meta property="og:image" content="https://domeworks.tech/og-image.png" />
-
-	<!-- Twitter -->
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="DomeWorks | Intelligence Infrastructure Engineering" />
-	<meta
-		name="twitter:description"
-		content="DomeWorks builds the systems around AI tools. Two starting points — one for owner-operators, one for leaders running teams."
-	/>
-	<meta name="twitter:image" content="https://domeworks.tech/og-image.png" />
-
-	<!-- JSON-LD: Organization + WebSite -->
-	{@html `<script type="application/ld+json">${JSON.stringify({
+	const homepageSchema = {
 		'@context': 'https://schema.org',
 		'@graph': [
 			{
@@ -64,8 +35,14 @@
 				url: 'https://domeworks.tech'
 			}
 		]
-	})}</script>`}
-</svelte:head>
+	};
+</script>
+
+<SEO
+	title="DomeWorks | Intelligence Infrastructure Engineering"
+	description="DomeWorks builds the systems around AI tools. Two starting points: an assessment for owner-operators picking what to use, and infrastructure for leaders running teams of 50–500."
+	schema={homepageSchema}
+/>
 
 <!-- Skip to content -->
 <a
@@ -76,28 +53,23 @@
 </a>
 
 <!-- Compact dark hero — sets the brand line and points to the picker below. -->
-<section
-	class="relative bg-ink overflow-hidden -mt-16 md:-mt-20 pt-32 md:pt-44 pb-14 md:pb-20"
-	aria-label="Hero"
->
-	<div class="relative max-w-6xl mx-auto px-6 lg:px-8">
-		<Eyebrow label="DomeWorks · Intelligence Infrastructure" tone="accent-light" />
-		<h1
-			class="mt-6 font-serif font-normal text-paper leading-[1.04] tracking-[-0.025em]"
-			style="font-size: clamp(2.25rem, 5.5vw, 3.75rem);"
-		>
-			Your team bought AI tools<span class="text-accent-light">.</span>
-			<em class="text-paper/85">Now what</em><span class="text-accent-light">?</span>
-		</h1>
-		<p class="mt-6 max-w-2xl font-serif text-lg text-paper/80 leading-[1.65]">
-			Two starting points, depending on the shape of your team. Owner-operators figure out what's
-			worth using. Leaders build what comes between the tools their engineers already have.
-		</p>
-		<div class="mt-8">
-			<Button href={getBookCallUrl()} size="lg">Book a call</Button>
-		</div>
+<Section background="dark" padding="lg" hero>
+	<Eyebrow label="DomeWorks · Intelligence Infrastructure" tone="accent-light" />
+	<h1
+		class="mt-6 font-sans font-semibold text-paper leading-[1.02] tracking-[-0.035em]"
+		style="font-size: clamp(2.25rem, 5.5vw, 3.75rem);"
+	>
+		Your team bought AI tools<span class="text-accent-light">.</span>
+		<em class="text-paper/85">Now what</em><span class="text-accent-light">?</span>
+	</h1>
+	<p class="mt-6 max-w-2xl font-serif text-lg text-paper/80 leading-[1.65]">
+		Two starting points, depending on the shape of your team. Owner-operators figure out what's
+		worth using. Leaders build what comes between the tools their engineers already have.
+	</p>
+	<div class="mt-8">
+		<Button href={getBookCallUrl()} size="lg">Book a call</Button>
 	</div>
-</section>
+</Section>
 
 <!-- Two tracks picker — primary content of the page. -->
 <Section
@@ -170,8 +142,9 @@
 
 	<div class="max-w-3xl mx-auto mt-10 text-center">
 		<p class="font-serif text-base text-muted">
-			Not sure which fits? <a href={getBookCallUrl()} class="text-accent underline underline-offset-2"
-				>Book a 30-minute call</a
+			Not sure which fits? <a
+				href={getBookCallUrl()}
+				class="text-accent underline underline-offset-2">Book a 30-minute call</a
 			> and I'll point you to the right one.
 		</p>
 	</div>

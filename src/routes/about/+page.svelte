@@ -1,45 +1,14 @@
 <script lang="ts">
 	import Section from '$lib/components/layout/Section.svelte';
+	import SEO from '$lib/components/SEO.svelte';
 	import TitledSection from '$lib/components/patterns/TitledSection.svelte';
 	import Eyebrow from '$lib/components/patterns/Eyebrow.svelte';
 	import Callout from '$lib/components/patterns/Callout.svelte';
 	import Button from '$lib/components/ui/Button.svelte';
 	import { reveal } from '$lib/actions/reveal';
 	import { getBookCallUrl } from '$lib/utils/mailto';
-</script>
 
-<svelte:head>
-	<title>About | Ex-DoorDash, Square, Mudflap Engineering Leader | DomeWorks</title>
-	<meta
-		name="description"
-		content="10+ years of engineering leadership at DoorDash, Square, and Mudflap. Now building the AI infrastructure layer for engineering teams."
-	/>
-	<link rel="canonical" href="https://domeworks.tech/about/" />
-
-	<meta property="og:type" content="website" />
-	<meta property="og:site_name" content="DomeWorks" />
-	<meta property="og:url" content="https://domeworks.tech/about/" />
-	<meta
-		property="og:title"
-		content="About | Ex-DoorDash, Square, Mudflap Engineering Leader | DomeWorks"
-	/>
-	<meta
-		property="og:description"
-		content="10+ years of engineering leadership at DoorDash, Square, and Mudflap. Now building the AI infrastructure layer for engineering teams."
-	/>
-	<meta property="og:image" content="https://domeworks.tech/og-image.png" />
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta
-		name="twitter:title"
-		content="About | Ex-DoorDash, Square, Mudflap Engineering Leader | DomeWorks"
-	/>
-	<meta
-		name="twitter:description"
-		content="10+ years of engineering leadership at DoorDash, Square, and Mudflap. Now building AI infrastructure for engineering teams."
-	/>
-	<meta name="twitter:image" content="https://domeworks.tech/og-image.png" />
-
-	{@html `<script type="application/ld+json">${JSON.stringify({
+	const aboutSchema = {
 		'@context': 'https://schema.org',
 		'@type': 'Person',
 		name: 'Piers Rollinson',
@@ -48,11 +17,17 @@
 		description:
 			'10+ years of engineering leadership at DoorDash, Square, and Mudflap. Now building the AI infrastructure layer for engineering teams.',
 		url: 'https://domeworks.tech/about/'
-	})}</script>`}
-</svelte:head>
+	};
+</script>
+
+<SEO
+	title="About | Ex-DoorDash, Square, Mudflap Engineering Leader | DomeWorks"
+	description="10+ years of engineering leadership at DoorDash, Square, and Mudflap. Now building the AI infrastructure layer for engineering teams."
+	schema={aboutSchema}
+/>
 
 <!-- Hero -->
-<Section background="dark" padding="xl">
+<Section background="dark" padding="xl" hero>
 	<div class="max-w-3xl">
 		<Eyebrow label="About" tone="accent-light" />
 		<h1

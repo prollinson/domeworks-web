@@ -154,7 +154,9 @@ describe('updateStage2Record', () => {
 });
 
 describe('summarizePrioritizerTiers', () => {
-	function tieredOf(tiers: Array<'quick-win' | 'foundational' | 'strategic' | 'research'>): PrioritizerOutput {
+	function tieredOf(
+		tiers: Array<'quick-win' | 'foundational' | 'strategic' | 'research'>
+	): PrioritizerOutput {
 		return {
 			tiered: tiers.map((tier) => ({
 				title: 'x',

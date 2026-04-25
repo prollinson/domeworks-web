@@ -89,14 +89,17 @@ No git commit here; the baseline artifacts live under `test-results/` (already g
 - [ ] **Step 1: Write the failing build check**
 
 Run:
+
 ```bash
 yarn build 2>&1 | tail -20
 ```
+
 Expected: build succeeds (pre-change baseline).
 
 - [ ] **Step 2: Edit `src/tailwind.css` `@theme` block to retain only new-palette tokens**
 
 Replace lines 4–33 with:
+
 ```css
 @theme {
 	/* --- Core palette --- */
@@ -126,9 +129,11 @@ Note: `--color-charcoal` retained for now — removed in Phase 6 if unused after
 - [ ] **Step 3: Run the build; expect failures**
 
 Run:
+
 ```bash
 yarn build 2>&1 | tail -40
 ```
+
 Expected: **fails** with errors about missing Tailwind utilities (e.g., `bg-primary`, `bg-warm-white`, `text-copper`, `text-warm-gray`, `bg-stone`). This is the forcing function — these fail-points mark every legacy usage that must be migrated. Save the error list as a work-log: `yarn build 2>&1 > test-results/phase1-build-errors.txt`.
 
 - [ ] **Step 4: Do NOT commit yet**
@@ -144,6 +149,7 @@ The build is red. Committing on red is explicit — Phase 1 ends with Tasks 2–
 - [ ] **Step 1: Replace the full file contents**
 
 Full new file:
+
 ```svelte
 <script lang="ts">
 	import { page } from '$app/stores';
@@ -212,9 +218,7 @@ Full new file:
 
 <header
 	class="fixed top-0 left-0 right-0 z-50 transition-all duration-300
-    {scrolled
-		? 'bg-paper/80 backdrop-blur-md shadow-sm border-b border-rule'
-		: 'bg-transparent'}"
+    {scrolled ? 'bg-paper/80 backdrop-blur-md shadow-sm border-b border-rule' : 'bg-transparent'}"
 >
 	<nav class="max-w-6xl mx-auto px-6 lg:px-8">
 		<div class="flex items-center justify-between h-16 md:h-20">
@@ -368,9 +372,11 @@ Full new file:
 - [ ] **Step 2: Verify no legacy tokens remain in Header**
 
 Run:
+
 ```bash
 grep -En "primary|copper|warm-white|warm-gray|stone|charcoal" src/lib/components/layout/Header.svelte
 ```
+
 Expected: no output.
 
 ---
@@ -382,6 +388,7 @@ Expected: no output.
 - [ ] **Step 1: Replace the full file contents**
 
 Full new file:
+
 ```svelte
 <script lang="ts">
 	import { getBookCallUrl } from '$lib/utils/mailto';
@@ -401,8 +408,8 @@ Full new file:
 		<div class="max-w-6xl mx-auto px-6 lg:px-8 py-24 md:py-32 lg:py-40">
 			<div class="max-w-4xl">
 				<h2 class="footer-headline font-serif font-normal text-paper mb-8">
-					Let's figure out<br class="hidden sm:block" /> what's missing<span class="text-accent-light"
-						>.</span
+					Let's figure out<br class="hidden sm:block" /> what's missing<span
+						class="text-accent-light">.</span
 					>
 				</h2>
 				<p class="text-lg md:text-xl text-paper/70 max-w-xl mb-10">
@@ -491,9 +498,11 @@ Full new file:
 - [ ] **Step 2: Verify no legacy tokens or decorative layers remain**
 
 Run:
+
 ```bash
 grep -En "primary|copper|warm-white|warm-gray|stone|ambient-warm|texture-grain" src/lib/components/layout/Footer.svelte
 ```
+
 Expected: no output.
 
 ---
@@ -505,10 +514,13 @@ Expected: no output.
 - [ ] **Step 1: Build and start preview**
 
 Run:
+
 ```bash
 yarn build 2>&1 | tail -10
 ```
+
 Expected: **still fails** because enterprise pages still reference legacy tokens. That's expected — the forcing function for Phase 3+4. Capture the error list:
+
 ```bash
 yarn build 2>&1 > test-results/phase1-post-errors.txt
 ```
@@ -516,17 +528,21 @@ yarn build 2>&1 > test-results/phase1-post-errors.txt
 - [ ] **Step 2: Run type check on the chrome files**
 
 Run:
+
 ```bash
 yarn check 2>&1 | grep -A2 "Header\|Footer" | head -30
 ```
+
 Expected: no errors in `Header.svelte` or `Footer.svelte`.
 
 - [ ] **Step 3: Spot-check Assessment page compiles**
 
 Run:
+
 ```bash
 npx svelte-check --threshold error --workspace src/lib/components/smb/AssessmentPage.svelte 2>&1 | tail -10
 ```
+
 Expected: no errors.
 
 - [ ] **Step 4: Manual visual verification of `/smb/`**
@@ -614,9 +630,11 @@ Seven components under `src/lib/components/patterns/`. Each is a thin extraction
 - [ ] **Step 2: Type-check the file**
 
 Run:
+
 ```bash
 npx svelte-check --threshold error --workspace src/lib/components/patterns/Eyebrow.svelte 2>&1 | tail -5
 ```
+
 Expected: no errors.
 
 ---
@@ -671,9 +689,11 @@ Expected: no errors.
 - [ ] **Step 2: Type-check**
 
 Run:
+
 ```bash
 npx svelte-check --threshold error --workspace src/lib/components/patterns/HairlineGrid.svelte 2>&1 | tail -5
 ```
+
 Expected: no errors.
 
 ---
@@ -681,6 +701,7 @@ Expected: no errors.
 ### Task 8: Create `NumberedSection.svelte` and `TitledSection.svelte`
 
 **Files:**
+
 - Create `src/lib/components/patterns/NumberedSection.svelte`
 - Create `src/lib/components/patterns/TitledSection.svelte`
 
@@ -710,15 +731,7 @@ Expected: no errors.
 	} = $props();
 </script>
 
-<Section
-	{id}
-	{background}
-	{padding}
-	eyebrow={index}
-	{title}
-	{description}
-	centered={false}
->
+<Section {id} {background} {padding} eyebrow={index} {title} {description} centered={false}>
 	{@render children()}
 </Section>
 ```
@@ -755,9 +768,11 @@ Expected: no errors.
 - [ ] **Step 3: Type-check both**
 
 Run:
+
 ```bash
 npx svelte-check --threshold error --workspace src/lib/components/patterns/ 2>&1 | tail -5
 ```
+
 Expected: no errors.
 
 ---
@@ -801,9 +816,11 @@ Expected: no errors.
 - [ ] **Step 2: Type-check**
 
 Run:
+
 ```bash
 npx svelte-check --threshold error --workspace src/lib/components/patterns/PullQuote.svelte 2>&1 | tail -5
 ```
+
 Expected: no errors.
 
 ---
@@ -855,9 +872,11 @@ Expected: no errors.
 - [ ] **Step 2: Type-check**
 
 Run:
+
 ```bash
 npx svelte-check --threshold error --workspace src/lib/components/patterns/DisplayStat.svelte 2>&1 | tail -5
 ```
+
 Expected: no errors.
 
 ---
@@ -898,9 +917,11 @@ Expected: no errors.
 - [ ] **Step 2: Type-check**
 
 Run:
+
 ```bash
 npx svelte-check --threshold error --workspace src/lib/components/patterns/Callout.svelte 2>&1 | tail -5
 ```
+
 Expected: no errors.
 
 ---
@@ -910,10 +931,12 @@ Expected: no errors.
 - [ ] **Step 1: Verify all pattern files exist and type-check cleanly**
 
 Run:
+
 ```bash
 ls src/lib/components/patterns/
 yarn check 2>&1 | tail -10
 ```
+
 Expected: seven `.svelte` files listed; `yarn check` still shows errors only for unmigrated pages (not for patterns).
 
 - [ ] **Step 2: Commit**
@@ -980,6 +1003,7 @@ Note: the working tree already has `_redirects` modified on this branch (visible
 ```bash
 cat _redirects | grep -c "301"
 ```
+
 Expected: `16` (10 legacy + 6 new pairs… actually recount — 10 lines have 301, 2 SMB aliases + 2 quiz + 10 enterprise = 14). Accept any count ≥ 14.
 
 ---
@@ -1097,6 +1121,7 @@ Expected: `16` (10 legacy + 6 new pairs… actually recount — 10 lines have 30
 ```bash
 grep -E "domeworks.tech/(scan|context-build|orchestration-build|fractional|assessment)/" static/sitemap.xml
 ```
+
 Expected: no output.
 
 ---
@@ -1138,6 +1163,7 @@ Founded by Piers Rollinson, an engineering leader with 10+ years at DoorDash, Sq
 ```bash
 grep -E "domeworks.tech/(scan|context-build|orchestration-build|fractional|assessment)/" static/llms.txt
 ```
+
 Expected: no output.
 
 ---
@@ -1214,6 +1240,7 @@ Expected: no output.
 ```bash
 grep -En "primary|copper|charcoal" src/lib/components/ui/JourneyBar.svelte
 ```
+
 Expected: no output.
 
 ---
@@ -1221,6 +1248,7 @@ Expected: no output.
 ### Task 17: Move `/fractional` → `/leaders/fractional/` and migrate
 
 **Files:**
+
 - Create: `src/routes/leaders/fractional/+page.svelte`
 - Delete: `src/routes/fractional/+page.svelte` (and the empty `fractional/` directory)
 
@@ -1229,6 +1257,7 @@ This is the smallest service page (285 lines) — do it first to build muscle me
 - [ ] **Step 1: Create directory and move the file**
 
 Run:
+
 ```bash
 mkdir -p src/routes/leaders/fractional
 git mv src/routes/fractional/+page.svelte src/routes/leaders/fractional/+page.svelte
@@ -1240,18 +1269,23 @@ rmdir src/routes/fractional
 In `src/routes/leaders/fractional/+page.svelte` lines 15, 19, and 27 (approximate), change every `https://domeworks.tech/fractional/` occurrence to `https://domeworks.tech/leaders/fractional/`. Four replacements total (canonical, og:url, twitter — verify with grep).
 
 Run:
+
 ```bash
 grep -n "domeworks.tech/fractional/" src/routes/leaders/fractional/+page.svelte
 ```
+
 Replace each line's URL with the `/leaders/fractional/` variant. After edits:
+
 ```bash
 grep -cn "domeworks.tech/fractional/" src/routes/leaders/fractional/+page.svelte
 ```
+
 Expected: `0`.
 
 - [ ] **Step 3: Replace the hero block (lines ~51–90)**
 
 Find the hero block:
+
 ```svelte
 <!-- Hero -->
 <section
@@ -1264,7 +1298,9 @@ Find the hero block:
 	<div class="relative max-w-6xl mx-auto px-6 lg:px-8">
 		<div class="max-w-3xl">
 			<JourneyBar current="fractional" />
-			<h1 class="font-serif text-4xl md:text-5xl font-normal text-charcoal leading-[1.2] md:leading-[1.15]">
+			<h1
+				class="font-serif text-4xl md:text-5xl font-normal text-charcoal leading-[1.2] md:leading-[1.15]"
+			>
 				Intelligence infrastructure compounds when someone owns it<span class="text-copper">.</span>
 			</h1>
 			<p class="mt-6 text-xl text-charcoal/70 leading-relaxed">
@@ -1281,6 +1317,7 @@ Find the hero block:
 ```
 
 Replace with:
+
 ```svelte
 <!-- Hero -->
 <Section background="dark" padding="xl">
@@ -1291,11 +1328,13 @@ Replace with:
 			class="mt-4 font-sans font-semibold text-paper leading-[1.02] tracking-[-0.035em]"
 			style="font-size: clamp(2.5rem, 7vw, 4.5rem);"
 		>
-			Intelligence infrastructure compounds when someone owns it<span class="text-accent-light">.</span>
+			Intelligence infrastructure compounds when someone owns it<span class="text-accent-light"
+				>.</span
+			>
 		</h1>
 		<p class="mt-6 font-serif text-lg text-paper/80 leading-[1.65] max-w-2xl">
-			An ongoing retainer where I act as your part-time Head of AI, 1–2 days a week. I maintain
-			and evolve the context system and agent coordination, close feedback loops, and adapt the
+			An ongoing retainer where I act as your part-time Head of AI, 1–2 days a week. I maintain and
+			evolve the context system and agent coordination, close feedback loops, and adapt the
 			infrastructure as your org changes.
 		</p>
 		<div class="mt-8">
@@ -1306,6 +1345,7 @@ Replace with:
 ```
 
 Update the imports at the top:
+
 ```svelte
 <script lang="ts">
 	import Button from '$lib/components/ui/Button.svelte';
@@ -1328,10 +1368,13 @@ Note: `JourneyBar` is rendered inside the dark `Section`, so verify its `text-in
 Five occurrences. For each:
 
 Before:
+
 ```svelte
 <Section background="muted" padding="lg" eyebrow="01" title="What this is">
 ```
+
 After:
+
 ```svelte
 <NumberedSection index="01" background="muted" title="What this is">
 ```
@@ -1343,6 +1386,7 @@ For §02 "What I do" (lines ~121-131), the rendered list uses a `bg-copper` bull
 - [ ] **Step 5: Replace "Typical Week" section (lines ~134–158)**
 
 Before:
+
 ```svelte
 <Section background="muted" padding="lg">
 	<div class="max-w-3xl mx-auto" use:reveal>
@@ -1372,6 +1416,7 @@ Before:
 ```
 
 After:
+
 ```svelte
 <TitledSection background="muted" title="What a typical week looks like">
 	<HairlineGrid cols={2} onMuted>
@@ -1398,17 +1443,26 @@ After:
 - [ ] **Step 6: Convert §03 "Who this is for" rounded callout box → `Callout variant="rule-left"`**
 
 Before:
+
 ```svelte
 <NumberedSection index="03" background="muted" title="Who this is for">
 	<div class="max-w-2xl mx-auto" use:reveal>
 		<div class="p-8 bg-warm-white rounded-2xl border border-charcoal/10">
 			<p class="text-lg text-charcoal/70 leading-relaxed mb-6">
-				Teams that have completed a <a href="/context-build/" class="text-primary hover:underline">Context Build</a>
-				or <a href="/orchestration-build/" class="text-primary hover:underline">Orchestration Build</a> — or have equivalent infrastructure in place — and want the system to keep getting smarter as the org changes.
+				Teams that have completed a <a href="/context-build/" class="text-primary hover:underline"
+					>Context Build</a
+				>
+				or
+				<a href="/orchestration-build/" class="text-primary hover:underline">Orchestration Build</a> —
+				or have equivalent infrastructure in place — and want the system to keep getting smarter as the
+				org changes.
 			</p>
 			<p class="text-lg text-charcoal/70 leading-relaxed">
 				If you're still figuring out your AI tooling or haven't built a context system yet, this
-				isn't the right entry point. Start with the <a href="/scan/" class="text-primary hover:underline">AI Scan</a>.
+				isn't the right entry point. Start with the <a
+					href="/scan/"
+					class="text-primary hover:underline">AI Scan</a
+				>.
 			</p>
 		</div>
 	</div>
@@ -1416,17 +1470,28 @@ Before:
 ```
 
 After:
+
 ```svelte
 <NumberedSection index="03" background="muted" title="Who this is for">
 	<div class="max-w-2xl mx-auto" use:reveal>
 		<Callout variant="rule-left">
 			<p class="font-serif text-lg text-muted leading-[1.65] mb-6">
-				Teams that have completed a <a href="/leaders/context-build/" class="text-accent hover:underline">Context Build</a>
-				or <a href="/leaders/orchestration-build/" class="text-accent hover:underline">Orchestration Build</a> — or have equivalent infrastructure in place — and want the system to keep getting smarter as the org changes.
+				Teams that have completed a <a
+					href="/leaders/context-build/"
+					class="text-accent hover:underline">Context Build</a
+				>
+				or
+				<a href="/leaders/orchestration-build/" class="text-accent hover:underline"
+					>Orchestration Build</a
+				> — or have equivalent infrastructure in place — and want the system to keep getting smarter as
+				the org changes.
 			</p>
 			<p class="font-serif text-lg text-muted leading-[1.65]">
 				If you're still figuring out your AI tooling or haven't built a context system yet, this
-				isn't the right entry point. Start with the <a href="/leaders/scan/" class="text-accent hover:underline">AI Scan</a>.
+				isn't the right entry point. Start with the <a
+					href="/leaders/scan/"
+					class="text-accent hover:underline">AI Scan</a
+				>.
 			</p>
 		</Callout>
 	</div>
@@ -1436,6 +1501,7 @@ After:
 - [ ] **Step 7: Convert §04 "Investment" box**
 
 Before:
+
 ```svelte
 <div class="p-8 bg-stone rounded-2xl border border-charcoal/10">
 	...content with text-charcoal and border-charcoal/10...
@@ -1443,6 +1509,7 @@ Before:
 ```
 
 After:
+
 ```svelte
 <Callout variant="accent">
 	<div class="flex flex-col gap-4">
@@ -1470,22 +1537,29 @@ After:
 The §01 section has an inner `div` with `bg-warm-white rounded-xl border border-charcoal/10` wrapping a "This is not a starter engagement" paragraph. Replace:
 
 Before:
+
 ```svelte
 <div class="p-6 bg-warm-white rounded-xl border border-charcoal/10">
 	<p class="text-sm text-charcoal/70 leading-relaxed">
-		This is not a starter engagement. The system needs to exist before it can be owned. If
-		you're earlier in the journey, start with the <a href="/scan/" class="text-primary hover:underline">AI Scan</a>
+		This is not a starter engagement. The system needs to exist before it can be owned. If you're
+		earlier in the journey, start with the <a href="/scan/" class="text-primary hover:underline"
+			>AI Scan</a
+		>
 		or <a href="/context-build/" class="text-primary hover:underline">Context Build</a>.
 	</p>
 </div>
 ```
 
 After:
+
 ```svelte
 <Callout variant="rule-left-sm">
 	<p class="font-serif text-sm text-muted leading-[1.55]">
-		This is not a starter engagement. The system needs to exist before it can be owned. If
-		you're earlier in the journey, start with the <a href="/leaders/scan/" class="text-accent hover:underline">AI Scan</a>
+		This is not a starter engagement. The system needs to exist before it can be owned. If you're
+		earlier in the journey, start with the <a
+			href="/leaders/scan/"
+			class="text-accent hover:underline">AI Scan</a
+		>
 		or <a href="/leaders/context-build/" class="text-accent hover:underline">Context Build</a>.
 	</p>
 </Callout>
@@ -1494,6 +1568,7 @@ After:
 - [ ] **Step 9: Convert FAQ section (§05) — remove `bg-warm-white rounded-xl border border-charcoal/10` wrappers; use plain `border-b border-rule`**
 
 For each `<details class="group p-6 bg-warm-white rounded-xl border border-charcoal/10">`, change to:
+
 ```svelte
 <details class="group border-b border-rule py-5">
 ```
@@ -1503,17 +1578,21 @@ And inside each `<summary>`, change `font-medium text-charcoal` to `font-medium 
 - [ ] **Step 10: Final grep for legacy tokens on this file**
 
 Run:
+
 ```bash
 grep -En "primary|copper|warm-white|warm-gray|stone|text-charcoal" src/routes/leaders/fractional/+page.svelte
 ```
+
 Expected: no output (should only have `font-sans`/`font-serif` references, not palette tokens — verify nothing matches).
 
 - [ ] **Step 11: Type-check the page**
 
 Run:
+
 ```bash
 npx svelte-check --threshold error --workspace src/routes/leaders/fractional/+page.svelte 2>&1 | tail -5
 ```
+
 Expected: no errors.
 
 - [ ] **Step 12: Commit**
@@ -1540,6 +1619,7 @@ EOF
 ### Task 18: Move `/scan` → `/leaders/scan/` and migrate
 
 **Files:**
+
 - Create: `src/routes/leaders/scan/+page.svelte`
 - Delete: `src/routes/scan/+page.svelte`
 
@@ -1554,22 +1634,27 @@ rmdir src/routes/scan
 - [ ] **Step 2: Update `<svelte:head>` URLs — change every `domeworks.tech/scan/` to `domeworks.tech/leaders/scan/`**
 
 Four occurrences (canonical, og:url, og:image stays, og:title, etc.). Verify with:
+
 ```bash
 grep -cn "domeworks.tech/scan/" src/routes/leaders/scan/+page.svelte
 ```
+
 After edits, expected: `0`.
 
 Also update internal text links to other services:
+
 - `/context-build/` → `/leaders/context-build/` (appears twice — inside §03 and FAQ)
 
 ```bash
 grep -n 'href="/context-build/"\|href="/scan/"\|href="/fractional/"\|href="/orchestration-build/"' src/routes/leaders/scan/+page.svelte
 ```
+
 Replace each to the `/leaders/<name>/` variant.
 
 - [ ] **Step 3: Replace hero block (lines ~57–97)**
 
 Replace the `<section style="background: linear-gradient(135deg, #FAFAF7 70%, rgba(13,107,99,0.04));">` and the inner radar SVG with:
+
 ```svelte
 <!-- Hero -->
 <Section background="dark" padding="xl">
@@ -1598,6 +1683,7 @@ Replace the `<section style="background: linear-gradient(135deg, #FAFAF7 70%, rg
 ```
 
 Also add imports at the top:
+
 ```svelte
 <script lang="ts">
 	import Button from '$lib/components/ui/Button.svelte';
@@ -1623,6 +1709,7 @@ Inside §01, the list renders numbered badges using `bg-primary text-white`. Cha
 - [ ] **Step 6: Convert §02 "What you get" card grid to `HairlineGrid`**
 
 Before:
+
 ```svelte
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto" use:reveal={{ stagger: true, staggerDelay: 100 }}>
 	{#each [...] as item}
@@ -1635,6 +1722,7 @@ Before:
 ```
 
 After:
+
 ```svelte
 <HairlineGrid cols={3} stagger staggerDelay={100}>
 	{#each [...] as item}
@@ -1651,18 +1739,19 @@ Keep the `each` array literal untouched — only the wrappers change.
 - [ ] **Step 7: Convert §03 "Most teams find the same gap" callout box**
 
 The inner `<div class="p-8 bg-warm-white rounded-2xl border border-charcoal/10">` becomes:
+
 ```svelte
 <Callout variant="rule-left">
 	<p class="font-serif text-lg text-muted leading-[1.65] mb-4">
-		No shared context flowing into AI interactions. No coordination between the tools and how
-		the team actually ships. Individual engineers are faster; the team isn't.
+		No shared context flowing into AI interactions. No coordination between the tools and how the
+		team actually ships. Individual engineers are faster; the team isn't.
 	</p>
 	<p class="font-serif text-lg text-muted leading-[1.65]">
 		When that's what the Scan surfaces, I'll tell you exactly what a <a
 			href="/leaders/context-build/"
 			class="text-accent hover:underline">Context Build</a
-		> would address and what it wouldn't — so you can decide whether to build it in-house or with
-		me. Plenty of teams take the quick wins and run. There's no obligation.
+		> would address and what it wouldn't — so you can decide whether to build it in-house or with me.
+		Plenty of teams take the quick wins and run. There's no obligation.
 	</p>
 </Callout>
 ```
@@ -1696,9 +1785,7 @@ The `<table>` has `<thead>` with `bg-primary text-white` — change to `bg-ink t
 		</tbody>
 	</table>
 </div>
-<p class="text-center text-subtle text-sm mt-4">
-	Fixed price, no surprises. 48-hour turnaround.
-</p>
+<p class="text-center text-subtle text-sm mt-4">Fixed price, no surprises. 48-hour turnaround.</p>
 ```
 
 - [ ] **Step 9: Convert FAQ (§05) — plain `border-b border-rule`, no bg/rounded wrappers**
@@ -1708,22 +1795,30 @@ Per pattern established in Task 17 Step 9. For each `<details class="group p-6 b
 - [ ] **Step 10: Update the "journey nudge" block at the bottom**
 
 Before:
+
 ```svelte
 <div class="border-t border-charcoal/8 py-8">
 	<div class="max-w-6xl mx-auto px-6 lg:px-8 text-center">
 		<p class="text-sm text-charcoal/60">
-			Next in the journey: <a href="/context-build/" class="text-primary hover:underline font-medium">Context Build &rarr;</a>
+			Next in the journey: <a
+				href="/context-build/"
+				class="text-primary hover:underline font-medium">Context Build &rarr;</a
+			>
 		</p>
 	</div>
 </div>
 ```
 
 After:
+
 ```svelte
 <div class="border-t border-rule py-8">
 	<div class="max-w-6xl mx-auto px-6 lg:px-8 text-center">
 		<p class="text-sm text-subtle">
-			Next in the journey: <a href="/leaders/context-build/" class="text-accent hover:underline font-medium">Context Build &rarr;</a>
+			Next in the journey: <a
+				href="/leaders/context-build/"
+				class="text-accent hover:underline font-medium">Context Build &rarr;</a
+			>
 		</p>
 	</div>
 </div>
@@ -1732,10 +1827,12 @@ After:
 - [ ] **Step 11: Final grep + type-check**
 
 Run:
+
 ```bash
 grep -En "primary|copper|warm-white|warm-gray|stone|text-charcoal|border-charcoal" src/routes/leaders/scan/+page.svelte
 npx svelte-check --threshold error --workspace src/routes/leaders/scan/+page.svelte 2>&1 | tail -5
 ```
+
 Expected: no grep output, no svelte-check errors.
 
 - [ ] **Step 12: Commit**
@@ -1761,6 +1858,7 @@ EOF
 ### Task 19: Move `/orchestration-build` → `/leaders/orchestration-build/` and migrate
 
 **Files:**
+
 - Create: `src/routes/leaders/orchestration-build/+page.svelte`
 - Delete: `src/routes/orchestration-build/+page.svelte`
 
@@ -1777,9 +1875,11 @@ rmdir src/routes/orchestration-build
 - [ ] **Step 2: Update `<svelte:head>` canonical and OG URLs**
 
 Replace every `domeworks.tech/orchestration-build/` → `domeworks.tech/leaders/orchestration-build/`. Verify:
+
 ```bash
 grep -cn "domeworks.tech/orchestration-build/" src/routes/leaders/orchestration-build/+page.svelte
 ```
+
 Expected after edits: `0`.
 
 - [ ] **Step 3: Replace the script block imports at the top with**
@@ -1801,6 +1901,7 @@ Expected after edits: `0`.
 - [ ] **Step 4: Replace the hero block (the `<section ... style="background: linear-gradient(...)">` and its inline decorative SVG)**
 
 Full replacement:
+
 ```svelte
 <!-- Hero -->
 <Section background="dark" padding="xl">
@@ -1847,6 +1948,7 @@ For each `<details class="group p-6 bg-stone rounded-xl border border-charcoal/1
 ```bash
 grep -n 'href="/scan/"\|href="/context-build/"\|href="/fractional/"\|href="/assessment/"' src/routes/leaders/orchestration-build/+page.svelte
 ```
+
 Replace each `/<slug>/` with `/leaders/<slug>/`.
 
 - [ ] **Step 10: Final grep + type-check + commit**
@@ -1857,6 +1959,7 @@ npx svelte-check --threshold error --workspace src/routes/leaders/orchestration-
 ```
 
 Then:
+
 ```bash
 git add src/routes/leaders/orchestration-build
 git rm -r src/routes/orchestration-build 2>/dev/null || true
@@ -1878,6 +1981,7 @@ EOF
 ### Task 20: Move `/assessment` → `/leaders/` (hub) and migrate
 
 **Files:**
+
 - Create: `src/routes/leaders/+page.svelte`
 - Delete: `src/routes/assessment/+page.svelte`
 
@@ -1894,9 +1998,11 @@ rmdir src/routes/assessment
 - [ ] **Step 2: Update `<svelte:head>` URLs**
 
 Change every `domeworks.tech/assessment/` → `domeworks.tech/leaders/`. Also update the `<title>` to `AI Assessment for Leaders | DomeWorks` (explicit audience signal in title). Verify:
+
 ```bash
 grep -cn "domeworks.tech/assessment/" src/routes/leaders/+page.svelte
 ```
+
 Expected: `0`.
 
 - [ ] **Step 3: Apply the same palette/pattern migration as Task 18**
@@ -1911,7 +2017,8 @@ Add imports for `NumberedSection`, `Eyebrow`, `HairlineGrid`, `Callout`. Replace
 			class="mt-4 font-sans font-semibold text-paper leading-[1.02] tracking-[-0.035em]"
 			style="font-size: clamp(2.5rem, 7vw, 4.5rem);"
 		>
-			Find out what's actually happening with AI on your team<span class="text-accent-light">.</span>
+			Find out what's actually happening with AI on your team<span class="text-accent-light">.</span
+			>
 			Then fix it<span class="text-accent-light">.</span>
 		</h1>
 		<p class="mt-6 font-serif text-lg text-paper/80 leading-[1.65] max-w-2xl">
@@ -1928,6 +2035,7 @@ Add imports for `NumberedSection`, `Eyebrow`, `HairlineGrid`, `Callout`. Replace
 Note: this page does not use `JourneyBar` — `/leaders/` is the hub, not a journey step. Do NOT import JourneyBar.
 
 Then apply the standard pattern to §01–§05:
+
 - §01 "Four things happen" step list → keep structure, swap `bg-primary` badges → `bg-accent text-paper`.
 - §02 "What you get" three-card grid → `HairlineGrid cols={3}`.
 - §03 "What happens next" callout → `Callout variant="rule-left"`.
@@ -1942,6 +2050,7 @@ npx svelte-check --threshold error --workspace src/routes/leaders/+page.svelte 2
 ```
 
 Then:
+
 ```bash
 git add src/routes/leaders/+page.svelte
 git rm -r src/routes/assessment 2>/dev/null || true
@@ -1962,6 +2071,7 @@ EOF
 ### Task 21: Move `/context-build` → `/leaders/context-build/` and migrate
 
 **Files:**
+
 - Create: `src/routes/leaders/context-build/+page.svelte`
 - Delete: `src/routes/context-build/+page.svelte`
 
@@ -2026,6 +2136,7 @@ Five occurrences. Title and body preserved; only the wrapper changes.
 - [ ] **Step 6: Migrate the §02 "What you get" sub-section (largest block — lines ~118–333)**
 
 This is the detailed deliverables block and contains multiple nested cards/callouts. Do not rewrite structure — only apply palette + component swaps:
+
 - Outer card grids → `HairlineGrid` with `cols={N}` matching existing grid-cols class.
 - `<div class="p-8 bg-stone rounded-2xl border border-charcoal/10">` → `<Callout variant="accent">` (interior content converts to ink/muted tokens).
 - `<div class="p-8 bg-warm-white rounded-2xl border border-charcoal/10">` → `<Callout variant="rule-left">` with `font-serif text-muted` on body prose.
@@ -2040,6 +2151,7 @@ For each `<details class="group p-6 bg-... rounded-... border ...">`, change to 
 ```bash
 grep -n 'href="/scan/"\|href="/fractional/"\|href="/orchestration-build/"\|href="/assessment/"' src/routes/leaders/context-build/+page.svelte
 ```
+
 Replace each `/<slug>/` with `/leaders/<slug>/`.
 
 - [ ] **Step 9: Final grep + type-check + commit**
@@ -2050,6 +2162,7 @@ npx svelte-check --threshold error --workspace src/routes/leaders/context-build/
 ```
 
 Then:
+
 ```bash
 git add src/routes/leaders/context-build
 git rm -r src/routes/context-build 2>/dev/null || true
@@ -2074,6 +2187,7 @@ EOF
 - [ ] **Step 1: Add imports**
 
 Change imports at top to:
+
 ```svelte
 <script lang="ts">
 	import Section from '$lib/components/layout/Section.svelte';
@@ -2112,6 +2226,7 @@ Change imports at top to:
 - [ ] **Step 3: Convert three body `Section` blocks → `TitledSection` (no index — about is a margin page)**
 
 For each of `§01 Why DomeWorks exists`, `§02 How I work`, `§03 Current engagement`:
+
 - Remove inline `<p class="text-xs font-medium tracking-widest text-warm-gray uppercase mb-4">01</p>` and `<h2 class="font-serif text-3xl font-normal text-charcoal mb-8">...</h2>` — the title prop now renders these.
 - Change `<Section background="muted" padding="lg">` → `<TitledSection background="muted" title="Why DomeWorks exists">` (etc.).
 - Inside body, `text-charcoal` → `text-ink`, `text-charcoal/70` → `text-muted font-serif`, `border-l-2 border-copper` → `rule-left-accent` (use `Callout variant="rule-left"`), `text-primary hover:underline` → `text-accent hover:underline`.
@@ -2203,22 +2318,40 @@ Replace the entire `<section class="bg-warm-white ...">` (lines 32–115) with:
 					Prefer email? Tell me about your team and I'll get back within 24 hours.
 				</p>
 				<div>
-					<Button href={generateGeneralMailto()} variant="secondary" size="lg">Send an email</Button>
+					<Button href={generateGeneralMailto()} variant="secondary" size="lg">Send an email</Button
+					>
 				</div>
 			</div>
 		</HairlineGrid>
 
-		<div class="mt-12 max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-3 text-sm text-muted">
-			<div class="flex sm:flex-col items-center sm:items-start gap-3 sm:gap-1.5 text-center sm:text-left">
-				<span class="flex-shrink-0 w-7 h-7 rounded-full bg-accent/10 flex items-center justify-center text-xs font-medium text-accent">1</span>
+		<div
+			class="mt-12 max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-3 text-sm text-muted"
+		>
+			<div
+				class="flex sm:flex-col items-center sm:items-start gap-3 sm:gap-1.5 text-center sm:text-left"
+			>
+				<span
+					class="flex-shrink-0 w-7 h-7 rounded-full bg-accent/10 flex items-center justify-center text-xs font-medium text-accent"
+					>1</span
+				>
 				<span>You tell me about your team</span>
 			</div>
-			<div class="flex sm:flex-col items-center sm:items-start gap-3 sm:gap-1.5 text-center sm:text-left">
-				<span class="flex-shrink-0 w-7 h-7 rounded-full bg-accent/10 flex items-center justify-center text-xs font-medium text-accent">2</span>
+			<div
+				class="flex sm:flex-col items-center sm:items-start gap-3 sm:gap-1.5 text-center sm:text-left"
+			>
+				<span
+					class="flex-shrink-0 w-7 h-7 rounded-full bg-accent/10 flex items-center justify-center text-xs font-medium text-accent"
+					>2</span
+				>
 				<span>I share 2–3 observations</span>
 			</div>
-			<div class="flex sm:flex-col items-center sm:items-start gap-3 sm:gap-1.5 text-center sm:text-left">
-				<span class="flex-shrink-0 w-7 h-7 rounded-full bg-accent/10 flex items-center justify-center text-xs font-medium text-accent">3</span>
+			<div
+				class="flex sm:flex-col items-center sm:items-start gap-3 sm:gap-1.5 text-center sm:text-left"
+			>
+				<span
+					class="flex-shrink-0 w-7 h-7 rounded-full bg-accent/10 flex items-center justify-center text-xs font-medium text-accent"
+					>3</span
+				>
 				<span>We figure out if there's a fit</span>
 			</div>
 		</div>
@@ -2227,12 +2360,15 @@ Replace the entire `<section class="bg-warm-white ...">` (lines 32–115) with:
 			<Callout variant="rule-left">
 				<h2 class="text-lg font-medium text-ink mb-4">What to expect</h2>
 				<p class="font-serif text-muted leading-[1.65]">
-					On the call, I'll ask about your team size, what AI tools you're using, and where things are
-					stuck. I'll share 2–3 observations about where you might have leverage. If there's a fit,
-					I'll recommend where to start — usually an <a href="/leaders/scan/" class="text-accent hover:underline">AI Scan</a>
+					On the call, I'll ask about your team size, what AI tools you're using, and where things
+					are stuck. I'll share 2–3 observations about where you might have leverage. If there's a
+					fit, I'll recommend where to start — usually an <a
+						href="/leaders/scan/"
+						class="text-accent hover:underline">AI Scan</a
+					>
 					($2,500) if you need a clear picture first, or a
-					<a href="/leaders/context-build/" class="text-accent hover:underline">Context Build</a> ($10,000+) if
-					the gaps are already clear. If there isn't a fit, I'll tell you that too.
+					<a href="/leaders/context-build/" class="text-accent hover:underline">Context Build</a> ($10,000+)
+					if the gaps are already clear. If there isn't a fit, I'll tell you that too.
 				</p>
 			</Callout>
 		</div>
@@ -2265,6 +2401,7 @@ EOF
 ### Task 24: Token sweep on redirect stubs
 
 **Files:**
+
 - Modify `src/routes/ai-audit/+page.svelte`
 - Modify `src/routes/ai-tools-assessment/+page.svelte`
 
@@ -2273,6 +2410,7 @@ These are redirect stubs — fallback copy rarely seen. Five-minute token sweep.
 - [ ] **Step 1: In `src/routes/ai-audit/+page.svelte`, replace legacy tokens**
 
 In the fallback copy (the `<main>` block at lines 17–28), change:
+
 - `text-warm-gray` → `text-subtle`
 - `text-charcoal` → `text-ink`
 - `text-charcoal/70` → `text-muted`
@@ -2287,6 +2425,7 @@ Identical copy structure. Same four token swaps.
 ```bash
 grep -En "primary|copper|warm-white|warm-gray|stone|text-charcoal" src/routes/ai-audit/+page.svelte src/routes/ai-tools-assessment/+page.svelte
 ```
+
 Expected: no output.
 
 ```bash
@@ -2307,6 +2446,7 @@ Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>"
 ```bash
 yarn build 2>&1 | tail -20
 ```
+
 Expected: **build succeeds**. Every page prerenders without error. This is the signal Phase 3+4 is complete.
 
 - [ ] **Step 2: Run type check**
@@ -2314,6 +2454,7 @@ Expected: **build succeeds**. Every page prerenders without error. This is the s
 ```bash
 yarn check 2>&1 | tail -20
 ```
+
 Expected: no errors.
 
 - [ ] **Step 3: Run lint**
@@ -2321,6 +2462,7 @@ Expected: no errors.
 ```bash
 yarn lint 2>&1 | tail -20
 ```
+
 Expected: no errors (warnings acceptable).
 
 - [ ] **Step 4: Run Playwright tests and repair breakages**
@@ -2328,7 +2470,9 @@ Expected: no errors (warnings acceptable).
 ```bash
 yarn test 2>&1 | tail -60
 ```
+
 Expected breakages: tests that assert legacy URLs (`/scan/`, `/context-build/`, etc.) or legacy class names (`text-primary`, `bg-warm-white`, etc.). For each breakage:
+
 - If the test asserts a URL path that moved, update the test to `/leaders/...`.
 - If the test asserts a class name that changed, update to the new-palette equivalent.
 - If the test captures a screenshot, re-record baseline with `yarn test --update-snapshots` **only after manual review** confirms the visual change is intended.
@@ -2340,6 +2484,7 @@ Do not stop until `yarn test` passes green.
 ```bash
 grep -rEn "text-primary|bg-primary|text-copper|bg-copper|border-copper|bg-warm-white|text-warm-white|text-warm-gray|bg-warm-gray|bg-stone|border-stone|text-charcoal|border-charcoal" src/ --include="*.svelte" --include="*.css"
 ```
+
 Expected: no output, or only the homepage (`src/routes/+page.svelte`) which will be addressed in Phase 5.
 
 If other files show up, migrate them in a follow-up commit within this task.
@@ -2347,6 +2492,7 @@ If other files show up, migrate them in a follow-up commit within this task.
 - [ ] **Step 6: Manual visual review at each responsive breakpoint**
 
 In the browser, open each migrated page and scroll at widths 360px, 640px, 768px, 1024px, 1280px:
+
 - `https://domeworks.localhost:1355/leaders/`
 - `https://domeworks.localhost:1355/leaders/scan/`
 - `https://domeworks.localhost:1355/leaders/context-build/`
@@ -2356,6 +2502,7 @@ In the browser, open each migrated page and scroll at widths 360px, 640px, 768px
 - `https://domeworks.localhost:1355/contact/`
 
 Verify for each:
+
 - Accent color appears ≤2× per viewport
 - Serif for body copy, sans for UI/eyebrows/CTAs
 - Hairline grids render with interior rules visible
@@ -2388,6 +2535,7 @@ Single-page, multi-commit work on `src/routes/+page.svelte` and the homepage-spe
 - [ ] **Step 1: Full-file token swap**
 
 Do NOT change any layout yet — only palette tokens. Targeted replacements:
+
 - `text-copper` → `text-accent-light` (on dark hero) or `text-accent` (on paper/muted)
 - `text-primary` → `text-accent`
 - `bg-primary` → `bg-accent`
@@ -2408,9 +2556,11 @@ Do NOT change any layout yet — only palette tokens. Targeted replacements:
 - `hover:border-copper/40` → `hover:border-accent/40`
 
 Run the full grep after editing:
+
 ```bash
 grep -En "primary|copper|warm-white|warm-gray|stone|text-charcoal|border-charcoal" src/routes/+page.svelte
 ```
+
 Expected: no output.
 
 - [ ] **Step 2: Build + commit**
@@ -2432,6 +2582,7 @@ Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>"
 - [ ] **Step 1: Delete decorative hero divs from the markup (lines ~107–129)**
 
 Remove these divs from `src/routes/+page.svelte`:
+
 ```svelte
 <!-- Architectural grid background -->
 <div class="absolute inset-0 hero-grid" aria-hidden="true" role="presentation"></div>
@@ -2440,10 +2591,18 @@ Remove these divs from `src/routes/+page.svelte`:
 <!-- Grain texture -->
 <div class="absolute inset-0 texture-grain" aria-hidden="true" role="presentation"></div>
 <!-- Horizontal architectural rules -->
-<div class="absolute inset-0 pointer-events-none hero-rules" aria-hidden="true" role="presentation"></div>
+<div
+	class="absolute inset-0 pointer-events-none hero-rules"
+	aria-hidden="true"
+	role="presentation"
+></div>
 
 <!-- Monogram as architectural column, anchored to right edge, structurally integrated -->
-<div class="absolute inset-0 pointer-events-none hero-monogram-container" aria-hidden="true" role="presentation">
+<div
+	class="absolute inset-0 pointer-events-none hero-monogram-container"
+	aria-hidden="true"
+	role="presentation"
+>
 	<span class="hero-monogram font-serif select-none">D</span>
 </div>
 
@@ -2456,12 +2615,15 @@ Remove these divs from `src/routes/+page.svelte`:
 The CSS classes `.hero-grid`, `.hero-glow`, `.hero-rules`, `.hero-monogram-container`, `.hero-monogram`, `.hero-accent-line`, `.texture-grain`, `.ambient-warm`, `.grid-overlay` may be defined in `src/tailwind.css` (verify with `grep`). For each that exists there, delete its rule block. If the rules are instead defined via an `@layer utilities` in a component `<style>` block in `+page.svelte`, delete them there.
 
 Run:
+
 ```bash
 grep -En "\.hero-grid|\.hero-glow|\.hero-rules|\.hero-monogram|\.hero-accent-line|\.texture-grain|\.ambient-warm|\.grid-overlay" src/tailwind.css
 ```
+
 Delete any matching rule blocks.
 
 Also delete the lines in `src/tailwind.css` that relate to these utilities:
+
 - The `.grid-overlay` block at the top (lines ~36-39)
 - Any `.hero-*` or `.ambient-*` or `.texture-*` blocks
 
@@ -2488,12 +2650,13 @@ Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>"
 - [ ] **Step 1: Add imports for patterns**
 
 At the top of the `<script>` block, add:
+
 ```svelte
-import NumberedSection from '$lib/components/patterns/NumberedSection.svelte';
-import HairlineGrid from '$lib/components/patterns/HairlineGrid.svelte';
-import Eyebrow from '$lib/components/patterns/Eyebrow.svelte';
-import Callout from '$lib/components/patterns/Callout.svelte';
-import PullQuote from '$lib/components/patterns/PullQuote.svelte';
+import NumberedSection from '$lib/components/patterns/NumberedSection.svelte'; import HairlineGrid
+from '$lib/components/patterns/HairlineGrid.svelte'; import Eyebrow from
+'$lib/components/patterns/Eyebrow.svelte'; import Callout from
+'$lib/components/patterns/Callout.svelte'; import PullQuote from
+'$lib/components/patterns/PullQuote.svelte';
 ```
 
 - [ ] **Step 2: Replace the two-tracks picker section (lines ~227–308)**
@@ -2520,8 +2683,8 @@ Replace the whole `<Section eyebrow="Choose your track" title="...">` block with
 						You run a services business.
 					</h3>
 					<p class="mt-4 font-serif text-muted leading-[1.65]">
-						$3M to $10M in revenue, 10 to 50 people. AI tools keep coming, admin keeps piling up, and
-						you want to know what's actually worth your attention and what to leave alone.
+						$3M to $10M in revenue, 10 to 50 people. AI tools keep coming, admin keeps piling up,
+						and you want to know what's actually worth your attention and what to leave alone.
 					</p>
 					<p class="mt-4 font-serif text-sm text-subtle">
 						Accounting, legal, medical and dental, trades, real estate, agencies.
@@ -2532,7 +2695,9 @@ Replace the whole `<Section eyebrow="Choose your track" title="...">` block with
 					<span class="text-accent text-lg group-hover:translate-x-1 transition-transform">→</span>
 				</div>
 				<p class="mt-3 text-xs text-subtle">
-					Or start with the <span class="text-accent underline underline-offset-2">2-minute AI Readiness Quiz</span>
+					Or start with the <span class="text-accent underline underline-offset-2"
+						>2-minute AI Readiness Quiz</span
+					>
 				</p>
 			</a>
 
@@ -2547,8 +2712,9 @@ Replace the whole `<Section eyebrow="Choose your track" title="...">` block with
 						You lead a team inside a larger org.
 					</h3>
 					<p class="mt-4 font-serif text-muted leading-[1.65]">
-						50 to 500 people. Your team already uses AI tools. Individual productivity is up. Team-level
-						throughput is flat. You need the infrastructure between the tools, not another tool.
+						50 to 500 people. Your team already uses AI tools. Individual productivity is up.
+						Team-level throughput is flat. You need the infrastructure between the tools, not
+						another tool.
 					</p>
 					<p class="mt-4 font-serif text-sm text-subtle">
 						AI Scan, Context Build, Orchestration, Fractional AI Leadership.
@@ -2568,7 +2734,9 @@ Replace the whole `<Section eyebrow="Choose your track" title="...">` block with
 	<div class="max-w-4xl mx-auto mt-8 text-center">
 		<p class="text-sm text-subtle">
 			Not sure which applies? The sections below go deeper on the leaders track. If you're
-			owner-operator, the <a href="/smb/" class="text-accent underline underline-offset-2">SMB Assessment page</a> is the better read.
+			owner-operator, the <a href="/smb/" class="text-accent underline underline-offset-2"
+				>SMB Assessment page</a
+			> is the better read.
 		</p>
 	</div>
 </Section>
@@ -2579,6 +2747,7 @@ Note: Track B href changed from `/scan/` to `/leaders/`, and the Track B kicker 
 - [ ] **Step 3: Swap numbered `<Section eyebrow="01/02/03/04">` to `<NumberedSection>`**
 
 For §01 "Who this is for", §02 "The problem isn't the tools", §03 "The AI stack", §04 "How it works":
+
 - Change `<Section background="..." padding="..." eyebrow="01" title="Who this is for">` → `<NumberedSection index="01" background="..." title="Who this is for">`.
 - Four occurrences.
 
@@ -2587,7 +2756,10 @@ For §01 "Who this is for", §02 "The problem isn't the tools", §03 "The AI sta
 The bullet list currently leads with `You're a VP Engineering, CTO, or technical founder — 50 to 500 engineers, Series B or C, AI tooling already rolled out`. Change to:
 
 ```svelte
-<span>You're a <strong class="text-ink">VP, director, or senior leader</strong> — running a team of 50 to 500 inside a larger org, engineering or otherwise, with AI tooling already rolled out</span>
+<span
+	>You're a <strong class="text-ink">VP, director, or senior leader</strong> — running a team of 50 to
+	500 inside a larger org, engineering or otherwise, with AI tooling already rolled out</span
+>
 ```
 
 This broadens the audience signal in-line with the `/leaders/` URL and memory note about AICPA-type clients.
@@ -2618,10 +2790,13 @@ Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>"
 Locate where §03 "The AI stack" (`<NumberedSection index="03" ...>...</NumberedSection>`) closes and §04 "How it works" (`<NumberedSection index="04" id="how-it-works" ...>`) opens.
 
 Insert between them:
+
 ```svelte
-<PullQuote attribution="The coordination layer — the thing managers and meetings used to be — is what now has to be built.">
-	Individual productivity is up. Team-level throughput is flat — because the handoffs between
-	people haven't changed.
+<PullQuote
+	attribution="The coordination layer — the thing managers and meetings used to be — is what now has to be built."
+>
+	Individual productivity is up. Team-level throughput is flat — because the handoffs between people
+	haven't changed.
 </PullQuote>
 ```
 
@@ -2702,7 +2877,10 @@ Replace the existing `<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4
 		<p class="mt-4 text-sm text-accent font-medium group-hover:underline">Learn more →</p>
 	</a>
 
-	<a href="/leaders/context-build/" class="cell group flex flex-col hover:bg-paper-alt transition-colors">
+	<a
+		href="/leaders/context-build/"
+		class="cell group flex flex-col hover:bg-paper-alt transition-colors"
+	>
 		<div class="rule-left-accent">
 			<Eyebrow label="Deep dive" tone="accent" />
 			<h3 class="mt-3 text-xl font-medium text-ink mb-2">Context Build</h3>
@@ -2717,7 +2895,10 @@ Replace the existing `<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4
 		<p class="mt-4 text-sm text-accent font-medium group-hover:underline">Learn more →</p>
 	</a>
 
-	<a href="/leaders/orchestration-build/" class="cell group flex flex-col hover:bg-paper-alt transition-colors">
+	<a
+		href="/leaders/orchestration-build/"
+		class="cell group flex flex-col hover:bg-paper-alt transition-colors"
+	>
 		<div>
 			<h3 class="text-xl font-medium text-ink mb-2">Orchestration Build</h3>
 			<p class="text-2xl font-serif text-ink mb-4">4–12 weeks</p>
@@ -2730,7 +2911,10 @@ Replace the existing `<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4
 		<p class="mt-4 text-sm text-accent font-medium group-hover:underline">Learn more →</p>
 	</a>
 
-	<a href="/leaders/fractional/" class="cell group flex flex-col hover:bg-paper-alt transition-colors">
+	<a
+		href="/leaders/fractional/"
+		class="cell group flex flex-col hover:bg-paper-alt transition-colors"
+	>
 		<div>
 			<Eyebrow label="What comes after" tone="subtle" />
 			<h3 class="mt-3 text-xl font-medium text-ink mb-2">Fractional AI Leadership</h3>
@@ -2797,11 +2981,13 @@ The headline's `<em>` tag with custom italic styling can stay — italic serif o
 The current hero has an empty `.hero-eyebrow-row` (eyebrow removed per council review). Restore an `Eyebrow`:
 
 Before (the empty `.hero-eyebrow-row` div):
+
 ```svelte
 <div class="hero-eyebrow-row"></div>
 ```
 
 After:
+
 ```svelte
 <div class="hero-eyebrow-row">
 	<Eyebrow label="DomeWorks · Intelligence Infrastructure" tone="accent-light" />
@@ -2822,6 +3008,7 @@ The skip link at line 97 uses `focus:bg-primary` — already swapped in Task 26.
 grep -En "primary|copper|warm-white|warm-gray|stone|text-charcoal|border-charcoal|\.hero-eyebrow-index" src/routes/+page.svelte src/tailwind.css
 npx svelte-check --threshold error --workspace src/routes/+page.svelte 2>&1 | tail -5
 ```
+
 Expected: no output from grep; no svelte-check errors.
 
 - [ ] **Step 6: Build + commit**
@@ -2855,6 +3042,7 @@ yarn preview &
 - [ ] **Step 2: Visual verification at 360 / 640 / 768 / 1024 / 1280 px**
 
 For each width:
+
 - Hero renders on `bg-ink` with `accent-light` eyebrow, sans-serif semibold headline, serif lede, primary CTA + quiet secondary link.
 - Two-tracks picker shows two hairline-grid cells with left-accent rules, Track A → `/smb/`, Track B → `/leaders/`.
 - §01 has numbered eyebrow `01`, left-aligned title.
@@ -2868,6 +3056,7 @@ Accept: accent color ≤2× per viewport (allowed exceptions: the two-tracks pic
 - [ ] **Step 3: Verify with `prefers-reduced-motion`**
 
 In devtools, emulate `prefers-reduced-motion: reduce`. Confirm:
+
 - `reveal` action short-circuits — content paints in final state immediately.
 - `.stack-build` short-circuits (already handled in `tailwind.css`).
 - No stray animations.
@@ -2889,6 +3078,7 @@ Phase 5 is complete. Proceed to Phase 6 cleanup.
 ```bash
 grep -rEn "text-charcoal|bg-charcoal|border-charcoal|charcoal" src/ --include="*.svelte" --include="*.css" --include="*.ts" --include="*.js"
 ```
+
 If zero results, remove `--color-charcoal: #1a1a1a;` from `src/tailwind.css`.
 
 - [ ] **Step 2: Check for any `/dev-patterns/` route and remove**
@@ -2896,7 +3086,9 @@ If zero results, remove `--color-charcoal: #1a1a1a;` from `src/tailwind.css`.
 ```bash
 ls src/routes/dev-patterns 2>&1
 ```
+
 If present, delete:
+
 ```bash
 git rm -r src/routes/dev-patterns
 ```
@@ -2906,6 +3098,7 @@ git rm -r src/routes/dev-patterns
 ```bash
 grep -rEn "primary|copper|warm-white|warm-gray|stone|ambient-warm|texture-grain" src/ --include="*.svelte" --include="*.css" --include="*.ts" --include="*.js" | grep -v "font-primary"
 ```
+
 Review each hit. Expected: only `--color-primary` / `--color-primary-hover` etc. already removed. Real code references should be zero. `font-primary` is a false positive and ignored.
 
 - [ ] **Step 4: Build + commit (if any deletions occurred)**
@@ -2933,9 +3126,11 @@ Same procedure as Task 1. Save to `test-results/smb-post-migration-baseline.png`
 - [ ] **Step 2: Replace inline `<p class="text-[0.6875rem] font-semibold tracking-[0.14em] ...">` eyebrows with `<Eyebrow>`**
 
 Grep for the eyebrow pattern:
+
 ```bash
 grep -n "text-\[0.6875rem\]" src/lib/components/smb/AssessmentPage.svelte
 ```
+
 For each occurrence, replace with the appropriate `<Eyebrow label="..." tone="..." />`.
 
 - [ ] **Step 3: Replace `.hairline-grid grid ...` blocks with `<HairlineGrid>`**
@@ -2943,6 +3138,7 @@ For each occurrence, replace with the appropriate `<Eyebrow label="..." tone="..
 ```bash
 grep -n "hairline-grid grid" src/lib/components/smb/AssessmentPage.svelte
 ```
+
 Convert each.
 
 - [ ] **Step 4: Visual diff against baseline**

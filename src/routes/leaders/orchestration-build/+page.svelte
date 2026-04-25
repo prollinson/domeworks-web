@@ -1,47 +1,15 @@
 <script lang="ts">
 	import Button from '$lib/components/ui/Button.svelte';
 	import Section from '$lib/components/layout/Section.svelte';
+	import SEO from '$lib/components/SEO.svelte';
 	import NumberedSection from '$lib/components/patterns/NumberedSection.svelte';
 	import Eyebrow from '$lib/components/patterns/Eyebrow.svelte';
 	import HairlineGrid from '$lib/components/patterns/HairlineGrid.svelte';
 	import Callout from '$lib/components/patterns/Callout.svelte';
-	import JourneyBar from '$lib/components/ui/JourneyBar.svelte';
 	import { reveal } from '$lib/actions/reveal';
 	import { getBookCallUrl } from '$lib/utils/mailto';
-</script>
 
-<svelte:head>
-	<title>Orchestration Build: AI Coordination for Engineering Teams | DomeWorks</title>
-	<meta
-		name="description"
-		content="Build the agent coordination layer: multi-agent workflows, quality gates, and output routing that replace human coordination overhead. Milestone-based, scoped from Context Build assessment."
-	/>
-	<link rel="canonical" href="https://domeworks.tech/leaders/orchestration-build/" />
-
-	<meta property="og:type" content="website" />
-	<meta property="og:site_name" content="DomeWorks" />
-	<meta property="og:url" content="https://domeworks.tech/leaders/orchestration-build/" />
-	<meta
-		property="og:title"
-		content="Orchestration Build: AI Coordination for Engineering Teams | DomeWorks"
-	/>
-	<meta
-		property="og:description"
-		content="Build the agent coordination layer: multi-agent workflows, quality gates, and output routing that replace human coordination overhead."
-	/>
-	<meta property="og:image" content="https://domeworks.tech/og-image.png" />
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta
-		name="twitter:title"
-		content="Orchestration Build: AI Coordination for Engineering Teams | DomeWorks"
-	/>
-	<meta
-		name="twitter:description"
-		content="Build the agent coordination layer: multi-agent workflows, quality gates, and output routing that replace human coordination overhead."
-	/>
-	<meta name="twitter:image" content="https://domeworks.tech/og-image.png" />
-
-	{@html `<script type="application/ld+json">${JSON.stringify({
+	const orchestrationSchema = {
 		'@context': 'https://schema.org',
 		'@type': 'Service',
 		name: 'Orchestration Build',
@@ -49,13 +17,18 @@
 		description:
 			'Milestone-based engagement building the agent coordination layer: multi-agent workflows, quality gates, and output routing. Scoped from Context Build assessment.',
 		dateModified: '2026-04'
-	})}</script>`}
-</svelte:head>
+	};
+</script>
+
+<SEO
+	title="Orchestration Build: AI Coordination for Engineering Teams | DomeWorks"
+	description="Build the agent coordination layer: multi-agent workflows, quality gates, and output routing that replace human coordination overhead. Milestone-based, scoped from Context Build assessment."
+	schema={orchestrationSchema}
+/>
 
 <!-- Hero -->
-<Section background="dark" padding="xl">
+<Section background="dark" padding="xl" hero>
 	<div class="max-w-3xl">
-		<div class="mb-6"><JourneyBar current="orchestration-build" /></div>
 		<Eyebrow label="Orchestration Build" tone="accent-light" />
 		<h1
 			class="mt-4 font-sans font-semibold text-paper leading-[1.02] tracking-[-0.035em]"
@@ -101,7 +74,7 @@
 <!-- Outcomes -->
 <NumberedSection index="02" background="white" title="What changes">
 	<div class="max-w-3xl mx-auto space-y-4" use:reveal={{ stagger: true, staggerDelay: 100 }}>
-		{#each [{ before: 'Status meetings to coordinate across teams', after: 'Agent coordination routes work and routes outputs automatically' }, { before: 'Manual review of every AI-generated output', after: 'Quality gates validate before humans see it' }, { before: 'Engineers prompting individually with no shared context', after: 'Coordinated agent workflows with full organizational context' }, { before: 'Managers aggregating context from multiple teams', after: 'Systems that distribute context automatically' }] as row}
+		{#each [{ before: 'Status meetings to coordinate across teams', after: 'Agent coordination routes work and routes outputs automatically' }, { before: 'Manual review of every AI-generated output', after: 'Quality gates validate before humans see it' }, { before: 'Engineers prompting individually with no shared context', after: 'Coordinated agent workflows with full organizational context' }, { before: 'Managers aggregating context from multiple teams', after: 'Systems that distribute context automatically' }] as row (row.before)}
 			<HairlineGrid cols={2}>
 				<div class="cell">
 					<p class="text-xs font-medium text-subtle uppercase tracking-widest mb-2">Before</p>

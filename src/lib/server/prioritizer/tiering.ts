@@ -112,10 +112,7 @@ export function scoreConfidence(
 	return floor;
 }
 
-export function scoreRisk(
-	candidate: PrioritizerCandidate,
-	context: PrioritizerContext
-): Level {
+export function scoreRisk(candidate: PrioritizerCandidate, context: PrioritizerContext): Level {
 	const tier = candidate.risk_signals?.governance_tier ?? context.guardrail_tier;
 	const piiPhi = candidate.risk_signals?.pii_phi_touch === true;
 	if (tier === 'strict' && piiPhi) return 'High';
@@ -124,12 +121,7 @@ export function scoreRisk(
 	return 'Low';
 }
 
-function decideTier(
-	impact: Level,
-	feasibility: Level,
-	confidence: Level,
-	risk: Level
-): Tier {
+function decideTier(impact: Level, feasibility: Level, confidence: Level, risk: Level): Tier {
 	if (impact === 'Low') return 'research';
 
 	if (impact === 'High') {
@@ -141,11 +133,7 @@ function decideTier(
 	}
 
 	// impact === 'Medium'
-	if (
-		feasibility === 'High' &&
-		confidence === 'High' &&
-		(risk === 'Low' || risk === 'Medium')
-	) {
+	if (feasibility === 'High' && confidence === 'High' && (risk === 'Low' || risk === 'Medium')) {
 		return 'foundational';
 	}
 	return 'strategic';

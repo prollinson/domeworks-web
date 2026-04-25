@@ -69,7 +69,7 @@
 						For leaders
 					</p>
 					<ul class="space-y-3">
-						{#each leadersLinks as link}
+						{#each leadersLinks as link (link.href)}
 							<li>
 								<a
 									href={link.href}
@@ -87,7 +87,7 @@
 						For SMBs
 					</p>
 					<ul class="space-y-3">
-						{#each smbLinks as link}
+						{#each smbLinks as link (link.href)}
 							<li>
 								<a
 									href={link.href}
@@ -101,11 +101,9 @@
 				</div>
 
 				<div>
-					<p class="text-xs font-semibold uppercase tracking-[0.14em] text-paper/60 mb-5">
-						Site
-					</p>
+					<p class="text-xs font-semibold uppercase tracking-[0.14em] text-paper/60 mb-5">Site</p>
 					<ul class="space-y-3 mb-6">
-						{#each siteLinks as link}
+						{#each siteLinks as link (link.href)}
 							<li>
 								<a
 									href={link.href}

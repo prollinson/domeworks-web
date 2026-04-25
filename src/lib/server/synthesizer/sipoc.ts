@@ -47,7 +47,7 @@ export function buildSipocSummary(input: SipocInput): SipocSummary {
 		inputs: inputs.length > 0 ? inputs : ['(not captured)'],
 		process,
 		outputs: outputs.length > 0 ? outputs : ['(not captured)'],
-		customers: customers.length > 0 ? customers : ['(not captured)'],
+		customers: customers.length > 0 ? customers : ['(not captured)']
 	};
 }
 

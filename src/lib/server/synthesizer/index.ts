@@ -12,10 +12,7 @@
  * output is identical to Week 5 output.
  */
 
-import type {
-	SynthesizerInput,
-	SynthesizerOutput
-} from '$lib/types/synthesizer';
+import type { SynthesizerInput, SynthesizerOutput } from '$lib/types/synthesizer';
 import type { LlmConfig } from '$lib/server/llm-gateway';
 import { rankPainAreas } from './pain-areas';
 import { extractWorkarounds, extractExceptionPatterns } from './workarounds';
@@ -42,7 +39,7 @@ export async function runSynthesizer(
 				inputs: [],
 				process: 'Stage 2 produced no extractable findings.',
 				outputs: [],
-				customers: [],
+				customers: []
 			},
 			pain_areas_ranked: [],
 			workaround_list: [],
@@ -51,10 +48,10 @@ export async function runSynthesizer(
 			handoff_brief: renderHandoffBrief({
 				input,
 				painAreas: [],
-				workarounds: [],
+				workarounds: []
 			}),
 			needs_human_review: true,
-			llm_status: 'unavailable',
+			llm_status: 'unavailable'
 		};
 	}
 
@@ -65,12 +62,12 @@ export async function runSynthesizer(
 		industry: input.industry,
 		callerEmail: input.callerEmail,
 		extractions,
-		painThemes: painAreas.map((p) => p.theme),
+		painThemes: painAreas.map((p) => p.theme)
 	});
 	const candidates = deriveCandidates({
 		painAreas,
 		workarounds,
-		stage1: input.stage1,
+		stage1: input.stage1
 	});
 
 	const handoffInput = { input, painAreas, workarounds };
@@ -101,7 +98,7 @@ export async function runSynthesizer(
 		candidate_opportunities: candidates,
 		handoff_brief: handoffBrief,
 		needs_human_review: needsReview,
-		llm_status: llmStatus,
+		llm_status: llmStatus
 	};
 }
 
@@ -113,13 +110,11 @@ export async function runSynthesizer(
 function stage1Contradiction(input: SynthesizerInput): boolean {
 	if (!input.stage1) return false;
 	const s1Broken = input.stage1.processHealth === 'Broken';
-	const stage2HasPain = input.structuredState.extractions.some(
-		(e) => !!e.pain_signal,
-	);
+	const stage2HasPain = input.structuredState.extractions.some((e) => !!e.pain_signal);
 	if (s1Broken && !stage2HasPain) return true;
 	if (!s1Broken && input.stage1.processHealth !== 'Unsure') {
 		const stage2Severe = input.structuredState.extractions.filter(
-			(e) => e.dimension === 'implication',
+			(e) => e.dimension === 'implication'
 		).length;
 		if (stage2Severe >= 3) return true;
 	}

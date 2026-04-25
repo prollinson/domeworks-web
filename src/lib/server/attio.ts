@@ -297,10 +297,7 @@ export async function updateStage2Record(
 	return lastError ?? { ok: false, errorClass: 'network', message: 'unknown failure' };
 }
 
-async function tryStage2Update(
-	config: AttioConfig,
-	args: AttioStage2Args
-): Promise<AttioResult> {
+async function tryStage2Update(config: AttioConfig, args: AttioStage2Args): Promise<AttioResult> {
 	const res = await attioFetch(
 		config,
 		'/objects/people/records?matching_attribute=email_addresses',

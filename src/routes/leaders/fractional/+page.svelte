@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Button from '$lib/components/ui/Button.svelte';
 	import Section from '$lib/components/layout/Section.svelte';
+	import SEO from '$lib/components/SEO.svelte';
 	import NumberedSection from '$lib/components/patterns/NumberedSection.svelte';
 	import TitledSection from '$lib/components/patterns/TitledSection.svelte';
 	import Eyebrow from '$lib/components/patterns/Eyebrow.svelte';
@@ -8,41 +9,8 @@
 	import Callout from '$lib/components/patterns/Callout.svelte';
 	import { reveal } from '$lib/actions/reveal';
 	import { getBookCallUrl } from '$lib/utils/mailto';
-	import JourneyBar from '$lib/components/ui/JourneyBar.svelte';
-</script>
 
-<svelte:head>
-	<title>Fractional AI Leadership: Ongoing AI Infrastructure | DomeWorks</title>
-	<meta
-		name="description"
-		content="1–2 days/week ongoing retainer. I act as your part-time Head of AI, maintaining and evolving your context system and agent coordination as your org changes."
-	/>
-	<link rel="canonical" href="https://domeworks.tech/leaders/fractional/" />
-
-	<meta property="og:type" content="website" />
-	<meta property="og:site_name" content="DomeWorks" />
-	<meta property="og:url" content="https://domeworks.tech/leaders/fractional/" />
-	<meta
-		property="og:title"
-		content="Fractional AI Leadership: Ongoing AI Infrastructure | DomeWorks"
-	/>
-	<meta
-		property="og:description"
-		content="1–2 days/week ongoing retainer. Maintain and evolve your context system and agent coordination as your org changes."
-	/>
-	<meta property="og:image" content="https://domeworks.tech/og-image.png" />
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta
-		name="twitter:title"
-		content="Fractional AI Leadership: Ongoing AI Infrastructure | DomeWorks"
-	/>
-	<meta
-		name="twitter:description"
-		content="1–2 days/week ongoing retainer. Maintain and evolve your AI infrastructure as your org changes."
-	/>
-	<meta name="twitter:image" content="https://domeworks.tech/og-image.png" />
-
-	{@html `<script type="application/ld+json">${JSON.stringify({
+	const fractionalSchema = {
 		'@context': 'https://schema.org',
 		'@type': 'Service',
 		name: 'Fractional AI Leadership',
@@ -50,13 +18,18 @@
 		description:
 			'Ongoing monthly retainer: part-time Head of AI, 1–2 days per week. Maintains and evolves context system and agent coordination as the organization changes.',
 		dateModified: '2026-04'
-	})}</script>`}
-</svelte:head>
+	};
+</script>
+
+<SEO
+	title="Fractional AI Leadership: Ongoing AI Infrastructure | DomeWorks"
+	description="1–2 days/week ongoing retainer. I act as your part-time Head of AI, maintaining and evolving your context system and agent coordination as your org changes."
+	schema={fractionalSchema}
+/>
 
 <!-- Hero -->
-<Section background="dark" padding="xl">
+<Section background="dark" padding="xl" hero>
 	<div class="max-w-3xl">
-		<div class="mb-6"><JourneyBar current="fractional" /></div>
 		<Eyebrow label="Fractional AI Leadership" tone="accent-light" />
 		<h1
 			class="mt-4 font-sans font-semibold text-paper leading-[1.02] tracking-[-0.035em]"
@@ -106,7 +79,7 @@
 <!-- What I Do -->
 <NumberedSection index="02" background="white" title="What I do">
 	<div class="max-w-2xl mx-auto space-y-8" use:reveal>
-		{#each [{ title: 'Maintain and evolve the context system', desc: 'As your org changes — new teams, new workflows, new tooling — the context system needs to keep up. I update the world model and make sure AI interactions stay grounded in how the team actually works.' }, { title: 'Tune agent coordination', desc: 'Close feedback loops, improve quality gate accuracy, fix routing logic. The system gets smarter over time instead of slowly drifting from what it was designed to do.' }, { title: 'Identify the next layer to build', desc: 'As the infrastructure matures, there are always new systems worth building. I track what your team is still doing manually that intelligence infrastructure could replace, and scope the next engagement when the org is ready.' }, { title: 'Act as your internal AI expert', desc: "I can advise your team, review AI system design decisions, and help your engineers understand and own what we built together. The goal is always a team that doesn't need me — I'm there to keep the compounding going while that capability builds." }] as item}
+		{#each [{ title: 'Maintain and evolve the context system', desc: 'As your org changes — new teams, new workflows, new tooling — the context system needs to keep up. I update the world model and make sure AI interactions stay grounded in how the team actually works.' }, { title: 'Tune agent coordination', desc: 'Close feedback loops, improve quality gate accuracy, fix routing logic. The system gets smarter over time instead of slowly drifting from what it was designed to do.' }, { title: 'Identify the next layer to build', desc: 'As the infrastructure matures, there are always new systems worth building. I track what your team is still doing manually that intelligence infrastructure could replace, and scope the next engagement when the org is ready.' }, { title: 'Act as your internal AI expert', desc: "I can advise your team, review AI system design decisions, and help your engineers understand and own what we built together. The goal is always a team that doesn't need me — I'm there to keep the compounding going while that capability builds." }] as item (item.title)}
 			<div class="flex items-start gap-6">
 				<span class="flex-shrink-0 w-2 h-2 rounded-full bg-accent mt-3"></span>
 				<div>

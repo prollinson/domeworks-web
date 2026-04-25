@@ -17,7 +17,7 @@ import type {
 	CandidateOpportunity,
 	PainAreaRanked,
 	WorkaroundEntry,
-	SynthesizerStage1Context,
+	SynthesizerStage1Context
 } from '$lib/types/synthesizer';
 
 export interface CandidatesInput {
@@ -29,33 +29,30 @@ export interface CandidatesInput {
 const GOVERNANCE_TOUCH_RE =
 	/(record|document|client|patient|case|file|account|invoice|statement|pii|phi|protected|confidential)/i;
 
-export function deriveCandidates(
-	input: CandidatesInput,
-): CandidateOpportunity[] {
+export function deriveCandidates(input: CandidatesInput): CandidateOpportunity[] {
 	const strict = input.stage1?.guardrailTier === 'strict';
 	const top = input.painAreas.slice(0, 3);
 
 	return top.map((pa) => {
 		const matchingWorkarounds = input.workarounds.filter((w) =>
-			pa.evidence_turns.includes(w.evidence_turn),
+			pa.evidence_turns.includes(w.evidence_turn)
 		);
 
 		const quadrant: CandidateOpportunity['suggested_quadrant'] = pickQuadrant(
 			pa.severity,
 			matchingWorkarounds.length,
-			strict,
+			strict
 		);
 
-		const governance_risk_note = strict && GOVERNANCE_TOUCH_RE.test(pa.theme)
-			? buildGovernanceNote(input.stage1!)
-			: null;
+		const governance_risk_note =
+			strict && GOVERNANCE_TOUCH_RE.test(pa.theme) ? buildGovernanceNote(input.stage1!) : null;
 
 		return {
 			title: painToOutcome(pa.theme),
 			rationale: buildRationale(pa, matchingWorkarounds.length),
 			suggested_quadrant: quadrant,
 			evidence_turns: pa.evidence_turns,
-			governance_risk_note,
+			governance_risk_note
 		};
 	});
 }
@@ -63,7 +60,7 @@ export function deriveCandidates(
 function pickQuadrant(
 	severity: PainAreaRanked['severity'],
 	workaroundCount: number,
-	strict: boolean,
+	strict: boolean
 ): CandidateOpportunity['suggested_quadrant'] {
 	if (severity === 'High' && workaroundCount <= 1) return 'quick-win';
 	if (severity === 'High') return 'foundational';
@@ -82,11 +79,15 @@ function painToOutcome(theme: string): string {
 
 function buildRationale(pa: PainAreaRanked, workarounds: number): string {
 	const bits: string[] = [];
-	bits.push(`Surfaced ${pa.evidence_turns.length} time${pa.evidence_turns.length === 1 ? '' : 's'} on the call`);
+	bits.push(
+		`Surfaced ${pa.evidence_turns.length} time${pa.evidence_turns.length === 1 ? '' : 's'} on the call`
+	);
 	if (pa.frequency && pa.frequency !== '(unknown)') bits.push(`at ${pa.frequency}`);
 	bits.push(`with ${pa.severity.toLowerCase()} severity`);
 	if (workarounds > 0) {
-		bits.push(`and ${workarounds} manual workaround${workarounds === 1 ? '' : 's'} already in flight`);
+		bits.push(
+			`and ${workarounds} manual workaround${workarounds === 1 ? '' : 's'} already in flight`
+		);
 	}
 	return `${bits.join(', ')}.`;
 }
