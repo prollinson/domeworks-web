@@ -17,10 +17,10 @@
 	}
 
 	const serviceLinks = [
-		{ href: '/scan/', label: 'AI Scan' },
-		{ href: '/context-build/', label: 'Context Build' },
-		{ href: '/orchestration-build/', label: 'Orchestration Build' },
-		{ href: '/fractional/', label: 'Fractional' }
+		{ href: '/leaders/scan/', label: 'AI Scan' },
+		{ href: '/leaders/context-build/', label: 'Context Build' },
+		{ href: '/leaders/orchestration-build/', label: 'Orchestration Build' },
+		{ href: '/leaders/fractional/', label: 'Fractional' }
 	];
 
 	const otherLinks = [
@@ -66,7 +66,7 @@
 <header
 	class="fixed top-0 left-0 right-0 z-50 transition-all duration-300
     {scrolled
-		? 'bg-warm-white/80 backdrop-blur-md shadow-sm border-b border-charcoal/5'
+		? 'bg-paper/80 backdrop-blur-md shadow-sm border-b border-rule'
 		: 'bg-transparent'}"
 >
 	<nav class="max-w-6xl mx-auto px-6 lg:px-8">
@@ -75,8 +75,8 @@
 				href="/"
 				class="text-xl font-semibold tracking-tight transition-colors
           {heroMode
-					? 'text-warm-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)] hover:text-warm-white/90'
-					: 'text-charcoal hover:text-primary'}"
+					? 'text-paper drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)] hover:text-paper/90'
+					: 'text-ink hover:text-accent'}"
 			>
 				DomeWorks
 			</a>
@@ -88,11 +88,11 @@
 						class="px-4 py-2 text-sm font-medium rounded-lg transition-all
               {isActive(link.href)
 							? heroMode
-								? 'text-warm-white bg-warm-white/10'
-								: 'text-primary bg-primary/5'
+								? 'text-paper bg-paper/10'
+								: 'text-accent bg-accent/6'
 							: heroMode
-								? 'text-warm-white/70 hover:text-warm-white hover:bg-warm-white/5'
-								: 'text-charcoal/70 hover:text-charcoal hover:bg-stone'}"
+								? 'text-paper/70 hover:text-paper hover:bg-paper/5'
+								: 'text-ink/70 hover:text-ink hover:bg-paper-alt'}"
 						aria-current={isActive(link.href) ? 'page' : undefined}
 					>
 						{link.label}
@@ -101,7 +101,7 @@
 
 				<a
 					href={getBookCallUrl()}
-					class="ml-4 px-5 py-2.5 text-sm font-medium text-white bg-primary hover:bg-primary-hover rounded-lg transition-all shadow-sm hover:shadow"
+					class="ml-4 px-5 py-2.5 text-sm font-medium text-paper bg-accent hover:bg-accent-hover rounded-lg transition-all shadow-sm hover:shadow"
 				>
 					Book a call
 				</a>
@@ -111,8 +111,8 @@
 				onclick={toggleMenu}
 				class="lg:hidden p-2 -mr-2 rounded-lg transition-all
           {heroMode
-					? 'text-warm-white/70 hover:text-warm-white hover:bg-warm-white/5'
-					: 'text-charcoal/70 hover:text-charcoal hover:bg-stone'}"
+					? 'text-paper/70 hover:text-paper hover:bg-paper/5'
+					: 'text-ink/70 hover:text-ink hover:bg-paper-alt'}"
 				aria-label="Toggle menu"
 				aria-expanded={menuOpen}
 			>
@@ -141,16 +141,15 @@
 		{#if menuOpen}
 			<div
 				transition:slide={{ duration: reducedMotion ? 0 : 250, easing: cubicOut }}
-				class="lg:hidden pb-6 border-t border-stone mt-2 pt-4"
+				class="lg:hidden pb-6 border-t border-rule mt-2 pt-4"
 			>
 				<div class="flex flex-col gap-1">
-					<!-- Services accordion -->
 					<button
 						onclick={() => (servicesOpen = !servicesOpen)}
 						class="flex items-center justify-between px-4 py-3 text-base font-medium rounded-lg transition-all
               {serviceLinks.some((l) => isActive(l.href))
-							? 'text-primary bg-primary/5'
-							: 'text-charcoal/70 hover:text-charcoal hover:bg-stone'}"
+							? 'text-accent bg-accent/6'
+							: 'text-ink/70 hover:text-ink hover:bg-paper-alt'}"
 					>
 						Services
 						<svg
@@ -178,8 +177,8 @@
 									href={link.href}
 									class="px-4 py-2.5 text-sm font-medium rounded-lg transition-all
                     {isActive(link.href)
-										? 'text-primary bg-primary/5'
-										: 'text-charcoal/60 hover:text-charcoal hover:bg-stone'}"
+										? 'text-accent bg-accent/6'
+										: 'text-ink/60 hover:text-ink hover:bg-paper-alt'}"
 									aria-current={isActive(link.href) ? 'page' : undefined}
 									onclick={() => {
 										menuOpen = false;
@@ -197,8 +196,8 @@
 							href={link.href}
 							class="px-4 py-3 text-base font-medium rounded-lg transition-all
                 {isActive(link.href)
-								? 'text-primary bg-primary/5'
-								: 'text-charcoal/70 hover:text-charcoal hover:bg-stone'}"
+							? 'text-accent bg-accent/6'
+							: 'text-ink/70 hover:text-ink hover:bg-paper-alt'}"
 							aria-current={isActive(link.href) ? 'page' : undefined}
 							onclick={() => (menuOpen = false)}
 						>
@@ -208,7 +207,7 @@
 
 					<a
 						href={getBookCallUrl()}
-						class="mt-4 px-5 py-3 text-center text-base font-medium text-white bg-primary hover:bg-primary-hover rounded-lg transition-all"
+						class="mt-4 px-5 py-3 text-center text-base font-medium text-paper bg-accent hover:bg-accent-hover rounded-lg transition-all"
 					>
 						Book a call
 					</a>

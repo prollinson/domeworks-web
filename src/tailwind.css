@@ -17,16 +17,6 @@
 	--color-accent-hover: #9a3412;
 	--color-accent-light: #fb923c;
 
-	/* --- Retained (legacy aliases for pages not yet migrated) --- */
-	--color-primary: #0d6b63;
-	--color-primary-hover: #0a5850;
-	--color-primary-light: rgba(13, 107, 99, 0.06);
-	--color-warm-white: #fafaf7;
-	--color-stone: #f3f1ec;
-	--color-warm-gray: #a3a096;
-	--color-warm-gray-light: #bbb8ad;
-	--color-copper: #b07d4f;
-
 	/* --- Typography --- */
 	--font-sans: 'General Sans', ui-sans-serif, system-ui, sans-serif;
 	--font-serif: 'Recia', Georgia, serif;

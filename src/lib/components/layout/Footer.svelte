@@ -2,35 +2,31 @@
 	import { getBookCallUrl } from '$lib/utils/mailto';
 
 	const navLinks = [
-		{ href: '/scan/', label: 'AI Scan' },
-		{ href: '/context-build/', label: 'Context Build' },
-		{ href: '/orchestration-build/', label: 'Orchestration Build' },
-		{ href: '/fractional/', label: 'Fractional' },
+		{ href: '/leaders/scan/', label: 'AI Scan' },
+		{ href: '/leaders/context-build/', label: 'Context Build' },
+		{ href: '/leaders/orchestration-build/', label: 'Orchestration Build' },
+		{ href: '/leaders/fractional/', label: 'Fractional' },
 		{ href: '/about/', label: 'About' },
 		{ href: '/contact/', label: 'Contact' }
 	];
 </script>
 
-<footer class="bg-ink text-white relative overflow-hidden">
-	<div class="absolute inset-0 ambient-warm opacity-50"></div>
-	<div class="absolute inset-0 texture-grain"></div>
-
-	<!-- Main CTA Section -->
-	<div class="relative border-b border-white/10">
+<footer class="bg-ink text-paper relative">
+	<div class="relative border-b border-paper/10">
 		<div class="max-w-6xl mx-auto px-6 lg:px-8 py-24 md:py-32 lg:py-40">
 			<div class="max-w-4xl">
-				<h2 class="footer-headline font-serif font-normal text-white mb-8">
-					Let's figure out<br class="hidden sm:block" /> what's missing<span class="text-primary"
+				<h2 class="footer-headline font-serif font-normal text-paper mb-8">
+					Let's figure out<br class="hidden sm:block" /> what's missing<span class="text-accent-light"
 						>.</span
 					>
 				</h2>
-				<p class="text-lg md:text-xl text-warm-gray max-w-xl mb-10">
+				<p class="text-lg md:text-xl text-paper/70 max-w-xl mb-10">
 					30 minutes on a call and I can tell you whether your team's AI adoption is a tooling
 					problem or a systems problem.
 				</p>
 				<a
 					href={getBookCallUrl()}
-					class="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white bg-primary hover:bg-primary-hover rounded-lg transition-all active:scale-[0.98] shadow-[0_4px_14px_-2px_rgba(13,107,99,0.4)] hover:shadow-[0_6px_20px_-2px_rgba(13,107,99,0.5)]"
+					class="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-paper bg-accent hover:bg-accent-hover rounded-lg transition-all active:scale-[0.98] shadow-sm hover:shadow"
 				>
 					Book a discovery call
 					<svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -46,21 +42,18 @@
 		</div>
 	</div>
 
-	<!-- Info Grid -->
 	<div class="relative">
 		<div class="max-w-6xl mx-auto px-6 lg:px-8 py-16 md:py-20">
 			<div class="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-12">
-				<!-- Brand -->
 				<div class="col-span-2 md:col-span-1">
-					<a href="/" class="text-xl font-medium tracking-tight"> DomeWorks </a>
-					<p class="mt-4 text-sm text-warm-gray-light">
+					<a href="/" class="text-xl font-medium tracking-tight">DomeWorks</a>
+					<p class="mt-4 text-sm text-paper/60">
 						AI infrastructure that replaces coordination overhead
 					</p>
 				</div>
 
-				<!-- Navigation -->
 				<div>
-					<p class="text-xs font-medium uppercase tracking-wider text-warm-gray-light mb-5">
+					<p class="text-xs font-semibold uppercase tracking-[0.14em] text-paper/60 mb-5">
 						Services
 					</p>
 					<ul class="space-y-3">
@@ -68,7 +61,7 @@
 							<li>
 								<a
 									href={link.href}
-									class="text-sm text-warm-gray-light hover:text-white transition-colors"
+									class="text-sm text-paper/70 hover:text-paper transition-colors"
 								>
 									{link.label}
 								</a>
@@ -77,36 +70,33 @@
 					</ul>
 				</div>
 
-				<!-- Background -->
 				<div>
-					<p class="text-xs font-medium uppercase tracking-wider text-warm-gray-light mb-5">
+					<p class="text-xs font-semibold uppercase tracking-[0.14em] text-paper/60 mb-5">
 						Background
 					</p>
 					<ul class="space-y-3">
-						<li><span class="text-sm text-warm-gray-light">Ex-DoorDash</span></li>
-						<li><span class="text-sm text-warm-gray-light">Ex-Square</span></li>
-						<li><span class="text-sm text-warm-gray-light">10+ years eng leadership</span></li>
+						<li><span class="text-sm text-paper/70">Ex-DoorDash</span></li>
+						<li><span class="text-sm text-paper/70">Ex-Square</span></li>
+						<li><span class="text-sm text-paper/70">10+ years eng leadership</span></li>
 					</ul>
 				</div>
 
-				<!-- Contact -->
 				<div>
-					<p class="text-xs font-medium uppercase tracking-wider text-warm-gray-light mb-5">
+					<p class="text-xs font-semibold uppercase tracking-[0.14em] text-paper/60 mb-5">
 						Contact
 					</p>
-					<p class="text-sm text-warm-gray-light">piers@domeworks.tech</p>
-					<p class="mt-2 text-sm text-warm-gray-light">Remote / US-based</p>
+					<p class="text-sm text-paper/70">piers@domeworks.tech</p>
+					<p class="mt-2 text-sm text-paper/70">Remote / US-based</p>
 				</div>
 			</div>
 
-			<!-- Bottom Bar -->
 			<div
-				class="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4"
+				class="mt-16 pt-8 border-t border-paper/10 flex flex-col md:flex-row justify-between items-center gap-4"
 			>
-				<p class="text-xs text-warm-gray">
+				<p class="text-xs text-paper/50">
 					&copy; {new Date().getFullYear()} DomeWorks. All rights reserved.
 				</p>
-				<p class="text-xs text-warm-gray">Replacing coordination overhead with AI infrastructure</p>
+				<p class="text-xs text-paper/50">Replacing coordination overhead with AI infrastructure</p>
 			</div>
 		</div>
 	</div>
