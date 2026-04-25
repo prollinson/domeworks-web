@@ -111,8 +111,10 @@
 	<div
 		class="relative w-full max-w-7xl mx-auto px-6 lg:px-8 hero-content-pad flex flex-col justify-between min-h-[inherit]"
 	>
-		<!-- Top zone: spacer (eyebrow removed per council feedback) -->
-		<div class="hero-eyebrow-row"></div>
+		<!-- Top zone: eyebrow -->
+		<div class="hero-eyebrow-row">
+			<Eyebrow label="DomeWorks · Intelligence Infrastructure" tone="accent-light" />
+		</div>
 
 		<!-- Middle zone: Headline, editorial scale, staggered lines -->
 		<div class="hero-middle">
