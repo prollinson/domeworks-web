@@ -4,6 +4,9 @@
 	import { slide } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 
+	type NavChild = { href: string; label: string };
+	type NavItem = { href: string; label: string; children?: NavChild[] };
+
 	let menuOpen = $state(false);
 	let scrolled = $state(false);
 	let isHeroPage = $derived($page.url.pathname === '/');
@@ -16,29 +19,52 @@
 		return currentPath.startsWith(href);
 	}
 
-	const serviceLinks = [
-		{ href: '/leaders/scan/', label: 'AI Scan' },
-		{ href: '/leaders/context-build/', label: 'Context Build' },
-		{ href: '/leaders/orchestration-build/', label: 'Orchestration Build' },
-		{ href: '/leaders/fractional/', label: 'Fractional' }
-	];
-
-	const otherLinks = [
+	const navItems: NavItem[] = [
+		{
+			href: '/leaders/',
+			label: 'For leaders',
+			children: [
+				{ href: '/leaders/', label: 'Overview' },
+				{ href: '/leaders/scan/', label: 'AI Scan' },
+				{ href: '/leaders/context-build/', label: 'Context Build' },
+				{ href: '/leaders/orchestration-build/', label: 'Orchestration Build' },
+				{ href: '/leaders/fractional/', label: 'Fractional' }
+			]
+		},
+		{
+			href: '/smb/',
+			label: 'For SMBs',
+			children: [
+				{ href: '/smb/', label: 'Overview' },
+				{ href: '/smb/quiz/', label: '2-Minute Quiz' }
+			]
+		},
 		{ href: '/about/', label: 'About' },
 		{ href: '/contact/', label: 'Contact' }
 	];
 
-	const navLinks = [...serviceLinks, ...otherLinks];
-
-	let servicesOpen = $state(false);
+	let openDropdown = $state<string | null>(null);
 
 	function toggleMenu() {
 		menuOpen = !menuOpen;
-		if (!menuOpen) servicesOpen = false;
+		if (!menuOpen) openDropdown = null;
 	}
 
-	/* On hero page, header text is light until scrolled past the dark section */
-	let heroMode = $derived(isHeroPage && !scrolled);
+	function handleDocumentClick(event: MouseEvent) {
+		if (!openDropdown) return;
+		const target = event.target as HTMLElement;
+		// Ignore clicks inside any dropdown surface (desktop) or any nav dropdown trigger (mobile).
+		if (target.closest('[data-nav-dropdown]') || target.closest('header nav')) return;
+		openDropdown = null;
+	}
+
+	function handleKeydown(event: KeyboardEvent) {
+		if (event.key === 'Escape' && openDropdown) openDropdown = null;
+	}
+
+	/* On hero page, header text is light until scrolled past the dark section.
+	   When the mobile menu is open we force a paper background, so flip text dark too. */
+	let heroMode = $derived(isHeroPage && !scrolled && !menuOpen);
 
 	let reducedMotion = $state(false);
 
@@ -60,12 +86,23 @@
 			window.addEventListener('scroll', handleScroll);
 			return () => window.removeEventListener('scroll', handleScroll);
 		});
+
+		$effect(() => {
+			document.addEventListener('click', handleDocumentClick);
+			document.addEventListener('keydown', handleKeydown);
+			return () => {
+				document.removeEventListener('click', handleDocumentClick);
+				document.removeEventListener('keydown', handleKeydown);
+			};
+		});
 	}
 </script>
 
 <header
 	class="fixed top-0 left-0 right-0 z-50 transition-all duration-300
-    {scrolled ? 'bg-paper/80 backdrop-blur-md shadow-sm border-b border-rule' : 'bg-transparent'}"
+    {scrolled || menuOpen
+		? 'bg-paper/95 backdrop-blur-md shadow-sm border-b border-rule'
+		: 'bg-transparent'}"
 >
 	<nav class="max-w-6xl mx-auto px-6 lg:px-8">
 		<div class="flex items-center justify-between h-16 md:h-20">
@@ -80,21 +117,84 @@
 			</a>
 
 			<div class="hidden lg:flex items-center gap-1">
-				{#each navLinks as link}
-					<a
-						href={link.href}
-						class="px-4 py-2 text-sm font-medium rounded-lg transition-all
-              {isActive(link.href)
-							? heroMode
-								? 'text-paper bg-paper/10'
-								: 'text-accent bg-accent/6'
-							: heroMode
-								? 'text-paper/70 hover:text-paper hover:bg-paper/5'
-								: 'text-ink/70 hover:text-ink hover:bg-paper-alt'}"
-						aria-current={isActive(link.href) ? 'page' : undefined}
-					>
-						{link.label}
-					</a>
+				{#each navItems as item}
+					{#if item.children}
+						<div class="relative" data-nav-dropdown>
+							<button
+								type="button"
+								onclick={() =>
+									(openDropdown = openDropdown === item.href ? null : item.href)}
+								aria-haspopup="true"
+								aria-expanded={openDropdown === item.href}
+								class="flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-lg transition-all
+                {isActive(item.href)
+									? heroMode
+										? 'text-paper bg-paper/10'
+										: 'text-accent bg-accent/6'
+									: heroMode
+										? 'text-paper/70 hover:text-paper hover:bg-paper/5'
+										: 'text-ink/70 hover:text-ink hover:bg-paper-alt'}"
+							>
+								{item.label}
+								<svg
+									class="w-3.5 h-3.5 transition-transform duration-200 {openDropdown ===
+									item.href
+										? 'rotate-180'
+										: ''}"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M19 9l-7 7-7-7"
+									/>
+								</svg>
+							</button>
+							{#if openDropdown === item.href}
+								<div
+									transition:slide={{ duration: reducedMotion ? 0 : 160, easing: cubicOut }}
+									class="absolute left-0 top-full mt-2 min-w-[14rem] bg-paper border border-rule rounded-lg shadow-lg overflow-hidden"
+								>
+									<div class="py-1.5">
+										{#each item.children as child}
+											<a
+												href={child.href}
+												onclick={() => (openDropdown = null)}
+												aria-current={isActive(child.href) && $page.url.pathname ===
+													child.href
+													? 'page'
+													: undefined}
+												class="block px-4 py-2 text-sm font-medium transition-colors
+                          {$page.url.pathname === child.href
+													? 'text-accent bg-accent/6'
+													: 'text-ink/80 hover:text-ink hover:bg-paper-alt'}"
+											>
+												{child.label}
+											</a>
+										{/each}
+									</div>
+								</div>
+							{/if}
+						</div>
+					{:else}
+						<a
+							href={item.href}
+							class="px-4 py-2 text-sm font-medium rounded-lg transition-all
+              {isActive(item.href)
+								? heroMode
+									? 'text-paper bg-paper/10'
+									: 'text-accent bg-accent/6'
+								: heroMode
+									? 'text-paper/70 hover:text-paper hover:bg-paper/5'
+									: 'text-ink/70 hover:text-ink hover:bg-paper-alt'}"
+							aria-current={isActive(item.href) ? 'page' : undefined}
+						>
+							{item.label}
+						</a>
+					{/if}
 				{/each}
 
 				<a
@@ -142,65 +242,70 @@
 				class="lg:hidden pb-6 border-t border-rule mt-2 pt-4"
 			>
 				<div class="flex flex-col gap-1">
-					<button
-						onclick={() => (servicesOpen = !servicesOpen)}
-						class="flex items-center justify-between px-4 py-3 text-base font-medium rounded-lg transition-all
-              {serviceLinks.some((l) => isActive(l.href))
-							? 'text-accent bg-accent/6'
-							: 'text-ink/70 hover:text-ink hover:bg-paper-alt'}"
-					>
-						Services
-						<svg
-							class="w-4 h-4 transition-transform duration-200 {servicesOpen ? 'rotate-180' : ''}"
-							fill="none"
-							stroke="currentColor"
-							viewBox="0 0 24 24"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M19 9l-7 7-7-7"
-							/>
-						</svg>
-					</button>
-
-					{#if servicesOpen}
-						<div
-							transition:slide={{ duration: reducedMotion ? 0 : 200, easing: cubicOut }}
-							class="ml-4 flex flex-col gap-1"
-						>
-							{#each serviceLinks as link}
-								<a
-									href={link.href}
-									class="px-4 py-2.5 text-sm font-medium rounded-lg transition-all
-                    {isActive(link.href)
-										? 'text-accent bg-accent/6'
-										: 'text-ink/60 hover:text-ink hover:bg-paper-alt'}"
-									aria-current={isActive(link.href) ? 'page' : undefined}
-									onclick={() => {
-										menuOpen = false;
-										servicesOpen = false;
-									}}
+					{#each navItems as item}
+						{#if item.children}
+							<button
+								type="button"
+								onclick={() => (openDropdown = openDropdown === item.href ? null : item.href)}
+								aria-expanded={openDropdown === item.href}
+								class="flex items-center justify-between px-4 py-3 text-base font-medium rounded-lg transition-all
+                  {isActive(item.href)
+									? 'text-accent bg-accent/6'
+									: 'text-ink/70 hover:text-ink hover:bg-paper-alt'}"
+							>
+								{item.label}
+								<svg
+									class="w-4 h-4 transition-transform duration-200 {openDropdown === item.href
+										? 'rotate-180'
+										: ''}"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
 								>
-									{link.label}
-								</a>
-							{/each}
-						</div>
-					{/if}
-
-					{#each otherLinks as link}
-						<a
-							href={link.href}
-							class="px-4 py-3 text-base font-medium rounded-lg transition-all
-                {isActive(link.href)
-								? 'text-accent bg-accent/6'
-								: 'text-ink/70 hover:text-ink hover:bg-paper-alt'}"
-							aria-current={isActive(link.href) ? 'page' : undefined}
-							onclick={() => (menuOpen = false)}
-						>
-							{link.label}
-						</a>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M19 9l-7 7-7-7"
+									/>
+								</svg>
+							</button>
+							{#if openDropdown === item.href}
+								<div
+									transition:slide={{ duration: reducedMotion ? 0 : 200, easing: cubicOut }}
+									class="ml-4 flex flex-col gap-1"
+								>
+									{#each item.children as child}
+										<a
+											href={child.href}
+											aria-current={$page.url.pathname === child.href ? 'page' : undefined}
+											onclick={() => {
+												menuOpen = false;
+												openDropdown = null;
+											}}
+											class="px-4 py-2.5 text-sm font-medium rounded-lg transition-all
+                        {$page.url.pathname === child.href
+												? 'text-accent bg-accent/6'
+												: 'text-ink/60 hover:text-ink hover:bg-paper-alt'}"
+										>
+											{child.label}
+										</a>
+									{/each}
+								</div>
+							{/if}
+						{:else}
+							<a
+								href={item.href}
+								class="px-4 py-3 text-base font-medium rounded-lg transition-all
+                  {isActive(item.href)
+									? 'text-accent bg-accent/6'
+									: 'text-ink/70 hover:text-ink hover:bg-paper-alt'}"
+								aria-current={isActive(item.href) ? 'page' : undefined}
+								onclick={() => (menuOpen = false)}
+							>
+								{item.label}
+							</a>
+						{/if}
 					{/each}
 
 					<a
