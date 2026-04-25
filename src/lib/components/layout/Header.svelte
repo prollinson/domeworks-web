@@ -68,12 +68,14 @@
 		if (event.key === 'Escape' && openDropdown) openDropdown = null;
 	}
 
-	/* Every page in the site starts with a dark hero, so before the visitor scrolls
-	   the header floats transparent over that dark surface and uses light text.
-	   Once they scroll past it (or open the mobile menu) we swap to a paper bg
-	   with dark text. If a future page lands on a light surface, this assumption
-	   needs revisiting (see DESIGN.md). */
-	let heroMode = $derived(!scrolled && !menuOpen);
+	/* The transparent-over-dark-hero treatment requires the page to pull its
+	   dark hero up behind the fixed header (the `-mt-16 md:-mt-20` + `bg-ink`
+	   pattern on / and /leaders/). On any other page the area behind the
+	   header is the body's default light surface, so the header needs to be
+	   opaque. Add new pages here only after they adopt that pull-up pattern. */
+	const PULLED_HERO_PATHS = new Set(['/', '/leaders/', '/leaders']);
+	let hasPulledHero = $derived(PULLED_HERO_PATHS.has($page.url.pathname));
+	let heroMode = $derived(hasPulledHero && !scrolled && !menuOpen);
 
 	let reducedMotion = $state(false);
 
