@@ -104,7 +104,6 @@
 	<HairlineGrid cols={3} stagger staggerDelay={150}>
 		<!-- AI Readiness Assessment — dark visual card with blueprint diagram -->
 		<div class="cell p-8 bg-ink rounded-2xl relative overflow-hidden">
-			<div class="absolute inset-0 texture-grain"></div>
 			<div class="relative">
 				<h3 class="text-lg font-medium text-paper mb-1">AI Readiness Assessment</h3>
 				<p class="text-xs text-paper/50 mb-6 leading-relaxed">
@@ -273,7 +272,6 @@
 
 		<!-- Prioritized Opportunity Map — dark visual card with impact bars -->
 		<div class="cell p-8 bg-ink rounded-2xl relative overflow-hidden">
-			<div class="absolute inset-0 texture-grain"></div>
 			<div class="relative">
 				<h3 class="text-lg font-medium text-paper mb-1">Prioritized Opportunity Map</h3>
 				<p class="text-xs text-paper/50 mb-6 leading-relaxed">

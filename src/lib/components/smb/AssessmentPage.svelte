@@ -931,7 +931,7 @@
 </section>
 
 <!-- 05: Right fit / Not a fit.
-	 ✓ column gets copper kicker and slightly heavier body — reads inviting.
+	 ✓ column gets accent kicker and slightly heavier body — reads inviting.
 	 ✕ column gets subtle kicker and quieter body — reads as a quiet wall. -->
 <Section
 	background="white"
