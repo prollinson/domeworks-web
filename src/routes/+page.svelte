@@ -266,7 +266,7 @@
 
 		<!-- Track B: VP Eng / CTO -->
 		<a
-			href="/scan/"
+			href="/leaders/"
 			class="group relative p-8 md:p-10 bg-stone rounded-2xl border border-charcoal/10 hover:border-copper/40 hover:shadow-lg transition-all duration-200 flex flex-col"
 			aria-label="VP Engineering track — AI Scan and Fractional AI Leadership"
 		>
@@ -562,7 +562,7 @@
 		use:reveal={{ stagger: true, staggerDelay: 150 }}
 	>
 		<a
-			href="/scan/"
+			href="/leaders/scan/"
 			class="group p-8 bg-warm-white rounded-2xl border border-charcoal/10 hover:border-primary card-lift flex flex-col relative overflow-hidden"
 		>
 			<div class="absolute top-0 left-0 right-0 h-1 bg-primary/30"></div>
@@ -583,7 +583,7 @@
 		</a>
 
 		<a
-			href="/context-build/"
+			href="/leaders/context-build/"
 			class="group p-8 rounded-2xl border-2 border-primary bg-primary/[0.03] flex flex-col relative overflow-hidden"
 		>
 			<div class="absolute top-0 left-0 right-0 h-1 bg-primary"></div>
@@ -604,7 +604,7 @@
 		</a>
 
 		<a
-			href="/orchestration-build/"
+			href="/leaders/orchestration-build/"
 			class="group p-8 bg-warm-white rounded-2xl border border-charcoal/10 hover:border-copper card-lift flex flex-col relative overflow-hidden"
 		>
 			<div class="absolute top-0 left-0 right-0 h-1 bg-copper/30"></div>
@@ -619,7 +619,7 @@
 		</a>
 
 		<a
-			href="/fractional/"
+			href="/leaders/fractional/"
 			class="group p-8 bg-warm-white rounded-2xl border border-charcoal/10 hover:border-copper card-lift flex flex-col relative overflow-hidden"
 		>
 			<div class="absolute top-0 left-0 right-0 h-1 bg-copper/30"></div>
