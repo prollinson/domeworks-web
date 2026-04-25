@@ -1,10 +1,10 @@
 import type { QuizSubmission } from '$lib/types/quiz';
 
 const EMAIL = 'piers@domeworks.tech';
-const CALENDLY = 'https://fantastical.app/piers/domeworks';
+const BOOK_CALL_URL = 'https://cal.com/prollinson/ai-audit';
 
 export function getBookCallUrl(): string {
-	return CALENDLY;
+	return BOOK_CALL_URL;
 }
 
 export function generateScanMailto(): string {

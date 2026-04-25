@@ -24,8 +24,8 @@ interface RevealOptions {
 
 const defaultOptions: RevealOptions = {
 	delay: 0,
-	duration: 350,
-	distance: 15,
+	duration: 240,
+	distance: 8,
 	stagger: false,
 	staggerDelay: 100,
 	threshold: 0.1,
@@ -60,7 +60,7 @@ export function reveal(node: HTMLElement, options: RevealOptions = {}) {
 	// Set initial styles
 	node.style.opacity = '0';
 	node.style.transform = `translateY(${opts.distance}px)`;
-	node.style.filter = 'blur(4px)';
+	node.style.filter = 'blur(2px)';
 	node.style.transition = `opacity ${opts.duration}ms ${easing}, transform ${opts.duration}ms ${easing}, filter ${opts.duration}ms ${easing}`;
 	node.style.transitionDelay = `${opts.delay}ms`;
 
@@ -112,17 +112,17 @@ export function reveal(node: HTMLElement, options: RevealOptions = {}) {
 							const child = children[i] as HTMLElement;
 							child.style.opacity = '0';
 							child.style.transform = `translateY(${opts.distance}px)`;
-							child.style.filter = 'blur(4px)';
+							child.style.filter = 'blur(2px)';
 						}
 					} else {
 						node.style.opacity = '0';
 						node.style.transform = `translateY(${opts.distance}px)`;
-						node.style.filter = 'blur(4px)';
+						node.style.filter = 'blur(2px)';
 					}
 				}
 			});
 		},
-		{ threshold: opts.threshold }
+		{ threshold: opts.threshold, rootMargin: '0px 0px 80px 0px' }
 	);
 
 	observer.observe(node);

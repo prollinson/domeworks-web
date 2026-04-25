@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import Section from '$lib/components/layout/Section.svelte';
+	import QuizResultView from '$lib/components/smb/QuizResultView.svelte';
 	import { reveal } from '$lib/actions/reveal';
 	import { generateQuizMailto, getAssessmentCallUrl } from '$lib/utils/mailto';
 	import { QUIZ_INDUSTRIES } from '$lib/data/quiz-industries';
@@ -100,6 +101,7 @@
 	let email = $state('');
 	let submitted = $state(false);
 	let submitState = $state<'idle' | 'sending' | 'sent' | 'mailto-fallback'>('idle');
+	let submissionId = $state<string | null>(null);
 
 	const canSubmit = $derived(
 		staticComplete && adaptive.length === ADAPTIVE_TARGET && /^\S+@\S+\.\S+$/.test(email)
@@ -358,6 +360,8 @@
 				body: JSON.stringify(submission)
 			});
 			if (!res.ok) throw new Error(`HTTP ${res.status}`);
+			const body = (await res.json()) as { ok: boolean; id: string };
+			submissionId = body.id;
 			submitState = 'sent';
 			try {
 				posthog.capture('quiz_submitted', {
@@ -406,39 +410,6 @@
 	function label(n: number): string {
 		return String(n).padStart(2, '0');
 	}
-
-	// --- Derivations for post-submit preview ---
-	const previewCategory = $derived.by(() => {
-		switch (timeLeak) {
-			case 'admin':
-				return {
-					title: 'Admin drag',
-					body: "The usual quick wins here start with templated intake, document chasing, and invoice follow-up. You're probably losing 3 to 5 hours a week to back-and-forth that a tool can absorb."
-				};
-			case 'marketing':
-				return {
-					title: 'Marketing and lead response',
-					body: 'Speed-to-lead is the single highest-leverage pattern I find in owner-operated businesses. Cutting your first-response time from hours to minutes is often worth more than every other quick win combined.'
-				};
-			case 'delivery':
-				return {
-					title: 'Client delivery',
-					body: 'Usual quick wins here start with meeting-notes capture, draft generation for recurring deliverables, and prep work before client calls. 30 to 60 minutes per client interaction typically recoverable.'
-				};
-			default:
-				return {
-					title: 'Mixed',
-					body: 'The Action Plan will map your biggest specific leak and give you three quick wins to start with.'
-				};
-		}
-	});
-
-	const icpVerdict = $derived.by(() => {
-		if (!size) return '';
-		if (size === '1-9') return 'below-core';
-		if (size === '51-200' || size === '200+') return 'above-core';
-		return 'in-core';
-	});
 
 	const chipClass =
 		'block text-center p-3 bg-paper border border-rule rounded-lg text-sm font-sans text-muted peer-checked:border-accent peer-checked:bg-accent/10 peer-checked:text-ink hover:border-ink/30 transition';
@@ -870,8 +841,10 @@
 			{/if}
 		</form>
 	{:else}
-		<!-- Post-submit state -->
-		<div class="max-w-2xl mx-auto space-y-8" use:reveal>
+		<!-- Post-submit state. The result view fetches /api/quiz/report and renders the
+		     shape-routed view (Quick Plan or Assessment-plus-Guardrails). On submission failure
+		     we fall back to the mailto path the way Week 1 did. -->
+		<div class="max-w-3xl mx-auto" use:reveal>
 			{#if submitState === 'sending'}
 				<div class="rule-left-accent">
 					<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-subtle uppercase mb-2">
@@ -882,6 +855,8 @@
 					</h2>
 					<p class="font-serif text-muted leading-relaxed">One moment.</p>
 				</div>
+			{:else if submitState === 'sent' && submissionId}
+				<QuizResultView {submissionId} {email} {industry} />
 			{:else if submitState === 'sent'}
 				<div class="rule-left-accent">
 					<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
@@ -891,9 +866,9 @@
 						Thanks. Your Action Plan is on the way.
 					</h2>
 					<p class="font-serif text-muted leading-relaxed">
-						I got your answers and I'll email a personalised Action Plan to
+						I got your answers and I will email a personalised Action Plan to
 						<strong class="font-sans font-medium text-ink">{email}</strong>
-						within 24 hours. No list. No spam.
+						within 24 hours.
 					</p>
 				</div>
 			{:else}
@@ -905,66 +880,17 @@
 						Check the email window that just opened.
 					</h2>
 					<p class="font-serif text-muted leading-relaxed">
-						Automatic submission didn't work so your mail client opened with your answers
-						pre-filled. Hit send in that window and I'll email your personalised Action Plan within
-						24 hours.
+						Automatic submission did not work so your mail client opened with your answers
+						pre-filled. Hit send in that window and I will email your personalised Action Plan
+						within 24 hours.
 					</p>
 					<button
 						type="button"
 						onclick={resend}
 						class="mt-4 text-sm font-sans text-ink underline underline-offset-4 decoration-accent hover:text-accent transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
 					>
-						Didn't see an email window? Click here to try again.
+						Did not see an email window? Click here to try again.
 					</button>
-				</div>
-			{/if}
-
-			<div class="border-t border-rule pt-8">
-				<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-subtle uppercase mb-2">
-					Preview · based on your answers
-				</p>
-				<h3 class="font-sans font-medium text-lg text-ink tracking-tight mb-2">
-					Your category: {previewCategory.title}
-				</h3>
-				<p class="font-serif text-muted leading-relaxed">{previewCategory.body}</p>
-			</div>
-
-			{#if icpVerdict === 'in-core'}
-				<div class="rule-left-accent-sm">
-					<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
-						Good fit
-					</p>
-					<p class="font-serif text-muted leading-relaxed">
-						You're squarely in the size I work with most. If the Action Plan lands and you want to
-						go further, the full <a
-							href="/smb/"
-							class="text-ink underline underline-offset-4 decoration-accent hover:text-accent transition-colors"
-							>AI Tools Assessment</a
-						> is the natural next step.
-					</p>
-				</div>
-			{:else if icpVerdict === 'below-core'}
-				<div class="rule-left-accent-sm">
-					<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-subtle uppercase mb-2">
-						Heads up
-					</p>
-					<p class="font-serif text-muted leading-relaxed">
-						Your size is a touch below the teams I work with on paid engagements, but the Action
-						Plan will still give you concrete quick wins. No pitch, no follow-up pressure.
-					</p>
-				</div>
-			{:else if icpVerdict === 'above-core'}
-				<div class="rule-left-accent-sm">
-					<p class="text-[0.6875rem] font-semibold tracking-[0.14em] text-accent uppercase mb-2">
-						Different track
-					</p>
-					<p class="font-serif text-muted leading-relaxed">
-						You're above my owner-operator Assessment track. The <a
-							href="/scan/"
-							class="text-ink underline underline-offset-4 decoration-accent hover:text-accent transition-colors"
-							>AI Scan</a
-						> is probably a better fit at your scale. I'll mention that in the Action Plan too.
-					</p>
 				</div>
 			{/if}
 		</div>
