@@ -124,7 +124,7 @@
 					? 'text-paper drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)] hover:text-paper/90'
 					: 'text-ink hover:text-accent'}"
 			>
-				DomeWorks
+				DomeWorks<span class="text-accent">.</span>
 			</a>
 
 			<div class="hidden lg:flex items-center gap-1">
