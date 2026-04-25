@@ -1,6 +1,11 @@
 <script lang="ts">
 	import Button from '$lib/components/ui/Button.svelte';
 	import Section from '$lib/components/layout/Section.svelte';
+	import NumberedSection from '$lib/components/patterns/NumberedSection.svelte';
+	import HairlineGrid from '$lib/components/patterns/HairlineGrid.svelte';
+	import Eyebrow from '$lib/components/patterns/Eyebrow.svelte';
+	import Callout from '$lib/components/patterns/Callout.svelte';
+	import PullQuote from '$lib/components/patterns/PullQuote.svelte';
 	import { reveal } from '$lib/actions/reveal';
 	import { getBookCallUrl } from '$lib/utils/mailto';
 
@@ -206,84 +211,79 @@
 	eyebrow="Choose your track"
 	title="Which one sounds like you?"
 >
-	<div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-6" use:reveal>
-		<!-- Track A: Owner-operator services -->
-		<a
-			href="/smb/"
-			class="group relative p-8 md:p-10 bg-paper-alt rounded-2xl border border-rule hover:border-accent/40 hover:shadow-lg transition-all duration-200 flex flex-col"
-			aria-label="Owner-operator services track — AI Tools Assessment"
-		>
-			<p class="text-xs font-semibold tracking-widest text-accent uppercase mb-4">
-				Track A · Owner-operator
-			</p>
-			<h3 class="font-serif text-2xl md:text-3xl text-ink mb-4 leading-tight">
-				You run a services business.
-			</h3>
-			<p class="text-muted leading-relaxed mb-5">
-				$3M to $10M in revenue, 10 to 50 people. AI tools keep coming, admin keeps piling up, and
-				you want to know what's actually worth your attention and what to leave alone.
-			</p>
-			<p class="text-sm text-subtle mb-8">
-				Accounting, legal, medical and dental, trades, real estate, agencies.
-			</p>
-			<div class="mt-auto space-y-3 border-t border-rule pt-5">
-				<div class="flex items-center justify-between gap-3">
+	<div class="max-w-6xl mx-auto" use:reveal>
+		<HairlineGrid cols={2}>
+			<a
+				href="/smb/"
+				class="cell group flex flex-col hover:bg-paper-alt transition-colors"
+				aria-label="Owner-operator services track — AI Tools Assessment"
+			>
+				<div class="rule-left-accent">
+					<Eyebrow label="Track A · Owner-operator" tone="accent" />
+					<h3 class="mt-3 font-sans text-2xl md:text-3xl text-ink leading-tight font-medium">
+						You run a services business.
+					</h3>
+					<p class="mt-4 font-serif text-muted leading-[1.65]">
+						$3M to $10M in revenue, 10 to 50 people. AI tools keep coming, admin keeps piling up,
+						and you want to know what's actually worth your attention and what to leave alone.
+					</p>
+					<p class="mt-4 font-serif text-sm text-subtle">
+						Accounting, legal, medical and dental, trades, real estate, agencies.
+					</p>
+				</div>
+				<div class="mt-auto pt-5 border-t border-rule flex items-center justify-between gap-3">
 					<span class="text-sm font-medium text-ink">AI Tools Assessment</span>
 					<span class="text-accent text-lg group-hover:translate-x-1 transition-transform">→</span>
 				</div>
-				<div class="flex items-center gap-2 text-xs text-subtle">
-					<span>Or start with the</span>
-					<span class="text-accent-light/80 underline underline-offset-2">2-minute AI Readiness Quiz</span
+				<p class="mt-3 text-xs text-subtle">
+					Or start with the <span class="text-accent underline underline-offset-2"
+						>2-minute AI Readiness Quiz</span
 					>
-				</div>
-			</div>
-		</a>
+				</p>
+			</a>
 
-		<!-- Track B: VP Eng / CTO -->
-		<a
-			href="/leaders/"
-			class="group relative p-8 md:p-10 bg-paper-alt rounded-2xl border border-rule hover:border-accent/40 hover:shadow-lg transition-all duration-200 flex flex-col"
-			aria-label="VP Engineering track — AI Scan and Fractional AI Leadership"
-		>
-			<p class="text-xs font-semibold tracking-widest text-accent uppercase mb-4">
-				Track B · VP Eng / CTO
-			</p>
-			<h3 class="font-serif text-2xl md:text-3xl text-ink mb-4 leading-tight">
-				You lead engineering at a mid-market SaaS.
-			</h3>
-			<p class="text-muted leading-relaxed mb-5">
-				50 to 500 people, Series B or C. Your engineers have AI tools. Individual productivity is
-				up. Team-level gains are flat. You need the infrastructure between the tools, not another
-				tool.
-			</p>
-			<p class="text-sm text-subtle mb-8">
-				AI Scan, Context Build, Orchestration, Fractional AI Leadership.
-			</p>
-			<div class="mt-auto space-y-3 border-t border-rule pt-5">
-				<div class="flex items-center justify-between gap-3">
-					<span class="text-sm font-medium text-ink">Start with the AI Scan</span>
+			<a
+				href="/leaders/"
+				class="cell group flex flex-col hover:bg-paper-alt transition-colors"
+				aria-label="Leaders track — AI Scan, Context Build, Orchestration, Fractional"
+			>
+				<div class="rule-left-accent">
+					<Eyebrow label="Track B · Leaders running teams" tone="accent" />
+					<h3 class="mt-3 font-sans text-2xl md:text-3xl text-ink leading-tight font-medium">
+						You lead a team inside a larger org.
+					</h3>
+					<p class="mt-4 font-serif text-muted leading-[1.65]">
+						50 to 500 people. Your team already uses AI tools. Individual productivity is up.
+						Team-level throughput is flat. You need the infrastructure between the tools, not
+						another tool.
+					</p>
+					<p class="mt-4 font-serif text-sm text-subtle">
+						AI Scan, Context Build, Orchestration, Fractional AI Leadership.
+					</p>
+				</div>
+				<div class="mt-auto pt-5 border-t border-rule flex items-center justify-between gap-3">
+					<span class="text-sm font-medium text-ink">Leaders Assessment</span>
 					<span class="text-accent text-lg group-hover:translate-x-1 transition-transform">→</span>
 				</div>
-				<div class="flex items-center gap-2 text-xs text-subtle">
-					<span>Or go direct to</span>
-					<span class="text-accent-light/80 underline underline-offset-2">Fractional AI Leadership</span>
-				</div>
-			</div>
-		</a>
+				<p class="mt-3 text-xs text-subtle">
+					Or start with the <span class="text-accent underline underline-offset-2">AI Scan</span>
+				</p>
+			</a>
+		</HairlineGrid>
 	</div>
 
 	<div class="max-w-4xl mx-auto mt-8 text-center">
 		<p class="text-sm text-subtle">
-			Not sure which applies? The sections below go deeper on Track B. If you're owner-operator, the <a
-				href="/smb/"
-				class="text-accent underline underline-offset-2">Assessment page</a
+			Not sure which applies? The sections below go deeper on the leaders track. If you're
+			owner-operator, the <a href="/smb/" class="text-accent underline underline-offset-2"
+				>SMB Assessment page</a
 			> is the better read.
 		</p>
 	</div>
 </Section>
 
 <!-- Who This Is For (Track B deep-dive starts here) -->
-<Section background="muted" padding="lg" eyebrow="01" title="Who this is for">
+<NumberedSection index="01" background="muted" padding="lg" title="Who this is for">
 	<div class="max-w-2xl mx-auto" use:reveal>
 		<div class="p-8 md:p-12 bg-paper-alt rounded-2xl border border-rule">
 			<ul class="space-y-5 text-lg text-muted leading-relaxed mb-6">
@@ -294,10 +294,9 @@
 						<span class="w-2 h-2 rounded-full bg-accent"></span>
 					</span>
 					<span
-						>You're a <strong class="text-ink"
-							>VP Engineering, CTO, or technical founder</strong
-						>
-						— 50 to 500 engineers, Series B or C, AI tooling already rolled out</span
+						>You're a <strong class="text-ink">VP, director, or senior leader</strong> — running a
+						team of 50 to 500 inside a larger org, engineering or otherwise, with AI tooling already
+						rolled out</span
 					>
 				</li>
 				<li class="flex items-start gap-4">
@@ -340,10 +339,10 @@
 			</p>
 		</div>
 	</div>
-</Section>
+</NumberedSection>
 
 <!-- The Problem -->
-<Section background="white" padding="lg" eyebrow="02" title="The problem isn't the tools">
+<NumberedSection index="02" background="white" padding="lg" title="The problem isn't the tools">
 	<div class="max-w-5xl mx-auto" use:reveal>
 		<div class="grid md:grid-cols-5 gap-10 md:gap-16 items-start">
 			<!-- Left column: prose -->
@@ -375,10 +374,10 @@
 			</div>
 		</div>
 	</div>
-</Section>
+</NumberedSection>
 
 <!-- The AI Stack -->
-<Section background="white" padding="lg" eyebrow="03" title="The AI stack">
+<NumberedSection index="03" background="white" padding="lg" title="The AI stack">
 	<div class="max-w-5xl mx-auto" use:reveal>
 		<p class="text-lg text-muted leading-relaxed text-center mb-16 max-w-2xl mx-auto">
 			Here's the architecture that fixes it. Every organization running on AI needs four layers.
@@ -528,10 +527,10 @@
 			</p>
 		</div>
 	</div>
-</Section>
+</NumberedSection>
 
 <!-- How It Works -->
-<Section id="how-it-works" background="muted" padding="lg" eyebrow="04" title="How it works">
+<NumberedSection index="04" id="how-it-works" background="muted" padding="lg" title="How it works">
 	<div
 		class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto"
 		use:reveal={{ stagger: true, staggerDelay: 150 }}
@@ -613,7 +612,7 @@
 			<p class="mt-4 text-sm text-accent font-medium group-hover:underline">Learn more &rarr;</p>
 		</a>
 	</div>
-</Section>
+</NumberedSection>
 
 <!-- Bottom CTA -->
 <Section background="muted" padding="lg">
