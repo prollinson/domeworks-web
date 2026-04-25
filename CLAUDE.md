@@ -5,23 +5,25 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-yarn dev              # Start dev server (hot reload)
-yarn build            # Production build (static site)
-yarn preview          # Preview production build on port 4173
-yarn check            # TypeScript/Svelte type checking
-yarn lint             # Prettier + ESLint check
-yarn format           # Auto-format with Prettier
-yarn test             # Run Playwright E2E tests (builds first)
+pnpm dev              # Start dev server (hot reload, with wrangler platformProxy bindings)
+pnpm build            # Production build (.svelte-kit/cloudflare/_worker.js)
+pnpm preview          # Preview production build on port 4173
+pnpm check            # TypeScript/Svelte type checking
+pnpm lint             # Prettier + ESLint check
+pnpm format           # Auto-format with Prettier
+pnpm test             # Run vitest + Playwright E2E tests
+pnpm deploy           # wrangler deploy (Cloudflare)
 ```
 
 ## Architecture
 
-**Static SvelteKit blog** using:
+**SvelteKit on Cloudflare** — every page prerenders to static HTML; dynamic endpoints (e.g. `/api/quiz`) run as Pages Functions on the Worker runtime.
 
 - **Svelte 5** with runes (`$props()`, `{@render children()}`)
 - **Tailwind CSS 4** via Vite plugin (`@tailwindcss/vite`)
-- **mdsvex** for Markdown content (`.md` files as routes)
-- **Static adapter** with prerendering and trailing slashes
+- **mdsvex** for Markdown (`.md`) routes (currently used by `/api/reports/[id].md`)
+- **`@sveltejs/adapter-cloudflare`** — output goes to `.svelte-kit/cloudflare/`
+- **D1** (`QUIZ_SUBMISSIONS`), **R2** (`REPORTS_BUCKET`), and **Send Email** (`SEB`) bindings declared in `wrangler.jsonc`; surfaced to `vite dev` via `platformProxy`
 
 ### Key Patterns
 
@@ -38,22 +40,23 @@ let {children} = $props()
 @import 'tailwindcss';
 ```
 
-**Markdown posts** - Place `.md` files in `src/routes/blog/` with frontmatter. Fetch with `fetchMarkdownPosts()` from `$lib/utils`.
-
 ### Project Structure
 
-- `src/routes/` - Pages and layouts (prerendered)
-- `src/lib/components/` - Shared components (Header, Footer)
-- `src/lib/utils/` - Utilities (markdown fetching)
-- `static/` - Static assets (images, favicon)
+- `src/routes/` - Pages and layouts (prerendered) + `src/routes/api/` Pages Functions
+- `src/lib/components/` - Shared components (Header, Footer, SEO, etc.)
+- `src/lib/utils/` - Utilities
+- `static/` - Static assets (images, favicon, sitemap.xml, robots.txt, llms.txt)
 - `tests/` - Playwright E2E tests
+- `migrations/` - D1 migrations for the quiz submissions database
 
 ## Configuration Notes
 
 - Node 22+ required (managed by mise)
 - ESLint 9 flat config format
-- All routes prerendered with trailing slashes (`/page/` not `/page`)
+- All page routes prerendered with trailing slashes (`/page/` not `/page`)
 - Dev server: `https://domeworks.localhost:1355` (via portless, see global CLAUDE.md)
+- Edge redirects live in `_redirects` at the repo root (picked up by adapter-cloudflare)
+- Production secrets via `pnpm wrangler secret put <NAME>`; local `.dev.vars` is git-ignored
 
 ## Component Patterns
 
