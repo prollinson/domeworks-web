@@ -529,6 +529,13 @@
 	</div>
 </NumberedSection>
 
+<PullQuote
+	attribution="The coordination layer — the thing managers and meetings used to be — is what now has to be built."
+>
+	Individual productivity is up. Team-level throughput is flat — because the handoffs between
+	people haven't changed.
+</PullQuote>
+
 <!-- How It Works -->
 <NumberedSection index="04" id="how-it-works" background="muted" padding="lg" title="How it works">
 	<div
