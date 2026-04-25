@@ -2,191 +2,504 @@
 	import Button from '$lib/components/ui/Button.svelte';
 	import Section from '$lib/components/layout/Section.svelte';
 	import NumberedSection from '$lib/components/patterns/NumberedSection.svelte';
-	import Eyebrow from '$lib/components/patterns/Eyebrow.svelte';
 	import HairlineGrid from '$lib/components/patterns/HairlineGrid.svelte';
+	import Eyebrow from '$lib/components/patterns/Eyebrow.svelte';
 	import Callout from '$lib/components/patterns/Callout.svelte';
+	import PullQuote from '$lib/components/patterns/PullQuote.svelte';
 	import { reveal } from '$lib/actions/reveal';
 	import { getBookCallUrl } from '$lib/utils/mailto';
+
+	function stackReveal(node: HTMLElement) {
+		if (
+			typeof window !== 'undefined' &&
+			window.matchMedia('(prefers-reduced-motion: reduce)').matches
+		) {
+			node.classList.add('revealed');
+			return { destroy() {} };
+		}
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						node.classList.add('revealed');
+						observer.unobserve(node);
+					}
+				});
+			},
+			{ threshold: 0.2 }
+		);
+		observer.observe(node);
+		return {
+			destroy() {
+				observer.disconnect();
+			}
+		};
+	}
 </script>
 
 <svelte:head>
-	<title>AI Assessment for Leaders | DomeWorks</title>
+	<title>For Leaders | DomeWorks</title>
 	<meta
 		name="description"
-		content="A two-week deep dive into your team's AI adoption. Stakeholder interviews, infrastructure analysis, and a prioritized build plan. $10,000-$15,000."
+		content="Your engineers have AI tools. Individual productivity is up, team-level throughput is flat. DomeWorks builds the context system and agent coordination that replace coordination overhead — so AI compounds across the team, not just per person."
 	/>
 	<link rel="canonical" href="https://domeworks.tech/leaders/" />
 
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="DomeWorks" />
 	<meta property="og:url" content="https://domeworks.tech/leaders/" />
-	<meta property="og:title" content="AI Assessment for Leaders | DomeWorks" />
+	<meta property="og:title" content="For Leaders | DomeWorks" />
 	<meta
 		property="og:description"
-		content="A two-week deep dive into your team's AI adoption. Stakeholder interviews, infrastructure analysis, and a prioritized build plan."
+		content="The infrastructure between AI tools — context systems and agent coordination — that replaces coordination overhead for engineering and ops teams of 50–500."
 	/>
 	<meta property="og:image" content="https://domeworks.tech/og-image.png" />
+
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="AI Assessment for Leaders | DomeWorks" />
+	<meta name="twitter:title" content="For Leaders | DomeWorks" />
 	<meta
 		name="twitter:description"
-		content="A two-week deep dive into your team's AI adoption. Stakeholder interviews and a prioritized build plan."
+		content="The infrastructure between AI tools — context systems and agent coordination — that replaces coordination overhead for teams of 50–500."
 	/>
 	<meta name="twitter:image" content="https://domeworks.tech/og-image.png" />
-
-	{@html `<script type="application/ld+json">${JSON.stringify({
-		'@context': 'https://schema.org',
-		'@type': 'Service',
-		name: 'AI Infrastructure Assessment',
-		provider: { '@type': 'Organization', name: 'DomeWorks' },
-		description:
-			'Two-week engagement: stakeholder interviews, tool and spend audit, workflow assessment, blocker identification, and a prioritized build plan.',
-		dateModified: '2026-03',
-		offers: {
-			'@type': 'AggregateOffer',
-			lowPrice: '10000',
-			highPrice: '15000',
-			priceCurrency: 'USD'
-		}
-	})}</script>`}
 </svelte:head>
 
-<!-- Hero -->
-<Section background="dark" padding="xl">
-	<div class="max-w-3xl">
-		<Eyebrow label="Leaders Assessment" tone="accent-light" />
-		<h1
-			class="mt-4 font-sans font-semibold text-paper leading-[1.02] tracking-[-0.035em]"
-			style="font-size: clamp(2.5rem, 7vw, 4.5rem);"
-		>
-			Find out what's actually happening with AI on your team<span class="text-accent-light">.</span
-			>
-			Then fix it<span class="text-accent-light">.</span>
-		</h1>
-		<p class="mt-6 font-serif text-lg text-paper/80 leading-[1.65] max-w-2xl">
-			A two-week engagement where I figure out what's actually happening with AI at your company —
-			not what the dashboards say — and what's blocking it from working at the team level.
-		</p>
-		<div class="mt-8">
-			<Button href={getBookCallUrl()} size="lg">Book a call</Button>
-		</div>
-	</div>
-</Section>
+<!-- Skip to content -->
+<a
+	href="#how-it-works"
+	class="sr-only focus:not-sr-only focus:absolute focus:top-20 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-accent focus:text-white focus:rounded-lg"
+>
+	Skip to content
+</a>
 
-<!-- Four Things Happen -->
-<NumberedSection index="01" title="Four things happen">
-	<div class="max-w-2xl mx-auto space-y-8" use:reveal>
-		{#each [{ step: '1', title: 'Stakeholder interviews', desc: "I talk to your engineering leads, product managers, and ops people. Not a survey — real conversations about how they're using AI, where they're hitting walls, and what would actually help. This is where the real blockers — and the real opportunities — surface." }, { step: '2', title: 'Tool and spend audit', desc: "I map every AI tool, every seat, every subscription. Who's using what, how often, and whether it's doing anything useful." }, { step: '3', title: 'Workflow assessment', desc: "I evaluate what's in place — and what's missing — between your AI tools and how your team actually ships. Shared context, standard workflows, CI/CD integration, developer tooling." }, { step: '4', title: 'Blocker identification', desc: 'Adoption stalls for specific reasons — often structural, not motivational. I find out which blockers are in your way — missing systems, cultural resistance, knowledge silos, tooling gaps — and how severe they are.' }] as item}
-			<div class="flex items-start gap-6">
-				<span
-					class="flex-shrink-0 w-10 h-10 rounded-lg bg-accent text-paper flex items-center justify-center text-sm font-medium"
+<!-- Hero Section -->
+<section class="relative hero-section bg-ink overflow-hidden -mt-16 md:-mt-20" aria-label="Hero">
+	<div
+		class="relative w-full max-w-7xl mx-auto px-6 lg:px-8 hero-content-pad flex flex-col justify-between min-h-[inherit]"
+	>
+		<!-- Top zone: eyebrow -->
+		<div class="hero-eyebrow-row">
+			<Eyebrow label="For leaders" tone="accent-light" />
+		</div>
+
+		<!-- Middle zone: Headline, editorial scale, staggered lines -->
+		<div class="hero-middle">
+			<h1 class="hero-headline font-serif font-normal text-paper">
+				<span class="hero-line hero-line-1">Your team bought</span>
+				<span class="hero-line hero-line-2">AI tools<span class="text-accent-light">.</span></span>
+				<span class="hero-line hero-line-3"><em class="hero-headline-em">Nobody built</em></span>
+				<span class="hero-line hero-line-4 text-paper/70"
+					>the systems between them<span class="text-accent-light/70">.</span></span
 				>
-					{item.step}
-				</span>
-				<div>
-					<h3 class="font-medium text-ink mb-1">{item.title}</h3>
-					<p class="font-serif text-muted">{item.desc}</p>
+			</h1>
+
+			<!-- Subtext positioned as an editorial aside, offset from the headline -->
+			<div class="hero-aside">
+				<div class="hero-aside-rule" aria-hidden="true" role="presentation"></div>
+				<p class="hero-body-text text-paper/85 leading-relaxed">
+					I embed with your team and build working systems — not strategy decks. Every engagement is
+					designed to end. You keep what I build.
+				</p>
+				<p class="mt-3 text-sm text-paper/75 leading-relaxed hidden sm:block">
+					10+ years leading teams at DoorDash, Square, and Mudflap. The biggest bottleneck was never
+					the work — it was the coordination. That layer can now be built as infrastructure.
+				</p>
+				<div class="mt-6 md:mt-8 flex items-center gap-6">
+					<Button href={getBookCallUrl()} size="lg">Book a call</Button>
+					<a
+						href="#how-it-works"
+						class="hero-cta-secondary focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink rounded-sm"
+						aria-label="Jump to how it works section"
+					>
+						How it works
+						<span class="hero-cta-secondary-arrow" aria-hidden="true">
+							<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M19 14l-7 7m0 0l-7-7m7 7V3"
+								/>
+							</svg>
+						</span>
+					</a>
 				</div>
 			</div>
-		{/each}
+		</div>
+
+		<!-- Bottom zone: Stat strip, editorial data bar -->
+		<div class="hero-stat-bar">
+			<!-- Desktop stats -->
+			<div class="hidden md:flex items-stretch">
+				<div class="hero-stat-cell">
+					<span class="hero-stat-value font-serif">10+</span>
+					<span class="hero-stat-label">Years eng leadership</span>
+				</div>
+				<div class="hero-stat-divider" aria-hidden="true" role="presentation"></div>
+				<div class="hero-stat-cell">
+					<span class="hero-stat-value font-serif">48hr</span>
+					<span class="hero-stat-label">Intelligence Scan</span>
+				</div>
+				<div class="hero-stat-divider" aria-hidden="true" role="presentation"></div>
+				<div class="hero-stat-cell">
+					<span class="hero-stat-value font-serif">4 layers</span>
+					<span class="hero-stat-label">AI stack</span>
+				</div>
+			</div>
+			<!-- Mobile stats -->
+			<div class="flex min-[360px]:flex md:hidden items-stretch">
+				<div class="hero-stat-cell-mobile">
+					<span class="text-2xl font-serif text-paper/95">10+</span>
+					<span class="text-xs text-paper/70 mt-1 tracking-wider uppercase leading-tight"
+						>Years leading</span
+					>
+				</div>
+				<div class="hero-stat-divider" aria-hidden="true" role="presentation"></div>
+				<div class="hero-stat-cell-mobile">
+					<span class="text-2xl font-serif text-paper/95">48hr</span>
+					<span class="text-xs text-paper/70 mt-1 tracking-wider uppercase leading-tight"
+						>Intel Scan</span
+					>
+				</div>
+				<div class="hero-stat-divider" aria-hidden="true" role="presentation"></div>
+				<div class="hero-stat-cell-mobile">
+					<span class="text-2xl font-serif text-paper/95">4 layers</span>
+					<span class="text-xs text-paper/70 mt-1 tracking-wider uppercase leading-tight"
+						>AI stack</span
+					>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Who This Is For -->
+<NumberedSection index="01" background="muted" padding="lg" title="Who this is for">
+	<div class="max-w-2xl mx-auto" use:reveal>
+		<div class="p-8 md:p-12 bg-paper-alt rounded-2xl border border-rule">
+			<ul class="space-y-5 text-lg text-muted leading-relaxed mb-6">
+				<li class="flex items-start gap-4">
+					<span
+						class="flex-shrink-0 w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center mt-1"
+					>
+						<span class="w-2 h-2 rounded-full bg-accent"></span>
+					</span>
+					<span
+						>You're a <strong class="text-ink">VP, director, or senior leader</strong> — running a
+						team of 50 to 500 inside a larger org, engineering or otherwise, with AI tooling already
+						rolled out</span
+					>
+				</li>
+				<li class="flex items-start gap-4">
+					<span
+						class="flex-shrink-0 w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center mt-1"
+					>
+						<span class="w-2 h-2 rounded-full bg-accent"></span>
+					</span>
+					<span
+						>Individual productivity is up. Team-level throughput is flat — because the handoffs
+						between people haven't changed</span
+					>
+				</li>
+				<li class="flex items-start gap-4">
+					<span
+						class="flex-shrink-0 w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center mt-1"
+					>
+						<span class="w-2 h-2 rounded-full bg-accent"></span>
+					</span>
+					<span
+						>You've thought about assigning a senior engineer to fix it — but building the
+						infrastructure that replaces coordination overhead isn't a side project</span
+					>
+				</li>
+				<li class="flex items-start gap-4">
+					<span
+						class="flex-shrink-0 w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center mt-1"
+					>
+						<span class="w-2 h-2 rounded-full bg-accent"></span>
+					</span>
+					<span
+						>You want someone who's already built this, so your team gets the result without the
+						trial-and-error tax</span
+					>
+				</li>
+			</ul>
+			<p class="text-lg text-ink leading-relaxed font-medium border-l-2 border-accent pl-6">
+				You don't need another tool or a strategy deck. You need someone who can build the missing
+				layers of your AI stack.
+			</p>
+		</div>
 	</div>
 </NumberedSection>
 
-<!-- What You Get -->
-<NumberedSection index="02" title="What you get">
-	<HairlineGrid cols={3} stagger staggerDelay={150}>
-		<div class="cell">
-			<h3 class="text-lg font-medium text-ink mb-3">Where you stand</h3>
-			<p class="font-serif text-sm text-muted leading-[1.55]">
-				What tools are in use, what's working, what's not. The gap between "engineers have AI" and
-				"AI is part of how the team ships." A detailed picture you can share with your leadership
-				team.
-			</p>
+<!-- The Problem -->
+<NumberedSection index="02" background="white" padding="lg" title="The problem isn't the tools">
+	<div class="max-w-5xl mx-auto" use:reveal>
+		<div class="grid md:grid-cols-5 gap-10 md:gap-16 items-start">
+			<!-- Left column: prose -->
+			<div class="md:col-span-3 space-y-6">
+				<p class="text-lg text-muted leading-relaxed">
+					The tools work fine individually. They write code, answer questions, summarize documents.
+					What breaks is everything between them.
+				</p>
+				<p class="text-lg text-muted leading-relaxed">
+					Engineers re-explain the architecture to every AI prompt. Managers spend their days
+					aggregating context from three teams so a fourth can act on it. Status meetings exist
+					because information doesn't flow without human relay chains. That coordination layer — the
+					thing managers and meetings used to be — is what now has to be built.
+				</p>
+			</div>
+			<!-- Right column: Block proof point -->
+			<div class="md:col-span-2">
+				<div class="p-6 bg-paper rounded-xl border border-rule sticky top-24">
+					<p class="text-muted leading-relaxed">
+						<strong class="text-ink">Block</strong> (the company behind Square and Cash App)
+						recently published how they're replacing coordination overhead with what they call a
+						<em>"company world model."</em> It's the same architecture I've been building with engineering
+						teams — the Context and Orchestration layers of the stack.
+					</p>
+					<p class="text-sm text-subtle mt-3">
+						The pattern is showing up independently because the problem is structural, not novel.
+					</p>
+				</div>
+			</div>
 		</div>
-		<div class="cell">
-			<h3 class="text-lg font-medium text-ink mb-3">What to build, in what order</h3>
-			<p class="font-serif text-sm text-muted leading-[1.55]">
-				A ranked list of specific systems and changes for your team. Each one has estimated effort,
-				expected impact, and dependencies. You'll know exactly what to do first and why.
-			</p>
-		</div>
-		<div class="cell">
-			<h3 class="text-lg font-medium text-ink mb-3">Quick wins</h3>
-			<p class="font-serif text-sm text-muted leading-[1.55]">
-				Two to three things your team can do immediately — before any further engagement. Changes
-				that pay off in days, not months. The quick wins alone tend to pay for the assessment.
-			</p>
-		</div>
-	</HairlineGrid>
-</NumberedSection>
-
-<!-- What Happens Next -->
-<NumberedSection index="03" title="What happens next">
-	<div class="max-w-2xl mx-auto" use:reveal>
-		<Callout variant="rule-left">
-			<p class="font-serif text-lg text-muted leading-[1.65] mb-4">
-				The assessment feeds into a design and build phase, but there's no obligation. You get the
-				deliverables either way.
-			</p>
-			<p class="font-serif text-lg text-muted leading-[1.65]">
-				Some teams take the assessment and build internally. That's fine. If you want to keep going,
-				the assessment gives us a clear starting point — no re-discovery, no wasted time.
-			</p>
-		</Callout>
 	</div>
 </NumberedSection>
 
-<!-- Pricing -->
-<NumberedSection index="04" title="Investment">
-	<div class="max-w-2xl mx-auto" use:reveal>
-		<div class="overflow-hidden border-t border-b border-rule">
-			<table class="w-full">
-				<thead>
-					<tr class="bg-ink text-paper">
-						<th class="text-left px-6 py-4 text-sm font-medium">Team Size</th>
-						<th class="text-right px-6 py-4 text-sm font-medium">Price</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr class="bg-paper">
-						<td class="px-6 py-4 text-ink">5–20 people, 1-2 squads</td>
-						<td class="px-6 py-4 text-right text-ink font-medium">$10,000</td>
-					</tr>
-					<tr class="bg-paper-alt">
-						<td class="px-6 py-4 text-ink">20–80 people, 3-6 squads</td>
-						<td class="px-6 py-4 text-right text-ink font-medium">$12,500</td>
-					</tr>
-					<tr class="bg-paper">
-						<td class="px-6 py-4 text-ink">80+ people, multi-department</td>
-						<td class="px-6 py-4 text-right text-ink font-medium">$15,000</td>
-					</tr>
-				</tbody>
-			</table>
+<!-- The AI Stack -->
+<NumberedSection index="03" background="white" padding="lg" title="The AI stack">
+	<div class="max-w-5xl mx-auto" use:reveal>
+		<p class="text-lg text-muted leading-relaxed text-center mb-16 max-w-2xl mx-auto">
+			Here's the architecture that fixes it. Every organization running on AI needs four layers.
+			Most have the top and bottom. The middle two are where coordination becomes infrastructure.
+		</p>
+
+		<!-- AI Stack visual: bold stacked layers -->
+		<div class="relative mb-16">
+			<!-- "DomeWorks builds" indicator on left -->
+			<div
+				class="absolute -left-2 md:left-0 top-0 bottom-0 hidden lg:flex flex-col items-center"
+				style="width: 3rem;"
+			>
+				<div class="flex-1"></div>
+				<div class="relative flex flex-col items-center" style="height: 50%;">
+					<div
+						class="w-px h-full bg-gradient-to-b from-accent via-accent-light to-accent opacity-40"
+					></div>
+					<span
+						class="absolute top-1/2 -translate-y-1/2 -translate-x-2 text-[10px] font-semibold tracking-[0.2em] text-accent uppercase whitespace-nowrap"
+						style="writing-mode: vertical-lr; transform: rotate(180deg) translateX(100%) translateY(-50%);"
+						>DomeWorks builds</span
+					>
+				</div>
+				<div class="flex-1"></div>
+			</div>
+
+			<div class="space-y-1 lg:pl-16 stack-build" use:stackReveal>
+				<!-- Surface layer -->
+				<div class="rounded-t-2xl bg-paper-alt border border-rule px-8 py-6 md:px-10 md:py-7">
+					<div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
+						<span class="text-sm font-semibold tracking-[0.15em] text-subtle uppercase">Surface</span>
+						<span class="text-subtle text-sm md:text-base">Where humans decide and act</span>
+					</div>
+				</div>
+
+				<!-- Agent Coordination layer -->
+				<div class="bg-accent px-8 py-8 md:px-10 md:py-10 relative overflow-hidden">
+					<div
+						class="absolute inset-0 opacity-10"
+						style="background-image: linear-gradient(135deg, transparent 25%, rgba(255,255,255,0.1) 25%, rgba(255,255,255,0.1) 50%, transparent 50%, transparent 75%, rgba(255,255,255,0.1) 75%); background-size: 20px 20px;"
+					></div>
+					<div class="relative">
+						<div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-3">
+							<span class="text-sm font-semibold tracking-[0.15em] text-white/80 uppercase"
+								>Agent Coordination</span
+							>
+							<span class="text-white/60 text-sm md:text-base"
+								>Routes work, validates output, closes feedback loops</span
+							>
+						</div>
+						<p class="text-white/90 text-lg md:text-xl font-serif leading-snug max-w-xl">
+							Replaces the coordination work that hierarchy exists to perform.
+						</p>
+						<ul class="mt-3 space-y-1 text-white/60 text-sm">
+							<li>Route PR reviews to the right engineer based on code ownership and availability</li>
+							<li>Triage incoming bugs without a morning standup</li>
+							<li>Distribute sprint context across teams so nobody re-explains the architecture</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- Context System layer -->
+				<div class="bg-accent-light px-8 py-8 md:px-10 md:py-10 relative overflow-hidden">
+					<div
+						class="absolute inset-0 opacity-8"
+						style="background-image: linear-gradient(135deg, transparent 25%, rgba(255,255,255,0.08) 25%, rgba(255,255,255,0.08) 50%, transparent 50%, transparent 75%, rgba(255,255,255,0.08) 75%); background-size: 20px 20px;"
+					></div>
+					<div class="relative">
+						<div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-3">
+							<span class="text-sm font-semibold tracking-[0.15em] text-white/80 uppercase"
+								>Context System</span
+							>
+							<span class="text-white/60 text-sm md:text-base"
+								>Domain knowledge fed into every AI interaction</span
+							>
+						</div>
+						<p class="text-white/90 text-lg md:text-xl font-serif leading-snug max-w-xl">
+							Builds the world model so AI doesn't start from zero every time.
+						</p>
+						<ul class="mt-3 space-y-1 text-white/60 text-sm">
+							<li>
+								Feed your coding standards, architectural decisions, and team conventions into every
+								AI interaction
+							</li>
+							<li>
+								Keep your ticketing system, docs, and codebase connected so AI knows what's already
+								been decided
+							</li>
+							<li>
+								Give new engineers' AI tools the same context a senior engineer carries in their head
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- Edge layer -->
+				<div class="rounded-b-2xl bg-paper-alt border border-rule px-8 py-6 md:px-10 md:py-7">
+					<div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
+						<span class="text-sm font-semibold tracking-[0.15em] text-subtle uppercase">Edge</span>
+						<span class="text-subtle text-sm md:text-base">Tools, APIs, repos, CI/CD</span>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div class="mt-6">
-			<Callout variant="accent">
-				<p class="text-sm text-ink">
-					<strong>Founding client rate:</strong> $7,000–$10,000 for the first 3-5 clients, in exchange
-					for a case study and testimonial. Mention it on the call.
+
+		<!-- Before/After comparison -->
+		<div class="max-w-3xl mx-auto mb-16" use:reveal>
+			<div class="bg-paper-alt rounded-lg border border-rule p-6 md:p-8">
+				<div class="grid grid-cols-2 gap-6 md:gap-8">
+					<div>
+						<p class="text-xs font-semibold tracking-widest text-faint uppercase mb-4">Before</p>
+						<ul class="space-y-3 font-serif text-sm text-subtle">
+							<li>Engineers re-explain architecture to every AI prompt</li>
+							<li>Managers relay context between teams in meetings</li>
+							<li>Status updates exist because information doesn't flow</li>
+							<li>AI tools help individuals but don't coordinate work</li>
+						</ul>
+					</div>
+					<div>
+						<p class="text-xs font-semibold tracking-widest text-accent uppercase mb-4">After</p>
+						<ul class="space-y-3 font-serif text-sm text-ink">
+							<li>Context system feeds it automatically</li>
+							<li>Agent coordination routes it in real time</li>
+							<li>Information flows through infrastructure, not people</li>
+							<li>Multi-agent workflows coordinate across the team</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="max-w-2xl mx-auto">
+			<Callout variant="rule-left">
+				<p class="font-serif text-lg text-muted leading-[1.65]">
+					I embed with your team 2–3 days a week and build both layers. Most consultancies hand you
+					a strategy deck. I stay until the context system and agent coordination are running and
+					your team can maintain them without me.
 				</p>
 			</Callout>
 		</div>
-		<p class="text-center text-subtle text-sm mt-4">
-			I'll give you an exact number after a 30-minute call. No hourly billing surprises, no change
-			orders.
-		</p>
 	</div>
 </NumberedSection>
 
-<!-- CTA -->
+<PullQuote
+	attribution="The coordination layer — the thing managers and meetings used to be — is what now has to be built."
+>
+	Individual productivity is up. Team-level throughput is flat — because the handoffs between
+	people haven't changed.
+</PullQuote>
+
+<!-- How It Works -->
+<NumberedSection index="04" id="how-it-works" background="muted" padding="lg" title="How it works">
+	<div class="max-w-7xl mx-auto">
+		<HairlineGrid cols={4} stagger staggerDelay={150}>
+			<a href="/leaders/scan/" class="cell group flex flex-col hover:bg-paper-alt transition-colors">
+				<div class="rule-left-accent">
+					<Eyebrow label="Start here" tone="accent" />
+					<h3 class="mt-3 text-xl font-medium text-ink mb-2">AI Scan</h3>
+					<p class="text-2xl font-serif text-ink mb-4">$2,500–$3,500</p>
+					<p class="font-serif text-sm text-muted leading-[1.55]">
+						In 48 hours, I diagnose where you are on the path from "bought tools" to "AI
+						coordinates our work." You get a clear picture of what's missing and quick wins your
+						team can act on this week.
+					</p>
+				</div>
+				<p class="mt-4 text-sm text-accent font-medium group-hover:underline">Learn more →</p>
+			</a>
+
+			<a
+				href="/leaders/context-build/"
+				class="cell group flex flex-col hover:bg-paper-alt transition-colors"
+			>
+				<div class="rule-left-accent">
+					<Eyebrow label="Deep dive" tone="accent" />
+					<h3 class="mt-3 text-xl font-medium text-ink mb-2">Context Build</h3>
+					<p class="text-2xl font-serif text-ink mb-4">$10,000–$15,000+</p>
+					<p class="font-serif text-sm text-muted leading-[1.55]">
+						I map your organization's world model gaps, design the context system, and build the
+						infrastructure that feeds your domain knowledge into every AI interaction. Your team
+						goes from "every prompt starts from zero" to "AI knows our business."
+					</p>
+					<p class="mt-3 text-sm text-subtle">1–2 week assessment + 4-week build</p>
+				</div>
+				<p class="mt-4 text-sm text-accent font-medium group-hover:underline">Learn more →</p>
+			</a>
+
+			<a
+				href="/leaders/orchestration-build/"
+				class="cell group flex flex-col hover:bg-paper-alt transition-colors"
+			>
+				<div>
+					<h3 class="text-xl font-medium text-ink mb-2">Orchestration Build</h3>
+					<p class="text-2xl font-serif text-ink mb-4">4–12 weeks</p>
+					<p class="font-serif text-sm text-muted leading-[1.55]">
+						I build the agent coordination layer: multi-agent workflows, quality gates, output
+						routing. Your team goes from "AI helps individuals" to "AI coordinates our work."
+					</p>
+					<p class="mt-3 text-sm text-subtle">Day rate, scoped from assessment</p>
+				</div>
+				<p class="mt-4 text-sm text-accent font-medium group-hover:underline">Learn more →</p>
+			</a>
+
+			<a
+				href="/leaders/fractional/"
+				class="cell group flex flex-col hover:bg-paper-alt transition-colors"
+			>
+				<div>
+					<Eyebrow label="What comes after" tone="subtle" />
+					<h3 class="mt-3 text-xl font-medium text-ink mb-2">Fractional AI Leadership</h3>
+					<p class="text-2xl font-serif text-ink mb-4">Monthly retainer</p>
+					<p class="font-serif text-sm text-muted leading-[1.55]">
+						1–2 days/week. I maintain and evolve the context system and agent coordination, close
+						feedback loops, and make sure the infrastructure compounds as your org changes.
+					</p>
+				</div>
+				<p class="mt-4 text-sm text-accent font-medium group-hover:underline">Learn more →</p>
+			</a>
+		</HairlineGrid>
+	</div>
+</NumberedSection>
+
+<!-- Bottom CTA -->
 <Section background="muted" padding="lg">
 	<div class="max-w-2xl mx-auto text-center" use:reveal>
 		<h2 class="font-serif text-3xl font-normal text-ink mb-4">
-			Ready to find out what's blocking your team?
+			Ready to talk<span class="text-accent">?</span>
 		</h2>
-		<p class="font-serif text-lg text-muted mb-8">
-			30-minute call, no obligation. I'll tell you whether an Assessment is the right move — or if a
-			Scan is enough.
+		<p class="text-lg text-muted mb-8">
+			Tell me what your team has shipped with AI so far. I'll tell you where the coordination layer
+			is most likely to break first — and whether a Scan is worth your 48 hours.
 		</p>
 		<Button href={getBookCallUrl()} size="lg">Book a call</Button>
 	</div>

@@ -26,6 +26,7 @@
 			children: [
 				{ href: '/leaders/', label: 'Overview' },
 				{ href: '/leaders/scan/', label: 'AI Scan' },
+				{ href: '/leaders/assessment/', label: 'Assessment' },
 				{ href: '/leaders/context-build/', label: 'Context Build' },
 				{ href: '/leaders/orchestration-build/', label: 'Orchestration Build' },
 				{ href: '/leaders/fractional/', label: 'Fractional' }
