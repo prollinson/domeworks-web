@@ -493,13 +493,13 @@
 
 		<!-- Before/After comparison -->
 		<div class="max-w-3xl mx-auto mb-16" use:reveal>
-			<div class="bg-paper-alt rounded-xl border border-rule p-6 md:p-8">
+			<div class="bg-paper-alt rounded-lg border border-rule p-6 md:p-8">
 				<div class="grid grid-cols-2 gap-6 md:gap-8">
 					<div>
 						<p class="text-xs font-semibold tracking-widest text-faint uppercase mb-4">
 							Before
 						</p>
-						<ul class="space-y-3 text-sm text-subtle">
+						<ul class="space-y-3 font-serif text-sm text-subtle">
 							<li>Engineers re-explain architecture to every AI prompt</li>
 							<li>Managers relay context between teams in meetings</li>
 							<li>Status updates exist because information doesn't flow</li>
@@ -508,7 +508,7 @@
 					</div>
 					<div>
 						<p class="text-xs font-semibold tracking-widest text-accent uppercase mb-4">After</p>
-						<ul class="space-y-3 text-sm text-ink">
+						<ul class="space-y-3 font-serif text-sm text-ink">
 							<li>Context system feeds it automatically</li>
 							<li>Agent coordination routes it in real time</li>
 							<li>Information flows through infrastructure, not people</li>
@@ -520,11 +520,13 @@
 		</div>
 
 		<div class="max-w-2xl mx-auto">
-			<p class="text-lg text-muted leading-relaxed border-l-2 border-accent pl-6">
-				I embed with your team 2–3 days a week and build both layers. Most consultancies hand you a
-				strategy deck. I stay until the context system and agent coordination are running and your
-				team can maintain them without me.
-			</p>
+			<Callout variant="rule-left">
+				<p class="font-serif text-lg text-muted leading-[1.65]">
+					I embed with your team 2–3 days a week and build both layers. Most consultancies hand you
+					a strategy deck. I stay until the context system and agent coordination are running and
+					your team can maintain them without me.
+				</p>
+			</Callout>
 		</div>
 	</div>
 </NumberedSection>
@@ -538,86 +540,75 @@
 
 <!-- How It Works -->
 <NumberedSection index="04" id="how-it-works" background="muted" padding="lg" title="How it works">
-	<div
-		class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto"
-		use:reveal={{ stagger: true, staggerDelay: 150 }}
-	>
-		<a
-			href="/leaders/scan/"
-			class="group p-8 bg-paper rounded-2xl border border-rule hover:border-accent card-lift flex flex-col relative overflow-hidden"
-		>
-			<div class="absolute top-0 left-0 right-0 h-1 bg-accent/30"></div>
-			<span
-				class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-medium text-accent bg-accent/10 rounded-full mb-4 w-fit"
+	<div class="max-w-7xl mx-auto">
+		<HairlineGrid cols={4} stagger staggerDelay={150}>
+			<a
+				href="/leaders/scan/"
+				class="cell group flex flex-col hover:bg-paper-alt transition-colors"
 			>
-				<span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-				Start here
-			</span>
-			<h3 class="text-xl font-medium text-ink mb-2">AI Scan</h3>
-			<p class="text-2xl font-normal font-serif text-ink mb-4">$2,500–$3,500</p>
-			<p class="text-subtle text-sm flex-grow">
-				In 48 hours, I diagnose where you are on the path from "bought tools" to "AI coordinates our
-				work." You get a clear picture of what's missing and quick wins your team can act on this
-				week.
-			</p>
-			<p class="mt-4 text-sm text-accent font-medium group-hover:underline">Learn more &rarr;</p>
-		</a>
+				<div class="rule-left-accent">
+					<Eyebrow label="Start here" tone="accent" />
+					<h3 class="mt-3 text-xl font-medium text-ink mb-2">AI Scan</h3>
+					<p class="text-2xl font-serif text-ink mb-4">$2,500–$3,500</p>
+					<p class="font-serif text-sm text-muted leading-[1.55]">
+						In 48 hours, I diagnose where you are on the path from "bought tools" to "AI
+						coordinates our work." You get a clear picture of what's missing and quick wins your
+						team can act on this week.
+					</p>
+				</div>
+				<p class="mt-4 text-sm text-accent font-medium group-hover:underline">Learn more →</p>
+			</a>
 
-		<a
-			href="/leaders/context-build/"
-			class="group p-8 rounded-2xl border-2 border-accent bg-accent/[0.03] flex flex-col relative overflow-hidden"
-		>
-			<div class="absolute top-0 left-0 right-0 h-1 bg-accent"></div>
-			<span
-				class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 text-xs font-medium text-white bg-accent rounded-full"
+			<a
+				href="/leaders/context-build/"
+				class="cell group flex flex-col hover:bg-paper-alt transition-colors"
 			>
-				Deep dive
-			</span>
-			<h3 class="text-xl font-medium text-ink mb-2 mt-2">Context Build</h3>
-			<p class="text-2xl font-normal font-serif text-ink mb-4">$10,000–$15,000+</p>
-			<p class="text-subtle text-sm flex-grow">
-				I map your organization's world model gaps, design the context system, and build the
-				infrastructure that feeds your domain knowledge into every AI interaction. Your team goes
-				from "every prompt starts from zero" to "AI knows our business."
-			</p>
-			<p class="mt-4 text-sm text-subtle">1-2 week assessment + 4-week build</p>
-			<p class="mt-4 text-sm text-accent font-medium group-hover:underline">Learn more &rarr;</p>
-		</a>
+				<div class="rule-left-accent">
+					<Eyebrow label="Deep dive" tone="accent" />
+					<h3 class="mt-3 text-xl font-medium text-ink mb-2">Context Build</h3>
+					<p class="text-2xl font-serif text-ink mb-4">$10,000–$15,000+</p>
+					<p class="font-serif text-sm text-muted leading-[1.55]">
+						I map your organization's world model gaps, design the context system, and build the
+						infrastructure that feeds your domain knowledge into every AI interaction. Your team
+						goes from "every prompt starts from zero" to "AI knows our business."
+					</p>
+					<p class="mt-3 text-sm text-subtle">1–2 week assessment + 4-week build</p>
+				</div>
+				<p class="mt-4 text-sm text-accent font-medium group-hover:underline">Learn more →</p>
+			</a>
 
-		<a
-			href="/leaders/orchestration-build/"
-			class="group p-8 bg-paper rounded-2xl border border-rule hover:border-accent card-lift flex flex-col relative overflow-hidden"
-		>
-			<div class="absolute top-0 left-0 right-0 h-1 bg-accent-light/30"></div>
-			<h3 class="text-xl font-medium text-ink mb-2">Orchestration Build</h3>
-			<p class="text-2xl font-normal font-serif text-ink mb-4">4–12 weeks</p>
-			<p class="text-subtle text-sm flex-grow">
-				I build the agent coordination layer: multi-agent workflows, quality gates, output routing.
-				Your team goes from "AI helps individuals" to "AI coordinates our work."
-			</p>
-			<p class="mt-4 text-sm text-subtle">Day rate, scoped from assessment</p>
-			<p class="mt-4 text-sm text-accent font-medium group-hover:underline">Learn more &rarr;</p>
-		</a>
-
-		<a
-			href="/leaders/fractional/"
-			class="group p-8 bg-paper rounded-2xl border border-rule hover:border-accent card-lift flex flex-col relative overflow-hidden"
-		>
-			<div class="absolute top-0 left-0 right-0 h-1 bg-accent-light/30"></div>
-			<span
-				class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-medium text-accent bg-accent-light/10 rounded-full mb-4 w-fit"
+			<a
+				href="/leaders/orchestration-build/"
+				class="cell group flex flex-col hover:bg-paper-alt transition-colors"
 			>
-				<span class="w-1.5 h-1.5 rounded-full bg-accent-light"></span>
-				What comes after
-			</span>
-			<h3 class="text-xl font-medium text-ink mb-2">Fractional AI Leadership</h3>
-			<p class="text-2xl font-normal font-serif text-ink mb-4">Monthly retainer</p>
-			<p class="text-subtle text-sm flex-grow">
-				1–2 days/week. I maintain and evolve the context system and agent coordination, close
-				feedback loops, and make sure the infrastructure compounds as your org changes.
-			</p>
-			<p class="mt-4 text-sm text-accent font-medium group-hover:underline">Learn more &rarr;</p>
-		</a>
+				<div>
+					<h3 class="text-xl font-medium text-ink mb-2">Orchestration Build</h3>
+					<p class="text-2xl font-serif text-ink mb-4">4–12 weeks</p>
+					<p class="font-serif text-sm text-muted leading-[1.55]">
+						I build the agent coordination layer: multi-agent workflows, quality gates, output
+						routing. Your team goes from "AI helps individuals" to "AI coordinates our work."
+					</p>
+					<p class="mt-3 text-sm text-subtle">Day rate, scoped from assessment</p>
+				</div>
+				<p class="mt-4 text-sm text-accent font-medium group-hover:underline">Learn more →</p>
+			</a>
+
+			<a
+				href="/leaders/fractional/"
+				class="cell group flex flex-col hover:bg-paper-alt transition-colors"
+			>
+				<div>
+					<Eyebrow label="What comes after" tone="subtle" />
+					<h3 class="mt-3 text-xl font-medium text-ink mb-2">Fractional AI Leadership</h3>
+					<p class="text-2xl font-serif text-ink mb-4">Monthly retainer</p>
+					<p class="font-serif text-sm text-muted leading-[1.55]">
+						1–2 days/week. I maintain and evolve the context system and agent coordination, close
+						feedback loops, and make sure the infrastructure compounds as your org changes.
+					</p>
+				</div>
+				<p class="mt-4 text-sm text-accent font-medium group-hover:underline">Learn more →</p>
+			</a>
+		</HairlineGrid>
 	</div>
 </NumberedSection>
 
