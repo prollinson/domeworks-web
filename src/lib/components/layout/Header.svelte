@@ -9,7 +9,6 @@
 
 	let menuOpen = $state(false);
 	let scrolled = $state(false);
-	let isHeroPage = $derived($page.url.pathname === '/');
 
 	function isActive(href: string): boolean {
 		const currentPath = $page.url.pathname;
@@ -69,9 +68,12 @@
 		if (event.key === 'Escape' && openDropdown) openDropdown = null;
 	}
 
-	/* On hero page, header text is light until scrolled past the dark section.
-	   When the mobile menu is open we force a paper background, so flip text dark too. */
-	let heroMode = $derived(isHeroPage && !scrolled && !menuOpen);
+	/* Every page in the site starts with a dark hero, so before the visitor scrolls
+	   the header floats transparent over that dark surface and uses light text.
+	   Once they scroll past it (or open the mobile menu) we swap to a paper bg
+	   with dark text. If a future page lands on a light surface, this assumption
+	   needs revisiting (see DESIGN.md). */
+	let heroMode = $derived(!scrolled && !menuOpen);
 
 	let reducedMotion = $state(false);
 
